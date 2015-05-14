@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="WorkoutMotivation" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,7 +16,80 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="H05-Bd-jWq">
+                                <rect key="frame" x="0.0" y="215" width="600" height="432"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="432" id="Ww0-hG-HFV"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="432" id="oRl-b5-VeL"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="RNg-nj-iPS" customClass="MotivationCell" customModule="WorkoutMotivation" customModuleProvider="target">
+                                        <rect key="frame" x="11" y="145" width="600" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RNg-nj-iPS" id="bfD-zK-fNq">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQj-k8-CCd">
+                                                    <rect key="frame" x="55" y="24" width="10" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="42" id="GOV-NW-LzL"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Be It" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qZW-5Y-3Dd">
+                                                    <rect key="frame" x="229" y="24" width="36" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerY" secondItem="dQj-k8-CCd" secondAttribute="centerY" id="2aZ-zO-m7r"/>
+                                                <constraint firstItem="dQj-k8-CCd" firstAttribute="top" secondItem="bfD-zK-fNq" secondAttribute="topMargin" constant="16" id="4Hl-qp-YAA"/>
+                                                <constraint firstItem="dQj-k8-CCd" firstAttribute="leading" secondItem="bfD-zK-fNq" secondAttribute="leadingMargin" constant="47" id="KTw-WN-gTM"/>
+                                                <constraint firstItem="dQj-k8-CCd" firstAttribute="leading" secondItem="bfD-zK-fNq" secondAttribute="leadingMargin" constant="47" id="Ry7-YB-4Ug"/>
+                                                <constraint firstAttribute="centerY" secondItem="qZW-5Y-3Dd" secondAttribute="centerY" id="XUI-sv-khY"/>
+                                                <constraint firstItem="qZW-5Y-3Dd" firstAttribute="leading" secondItem="bfD-zK-fNq" secondAttribute="leading" constant="261" id="ZPU-xY-Wl1"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="dQj-k8-CCd" secondAttribute="bottom" constant="16" id="d9S-Sp-Oem"/>
+                                                <constraint firstAttribute="centerY" secondItem="qZW-5Y-3Dd" secondAttribute="centerY" id="t6W-Rf-4bK"/>
+                                                <constraint firstItem="qZW-5Y-3Dd" firstAttribute="leading" secondItem="dQj-k8-CCd" secondAttribute="trailing" constant="164" id="uIl-x5-H26"/>
+                                                <constraint firstAttribute="centerY" secondItem="dQj-k8-CCd" secondAttribute="centerY" id="zKB-nj-o6Z"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="CellIndex" destination="zKB-nj-o6Z" id="pkN-YT-XD8"/>
+                                            <outlet property="CellText" destination="qZW-5Y-3Dd" id="VqY-Q5-nkL"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="H05-Bd-jWq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="7rv-WL-oRh"/>
+                            <constraint firstItem="H05-Bd-jWq" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="195" id="CkP-9i-63M"/>
+                            <constraint firstItem="H05-Bd-jWq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="G5g-gY-oSr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="H05-Bd-jWq" secondAttribute="trailing" id="I4n-Bi-JQG"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="H05-Bd-jWq" secondAttribute="bottom" id="Oui-Vn-WfS"/>
+                            <constraint firstItem="H05-Bd-jWq" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="195" id="PUt-Ir-UN6"/>
+                            <constraint firstItem="H05-Bd-jWq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="cgF-NL-wJV"/>
+                            <constraint firstItem="H05-Bd-jWq" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="195" id="fH1-3k-Kwm"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="H05-Bd-jWq" secondAttribute="trailing" id="gaf-1J-K6Z"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="H05-Bd-jWq" secondAttribute="bottom" id="v4v-R6-9gs"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="H05-Bd-jWq" secondAttribute="trailing" id="xkB-OM-vd7"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="7rv-WL-oRh"/>
+                                <exclude reference="G5g-gY-oSr"/>
+                                <exclude reference="gaf-1J-K6Z"/>
+                                <exclude reference="xkB-OM-vd7"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

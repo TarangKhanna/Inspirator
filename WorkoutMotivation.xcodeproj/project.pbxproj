@@ -13,6 +13,8 @@
 		7109A8F01B04306900435D3C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7109A8EF1B04306900435D3C /* Images.xcassets */; };
 		7109A8F31B04306900435D3C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7109A8F11B04306900435D3C /* LaunchScreen.xib */; };
 		7109A8FF1B04306900435D3C /* WorkoutMotivationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7109A8FE1B04306900435D3C /* WorkoutMotivationTests.swift */; };
+		719D53801B046D6900DD34CD /* MotivationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719D537F1B046D6900DD34CD /* MotivationCell.swift */; };
+		719D53841B046F7A00DD34CD /* cell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719D53831B046F7A00DD34CD /* cell1.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		7109A8F81B04306900435D3C /* WorkoutMotivationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WorkoutMotivationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7109A8FD1B04306900435D3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7109A8FE1B04306900435D3C /* WorkoutMotivationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutMotivationTests.swift; sourceTree = "<group>"; };
+		719D537F1B046D6900DD34CD /* MotivationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MotivationCell.swift; path = ../MotivationCell.swift; sourceTree = "<group>"; };
+		719D53831B046F7A00DD34CD /* cell1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = cell1.swift; path = ../cell1.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,8 +82,10 @@
 			isa = PBXGroup;
 			children = (
 				7109A8E81B04306900435D3C /* AppDelegate.swift */,
-				7109A8EA1B04306900435D3C /* ViewController.swift */,
 				7109A8EC1B04306900435D3C /* Main.storyboard */,
+				719D53831B046F7A00DD34CD /* cell1.swift */,
+				719D537F1B046D6900DD34CD /* MotivationCell.swift */,
+				7109A8EA1B04306900435D3C /* ViewController.swift */,
 				7109A8EF1B04306900435D3C /* Images.xcassets */,
 				7109A8F11B04306900435D3C /* LaunchScreen.xib */,
 				7109A8E61B04306900435D3C /* Supporting Files */,
@@ -213,7 +219,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7109A8EB1B04306900435D3C /* ViewController.swift in Sources */,
+				719D53801B046D6900DD34CD /* MotivationCell.swift in Sources */,
 				7109A8E91B04306900435D3C /* AppDelegate.swift in Sources */,
+				719D53841B046F7A00DD34CD /* cell1.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,6 +419,7 @@
 				7109A9041B04306900435D3C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7109A9051B04306900435D3C /* Build configuration list for PBXNativeTarget "WorkoutMotivationTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +428,7 @@
 				7109A9071B04306900435D3C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
