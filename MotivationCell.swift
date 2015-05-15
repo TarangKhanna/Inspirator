@@ -11,9 +11,9 @@ import UIKit
 
 class MotivationCell: UITableViewCell {
     
-    @IBOutlet weak var CellIndex: NSLayoutConstraint!
-    @IBOutlet weak var CellText: UILabel!
-
+    
+    @IBOutlet weak var MainIndex: UILabel!
+    @IBOutlet weak var MainText: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
     }
