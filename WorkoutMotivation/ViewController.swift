@@ -13,10 +13,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet var tableView: UITableView!
     
-    var items: [String] = ["We", "Heart", "Swift"]
+    //var items: [String] = ["We", "Heart", "Swift"]
+    let manager = DataSource()
+    var motivate = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.motivate = manager.getMotivated()
         let navBar = self.navigationController!.navigationBar
         navBar.barTintColor = UIColor(red: 65.0 / 255.0, green: 62.0 / 255.0, blue: 79.0 / 255.0, alpha: 1)
         navBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
@@ -27,19 +30,28 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.items.count;
+        return self.motivate.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell:UITableViewCell = self.tableView!.dequeueReusableCellWithIdentifier("cell") as! UITableViewCell
-        
-        cell.textLabel?.text = self.items[indexPath.row]
-        
-        return cell
+        let motivate1 = self.motivate[indexPath.row] as? Motivate
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell") as? MotivationCell!
+        cell!.MainText?.text = motivate1?.title
+        cell!.backgroundColor = motivate1?.color
+        cell!.MainIndex.text = "\(indexPath.row+1)"
+        cell!.selectionStyle = UITableViewCellSelectionStyle.None
+        return cell!
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         println("You selected cell #\(indexPath.row)!")
     }
+    
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+
 }
 
