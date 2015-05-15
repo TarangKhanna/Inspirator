@@ -25,7 +25,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         navBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         self.view.backgroundColor = UIColor(red: 65.0 / 255.0, green: 62.0 / 255.0, blue: 79.0 / 255.0, alpha: 1)
         
-        self.tableView!.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        //self.tableView!.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         self.tableView.delegate = self
         self.tableView.dataSource = self
     }
@@ -57,7 +57,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        self.tableView.contentInset = UIEdgeInsetsMake(0,0,55,0)
+        self.tableView.contentInset = UIEdgeInsetsMake(0,0,70,0)
     }
     
 
