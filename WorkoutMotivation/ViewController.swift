@@ -10,11 +10,6 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    // let navBar = self.navigationController!.navigationBar
-    //navBar.barTintColor = UIColor(red: 65.0 / 255.0, green: 62.0 / 255.0, blue: 79.0 / 255.0, alpha: 1)
-    //navBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-    //self.view.backgroundColor = UIColor(red: 65.0 / 255.0, green: 62.0 / 255.0, blue: 79.0 / 255.0, alpha: 1)
-    
     
     @IBOutlet var tableView: UITableView!
     
@@ -22,6 +17,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let navBar = self.navigationController!.navigationBar
+        navBar.barTintColor = UIColor(red: 65.0 / 255.0, green: 62.0 / 255.0, blue: 79.0 / 255.0, alpha: 1)
+        navBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.view.backgroundColor = UIColor(red: 65.0 / 255.0, green: 62.0 / 255.0, blue: 79.0 / 255.0, alpha: 1)
         
         self.tableView!.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }

@@ -16,6 +16,7 @@
 		719D53801B046D6900DD34CD /* MotivationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719D537F1B046D6900DD34CD /* MotivationCell.swift */; };
 		719D53841B046F7A00DD34CD /* cell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719D53831B046F7A00DD34CD /* cell1.swift */; };
 		719D538A1B066E1900DD34CD /* NavigationControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719D53891B066E1900DD34CD /* NavigationControl.swift */; };
+		719D538C1B06743400DD34CD /* NoBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719D538B1B06743400DD34CD /* NoBack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		719D537F1B046D6900DD34CD /* MotivationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MotivationCell.swift; path = ../MotivationCell.swift; sourceTree = "<group>"; };
 		719D53831B046F7A00DD34CD /* cell1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = cell1.swift; path = ../cell1.swift; sourceTree = "<group>"; };
 		719D53891B066E1900DD34CD /* NavigationControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControl.swift; sourceTree = "<group>"; };
+		719D538B1B06743400DD34CD /* NoBack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoBack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 			children = (
 				7109A8E81B04306900435D3C /* AppDelegate.swift */,
 				7109A8EC1B04306900435D3C /* Main.storyboard */,
+				719D538B1B06743400DD34CD /* NoBack.swift */,
 				719D53891B066E1900DD34CD /* NavigationControl.swift */,
 				7109A8EA1B04306900435D3C /* ViewController.swift */,
 				719D537F1B046D6900DD34CD /* MotivationCell.swift */,
@@ -222,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7109A8EB1B04306900435D3C /* ViewController.swift in Sources */,
+				719D538C1B06743400DD34CD /* NoBack.swift in Sources */,
 				719D53801B046D6900DD34CD /* MotivationCell.swift in Sources */,
 				719D538A1B066E1900DD34CD /* NavigationControl.swift in Sources */,
 				7109A8E91B04306900435D3C /* AppDelegate.swift in Sources */,
