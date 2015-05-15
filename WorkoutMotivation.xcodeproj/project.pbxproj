@@ -83,9 +83,9 @@
 			children = (
 				7109A8E81B04306900435D3C /* AppDelegate.swift */,
 				7109A8EC1B04306900435D3C /* Main.storyboard */,
+				7109A8EA1B04306900435D3C /* ViewController.swift */,
 				719D53831B046F7A00DD34CD /* cell1.swift */,
 				719D537F1B046D6900DD34CD /* MotivationCell.swift */,
-				7109A8EA1B04306900435D3C /* ViewController.swift */,
 				7109A8EF1B04306900435D3C /* Images.xcassets */,
 				7109A8F11B04306900435D3C /* LaunchScreen.xib */,
 				7109A8E61B04306900435D3C /* Supporting Files */,
