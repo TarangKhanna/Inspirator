@@ -24,8 +24,8 @@ class DataSource{
         let m4 = Motivate(title: "Study", videoId: "2yOFvV-NSeY", workoutText: "A crunch ", color: UIColor.purpleColor())
         motivate.append(m4)
         
-        //let m3 = Motivate(title: "", videoId: "Eh00_rniF8E", workoutText: "An exercise ", color: UIColor.blueColor())
-        //motivate.append(m3)
+        let m3 = Motivate(title: "Programming", videoId: "Eh00_rniF8E", workoutText: "An exercise ", color: UIColor.blueColor())
+        motivate.append(m3)
         
 //        
 //        let m5 = Motivate(title: "Step-ups onto a chair", videoId: "kM2FfDIwsao", workoutText: "To do a step-up ", color: UIColor.greenColor())
