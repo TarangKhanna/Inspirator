@@ -12,8 +12,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     @IBOutlet var tableView: UITableView!
-    
-    //var items: [String] = ["We", "Heart", "Swift"]
     let manager = DataSource()
     var motivate = []
     
@@ -51,6 +49,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         println("You selected cell #\(indexPath.row)!")
+        if(indexPath.row == 1) {
+            //WeightsVC.view.backgroundColor = UIColor.greenColor()
+            performSegueWithIdentifier("Weights", sender: self)
+        }
     }
     
     
@@ -61,7 +63,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        self.tableView.contentInset = UIEdgeInsetsMake(0,0,70,0)
+        //self.tableView.contentInset = UIEdgeInsetsMake(0,0,70,0)
     }
     
 
