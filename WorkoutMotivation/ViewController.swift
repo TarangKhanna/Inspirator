@@ -30,9 +30,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.tableFooterView = footer
         tableView.tableFooterView!.hidden = true
         tableView.backgroundColor = UIColor.clearColor()
-        tableView.tableHeaderView = footer
-        tableView.tableHeaderView!.hidden = true
-        tableView.contentInset = UIEdgeInsetsZero
+        tableView.separatorColor = UIColor.clearColor()
     }
     
     

@@ -13,6 +13,8 @@
 		7109A8F01B04306900435D3C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7109A8EF1B04306900435D3C /* Images.xcassets */; };
 		7109A8F31B04306900435D3C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7109A8F11B04306900435D3C /* LaunchScreen.xib */; };
 		7109A8FF1B04306900435D3C /* WorkoutMotivationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7109A8FE1B04306900435D3C /* WorkoutMotivationTests.swift */; };
+		7128A91E1B087F670035C41E /* ProgrammingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7128A91D1B087F670035C41E /* ProgrammingVC.swift */; };
+		7128A9201B087FF70035C41E /* ProgrammingQuotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7128A91F1B087FF70035C41E /* ProgrammingQuotes.swift */; };
 		7135F2C11B0800FD002ACD53 /* WeightsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7135F2C01B0800FD002ACD53 /* WeightsVC.swift */; };
 		7135F2C31B080711002ACD53 /* WeigthsQuotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7135F2C21B080711002ACD53 /* WeigthsQuotes.swift */; };
 		719D53801B046D6900DD34CD /* MotivationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719D537F1B046D6900DD34CD /* MotivationCell.swift */; };
@@ -44,6 +46,8 @@
 		7109A8F81B04306900435D3C /* WorkoutMotivationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WorkoutMotivationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7109A8FD1B04306900435D3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7109A8FE1B04306900435D3C /* WorkoutMotivationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutMotivationTests.swift; sourceTree = "<group>"; };
+		7128A91D1B087F670035C41E /* ProgrammingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgrammingVC.swift; sourceTree = "<group>"; };
+		7128A91F1B087FF70035C41E /* ProgrammingQuotes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgrammingQuotes.swift; sourceTree = "<group>"; };
 		7135F2C01B0800FD002ACD53 /* WeightsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightsVC.swift; sourceTree = "<group>"; };
 		7135F2C21B080711002ACD53 /* WeigthsQuotes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeigthsQuotes.swift; sourceTree = "<group>"; };
 		719D537F1B046D6900DD34CD /* MotivationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MotivationCell.swift; path = ../MotivationCell.swift; sourceTree = "<group>"; };
@@ -95,6 +99,8 @@
 			children = (
 				7109A8E81B04306900435D3C /* AppDelegate.swift */,
 				7109A8EC1B04306900435D3C /* Main.storyboard */,
+				7128A91D1B087F670035C41E /* ProgrammingVC.swift */,
+				7128A91F1B087FF70035C41E /* ProgrammingQuotes.swift */,
 				7135F2C01B0800FD002ACD53 /* WeightsVC.swift */,
 				7135F2C21B080711002ACD53 /* WeigthsQuotes.swift */,
 				719D538B1B06743400DD34CD /* NoBack.swift */,
@@ -239,8 +245,10 @@
 				7109A8EB1B04306900435D3C /* ViewController.swift in Sources */,
 				719D538C1B06743400DD34CD /* NoBack.swift in Sources */,
 				7135F2C31B080711002ACD53 /* WeigthsQuotes.swift in Sources */,
+				7128A91E1B087F670035C41E /* ProgrammingVC.swift in Sources */,
 				719D538E1B068FC100DD34CD /* Motivate.swift in Sources */,
 				719D53801B046D6900DD34CD /* MotivationCell.swift in Sources */,
+				7128A9201B087FF70035C41E /* ProgrammingQuotes.swift in Sources */,
 				719D538A1B066E1900DD34CD /* NavigationControl.swift in Sources */,
 				7109A8E91B04306900435D3C /* AppDelegate.swift in Sources */,
 				719D53901B06934500DD34CD /* DataSource.swift in Sources */,

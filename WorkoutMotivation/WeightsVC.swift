@@ -12,7 +12,9 @@ class WeightsVC: UIViewController {
     
     let q1 = WeigthsQuotes()
     
+    @IBOutlet var webView: UIWebView!
     @IBOutlet weak var Qlabel: UILabel!
+    @IBOutlet var activity: UIActivityIndicatorView!
     @IBOutlet var ImageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,5 +22,22 @@ class WeightsVC: UIViewController {
         Qlabel.text = q1.getQuote()
         Qlabel.textColor = UIColor.greenColor()
         ImageView.image = UIImage(named: "Weights\(arc4random_uniform(10)).png")
+        
+    }
+    
+    func loadVideo() {
+        let requestURL = NSURL(string: "https://www.youtube.com/watch?v=ZpwEHIL_UZ4")
+        let request = NSURLRequest(URL: requestURL)
+        webView.loadRequest(request)
+    }
+    
+    func webViewDidStartLoad(_ : UIWebView) {
+        activity.startAnimating()
+        NSLog("started")
+    }
+    
+    func webViewDidFinishLoad(_ : UIWebView) {
+        activity.stopAnimating()
+        NSLog("done")
     }
 }
