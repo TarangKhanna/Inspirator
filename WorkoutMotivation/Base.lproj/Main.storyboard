@@ -126,25 +126,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="right" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zsz-hX-FQA">
-                                <rect key="frame" x="67" y="80" width="240" height="108"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gR7-Dw-lxJ">
+                                <rect key="frame" x="25" y="72" width="325" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Zsz-hX-FQA" firstAttribute="centerX" secondItem="WFk-f9-tr1" secondAttribute="centerX" id="LrP-DE-bgP"/>
-                            <constraint firstItem="sUD-sd-pXl" firstAttribute="top" secondItem="Zsz-hX-FQA" secondAttribute="bottom" constant="479" id="N6z-e3-E7Q"/>
-                            <constraint firstItem="Zsz-hX-FQA" firstAttribute="top" secondItem="Org-77-m9L" secondAttribute="bottom" constant="16" id="UNW-GX-jo9"/>
-                            <constraint firstItem="Zsz-hX-FQA" firstAttribute="leading" secondItem="WFk-f9-tr1" secondAttribute="leadingMargin" constant="51" id="ea3-QA-ztC"/>
+                            <constraint firstItem="gR7-Dw-lxJ" firstAttribute="centerX" secondItem="WFk-f9-tr1" secondAttribute="centerX" id="7wd-Fv-6EL"/>
+                            <constraint firstItem="gR7-Dw-lxJ" firstAttribute="top" secondItem="Org-77-m9L" secondAttribute="bottom" constant="8" symbolic="YES" id="C2z-ra-SoO"/>
+                            <constraint firstItem="gR7-Dw-lxJ" firstAttribute="leading" secondItem="WFk-f9-tr1" secondAttribute="leadingMargin" constant="9" id="tGS-8o-yc2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Lift" id="c9I-0e-iU9"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="Qtext" destination="Zsz-hX-FQA" id="qKa-yH-dhT"/>
+                        <outlet property="Qlabel" destination="gR7-Dw-lxJ" id="f60-mN-VE9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zrF-lN-lsl" userLabel="First Responder" sceneMemberID="firstResponder"/>
