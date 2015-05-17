@@ -23,4 +23,5 @@ class MotivationCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
+    
 }
