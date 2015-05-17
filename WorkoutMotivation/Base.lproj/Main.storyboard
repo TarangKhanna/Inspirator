@@ -138,17 +138,25 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Gm0-5Z-Le6">
+                                <rect key="frame" x="0.0" y="172" width="375" height="128"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="gR7-Dw-lxJ" firstAttribute="centerX" secondItem="WFk-f9-tr1" secondAttribute="centerX" id="7wd-Fv-6EL"/>
                             <constraint firstItem="gR7-Dw-lxJ" firstAttribute="top" secondItem="Org-77-m9L" secondAttribute="bottom" constant="8" symbolic="YES" id="C2z-ra-SoO"/>
+                            <constraint firstItem="Gm0-5Z-Le6" firstAttribute="centerX" secondItem="gR7-Dw-lxJ" secondAttribute="centerX" id="FC2-uh-65h"/>
+                            <constraint firstItem="Gm0-5Z-Le6" firstAttribute="leading" secondItem="WFk-f9-tr1" secondAttribute="leading" id="SpQ-8l-qB4"/>
+                            <constraint firstItem="sUD-sd-pXl" firstAttribute="top" secondItem="Gm0-5Z-Le6" secondAttribute="bottom" constant="367" id="Uzf-qh-V3V"/>
+                            <constraint firstItem="Gm0-5Z-Le6" firstAttribute="top" secondItem="gR7-Dw-lxJ" secondAttribute="bottom" constant="79" id="g1M-Er-MjL"/>
                             <constraint firstItem="gR7-Dw-lxJ" firstAttribute="leading" secondItem="WFk-f9-tr1" secondAttribute="leadingMargin" constant="9" id="tGS-8o-yc2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Lift" id="c9I-0e-iU9"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="ImageView" destination="Gm0-5Z-Le6" id="SDq-7C-OVG"/>
                         <outlet property="Qlabel" destination="gR7-Dw-lxJ" id="f60-mN-VE9"/>
                     </connections>
                 </viewController>
