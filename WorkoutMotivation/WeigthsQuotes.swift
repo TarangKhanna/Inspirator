@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class WeigthsQuotes {
-    var quotes:[String] = ["To do what you believe is great work", "The pain of discipline is nothing like the pain of disappointment", "Shut up and train","I don’t care what you USED to bench", "Right now, your competition is training"]
+    var quotes:[String] = ["To do what you believe is great work", "The pain of discipline is nothing like the pain of disappointment", "Shut up and train","I don’t care what you USED to bench", "Right now, your competition is training", ]
     func getQuote() -> String {
         let count = uint(quotes.count)
         let randomQ = Int(arc4random_uniform(count))

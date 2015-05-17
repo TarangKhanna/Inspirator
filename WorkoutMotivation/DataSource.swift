@@ -20,16 +20,15 @@ class DataSource{
         let m2 = Motivate(title: "Weights", videoId: "y-wV4Venusw", workoutText: "A wall sit", color: UIColor.blueColor())
         motivate.append(m2)
         
+        let m3 = Motivate(title: "Programming", videoId: "Eh00_rniF8E", workoutText: "An exercise ", color: UIColor.brownColor())
+        motivate.append(m3)
         
         let m4 = Motivate(title: "Study", videoId: "2yOFvV-NSeY", workoutText: "A crunch ", color: UIColor.purpleColor())
         motivate.append(m4)
         
-        let m3 = Motivate(title: "Programming", videoId: "Eh00_rniF8E", workoutText: "An exercise ", color: UIColor.blueColor())
-        motivate.append(m3)
+        let m5 = Motivate(title: "Pure Motivation", videoId: "kM2FfDIwsao", workoutText: "To do a step-up ", color: UIColor.orangeColor())
         
-//        
-//        let m5 = Motivate(title: "Step-ups onto a chair", videoId: "kM2FfDIwsao", workoutText: "To do a step-up ", color: UIColor.greenColor())
-//        motivate.append(m5)
+        motivate.append(m5)
 //        
 //        let m6 = Motivate(title: "Squats", videoId: "mGvzVjuY8SY", workoutText: "Crouch ", color: UIColor.blueColor())
 //        motivate.append(m6)
