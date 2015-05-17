@@ -49,6 +49,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         println("You selected cell #\(indexPath.row)!")
+        //var selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
+        //selectedCell.contentView.backgroundColor = UIColor.greenColor()
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
         if(indexPath.row == 1) {
             //WeightsVC.view.backgroundColor = UIColor.greenColor()
             performSegueWithIdentifier("Weights", sender: self)

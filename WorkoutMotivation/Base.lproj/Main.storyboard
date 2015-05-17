@@ -26,7 +26,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="igR-X9-TxM" id="pO9-E2-TkH">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XMr-g7-bFz">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XMr-g7-bFz">
                                                     <rect key="frame" x="8" y="16" width="10" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.1960784495" green="0.94117653369999998" blue="0.20392158630000001" alpha="1" colorSpace="deviceRGB"/>
@@ -40,7 +40,7 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="XMr-g7-bFz" firstAttribute="leading" secondItem="pO9-E2-TkH" secondAttribute="leadingMargin" constant="-7" id="2WA-1L-14A"/>
+                                                <constraint firstItem="XMr-g7-bFz" firstAttribute="leading" secondItem="pO9-E2-TkH" secondAttribute="leadingMargin" id="2WA-1L-14A"/>
                                                 <constraint firstItem="XMr-g7-bFz" firstAttribute="baseline" secondItem="sNG-kC-xrX" secondAttribute="baseline" id="8s4-Ie-6tu"/>
                                                 <constraint firstItem="sNG-kC-xrX" firstAttribute="centerX" secondItem="pO9-E2-TkH" secondAttribute="centerX" id="Frk-kr-VOb"/>
                                                 <constraint firstItem="sNG-kC-xrX" firstAttribute="centerX" secondItem="pO9-E2-TkH" secondAttribute="centerX" constant="16" id="Xjp-0L-xaB"/>
@@ -70,7 +70,7 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Get A Move On" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YAu-e6-wkM">
-                                <rect key="frame" x="77" y="93" width="221" height="139"/>
+                                <rect key="frame" x="77" y="94" width="221" height="139"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <color key="textColor" red="0.2274509804" green="0.48627450979999998" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="0.2274509804" green="0.48627450979999998" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -100,7 +100,7 @@
                         <barButtonItem key="backBarButtonItem" title="OK maybe this time" id="5Mz-La-gOf"/>
                         <barButtonItem key="leftBarButtonItem" image="Left-32" id="FPF-nm-X6U">
                             <connections>
-                                <segue destination="cXI-kJ-w0P" kind="push" id="eLD-pB-yh1"/>
+                                <segue destination="cXI-kJ-w0P" kind="show" id="eLD-pB-yh1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -114,7 +114,7 @@
             </objects>
             <point key="canvasLocation" x="1190.5" y="326.5"/>
         </scene>
-        <!--WeightsVC-->
+        <!--Lift-->
         <scene sceneID="2ym-y7-Ju4">
             <objects>
                 <viewController id="t5x-L8-bWh" customClass="WeightsVC" customModule="WorkoutMotivation" customModuleProvider="target" sceneMemberID="viewController">
@@ -126,21 +126,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weights" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFn-eM-Bex">
-                                <rect key="frame" x="156" y="323" width="62" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zsz-hX-FQA">
+                                <rect key="frame" x="67" y="80" width="240" height="108"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="cFn-eM-Bex" firstAttribute="centerX" secondItem="WFk-f9-tr1" secondAttribute="centerX" id="JFI-IM-m4j"/>
-                            <constraint firstItem="cFn-eM-Bex" firstAttribute="centerY" secondItem="WFk-f9-tr1" secondAttribute="centerY" id="PhI-zq-fKD"/>
+                            <constraint firstItem="Zsz-hX-FQA" firstAttribute="centerX" secondItem="WFk-f9-tr1" secondAttribute="centerX" id="LrP-DE-bgP"/>
+                            <constraint firstItem="sUD-sd-pXl" firstAttribute="top" secondItem="Zsz-hX-FQA" secondAttribute="bottom" constant="479" id="N6z-e3-E7Q"/>
+                            <constraint firstItem="Zsz-hX-FQA" firstAttribute="top" secondItem="Org-77-m9L" secondAttribute="bottom" constant="16" id="UNW-GX-jo9"/>
+                            <constraint firstItem="Zsz-hX-FQA" firstAttribute="leading" secondItem="WFk-f9-tr1" secondAttribute="leadingMargin" constant="51" id="ea3-QA-ztC"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="c9I-0e-iU9"/>
+                    <navigationItem key="navigationItem" title="Lift" id="c9I-0e-iU9"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="Qtext" destination="Zsz-hX-FQA" id="qKa-yH-dhT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zrF-lN-lsl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
