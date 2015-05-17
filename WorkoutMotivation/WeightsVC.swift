@@ -22,22 +22,40 @@ class WeightsVC: UIViewController {
         Qlabel.text = q1.getQuote()
         Qlabel.textColor = UIColor.greenColor()
         ImageView.image = UIImage(named: "Weights\(arc4random_uniform(10)).png")
-        
+        loadVideo()
     }
     
     func loadVideo() {
-        let requestURL = NSURL(string: "https://www.youtube.com/watch?v=ZpwEHIL_UZ4")
-        let request = NSURLRequest(URL: requestURL)
+        let choose = arc4random_uniform(6)
+        var requestURL = NSURL(string: "https://www.youtube.com/watch?v=ZpwEHIL_UZ4")
+        switch choose {
+        case 0:
+            requestURL = NSURL(string: "https://www.youtube.com/watch?v=ZpwEHIL_UZ4")
+        case 1:
+            requestURL = NSURL(string: "https://www.youtube.com/watch?v=xDVoIVX1pAc&spfreload=10")
+        case 2:
+            requestURL = NSURL(string: "https://www.youtube.com/watch?v=Gvi05OMB5uA&spfreload=10")
+        case 3:
+            requestURL = NSURL(string: "https://www.youtube.com/watch?v=cWAEUMuxQvw&spfreload=10")
+        case 4:
+            requestURL = NSURL(string: "https://www.youtube.com/watch?v=Sp7253XSm-g&spfreload=10")
+        case 5:
+            requestURL = NSURL(string: "https://www.youtube.com/watch?v=fIswPMKKDRs")
+        default:
+            requestURL = NSURL(string: "https://www.youtube.com/watch?v=fIswPMKKDRs")
+        }
+        
+        let request = NSURLRequest(URL: requestURL!)
         webView.loadRequest(request)
     }
     
     func webViewDidStartLoad(_ : UIWebView) {
         activity.startAnimating()
-        NSLog("started")
+        //NSLog("started")
     }
     
     func webViewDidFinishLoad(_ : UIWebView) {
         activity.stopAnimating()
-        NSLog("done")
+        //NSLog("done")
     }
 }

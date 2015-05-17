@@ -56,6 +56,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if(indexPath.row == 1) {
             //WeightsVC.view.backgroundColor = UIColor.greenColor()
             performSegueWithIdentifier("Weights", sender: self)
+        } else if(indexPath.row == 2) {
+            performSegueWithIdentifier("Programming", sender: self)
         }
     }
     
