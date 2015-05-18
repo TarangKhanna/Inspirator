@@ -8,6 +8,16 @@
 
 import UIKit
 
+let kSuccessTitle = "Congratulations"
+let kErrorTitle = "Connection error"
+let kNoticeTitle = "Notice"
+let kWarningTitle = "Warning"
+let kInfoTitle = "Randomized"
+let kSubtitle = "Get Going!"
+
+let kDefaultAnimationDuration = 2.0
+
+
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
@@ -56,8 +66,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if(indexPath.row == 1) {
             //WeightsVC.view.backgroundColor = UIColor.greenColor()
             performSegueWithIdentifier("Weights", sender: self)
+            SCLAlertView().showInfo(kInfoTitle, subTitle: kSubtitle)
         } else if(indexPath.row == 2) {
             performSegueWithIdentifier("Programming", sender: self)
+        } else if(indexPath.row == 4) {
+            performSegueWithIdentifier("Pure", sender: self)
         }
     }
     

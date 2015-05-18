@@ -120,6 +120,7 @@
                         <outlet property="tableView" destination="p8z-fX-CwG" id="eTe-cS-4Yq"/>
                         <segue destination="t5x-L8-bWh" kind="show" identifier="Weights" id="Sqi-S6-0M4"/>
                         <segue destination="qog-yW-MfU" kind="show" identifier="Programming" id="dJ9-kF-6jc"/>
+                        <segue destination="fS0-zt-uCr" kind="show" identifier="Pure" id="50U-jA-FBS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -333,6 +334,68 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WMI-gx-Ltc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1846.5" y="568.5"/>
+        </scene>
+        <!--Pure-->
+        <scene sceneID="LCc-cX-LTb">
+            <objects>
+                <viewController id="fS0-zt-uCr" userLabel="Pure" customClass="PureVC" customModule="WorkoutMotivation" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dv8-0y-DdB"/>
+                        <viewControllerLayoutGuide type="bottom" id="EsQ-9k-ERS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="U9D-X5-qXd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqD-2D-MlB">
+                                <rect key="frame" x="25" y="72" width="325" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fbo-SZ-tRU">
+                                <rect key="frame" x="0.0" y="398" width="375" height="269"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="fS0-zt-uCr" id="wKN-zd-xPF"/>
+                                </connections>
+                            </webView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="gBv-RS-lcV">
+                                <rect key="frame" x="177" y="529" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1zR-84-Kyn">
+                                <rect key="frame" x="0.0" y="153" width="375" height="229"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="EsQ-9k-ERS" firstAttribute="top" secondItem="gBv-RS-lcV" secondAttribute="bottom" constant="118" id="0au-QX-hjJ"/>
+                            <constraint firstItem="Fbo-SZ-tRU" firstAttribute="leading" secondItem="1zR-84-Kyn" secondAttribute="leading" id="1Bp-dp-lia"/>
+                            <constraint firstItem="1zR-84-Kyn" firstAttribute="leading" secondItem="U9D-X5-qXd" secondAttribute="leading" id="8Nr-9r-8FF"/>
+                            <constraint firstItem="EsQ-9k-ERS" firstAttribute="top" secondItem="1zR-84-Kyn" secondAttribute="bottom" constant="285" id="Gds-sd-pyC"/>
+                            <constraint firstItem="1zR-84-Kyn" firstAttribute="centerX" secondItem="dqD-2D-MlB" secondAttribute="centerX" id="Gsh-Cz-HoA"/>
+                            <constraint firstItem="1zR-84-Kyn" firstAttribute="top" secondItem="dqD-2D-MlB" secondAttribute="bottom" constant="60" id="T5f-8X-qSe"/>
+                            <constraint firstItem="dqD-2D-MlB" firstAttribute="top" secondItem="dv8-0y-DdB" secondAttribute="bottom" constant="8" symbolic="YES" id="VK5-O5-c6W"/>
+                            <constraint firstItem="dqD-2D-MlB" firstAttribute="leading" secondItem="U9D-X5-qXd" secondAttribute="leadingMargin" constant="9" id="XtK-Vs-N7r"/>
+                            <constraint firstItem="dqD-2D-MlB" firstAttribute="centerX" secondItem="U9D-X5-qXd" secondAttribute="centerX" id="XtS-Qi-mwY"/>
+                            <constraint firstItem="Fbo-SZ-tRU" firstAttribute="top" secondItem="1zR-84-Kyn" secondAttribute="bottom" constant="16" id="Z9A-XM-YmL"/>
+                            <constraint firstItem="Fbo-SZ-tRU" firstAttribute="trailing" secondItem="1zR-84-Kyn" secondAttribute="trailing" id="lT8-o7-UMA"/>
+                            <constraint firstItem="Fbo-SZ-tRU" firstAttribute="bottom" secondItem="EsQ-9k-ERS" secondAttribute="top" id="maF-0v-Pft"/>
+                            <constraint firstItem="gBv-RS-lcV" firstAttribute="centerX" secondItem="Fbo-SZ-tRU" secondAttribute="centerX" id="waC-qW-g2b"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Pure" id="jMX-py-4WU"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="ImageView" destination="1zR-84-Kyn" id="6gD-oD-w0X"/>
+                        <outlet property="Qlabel" destination="dqD-2D-MlB" id="8CQ-jj-mwT"/>
+                        <outlet property="activity" destination="gBv-RS-lcV" id="N8B-O2-JXf"/>
+                        <outlet property="webView" destination="Fbo-SZ-tRU" id="96C-aw-KFW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3mQ-WH-4AX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1846.5" y="1377.5"/>
         </scene>
     </scenes>
     <resources>
