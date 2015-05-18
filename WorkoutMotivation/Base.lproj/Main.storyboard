@@ -109,6 +109,11 @@
                                 <segue destination="cXI-kJ-w0P" kind="show" id="eLD-pB-yh1"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Login" id="9Hu-Jb-Uc6">
+                            <connections>
+                                <segue destination="Oqv-uQ-83Z" kind="show" id="Bo7-SN-qb3"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
@@ -170,7 +175,9 @@
                             <constraint firstItem="gR7-Dw-lxJ" firstAttribute="leading" secondItem="WFk-f9-tr1" secondAttribute="leadingMargin" constant="9" id="tGS-8o-yc2"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Lift" id="c9I-0e-iU9"/>
+                    <navigationItem key="navigationItem" title="Lift" id="c9I-0e-iU9">
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="XU2-kG-TFc"/>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="ImageView" destination="Gm0-5Z-Le6" id="SDq-7C-OVG"/>
@@ -226,6 +233,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zL7-O0-S3y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="584.5" y="-423.5"/>
+        </scene>
+        <!--Login-->
+        <scene sceneID="86U-I5-v7G">
+            <objects>
+                <viewController id="Oqv-uQ-83Z" userLabel="Login" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JPj-ni-E0D"/>
+                        <viewControllerLayoutGuide type="bottom" id="I5p-vf-ePO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="AKU-6M-Qib">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B7d-tC-nHs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="15.5" y="326.5"/>
         </scene>
         <!--Navigation Control-->
         <scene sceneID="4pk-jg-ouh">

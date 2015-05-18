@@ -29,7 +29,7 @@ class ProgrammingVC: UIViewController {
         var requestURL = NSURL(string: "https://www.youtube.com/watch?v=ZpwEHIL_UZ4")
         switch choose {
         case 0:
-            requestURL = NSURL(string: "https://www.youtube.com/watch?v=ZpwEHIL_UZ4")
+            requestURL = NSURL(string: "https://www.youtube.com/watch?v=E0qlr22cF14&spfreload=10")
         case 1:
             requestURL = NSURL(string: "https://www.youtube.com/watch?v=xDVoIVX1pAc&spfreload=10")
         case 2:
@@ -41,7 +41,7 @@ class ProgrammingVC: UIViewController {
         case 5:
             requestURL = NSURL(string: "https://www.youtube.com/watch?v=fIswPMKKDRs")
         default:
-            requestURL = NSURL(string: "https://www.youtube.com/watch?v=fIswPMKKDRs")
+            requestURL = NSURL(string: "https://www.youtube.com/watch?v=E0qlr22cF14&spfreload=10")
         }
         
         let request = NSURLRequest(URL: requestURL!)
