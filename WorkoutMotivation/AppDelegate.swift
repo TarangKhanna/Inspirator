@@ -19,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // set up your background color view
         let colorView = UIView()
         colorView.backgroundColor = UIColor.yellowColor()
-        
         // use UITableViewCell.appearance() to configure
         // the default appearance of all UITableViewCells in your app
         UITableViewCell.appearance().selectedBackgroundView = colorView

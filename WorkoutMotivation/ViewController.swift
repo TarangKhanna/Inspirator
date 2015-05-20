@@ -41,6 +41,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.tableFooterView!.hidden = true
         tableView.backgroundColor = UIColor.clearColor()
         tableView.separatorColor = UIColor.clearColor()
+        var shown : Bool = false
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        userDefaults.setValue(shown, forKey: "shown")
+        userDefaults.synchronize()
     }
     
     
@@ -66,7 +70,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if(indexPath.row == 1) {
             //WeightsVC.view.backgroundColor = UIColor.greenColor()
             performSegueWithIdentifier("Weights", sender: self)
-            SCLAlertView().showInfo(kInfoTitle, subTitle: kSubtitle)
+            //if(!shown) {
+              SCLAlertView().showInfo(kInfoTitle, subTitle: kSubtitle)
+              //shown = true
+            //}
         } else if(indexPath.row == 2) {
             performSegueWithIdentifier("Programming", sender: self)
         } else if(indexPath.row == 4) {

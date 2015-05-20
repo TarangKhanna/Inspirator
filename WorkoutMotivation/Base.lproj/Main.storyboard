@@ -104,7 +104,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Motivation" id="96W-GF-yRU">
                         <barButtonItem key="backBarButtonItem" title="OK maybe this time" id="5Mz-La-gOf"/>
-                        <barButtonItem key="leftBarButtonItem" image="Left-32" id="FPF-nm-X6U">
+                        <barButtonItem key="leftBarButtonItem" image="Left-100" id="FPF-nm-X6U">
                             <connections>
                                 <segue destination="cXI-kJ-w0P" kind="show" id="eLD-pB-yh1"/>
                             </connections>
@@ -203,7 +203,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="THERE IS NO GOING BACK IN LIFE" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SSZ-AI-AQN">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THERE IS NO GOING BACK IN LIFE" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SSZ-AI-AQN">
                                 <rect key="frame" x="-11" y="250" width="397" height="168"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="textColor" red="0.2274509804" green="0.48627450979999998" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -212,7 +212,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="SSZ-AI-AQN" firstAttribute="top" secondItem="URQ-cY-93c" secondAttribute="bottom" constant="186" id="3ZO-kD-udT"/>
+                            <constraint firstItem="SSZ-AI-AQN" firstAttribute="top" secondItem="URQ-cY-93c" secondAttribute="bottom" constant="156" id="3ZO-kD-udT"/>
                             <constraint firstItem="SSZ-AI-AQN" firstAttribute="leading" secondItem="KXH-lC-Sga" secondAttribute="leadingMargin" constant="-27" id="QgM-Cp-gZ1"/>
                             <constraint firstItem="uDd-qL-mB5" firstAttribute="top" secondItem="SSZ-AI-AQN" secondAttribute="bottom" constant="249" id="fae-w3-hvB"/>
                             <constraint firstItem="SSZ-AI-AQN" firstAttribute="centerX" secondItem="KXH-lC-Sga" secondAttribute="centerX" id="i04-nM-nrf"/>
@@ -399,6 +399,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Left-32" width="32" height="32"/>
+        <image name="Left-100" width="33" height="33"/>
     </resources>
 </document>

@@ -17,6 +17,7 @@
 		7128A9201B087FF70035C41E /* ProgrammingQuotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7128A91F1B087FF70035C41E /* ProgrammingQuotes.swift */; };
 		7128A9541B0A93C30035C41E /* PureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7128A9531B0A93C30035C41E /* PureVC.swift */; };
 		7128A9561B0A98520035C41E /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7128A9551B0A98520035C41E /* SCLAlertView.swift */; };
+		7128A98A1B0B17590035C41E /* Button.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7128A9891B0B17590035C41E /* Button.xcassets */; };
 		7135F2C11B0800FD002ACD53 /* WeightsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7135F2C01B0800FD002ACD53 /* WeightsVC.swift */; };
 		7135F2C31B080711002ACD53 /* WeigthsQuotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7135F2C21B080711002ACD53 /* WeigthsQuotes.swift */; };
 		719D53801B046D6900DD34CD /* MotivationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719D537F1B046D6900DD34CD /* MotivationCell.swift */; };
@@ -52,6 +53,7 @@
 		7128A91F1B087FF70035C41E /* ProgrammingQuotes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgrammingQuotes.swift; sourceTree = "<group>"; };
 		7128A9531B0A93C30035C41E /* PureVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PureVC.swift; sourceTree = "<group>"; };
 		7128A9551B0A98520035C41E /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLAlertView.swift; sourceTree = "<group>"; };
+		7128A9891B0B17590035C41E /* Button.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Button.xcassets; sourceTree = "<group>"; };
 		7135F2C01B0800FD002ACD53 /* WeightsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightsVC.swift; sourceTree = "<group>"; };
 		7135F2C21B080711002ACD53 /* WeigthsQuotes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeigthsQuotes.swift; sourceTree = "<group>"; };
 		719D537F1B046D6900DD34CD /* MotivationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MotivationCell.swift; path = ../MotivationCell.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				719D538F1B06934500DD34CD /* DataSource.swift */,
 				719D53831B046F7A00DD34CD /* cell1.swift */,
 				7109A8EF1B04306900435D3C /* Images.xcassets */,
+				7128A9891B0B17590035C41E /* Button.xcassets */,
 				7109A8F11B04306900435D3C /* LaunchScreen.xib */,
 				7109A8E61B04306900435D3C /* Supporting Files */,
 			);
@@ -231,6 +234,7 @@
 				7109A8EE1B04306900435D3C /* Main.storyboard in Resources */,
 				7109A8F31B04306900435D3C /* LaunchScreen.xib in Resources */,
 				7109A8F01B04306900435D3C /* Images.xcassets in Resources */,
+				7128A98A1B0B17590035C41E /* Button.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
