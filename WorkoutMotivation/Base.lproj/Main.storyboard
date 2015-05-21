@@ -194,7 +194,7 @@
                     <navigationItem key="navigationItem" title="Lift" id="c9I-0e-iU9">
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="XU2-kG-TFc">
                             <connections>
-                                <segue destination="bDl-zf-HaL" kind="show" identifier="social" id="0ij-1B-Xrc"/>
+                                <segue destination="XbU-Ea-KNw" kind="show" id="lxT-7J-e4f"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -209,6 +209,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zrF-lN-lsl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1846.5" y="-249.5"/>
+        </scene>
+        <!--SocialVC-->
+        <scene sceneID="B42-jW-aRb">
+            <objects>
+                <viewController id="XbU-Ea-KNw" customClass="SocialVC" customModule="WorkoutMotivation" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3Ig-U0-QJZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="acc-ia-xEW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0mg-an-oDF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eMx-rj-0ws">
+                                <rect key="frame" x="0.0" y="64" width="375" height="290"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dcN-46-amN">
+                                <rect key="frame" x="0.0" y="369" width="375" height="298"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="acc-ia-xEW" firstAttribute="top" secondItem="eMx-rj-0ws" secondAttribute="bottom" constant="313" id="PjR-pW-khp"/>
+                            <constraint firstItem="dcN-46-amN" firstAttribute="trailing" secondItem="eMx-rj-0ws" secondAttribute="trailing" id="bNY-dv-LAa"/>
+                            <constraint firstAttribute="trailing" secondItem="eMx-rj-0ws" secondAttribute="trailing" id="bOe-kE-eiN"/>
+                            <constraint firstItem="eMx-rj-0ws" firstAttribute="leading" secondItem="0mg-an-oDF" secondAttribute="leading" id="ffs-6k-jWJ"/>
+                            <constraint firstItem="dcN-46-amN" firstAttribute="leading" secondItem="eMx-rj-0ws" secondAttribute="leading" id="njz-9a-42P"/>
+                            <constraint firstItem="eMx-rj-0ws" firstAttribute="top" secondItem="3Ig-U0-QJZ" secondAttribute="bottom" id="pQh-G4-Sd4"/>
+                            <constraint firstItem="dcN-46-amN" firstAttribute="bottom" secondItem="acc-ia-xEW" secondAttribute="top" id="ptC-5B-FOV"/>
+                            <constraint firstItem="dcN-46-amN" firstAttribute="top" secondItem="eMx-rj-0ws" secondAttribute="bottom" constant="15" id="wWY-pz-7jV"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="webView1" destination="eMx-rj-0ws" id="64y-xu-8mu"/>
+                        <outlet property="webView2" destination="dcN-46-amN" id="eLH-VL-yHD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Eqm-vN-UlZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2386.5" y="-249.5"/>
         </scene>
         <!--^-->
         <scene sceneID="z7O-Z1-Nxl">
@@ -257,7 +300,7 @@
         <!--Login-->
         <scene sceneID="86U-I5-v7G">
             <objects>
-                <viewController id="Oqv-uQ-83Z" userLabel="Login" sceneMemberID="viewController">
+                <viewController id="Oqv-uQ-83Z" userLabel="Login" customClass="loginVC" customModule="WorkoutMotivation" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JPj-ni-E0D"/>
                         <viewControllerLayoutGuide type="bottom" id="I5p-vf-ePO"/>
@@ -427,80 +470,13 @@
                     <view key="view" contentMode="scaleToFill" id="DiV-lX-GOB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CIN-cq-2fl">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <subviews>
-                                    <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aql-CL-P2l">
-                                        <rect key="frame" x="0.0" y="334" width="375" height="269"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="fS0-zt-uCr" id="fkN-O2-eMD"/>
-                                        </connections>
-                                    </webView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p2U-XC-oLb">
-                                        <rect key="frame" x="0.0" y="57" width="375" height="229"/>
-                                    </imageView>
-                                </subviews>
-                            </scrollView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="CIN-cq-2fl" secondAttribute="trailing" id="RVx-zI-5od"/>
-                            <constraint firstItem="CIN-cq-2fl" firstAttribute="bottom" secondItem="Iu3-bF-nWs" secondAttribute="top" id="RqB-qv-dzS"/>
-                            <constraint firstItem="CIN-cq-2fl" firstAttribute="leading" secondItem="DiV-lX-GOB" secondAttribute="leading" id="amh-co-Ota"/>
-                            <constraint firstItem="CIN-cq-2fl" firstAttribute="top" secondItem="Kj7-lw-zl6" secondAttribute="bottom" id="vQu-z2-Qn7"/>
-                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SQL-V0-uXO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1190.5" y="1377.5"/>
-        </scene>
-        <!--SocialVC-->
-        <scene sceneID="nAx-AT-dXH">
-            <objects>
-                <viewController id="bDl-zf-HaL" customClass="SocialVC" customModule="WorkoutMotivation" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Dwz-UN-Nd6"/>
-                        <viewControllerLayoutGuide type="bottom" id="Jea-Xw-B1i"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="XKN-86-xA0">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pAW-Jh-Ko6">
-                                <rect key="frame" x="0.0" y="64" width="375" height="313"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </webView>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EoF-oK-wr7">
-                                <rect key="frame" x="0.0" y="367" width="375" height="300"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </webView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="EoF-oK-wr7" firstAttribute="trailing" secondItem="pAW-Jh-Ko6" secondAttribute="trailing" id="A7l-1w-ExA"/>
-                            <constraint firstItem="pAW-Jh-Ko6" firstAttribute="top" secondItem="Dwz-UN-Nd6" secondAttribute="bottom" id="YG8-Oh-VyX"/>
-                            <constraint firstItem="Jea-Xw-B1i" firstAttribute="top" secondItem="pAW-Jh-Ko6" secondAttribute="bottom" constant="290" id="bNb-pf-kEp"/>
-                            <constraint firstItem="EoF-oK-wr7" firstAttribute="bottom" secondItem="Jea-Xw-B1i" secondAttribute="top" id="gvL-EI-lrh"/>
-                            <constraint firstItem="EoF-oK-wr7" firstAttribute="top" secondItem="Dwz-UN-Nd6" secondAttribute="bottom" constant="303" id="omL-TK-1WM"/>
-                            <constraint firstItem="EoF-oK-wr7" firstAttribute="leading" secondItem="pAW-Jh-Ko6" secondAttribute="leading" id="tHq-U6-EqE"/>
-                            <constraint firstItem="EoF-oK-wr7" firstAttribute="leading" secondItem="XKN-86-xA0" secondAttribute="leading" id="u2H-d9-mtQ"/>
-                            <constraint firstAttribute="trailing" secondItem="EoF-oK-wr7" secondAttribute="trailing" id="yAi-af-lFP"/>
-                        </constraints>
-                    </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <connections>
-                        <outlet property="webView" destination="pAW-Jh-Ko6" id="8E6-ih-2rX"/>
-                        <outlet property="webView1" destination="pAW-Jh-Ko6" id="FR2-Sz-P0u"/>
-                        <outlet property="webView2" destination="EoF-oK-wr7" id="ZSA-1G-hFT"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3q4-fq-IyC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2391.5" y="-249.5"/>
         </scene>
     </scenes>
     <resources>
