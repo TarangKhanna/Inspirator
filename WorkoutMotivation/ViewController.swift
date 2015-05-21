@@ -28,9 +28,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         self.motivate = manager.getMotivated()
-        let navBar = self.navigationController!.navigationBar
-        navBar.barTintColor = UIColor(red: 65.0 / 255.0, green: 62.0 / 255.0, blue: 79.0 / 255.0, alpha: 1)
-        navBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        //let navBar = self.navigationController!.navigationBar
+        //navBar.barTintColor = UIColor(red: 65.0 / 255.0, green: 62.0 / 255.0, blue: 79.0 / 255.0, alpha: 1)
+        //navBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         //self.view.backgroundColor = UIColor(red: 65.0 / 255.0, green: 62.0 / 255.0, blue: 79.0 / 255.0, alpha: 1)
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "BG.png")!)
         //self.tableView!.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")

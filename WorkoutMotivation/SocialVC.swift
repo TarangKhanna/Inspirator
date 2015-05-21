@@ -14,7 +14,7 @@
 //
 import UIKit
 
-class SocialVC: UIViewController {
+class SocialVC: UIViewController, UIWebViewDelegate {
     //let q1 = ProgrammingQuotes()
     
     @IBOutlet var webView1: UIWebView!
@@ -49,5 +49,6 @@ class SocialVC: UIViewController {
         //activity.stopAnimating()
         //NSLog("done")
     }
+    
 }
 
