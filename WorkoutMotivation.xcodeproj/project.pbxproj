@@ -13,6 +13,9 @@
 		7109A8F01B04306900435D3C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7109A8EF1B04306900435D3C /* Images.xcassets */; };
 		7109A8F31B04306900435D3C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7109A8F11B04306900435D3C /* LaunchScreen.xib */; };
 		7109A8FF1B04306900435D3C /* WorkoutMotivationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7109A8FE1B04306900435D3C /* WorkoutMotivationTests.swift */; };
+		71142A701B0D621700AB3600 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71142A6E1B0D621700AB3600 /* FBSDKCoreKit.framework */; };
+		71142A711B0D621700AB3600 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71142A6F1B0D621700AB3600 /* FBSDKLoginKit.framework */; };
+		71142A731B0D622700AB3600 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71142A721B0D622700AB3600 /* FBSDKShareKit.framework */; };
 		7128A91E1B087F670035C41E /* ProgrammingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7128A91D1B087F670035C41E /* ProgrammingVC.swift */; };
 		7128A9201B087FF70035C41E /* ProgrammingQuotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7128A91F1B087FF70035C41E /* ProgrammingQuotes.swift */; };
 		7128A9541B0A93C30035C41E /* PureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7128A9531B0A93C30035C41E /* PureVC.swift */; };
@@ -49,6 +52,9 @@
 		7109A8F81B04306900435D3C /* WorkoutMotivationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WorkoutMotivationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7109A8FD1B04306900435D3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7109A8FE1B04306900435D3C /* WorkoutMotivationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutMotivationTests.swift; sourceTree = "<group>"; };
+		71142A6E1B0D621700AB3600 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		71142A6F1B0D621700AB3600 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		71142A721B0D622700AB3600 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		7128A91D1B087F670035C41E /* ProgrammingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgrammingVC.swift; sourceTree = "<group>"; };
 		7128A91F1B087FF70035C41E /* ProgrammingQuotes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgrammingQuotes.swift; sourceTree = "<group>"; };
 		7128A9531B0A93C30035C41E /* PureVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PureVC.swift; sourceTree = "<group>"; };
@@ -69,6 +75,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71142A711B0D621700AB3600 /* FBSDKLoginKit.framework in Frameworks */,
+				71142A701B0D621700AB3600 /* FBSDKCoreKit.framework in Frameworks */,
+				71142A731B0D622700AB3600 /* FBSDKShareKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +94,9 @@
 		7109A8DA1B04306900435D3C = {
 			isa = PBXGroup;
 			children = (
+				71142A721B0D622700AB3600 /* FBSDKShareKit.framework */,
+				71142A6E1B0D621700AB3600 /* FBSDKCoreKit.framework */,
+				71142A6F1B0D621700AB3600 /* FBSDKLoginKit.framework */,
 				7109A8E51B04306900435D3C /* WorkoutMotivation */,
 				7109A8FB1B04306900435D3C /* WorkoutMotivationTests */,
 				7109A8E41B04306900435D3C /* Products */,
@@ -394,6 +406,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/THacked96/Documents/FacebookSDK,
+				);
 				INFOPLIST_FILE = WorkoutMotivation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -404,6 +420,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/THacked96/Documents/FacebookSDK,
+				);
 				INFOPLIST_FILE = WorkoutMotivation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
