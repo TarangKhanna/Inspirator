@@ -16,6 +16,7 @@
 		71142A701B0D621700AB3600 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71142A6E1B0D621700AB3600 /* FBSDKCoreKit.framework */; };
 		71142A711B0D621700AB3600 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71142A6F1B0D621700AB3600 /* FBSDKLoginKit.framework */; };
 		71142A731B0D622700AB3600 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71142A721B0D622700AB3600 /* FBSDKShareKit.framework */; };
+		71142A761B0DCE0900AB3600 /* SocialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71142A751B0DCE0900AB3600 /* SocialVC.swift */; };
 		7128A91E1B087F670035C41E /* ProgrammingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7128A91D1B087F670035C41E /* ProgrammingVC.swift */; };
 		7128A9201B087FF70035C41E /* ProgrammingQuotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7128A91F1B087FF70035C41E /* ProgrammingQuotes.swift */; };
 		7128A9541B0A93C30035C41E /* PureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7128A9531B0A93C30035C41E /* PureVC.swift */; };
@@ -55,6 +56,8 @@
 		71142A6E1B0D621700AB3600 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		71142A6F1B0D621700AB3600 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		71142A721B0D622700AB3600 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
+		71142A741B0DC77700AB3600 /* WM-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WM-Bridging-Header.h"; sourceTree = "<group>"; };
+		71142A751B0DCE0900AB3600 /* SocialVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialVC.swift; sourceTree = "<group>"; };
 		7128A91D1B087F670035C41E /* ProgrammingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgrammingVC.swift; sourceTree = "<group>"; };
 		7128A91F1B087FF70035C41E /* ProgrammingQuotes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgrammingQuotes.swift; sourceTree = "<group>"; };
 		7128A9531B0A93C30035C41E /* PureVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PureVC.swift; sourceTree = "<group>"; };
@@ -117,6 +120,8 @@
 			children = (
 				7109A8E81B04306900435D3C /* AppDelegate.swift */,
 				7109A8EC1B04306900435D3C /* Main.storyboard */,
+				71142A751B0DCE0900AB3600 /* SocialVC.swift */,
+				71142A741B0DC77700AB3600 /* WM-Bridging-Header.h */,
 				7128A9531B0A93C30035C41E /* PureVC.swift */,
 				7128A91D1B087F670035C41E /* ProgrammingVC.swift */,
 				7128A91F1B087FF70035C41E /* ProgrammingQuotes.swift */,
@@ -277,6 +282,7 @@
 				719D53901B06934500DD34CD /* DataSource.swift in Sources */,
 				719D53841B046F7A00DD34CD /* cell1.swift in Sources */,
 				7128A9561B0A98520035C41E /* SCLAlertView.swift in Sources */,
+				71142A761B0DCE0900AB3600 /* SocialVC.swift in Sources */,
 				7135F2C11B0800FD002ACD53 /* WeightsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

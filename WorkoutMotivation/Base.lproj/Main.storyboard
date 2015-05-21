@@ -125,7 +125,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Login" id="9Hu-Jb-Uc6">
                             <connections>
-                                <segue destination="Oqv-uQ-83Z" kind="show" id="Bo7-SN-qb3"/>
+                                <segue destination="Oqv-uQ-83Z" kind="show" identifier="login" id="Bo7-SN-qb3"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -192,7 +192,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Lift" id="c9I-0e-iU9">
-                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="XU2-kG-TFc"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="XU2-kG-TFc">
+                            <connections>
+                                <segue destination="bDl-zf-HaL" kind="show" identifier="social" id="0ij-1B-Xrc"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
@@ -452,7 +456,51 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SQL-V0-uXO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1422.5" y="2043.5"/>
+            <point key="canvasLocation" x="1190.5" y="1377.5"/>
+        </scene>
+        <!--SocialVC-->
+        <scene sceneID="nAx-AT-dXH">
+            <objects>
+                <viewController id="bDl-zf-HaL" customClass="SocialVC" customModule="WorkoutMotivation" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Dwz-UN-Nd6"/>
+                        <viewControllerLayoutGuide type="bottom" id="Jea-Xw-B1i"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XKN-86-xA0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pAW-Jh-Ko6">
+                                <rect key="frame" x="0.0" y="64" width="375" height="313"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EoF-oK-wr7">
+                                <rect key="frame" x="0.0" y="367" width="375" height="300"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="EoF-oK-wr7" firstAttribute="trailing" secondItem="pAW-Jh-Ko6" secondAttribute="trailing" id="A7l-1w-ExA"/>
+                            <constraint firstItem="pAW-Jh-Ko6" firstAttribute="top" secondItem="Dwz-UN-Nd6" secondAttribute="bottom" id="YG8-Oh-VyX"/>
+                            <constraint firstItem="Jea-Xw-B1i" firstAttribute="top" secondItem="pAW-Jh-Ko6" secondAttribute="bottom" constant="290" id="bNb-pf-kEp"/>
+                            <constraint firstItem="EoF-oK-wr7" firstAttribute="bottom" secondItem="Jea-Xw-B1i" secondAttribute="top" id="gvL-EI-lrh"/>
+                            <constraint firstItem="EoF-oK-wr7" firstAttribute="top" secondItem="Dwz-UN-Nd6" secondAttribute="bottom" constant="303" id="omL-TK-1WM"/>
+                            <constraint firstItem="EoF-oK-wr7" firstAttribute="leading" secondItem="pAW-Jh-Ko6" secondAttribute="leading" id="tHq-U6-EqE"/>
+                            <constraint firstItem="EoF-oK-wr7" firstAttribute="leading" secondItem="XKN-86-xA0" secondAttribute="leading" id="u2H-d9-mtQ"/>
+                            <constraint firstAttribute="trailing" secondItem="EoF-oK-wr7" secondAttribute="trailing" id="yAi-af-lFP"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="webView" destination="pAW-Jh-Ko6" id="8E6-ih-2rX"/>
+                        <outlet property="webView1" destination="pAW-Jh-Ko6" id="FR2-Sz-P0u"/>
+                        <outlet property="webView2" destination="EoF-oK-wr7" id="ZSA-1G-hFT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3q4-fq-IyC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2391.5" y="-249.5"/>
         </scene>
     </scenes>
     <resources>
