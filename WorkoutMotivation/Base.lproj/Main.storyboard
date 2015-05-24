@@ -120,7 +120,7 @@
                         <barButtonItem key="backBarButtonItem" title="OK maybe this time" id="5Mz-La-gOf"/>
                         <barButtonItem key="leftBarButtonItem" image="Left-100" id="FPF-nm-X6U">
                             <connections>
-                                <segue destination="cXI-kJ-w0P" kind="show" id="eLD-pB-yh1"/>
+                                <segue destination="cXI-kJ-w0P" kind="show" identifier="noBack" id="eLD-pB-yh1"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Login" id="9Hu-Jb-Uc6">
@@ -457,7 +457,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3mQ-WH-4AX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1846.5" y="1377.5"/>
+            <point key="canvasLocation" x="1846.5" y="1480.5"/>
         </scene>
         <!--Study-->
         <scene sceneID="EBV-is-UKM">

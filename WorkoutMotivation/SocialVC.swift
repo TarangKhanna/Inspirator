@@ -29,7 +29,9 @@ class SocialVC: UIViewController, UIWebViewDelegate {
     }
     
     func loadSocial() {
-        //let choose = arc4random_uniform(6)
+        //let choose = arc4random_uniform(6) 
+        // block adds - they take too much screen space- shouldStartLoadWithRequest
+        
         var requestURL = NSURL(string: "https://twitter.com/search?q=motivation&src=tyah")
         var request = NSURLRequest(URL: requestURL!)
         webView1.loadRequest(request)

@@ -46,7 +46,7 @@ class WeightsVC: UIViewController {
         }
         
         let request = NSURLRequest(URL: requestURL!)
-        webView.loadRequest(request)
+        webView.loadRequest(request) 
     }
     
     func webViewDidStartLoad(_ : UIWebView) {
