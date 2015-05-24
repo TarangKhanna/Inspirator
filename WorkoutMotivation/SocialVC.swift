@@ -30,16 +30,30 @@ class SocialVC: UIViewController, UIWebViewDelegate {
     
     func loadSocial() {
         //let choose = arc4random_uniform(6) 
-        // block adds - they take too much screen space- shouldStartLoadWithRequest
-        
+        // block adds - they take too much screen space- shouldStartLoadWithReques
         var requestURL = NSURL(string: "https://twitter.com/search?q=motivation&src=tyah")
         var request = NSURLRequest(URL: requestURL!)
         webView1.loadRequest(request)
+        webView1.delegate = self
         
         requestURL = NSURL(string: "http://websta.me/tag/motivation")
         request = NSURLRequest(URL: requestURL!)
         webView2.loadRequest(request)
+        webView2.delegate = self
         
+    }
+    
+    func webView(_webView: UIWebView,
+        shouldStartLoadWithRequest request: NSURLRequest,
+        navigationType: UIWebViewNavigationType) -> Bool {
+            var host = request.URL!.absoluteString
+            println(request.URL!)
+            if host!.rangeOfString("websta.me") != nil || host!.rangeOfString("twitter.com") != nil {
+                println("exists")
+                return true
+            }
+            
+        return false
     }
     
     func webViewDidStartLoad(_ : UIWebView) {
