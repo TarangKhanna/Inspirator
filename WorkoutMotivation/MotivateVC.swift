@@ -18,7 +18,7 @@ let kSubtitle = "Get Going!"
 let kDefaultAnimationDuration = 2.0
 
 
-class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource, floatMenuDelegate {
     
     
     @IBOutlet var tableView: UITableView!
@@ -33,6 +33,10 @@ class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         //navBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         //self.view.backgroundColor = UIColor(red: 65.0 / 255.0, green: 62.0 / 255.0, blue: 79.0 / 255.0, alpha: 1)
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "BG.png")!)
+        //self.navigationController?.navigationBar.translucent = true
+
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "BG.png"), forBarMetrics: UIBarMetrics.Compact)
+        //self.navigationController?.view.backgroundColor = UIColor.clearColor()
         //self.tableView!.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -44,8 +48,34 @@ class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 let userDefaults = NSUserDefaults.standardUserDefaults()
         userDefaults.setValue(shown, forKey: "shown")
         userDefaults.synchronize()
+        let floatFrame:CGRect = (CGRectMake(UIScreen.mainScreen().bounds.size.width - 44 - 20, UIScreen.mainScreen().bounds.size.height - 44 - 20, 44, 44))
+        // Do any additional setup after loading the view, typically from a nib.
+        // self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0.6, alpha: 0.5)
+        let actionButton : VCFloatingActionButton = VCFloatingActionButton(frame: floatFrame, normalImage: UIImage(named: "plus.png"), andPressedImage: UIImage(named: "cross.png"), withScrollview: tableView)
+        //actionButton.normalImage = UIImage(named: "plus.png")!
+        self.view.addSubview(actionButton)
+        //actionButton.frame = floatFrame
+        //actionButton.center = self.view.center
+        actionButton.imageArray = ["fb-icon.png","twitter-icon.png","google-icon.png","linkedin-icon.png"]
+        actionButton.labelArray = ["Facebook","Twitter","Google Plus","LinkedIn"]
+        actionButton.delegate = self
+        actionButton.hideWhileScrolling = true
     }
     
+    func didSelectMenuOptionAtIndex(row : NSInteger) {
+        println(row)
+        if(row == 0) {
+            //fb
+        } else if(row == 1) {
+            //twitter
+        } else if(row == 2) {
+            //google+
+        } else if(row == 3) {
+            //LinkedIn
+        } else if(row == 4) {
+            //new
+        }
+    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.motivate.count

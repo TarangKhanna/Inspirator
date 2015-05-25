@@ -2,6 +2,17 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key> URL types</key>
+	<array>
+		<dict>
+			<key>Document Role</key>
+			<string>Editor</string>
+			<key>URL Schemes</key>
+			<array>
+				<string>fb491278627687482</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -24,17 +35,6 @@
 	<string>491278627687482</string>
 	<key>FacebookDisplayName</key>
 	<string>GetMotivated</string>
-	<key> URL types</key>
-	<array>
-		<dict>
-			<key>Document Role</key>
-			<string>Editor</string>
-			<key>URL Schemes</key>
-			<array>
-				<string>fb491278627687482</string>
-			</array>
-		</dict>
-	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
@@ -50,8 +50,7 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>

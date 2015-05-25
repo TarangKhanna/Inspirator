@@ -18,10 +18,10 @@ class NoBack: UIViewController, floatMenuDelegate {
         let floatFrame:CGRect = (CGRectMake(UIScreen.mainScreen().bounds.size.width - 44 - 20, UIScreen.mainScreen().bounds.size.height - 44 - 20, 44, 44))
         // Do any additional setup after loading the view, typically from a nib.
         // self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0.6, alpha: 0.5)
-        let actionButton : VCFloatingActionButton = VCFloatingActionButton()
-        actionButton.normalImage = UIImage(named: "plus.png")!
-       self.view.addSubview(actionButton)
-        actionButton.frame = floatFrame
+        let actionButton : VCFloatingActionButton = VCFloatingActionButton(frame: floatFrame, normalImage: UIImage(named: "plus.png"), andPressedImage: UIImage(named: "cross.png"), withScrollview: nil)
+        //actionButton.normalImage = UIImage(named: "plus.png")!
+        self.view.addSubview(actionButton)
+        //actionButton.frame = floatFrame
         //actionButton.center = self.view.center
         actionButton.imageArray = ["fb-icon.png","twitter-icon.png","google-icon.png","linkedin-icon.png"]
         actionButton.labelArray = ["Facebook","Twitter","Google Plus","Linked in"]
@@ -36,6 +36,11 @@ class NoBack: UIViewController, floatMenuDelegate {
         textField4.cornerRadius = 0
         textField4.bottomBorderEnabled = true
     }
+    
+    func didSelectMenuOptionAtIndex(row : NSInteger) {
+        println(row)
+    }
+    
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         self.view.endEditing(true)
     }
