@@ -18,7 +18,7 @@ let kSubtitle = "Get Going!"
 let kDefaultAnimationDuration = 2.0
 
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     @IBOutlet var tableView: UITableView!
@@ -66,15 +66,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         //var selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
         //selectedCell.contentView.backgroundColor = UIColor.greenColor()
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        if(indexPath.row == 1) {
+        if(indexPath.row == 0) {
+            //WeightsVC.view.backgroundColor = UIColor.greenColor()
+            performSegueWithIdentifier("Cardio", sender: self)
+            if(!shown) {
+                //SCLAlertView().showInfo(kInfoTitle, subTitle: kSubtitle)
+                //shown = true
+            }
+        } else if(indexPath.row == 1) {
             //WeightsVC.view.backgroundColor = UIColor.greenColor()
             performSegueWithIdentifier("Weights", sender: self)
             if(!shown) {
-              SCLAlertView().showInfo(kInfoTitle, subTitle: kSubtitle)
-              shown = true
+              //SCLAlertView().showInfo(kInfoTitle, subTitle: kSubtitle)
+              //shown = true
             }
         } else if(indexPath.row == 2) {
             performSegueWithIdentifier("Programming", sender: self)
+        } else if(indexPath.row == 3) {
+            performSegueWithIdentifier("Study", sender: self)
         } else if(indexPath.row == 4) {
             performSegueWithIdentifier("Pure", sender: self)
         }
