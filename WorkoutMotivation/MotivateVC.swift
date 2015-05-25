@@ -72,9 +72,10 @@ class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                 facebookSheet.setInitialText("Share on Facebook")
                 self.presentViewController(facebookSheet, animated: true, completion: nil)
             } else {
-                var alert = UIAlertController(title: "Accounts", message: "Please login to a Facebook account to share.", preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                self.presentViewController(alert, animated: true, completion: nil)
+                //var alert = UIAlertController(title: "Accounts", message: "Please login to a Facebook account from the iOS app to share.", preferredStyle: UIAlertControllerStyle.Alert)
+                SCLAlertView().showWarning("Accounts", subTitle: "Please login to a Facebook account from the iOS app to share.")
+                //alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                //self.presentViewController(alert, animated: true, completion: nil)
             }
         } else if(row == 1) {
             //twitter
@@ -83,9 +84,8 @@ class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                 twitterSheet.setInitialText("Share on Twitter")
                 self.presentViewController(twitterSheet, animated: true, completion: nil)
             } else {
-                var alert = UIAlertController(title: "Accounts", message: "Please login to a Twitter account to share.", preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                self.presentViewController(alert, animated: true, completion: nil)
+                SCLAlertView().showWarning("Accounts", subTitle: "Please login to a Twitter account from the iOS app to share.")
+                //self.presentViewController(alert, animated: true, completion: nil)
             }
         } else if(row == 2) {
             //google+
