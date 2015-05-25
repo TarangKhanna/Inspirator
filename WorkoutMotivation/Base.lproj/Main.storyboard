@@ -231,24 +231,35 @@
                                 <rect key="frame" x="0.0" y="369" width="375" height="298"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="YSo-v5-6Y2">
-                                <rect key="frame" x="112" y="72" width="150" height="2"/>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="YSo-v5-6Y2">
+                                <rect key="frame" x="0.0" y="72" width="375" height="2"/>
+                            </progressView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Fea-JM-iwt">
+                                <rect key="frame" x="0.0" y="413" width="375" height="2"/>
                             </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Fea-JM-iwt" firstAttribute="leading" secondItem="YSo-v5-6Y2" secondAttribute="leading" id="AWb-Yb-YNT"/>
+                            <constraint firstItem="Fea-JM-iwt" firstAttribute="top" secondItem="eMx-rj-0ws" secondAttribute="bottom" constant="59" id="Bxl-Ux-1aK"/>
                             <constraint firstItem="acc-ia-xEW" firstAttribute="top" secondItem="eMx-rj-0ws" secondAttribute="bottom" constant="313" id="PjR-pW-khp"/>
+                            <constraint firstItem="Fea-JM-iwt" firstAttribute="trailing" secondItem="dcN-46-amN" secondAttribute="trailing" id="Yq9-6Q-FbS"/>
                             <constraint firstItem="dcN-46-amN" firstAttribute="trailing" secondItem="eMx-rj-0ws" secondAttribute="trailing" id="bNY-dv-LAa"/>
                             <constraint firstAttribute="trailing" secondItem="eMx-rj-0ws" secondAttribute="trailing" id="bOe-kE-eiN"/>
                             <constraint firstItem="eMx-rj-0ws" firstAttribute="leading" secondItem="0mg-an-oDF" secondAttribute="leading" id="ffs-6k-jWJ"/>
+                            <constraint firstItem="YSo-v5-6Y2" firstAttribute="top" secondItem="3Ig-U0-QJZ" secondAttribute="bottom" constant="8" symbolic="YES" id="hzO-vX-uVn"/>
+                            <constraint firstItem="Fea-JM-iwt" firstAttribute="trailing" secondItem="YSo-v5-6Y2" secondAttribute="trailing" id="iGa-OC-830"/>
                             <constraint firstItem="dcN-46-amN" firstAttribute="leading" secondItem="eMx-rj-0ws" secondAttribute="leading" id="njz-9a-42P"/>
                             <constraint firstItem="eMx-rj-0ws" firstAttribute="top" secondItem="3Ig-U0-QJZ" secondAttribute="bottom" id="pQh-G4-Sd4"/>
                             <constraint firstItem="dcN-46-amN" firstAttribute="bottom" secondItem="acc-ia-xEW" secondAttribute="top" id="ptC-5B-FOV"/>
+                            <constraint firstItem="Fea-JM-iwt" firstAttribute="leading" secondItem="dcN-46-amN" secondAttribute="leading" id="sae-iU-LN6"/>
                             <constraint firstItem="dcN-46-amN" firstAttribute="top" secondItem="eMx-rj-0ws" secondAttribute="bottom" constant="15" id="wWY-pz-7jV"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="myProgressView" destination="YSo-v5-6Y2" id="ZWc-SM-HYm"/>
+                        <outlet property="myProgressView2" destination="Fea-JM-iwt" id="Mnj-D1-EkN"/>
                         <outlet property="webView1" destination="eMx-rj-0ws" id="64y-xu-8mu"/>
                         <outlet property="webView2" destination="dcN-46-amN" id="eLH-VL-yHD"/>
                     </connections>
@@ -529,7 +540,6 @@
         <!--SocialVC-->
         <scene sceneID="SQ5-4f-JJg">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9Ft-Ph-WKQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="L0C-Sq-KIv" customClass="SocialVC" customModule="WorkoutMotivation" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MuG-AI-Pd2"/>
@@ -566,6 +576,7 @@
                         <outlet property="webView2" destination="peF-fF-lTT" id="SHU-uh-hsQ"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Ft-Ph-WKQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2452.5" y="2368.5"/>
         </scene>

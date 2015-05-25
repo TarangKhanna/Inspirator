@@ -9,7 +9,7 @@
 import UIKit
 
 class WeightsVC: UIViewController {
-    
+    //parse google images
     let q1 = WeigthsQuotes()
     
     @IBOutlet var webView: UIWebView!
