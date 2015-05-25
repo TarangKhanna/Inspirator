@@ -38,6 +38,14 @@
 		71CEE6091B12CBDE00E85AA2 /* floatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71CEE6051B12CBDE00E85AA2 /* floatTableViewCell.xib */; };
 		71CEE60A1B12CBDE00E85AA2 /* VCFloatingActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 71CEE6071B12CBDE00E85AA2 /* VCFloatingActionButton.m */; };
 		71CEE60D1B12D27400E85AA2 /* RAMPaperSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CEE60C1B12D27400E85AA2 /* RAMPaperSwitch.swift */; };
+		71CEE60F1B13085700E85AA2 /* TextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CEE60E1B13085700E85AA2 /* TextFieldViewController.swift */; };
+		71CEE6111B13087900E85AA2 /* MKTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CEE6101B13087900E85AA2 /* MKTextField.swift */; };
+		71CEE6171B13089200E85AA2 /* MKTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CEE6121B13089200E85AA2 /* MKTableViewCell.swift */; };
+		71CEE6181B13089200E85AA2 /* MKLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CEE6131B13089200E85AA2 /* MKLabel.swift */; };
+		71CEE6191B13089200E85AA2 /* MKImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CEE6141B13089200E85AA2 /* MKImageView.swift */; };
+		71CEE61A1B13089200E85AA2 /* MKLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CEE6151B13089200E85AA2 /* MKLayer.swift */; };
+		71CEE61B1B13089200E85AA2 /* MKColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CEE6161B13089200E85AA2 /* MKColor.swift */; };
+		71CEE61D1B13089900E85AA2 /* MKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CEE61C1B13089900E85AA2 /* MKButton.swift */; };
 		71D803F81B0E8B3D0072541D /* loginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D803F71B0E8B3D0072541D /* loginVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +98,14 @@
 		71CEE6061B12CBDE00E85AA2 /* VCFloatingActionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCFloatingActionButton.h; sourceTree = "<group>"; };
 		71CEE6071B12CBDE00E85AA2 /* VCFloatingActionButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCFloatingActionButton.m; sourceTree = "<group>"; };
 		71CEE60C1B12D27400E85AA2 /* RAMPaperSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMPaperSwitch.swift; sourceTree = "<group>"; };
+		71CEE60E1B13085700E85AA2 /* TextFieldViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldViewController.swift; sourceTree = "<group>"; };
+		71CEE6101B13087900E85AA2 /* MKTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKTextField.swift; sourceTree = "<group>"; };
+		71CEE6121B13089200E85AA2 /* MKTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKTableViewCell.swift; sourceTree = "<group>"; };
+		71CEE6131B13089200E85AA2 /* MKLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKLabel.swift; sourceTree = "<group>"; };
+		71CEE6141B13089200E85AA2 /* MKImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKImageView.swift; sourceTree = "<group>"; };
+		71CEE6151B13089200E85AA2 /* MKLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKLayer.swift; sourceTree = "<group>"; };
+		71CEE6161B13089200E85AA2 /* MKColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKColor.swift; sourceTree = "<group>"; };
+		71CEE61C1B13089900E85AA2 /* MKButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKButton.swift; sourceTree = "<group>"; };
 		71D803F71B0E8B3D0072541D /* loginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loginVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -152,6 +168,7 @@
 				7128A9551B0A98520035C41E /* SCLAlertView.swift */,
 				7135F2C21B080711002ACD53 /* WeigthsQuotes.swift */,
 				719D538B1B06743400DD34CD /* NoBack.swift */,
+				71CEE60E1B13085700E85AA2 /* TextFieldViewController.swift */,
 				719D53891B066E1900DD34CD /* NavigationControl.swift */,
 				719D537F1B046D6900DD34CD /* MotivationCell.swift */,
 				719D538D1B068FC100DD34CD /* Motivate.swift */,
@@ -169,6 +186,13 @@
 		7109A8E61B04306900435D3C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				71CEE6121B13089200E85AA2 /* MKTableViewCell.swift */,
+				71CEE6131B13089200E85AA2 /* MKLabel.swift */,
+				71CEE6141B13089200E85AA2 /* MKImageView.swift */,
+				71CEE61C1B13089900E85AA2 /* MKButton.swift */,
+				71CEE6151B13089200E85AA2 /* MKLayer.swift */,
+				71CEE6161B13089200E85AA2 /* MKColor.swift */,
+				71CEE6101B13087900E85AA2 /* MKTextField.swift */,
 				7109A8E71B04306900435D3C /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -321,24 +345,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71CEE6111B13087900E85AA2 /* MKTextField.swift in Sources */,
 				7109A8EB1B04306900435D3C /* MotivatVC.swift in Sources */,
 				719D538C1B06743400DD34CD /* NoBack.swift in Sources */,
 				7135F2C31B080711002ACD53 /* WeigthsQuotes.swift in Sources */,
+				71CEE61D1B13089900E85AA2 /* MKButton.swift in Sources */,
+				71CEE6181B13089200E85AA2 /* MKLabel.swift in Sources */,
 				7128A91E1B087F670035C41E /* ProgrammingVC.swift in Sources */,
 				719D538E1B068FC100DD34CD /* Motivate.swift in Sources */,
+				71CEE61A1B13089200E85AA2 /* MKLayer.swift in Sources */,
 				719D53801B046D6900DD34CD /* MotivationCell.swift in Sources */,
+				71CEE6191B13089200E85AA2 /* MKImageView.swift in Sources */,
 				7128A9201B087FF70035C41E /* ProgrammingQuotes.swift in Sources */,
 				719D538A1B066E1900DD34CD /* NavigationControl.swift in Sources */,
 				7128A9541B0A93C30035C41E /* PureVC.swift in Sources */,
 				7109A8E91B04306900435D3C /* AppDelegate.swift in Sources */,
+				71CEE6171B13089200E85AA2 /* MKTableViewCell.swift in Sources */,
 				71CEE5F61B12BB8100E85AA2 /* StudyVC.swift in Sources */,
 				71D803F81B0E8B3D0072541D /* loginVC.swift in Sources */,
 				719D53901B06934500DD34CD /* DataSource.swift in Sources */,
 				719D53841B046F7A00DD34CD /* cell1.swift in Sources */,
+				71CEE61B1B13089200E85AA2 /* MKColor.swift in Sources */,
 				71CEE60A1B12CBDE00E85AA2 /* VCFloatingActionButton.m in Sources */,
 				7128A9561B0A98520035C41E /* SCLAlertView.swift in Sources */,
 				71142A761B0DCE0900AB3600 /* SocialVC.swift in Sources */,
 				71CEE5F31B1283F000E85AA2 /* CardioVC.swift in Sources */,
+				71CEE60F1B13085700E85AA2 /* TextFieldViewController.swift in Sources */,
 				71CEE6081B12CBDE00E85AA2 /* floatTableViewCell.m in Sources */,
 				71CEE60D1B12D27400E85AA2 /* RAMPaperSwitch.swift in Sources */,
 				7135F2C11B0800FD002ACD53 /* WeightsVC.swift in Sources */,
