@@ -25,6 +25,7 @@ class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     @IBOutlet var tableView: UITableView!
     let manager = DataSource()
     var motivate = []
+    let userDefaults = NSUserDefaults.standardUserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +47,7 @@ class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         tableView.tableFooterView!.hidden = true
         tableView.backgroundColor = UIColor.clearColor()
         tableView.separatorColor = UIColor.clearColor()
-                let userDefaults = NSUserDefaults.standardUserDefaults()
+        
         userDefaults.setValue(shown, forKey: "shown")
         userDefaults.synchronize()
         let floatFrame:CGRect = (CGRectMake(UIScreen.mainScreen().bounds.size.width - 44 - 20, UIScreen.mainScreen().bounds.size.height - 44 - 20, 44, 44))
@@ -118,16 +119,24 @@ class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         if(indexPath.row == 0) {
             //WeightsVC.view.backgroundColor = UIColor.greenColor()
             performSegueWithIdentifier("Cardio", sender: self)
-            if(!shown) {
-                //SCLAlertView().showInfo(kInfoTitle, subTitle: kSubtitle)
+            println(userDefaults.valueForKey("shown")!)
+            var shown: Bool = userDefaults.valueForKey("shown")!.boolValue
+            if shown {
+                println("TRUE!")
+            } else {
+                println("FALSE!!")
+                // do something here when a highscore exists
+                SCLAlertView().showInfo(kInfoTitle, subTitle: kSubtitle)
                 //shown = true
+                userDefaults.setValue(true, forKey: "shown")
+                userDefaults.synchronize()
             }
         } else if(indexPath.row == 1) {
             //WeightsVC.view.backgroundColor = UIColor.greenColor()
             performSegueWithIdentifier("Weights", sender: self)
             if(!shown) {
-              //SCLAlertView().showInfo(kInfoTitle, subTitle: kSubtitle)
-              //shown = true
+              SCLAlertView().showInfo(kInfoTitle, subTitle: kSubtitle)
+              shown = true
             }
         } else if(indexPath.row == 2) {
             performSegueWithIdentifier("Programming", sender: self)
