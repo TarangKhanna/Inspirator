@@ -120,8 +120,8 @@ class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             //WeightsVC.view.backgroundColor = UIColor.greenColor()
             performSegueWithIdentifier("Cardio", sender: self)
             println(userDefaults.valueForKey("shown")!)
-            var shown: Bool = userDefaults.valueForKey("shown")!.boolValue
-            if shown {
+            var shown2: Bool = userDefaults.valueForKey("shown")!.boolValue
+            if shown2 {
                 println("TRUE!")
             } else {
                 println("FALSE!!")

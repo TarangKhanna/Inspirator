@@ -106,7 +106,7 @@
 		71CEE6151B13089200E85AA2 /* MKLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKLayer.swift; sourceTree = "<group>"; };
 		71CEE6161B13089200E85AA2 /* MKColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKColor.swift; sourceTree = "<group>"; };
 		71CEE61C1B13089900E85AA2 /* MKButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKButton.swift; sourceTree = "<group>"; };
-		71D803F71B0E8B3D0072541D /* loginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loginVC.swift; sourceTree = "<group>"; };
+		71D803F71B0E8B3D0072541D /* loginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = loginVC.swift; path = WorkoutMotivation/loginVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,7 +162,6 @@
 				7109A8EC1B04306900435D3C /* Main.storyboard */,
 				71CEE5F71B12C00D00E85AA2 /* WorkoutMotivation-Bridging-Header.h */,
 				7109A8E81B04306900435D3C /* AppDelegate.swift */,
-				71D803F71B0E8B3D0072541D /* loginVC.swift */,
 				7128A91F1B087FF70035C41E /* ProgrammingQuotes.swift */,
 				7128A9551B0A98520035C41E /* SCLAlertView.swift */,
 				7135F2C21B080711002ACD53 /* WeigthsQuotes.swift */,
@@ -216,6 +215,7 @@
 		71CEE5F41B12BA7E00E85AA2 /* VC's */ = {
 			isa = PBXGroup;
 			children = (
+				71D803F71B0E8B3D0072541D /* loginVC.swift */,
 				719D538B1B06743400DD34CD /* NoBack.swift */,
 				7109A8EA1B04306900435D3C /* MotivateVC.swift */,
 				71CEE5F21B1283F000E85AA2 /* CardioVC.swift */,
