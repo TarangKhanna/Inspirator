@@ -766,8 +766,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="106" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="lNp-7M-5Pw">
-                                <rect key="frame" x="0.0" y="11" width="375" height="519"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="106" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="lNp-7M-5Pw">
+                                <rect key="frame" x="0.0" y="11" width="375" height="656"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="xP9-5q-Qpy">
                                     <rect key="frame" x="0.0" y="416" width="375" height="44"/>
@@ -939,11 +939,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="a4L-Rt-oWz" firstAttribute="top" secondItem="lNp-7M-5Pw" secondAttribute="bottom" constant="137" id="CAx-9x-guT"/>
+                            <constraint firstItem="a4L-Rt-oWz" firstAttribute="top" secondItem="lNp-7M-5Pw" secondAttribute="bottom" id="CAx-9x-guT"/>
                             <constraint firstItem="lNp-7M-5Pw" firstAttribute="leading" secondItem="wYT-dr-d0t" secondAttribute="leading" id="WXA-Nt-C0c"/>
                             <constraint firstItem="lNp-7M-5Pw" firstAttribute="top" secondItem="MZu-n5-CTc" secondAttribute="bottom" constant="-53" id="bgC-yU-Ti3"/>
-                            <constraint firstItem="a4L-Rt-oWz" firstAttribute="top" secondItem="lNp-7M-5Pw" secondAttribute="bottom" constant="137" id="fJI-6k-KvU"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="lNp-7M-5Pw" secondAttribute="trailing" constant="-16" id="jBz-nU-JtS"/>
+                            <constraint firstItem="a4L-Rt-oWz" firstAttribute="top" secondItem="lNp-7M-5Pw" secondAttribute="bottom" id="fJI-6k-KvU"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="al2-Uw-owd"/>
@@ -958,7 +957,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1190.5" y="-572.5"/>
+            <point key="canvasLocation" x="1177.5" y="-602.5"/>
         </scene>
     </scenes>
     <resources>
