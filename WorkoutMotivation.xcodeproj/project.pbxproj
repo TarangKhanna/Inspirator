@@ -40,6 +40,8 @@
 		716B87481B152A1D00B7E955 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 716B87431B152A1D00B7E955 /* ParseFacebookUtils.framework */; };
 		716B87491B152A1D00B7E955 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 716B87441B152A1D00B7E955 /* ParseFacebookUtilsV4.framework */; };
 		716B874A1B152A1D00B7E955 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 716B87451B152A1D00B7E955 /* ParseUI.framework */; };
+		716B874E1B152E9D00B7E955 /* TimelineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B874C1B152E9D00B7E955 /* TimelineCell.swift */; };
+		716B874F1B152E9D00B7E955 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B874D1B152E9D00B7E955 /* TimelineViewController.swift */; };
 		719D53801B046D6900DD34CD /* MotivationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719D537F1B046D6900DD34CD /* MotivationCell.swift */; };
 		719D53841B046F7A00DD34CD /* cell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719D53831B046F7A00DD34CD /* cell1.swift */; };
 		719D538A1B066E1900DD34CD /* NavigationControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719D53891B066E1900DD34CD /* NavigationControl.swift */; };
@@ -113,6 +115,8 @@
 		716B87431B152A1D00B7E955 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		716B87441B152A1D00B7E955 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
 		716B87451B152A1D00B7E955 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
+		716B874C1B152E9D00B7E955 /* TimelineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineCell.swift; sourceTree = "<group>"; };
+		716B874D1B152E9D00B7E955 /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		719D537F1B046D6900DD34CD /* MotivationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MotivationCell.swift; path = ../MotivationCell.swift; sourceTree = "<group>"; };
 		719D53831B046F7A00DD34CD /* cell1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = cell1.swift; path = ../cell1.swift; sourceTree = "<group>"; };
 		719D53891B066E1900DD34CD /* NavigationControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControl.swift; sourceTree = "<group>"; };
@@ -205,6 +209,8 @@
 				71CEE60B1B12CBEA00E85AA2 /* VCFloatingButton */,
 				7109A8EC1B04306900435D3C /* Main.storyboard */,
 				7109A8E81B04306900435D3C /* AppDelegate.swift */,
+				716B874C1B152E9D00B7E955 /* TimelineCell.swift */,
+				716B874D1B152E9D00B7E955 /* TimelineViewController.swift */,
 				7128A91F1B087FF70035C41E /* ProgrammingQuotes.swift */,
 				7128A9551B0A98520035C41E /* SCLAlertView.swift */,
 				7135F2C21B080711002ACD53 /* WeigthsQuotes.swift */,
@@ -437,6 +443,7 @@
 				719D53801B046D6900DD34CD /* MotivationCell.swift in Sources */,
 				71CEE6191B13089200E85AA2 /* MKImageView.swift in Sources */,
 				7128A9201B087FF70035C41E /* ProgrammingQuotes.swift in Sources */,
+				716B874E1B152E9D00B7E955 /* TimelineCell.swift in Sources */,
 				719D538A1B066E1900DD34CD /* NavigationControl.swift in Sources */,
 				7128A9541B0A93C30035C41E /* PureVC.swift in Sources */,
 				7109A8E91B04306900435D3C /* AppDelegate.swift in Sources */,
@@ -444,6 +451,7 @@
 				71CEE5F61B12BB8100E85AA2 /* StudyVC.swift in Sources */,
 				71D803F81B0E8B3D0072541D /* loginVC.swift in Sources */,
 				719D53901B06934500DD34CD /* DataSource.swift in Sources */,
+				716B874F1B152E9D00B7E955 /* TimelineViewController.swift in Sources */,
 				719D53841B046F7A00DD34CD /* cell1.swift in Sources */,
 				71CEE61B1B13089200E85AA2 /* MKColor.swift in Sources */,
 				71CEE60A1B12CBDE00E85AA2 /* VCFloatingActionButton.m in Sources */,
