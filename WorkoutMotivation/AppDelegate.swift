@@ -25,6 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // use UITableViewCell.appearance() to configure
         // the default appearance of all UITableViewCells in your app
         UITableViewCell.appearance().selectedBackgroundView = colorView
+        
+        Parse.setApplicationId("8HWVCwLAEWaLHmXBQ9hKl77YhmfHKPAoiZFJM4Ds", clientKey:"LbugyjO6Pr2GPM5m4JexSCahNMG5e4qjFBq85Yec")
+        
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     
