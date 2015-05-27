@@ -22,6 +22,8 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     //var transitionOperator = TransitionOperator()
     var counter = 2
     
+    var userArray: [String] = []
+    
     @IBAction func addMessage(sender: AnyObject) {
         counter++
         performSegueWithIdentifier("AddSegue", sender: self)
@@ -37,16 +39,44 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         
         //menuItem.image = UIImage(named: "menu")
         //toolbar.tintColor = UIColor.blackColor()
-//        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-//        locationManager.delegate = self
-//        locationManager.requestWhenInUseAuthorization()
-//        locationManager.startUpdatingLocation()
+        //        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        //        locationManager.delegate = self
+        //        locationManager.requestWhenInUseAuthorization()
+        //        locationManager.startUpdatingLocation()
+        
+        if var query = PFUser.query() { //querying parse for user names
+            query.whereKey("username", notEqualTo: "")
+            query.findObjectsInBackgroundWithBlock {
+                (users: [AnyObject]?, error: NSError?) -> Void in
+    
+                self.tableView.reloadData()
+                
+                if error == nil {
+                    // The find succeeded.
+                    println("Successfully retrieved \(users!.count) users.")
+                    // Do something with the found users
+                    if let users = users as? [PFObject] {
+                        for user in users {
+                            var user2:PFUser = user as! PFUser
+                            println(user2.username!)
+                            self.userArray.append(user2.username!)
+                            //println(user.objectId!)
+                            //self.userArray.append(user.username)
+                        }
+                        self.tableView.reloadData()
+                    }
+                } else {
+                    // Log details of the failure
+                    println("Error: \(error!) \(error!.userInfo!)")
+                }
+            }
+        }
     }
     @IBAction func GoLeft(sender: AnyObject) {
         // print("detected left 1")
         print("detected left ")
         performSegueWithIdentifier("presentNav", sender: self)
-
+        
     }
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         locationManager.stopUpdatingLocation()
@@ -70,7 +100,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-       
+        
         if (indexPath.row == 0) {
             let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCell") as! TimelineCell
             
@@ -94,11 +124,11 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-            performSegueWithIdentifier("NearbySegue", sender: self)
+        performSegueWithIdentifier("NearbySegue", sender: self)
     }
-
+    
     @IBAction func presentNavigation(sender: AnyObject?){
-           // performSegueWithIdentifier("presentNav", sender: self)
+        // performSegueWithIdentifier("presentNav", sender: self)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -107,6 +137,6 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         self.modalPresentationStyle = UIModalPresentationStyle.Custom
         //toViewController.transitioningDelegate = self.transitionOperator
     }
-   
+    
 }
 

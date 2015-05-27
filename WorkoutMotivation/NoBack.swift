@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NoBack: UIViewController, floatMenuDelegate , FBSDKLoginButtonDelegate {
+class NoBack: UIViewController, floatMenuDelegate , FBSDKLoginButtonDelegate, UITextFieldDelegate {
     @IBOutlet var username: MKTextField!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -134,7 +134,7 @@ class NoBack: UIViewController, floatMenuDelegate , FBSDKLoginButtonDelegate {
     
     @IBAction func signIn(sender: AnyObject) {
         
-        PFUser.logInWithUsernameInBackground("myname", password:"mypass") {
+        PFUser.logInWithUsernameInBackground(username.text, password:"mypass") {
             (user: PFUser?, error: NSError?) -> Void in
             if user != nil {
                 println("logged in")
@@ -169,9 +169,6 @@ class NoBack: UIViewController, floatMenuDelegate , FBSDKLoginButtonDelegate {
         self.view.endEditing(true)
         return false
     }
-
-    
-    
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         self.view.endEditing(true)
