@@ -10,8 +10,9 @@
 import Foundation
 import UIKit
 import MapKit
+import Parse
 
-class TimelineViewController : UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
+class TimelineViewController : UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var tableView : UITableView!
     @IBOutlet var menuItem : UIBarButtonItem!
@@ -36,10 +37,10 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         
         //menuItem.image = UIImage(named: "menu")
         //toolbar.tintColor = UIColor.blackColor()
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
+//        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+//        locationManager.delegate = self
+//        locationManager.requestWhenInUseAuthorization()
+//        locationManager.startUpdatingLocation()
     }
     @IBAction func GoLeft(sender: AnyObject) {
         // print("detected left 1")
@@ -106,5 +107,6 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         self.modalPresentationStyle = UIModalPresentationStyle.Custom
         //toViewController.transitioningDelegate = self.transitionOperator
     }
+   
 }
 
