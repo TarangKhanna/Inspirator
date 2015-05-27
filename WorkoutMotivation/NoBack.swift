@@ -9,7 +9,7 @@
 import UIKit
 
 class NoBack: UIViewController, floatMenuDelegate , FBSDKLoginButtonDelegate {
-    @IBOutlet var textField4: MKTextField!
+    @IBOutlet var username: MKTextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,29 +28,37 @@ class NoBack: UIViewController, floatMenuDelegate , FBSDKLoginButtonDelegate {
         actionButton.delegate = self
         
         // No border, no shadow, floatingPlaceholderEnabled
-        textField4.layer.borderColor = UIColor.clearColor().CGColor
-        textField4.floatingPlaceholderEnabled = true
-        textField4.placeholder = "Type.."
-        textField4.tintColor = UIColor.MKColor.Blue
-        textField4.rippleLocation = .Right
-        textField4.cornerRadius = 0
-        textField4.bottomBorderEnabled = true
+        username.layer.borderColor = UIColor.clearColor().CGColor
+        username.floatingPlaceholderEnabled = true
+        username.placeholder = "Type.."
+        username.tintColor = UIColor.MKColor.Blue
+        username.rippleLocation = .Right
+        username.cornerRadius = 0
+        username.bottomBorderEnabled = true
         if (FBSDKAccessToken.currentAccessToken() != nil)
         {
             // User is already logged in, do work such as go to next view controller.
         }
         else
         {
-            let loginView : FBSDKLoginButton = FBSDKLoginButton()
-            self.view.addSubview(loginView)
-            loginView.center = self.view.center
-            loginView.readPermissions = ["public_profile", "email", "user_friends"]
-            loginView.delegate = self
+            //let loginView : FBSDKLoginButton = FBSDKLoginButton()
+            //self.view.addSubview(loginView)
+            //loginView.center = self.view.center
+            //loginView.readPermissions = ["public_profile", "email", "user_friends"]
+            //loginView.delegate = self
         }
         //setBGColor()
     }
     
-    
+    override func viewDidAppear(animated: Bool) {
+        
+        if PFUser.currentUser() != nil {
+            
+           // self.performSegueWithIdentifier("showUsers", sender: self)
+            
+        }
+        
+    }
     
     func setBGColor() {
         let choose = arc4random_uniform(6)
@@ -122,6 +130,48 @@ class NoBack: UIViewController, floatMenuDelegate , FBSDKLoginButtonDelegate {
     func didSelectMenuOptionAtIndex(row : NSInteger) {
         println(row)
     }
+    
+    
+    @IBAction func signIn(sender: AnyObject) {
+        
+        PFUser.logInWithUsernameInBackground("myname", password:"mypass") {
+            (user: PFUser?, error: NSError?) -> Void in
+            if user != nil {
+                println("logged in")
+            } else {
+                
+                var user = PFUser()
+                user.username = self.username.text
+                user.password = "mypass"
+                //                user.email = "email@example.com"
+                //                // other fields can be set just like with PFObject
+                //                user["phone"] = "415-392-0202"
+                //
+                user.signUpInBackgroundWithBlock {
+                    (succeeded: Bool, error: NSError?) -> Void in
+                    if let error = error {
+                        let errorString = error.userInfo?["error"] as? NSString
+                        // Show the errorString somewhere and let the user try again.
+                        println("ERROR")
+                    } else {
+                        // Hooray! Let them use the app now.
+                        println("Signed Up!!")
+                    }
+                }
+                
+            }
+        }
+        
+        
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+
+    
+    
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         self.view.endEditing(true)
