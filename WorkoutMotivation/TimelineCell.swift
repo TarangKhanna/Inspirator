@@ -10,7 +10,7 @@
 import Foundation
 import UIKit
 
-class TimelineCell : UITableViewCell {
+class TimelineCell : PFTableViewCell {
     
     @IBOutlet var typeImageView : UIImageView!
     @IBOutlet var profileImageView : UIImageView!

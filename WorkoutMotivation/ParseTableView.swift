@@ -28,6 +28,8 @@ class ParseTableView: PFQueryTableViewController {
     override func queryForTable() -> PFQuery {
         var query = PFQuery(className: "User")
         query.orderByAscending("username")
+        println("HERE!!!HUFBFEIBF")
+        println(query)
         return query
     }
 }
