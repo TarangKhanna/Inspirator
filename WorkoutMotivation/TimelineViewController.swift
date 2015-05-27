@@ -84,7 +84,45 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         //        locationManager.delegate = self
         //        locationManager.requestWhenInUseAuthorization()
         //        locationManager.startUpdatingLocation()
+        post()
         
+    }
+    
+    
+    func post() {
+        var person = PFObject(className:"Person")
+        person["score"] = 1337
+        person["username"] = "Tarang"
+        person["admin"] = true
+        person["text"] = "First Check"
+        person.saveInBackgroundWithBlock {
+            (success: Bool, error: NSError?) -> Void in
+            if (success) {
+                println("Posted!")
+                // The object has been saved.
+                self.tableView.reloadData()
+            } else {
+                // There was a problem, check error.description
+            }
+        }
+    }
+    
+    func retrieve() {
+        if var query = PFQuery(className: "Person") as PFQuery? { //querying parse for user data
+            var usr = PFUser.currentUser()!.username
+            //query.whereKey("username", EqualTo: usr!)
+            query.whereKey("username", equalTo: PFUser.currentUser()!.username!)
+            var users = query.findObjects()
+            
+            if let users = users as? [PFObject] {
+                for user in users {
+                    var user2:PFUser = user as! PFUser
+                    println(user2.username!)
+                    self.userArray.append(user2.username!)
+                }
+            }
+        }
+
     }
     
     @IBAction func GoLeft(sender: AnyObject) {
@@ -127,7 +165,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             cell.dateLabel.text = "2 mins ago from UIUC (100m away)"
             return cell
             
-        }else{
+        } else{
             let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCellPhoto") as! TimelineCell
             
             cell.typeImageView.image = UIImage(named: "timeline-photo")
