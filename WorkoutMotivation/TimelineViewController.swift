@@ -28,6 +28,38 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         counter++
         performSegueWithIdentifier("AddSegue", sender: self)
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        if var query = PFUser.query() { //querying parse for user names
+            query.whereKey("username", notEqualTo: "")
+            query.findObjectsInBackgroundWithBlock {
+                (users: [AnyObject]?, error: NSError?) -> Void in
+                
+                self.tableView.reloadData()
+                
+                if error == nil {
+                    // The find succeeded.
+                    println("Successfully retrieved \(users!.count) users.")
+                    // Do something with the found users
+                    if let users = users as? [PFObject] {
+                        for user in users {
+                            var user2:PFUser = user as! PFUser
+                            println(user2.username!)
+                            self.userArray.append(user2.username!)
+                            //println("HERE\(self.userArray[0])")
+                            //println(user.objectId!)
+                            //self.userArray.append(user.username)
+                        }
+                        self.tableView.reloadData()
+                    }
+                } else {
+                    // Log details of the failure
+                    println("Error: \(error!) \(error!.userInfo!)")
+                }
+            }
+        }
+
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,33 +76,6 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         //        locationManager.requestWhenInUseAuthorization()
         //        locationManager.startUpdatingLocation()
         
-        if var query = PFUser.query() { //querying parse for user names
-            query.whereKey("username", notEqualTo: "")
-            query.findObjectsInBackgroundWithBlock {
-                (users: [AnyObject]?, error: NSError?) -> Void in
-    
-                self.tableView.reloadData()
-                
-                if error == nil {
-                    // The find succeeded.
-                    println("Successfully retrieved \(users!.count) users.")
-                    // Do something with the found users
-                    if let users = users as? [PFObject] {
-                        for user in users {
-                            var user2:PFUser = user as! PFUser
-                            println(user2.username!)
-                            self.userArray.append(user2.username!)
-                            //println(user.objectId!)
-                            //self.userArray.append(user.username)
-                        }
-                        self.tableView.reloadData()
-                    }
-                } else {
-                    // Log details of the failure
-                    println("Error: \(error!) \(error!.userInfo!)")
-                }
-            }
-        }
     }
     @IBAction func GoLeft(sender: AnyObject) {
         // print("detected left 1")
@@ -106,7 +111,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             
             cell.typeImageView.image = UIImage(named: "timeline-chat")
             cell.profileImageView.image = UIImage(named: "profile-pic-1")
-            cell.nameLabel.text = "Tarang Khanna"
+            cell.nameLabel.text = self.userArray[0]
             cell.postLabel?.text = "The park bench located to the north of my location is really chill to take a nap or get some inspiration to code from a beautiful scenery"
             cell.dateLabel.text = "2 mins ago from UIUC (100m away)"
             return cell
