@@ -13,8 +13,9 @@ import UIKit
 import MapKit
 import Parse
 
-class TimelineViewController : UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TimelineViewController : UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
+    @IBOutlet var postData: MKTextField!
     @IBOutlet var tableView : UITableView!
     @IBOutlet var menuItem : UIBarButtonItem!
     @IBOutlet var toolbar : UIToolbar!
@@ -29,7 +30,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     override func viewWillAppear(animated: Bool) {
         if PFUser.currentUser()?.username == nil {
             //signin vc
-            //performSegueWithIdentifier("signIn", sender: self)
+            performSegueWithIdentifier("signIn", sender: self)
         }
         
         if var query = PFUser.query() { //querying parse for user names
@@ -77,6 +78,20 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        let imgView = MKImageView(frame: CGRect(x: 0, y: 0, width: 44, height: 32))
+//        imgView.image = UIImage(named: "EditFile-50.png")
+//        imgView.backgroundAniEnabled = false
+//        imgView.rippleLocation = .Center
+//        imgView.ripplePercent = 1.15
+//        imgView.userInteractionEnabled = true
+//        
+//        let rightButton = UIBarButtonItem(customView: imgView)
+//        self.navigationItem.rightBarButtonItem = rightButton
+        
+        
+//        postData.layer.borderColor = UIColor.clearColor().CGColor
+//        postData.placeholder = "Placeholder"
+//        postData.tintColor = UIColor.grayColor()
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -112,6 +127,8 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                 // There was a problem, check error.description
             }
         }
+        
+        
     }
     
     func retrieve() {
@@ -156,6 +173,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
 //    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
 //        println(error)
 //    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         tableView.reloadData()
@@ -167,7 +185,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        if (indexPath.row == 0) {
+        //if (indexPath.row == 0) {
             let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCell") as! TimelineCell
             
             cell.typeImageView.image = UIImage(named: "timeline-chat")
@@ -178,16 +196,16 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             
             return cell
             
-        } else{
-            let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCellPhoto") as! TimelineCell
-            
-            cell.typeImageView.image = UIImage(named: "timeline-photo")
-            cell.profileImageView.image = UIImage(named: "profile-pic-2")
-            cell.nameLabel.text = "Charlie Su"
-            cell.photoImageView?.image = UIImage(named: "dish")
-            cell.dateLabel.text = "3 mins ago from UIUC (200m away)"
-            return cell
-        }
+//        } else{
+//            let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCellPhoto") as! TimelineCell
+//            
+//            cell.typeImageView.image = UIImage(named: "timeline-photo")
+//            cell.profileImageView.image = UIImage(named: "profile-pic-2")
+//            cell.nameLabel.text = "Charlie Su"
+//            cell.photoImageView?.image = UIImage(named: "dish")
+//            cell.dateLabel.text = "3 mins ago from UIUC (200m away)"
+//            return cell
+//        }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

@@ -385,14 +385,13 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="signIn:" destination="idO-jR-V2Q" eventType="touchUpInside" id="s8h-2V-lHQ"/>
                                     <action selector="signUp:" destination="cXI-kJ-w0P" eventType="touchUpInside" id="fGT-0J-cxV"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UCc-7J-9m2" customClass="MKTextField" customModule="WorkoutMotivation" customModuleProvider="target">
                                 <rect key="frame" x="55" y="299" width="265" height="38"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -410,10 +409,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="Sign In" id="f8D-wZ-dtR"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <connections>
-                        <outlet property="password" destination="UCc-7J-9m2" id="GQ1-R3-V6t"/>
-                        <outlet property="username" destination="WCy-E0-MFu" id="UAN-A2-ane"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XwJ-Ad-Yi1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -943,7 +938,9 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="al2-Uw-owd"/>
+                    <navigationItem key="navigationItem" id="al2-Uw-owd">
+                        <barButtonItem key="rightBarButtonItem" image="EditFile-50" id="R66-Ia-ygQ"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="lNp-7M-5Pw" id="Ha4-fP-bLh"/>
                         <segue destination="idO-jR-V2Q" kind="show" identifier="signIn" id="8cE-Yl-DNe"/>
@@ -960,10 +957,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="EditFile-50" width="25" height="25"/>
         <image name="Left-100" width="33" height="33"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="WVb-AW-T6s"/>
-        <segue reference="mb0-1b-JyG"/>
+        <segue reference="8cE-Yl-DNe"/>
     </inferredMetricsTieBreakers>
 </document>
