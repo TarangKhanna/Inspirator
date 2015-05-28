@@ -5,6 +5,8 @@
 	<key> URL types</key>
 	<array>
 		<dict>
+			<key>Document Role</key>
+			<string>Editor</string>
 			<key>URL Schemes</key>
 			<array>
 				<string>fb491278627687482</string>
@@ -16,7 +18,7 @@
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.THacked96.WM$(PRODUCT_NAME:rfc1034identifier)</string>
+	<string>com.THacked96.$(PRODUCT_NAME:rfc1034identifier)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -32,7 +34,7 @@
 	<key>FacebookAppID</key>
 	<string>491278627687482</string>
 	<key>FacebookDisplayName</key>
-	<string>GetM­o­t­i­v­ated</string>
+	<string>WorkoutMotivation</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>

@@ -10,6 +10,7 @@ import UIKit
 
 class NoBack: UIViewController, floatMenuDelegate , FBSDKLoginButtonDelegate, UITextFieldDelegate {
     @IBOutlet var username: MKTextField!
+    @IBOutlet var password: MKTextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,22 +31,30 @@ class NoBack: UIViewController, floatMenuDelegate , FBSDKLoginButtonDelegate, UI
         // No border, no shadow, floatingPlaceholderEnabled
         username.layer.borderColor = UIColor.clearColor().CGColor
         username.floatingPlaceholderEnabled = true
-        username.placeholder = "Type.."
+        username.placeholder = "Username.."
         username.tintColor = UIColor.MKColor.Blue
         username.rippleLocation = .Right
         username.cornerRadius = 0
         username.bottomBorderEnabled = true
+        
+        password.layer.borderColor = UIColor.clearColor().CGColor
+        password.floatingPlaceholderEnabled = true
+        password.placeholder = "Password.."
+        password.tintColor = UIColor.MKColor.Blue
+        password.rippleLocation = .Right
+        password.cornerRadius = 0
+        password.bottomBorderEnabled = true
         if (FBSDKAccessToken.currentAccessToken() != nil)
         {
             // User is already logged in, do work such as go to next view controller.
         }
         else
         {
-            //let loginView : FBSDKLoginButton = FBSDKLoginButton()
-            //self.view.addSubview(loginView)
-            //loginView.center = self.view.center
-            //loginView.readPermissions = ["public_profile", "email", "user_friends"]
-            //loginView.delegate = self
+            //            let loginView : FBSDKLoginButton = FBSDKLoginButton()
+            //            self.view.addSubview(loginView)
+            //            loginView.center = self.view.center
+            //            loginView.readPermissions = ["public_profile", "email", "user_friends"]
+            //            loginView.delegate = self
         }
         //setBGColor()
     }
@@ -54,7 +63,7 @@ class NoBack: UIViewController, floatMenuDelegate , FBSDKLoginButtonDelegate, UI
         
         if PFUser.currentUser() != nil {
             
-           // self.performSegueWithIdentifier("showUsers", sender: self)
+            // self.performSegueWithIdentifier("showUsers", sender: self)
             
         }
         
@@ -133,35 +142,50 @@ class NoBack: UIViewController, floatMenuDelegate , FBSDKLoginButtonDelegate, UI
     
     
     @IBAction func signIn(sender: AnyObject) {
-        
-        PFUser.logInWithUsernameInBackground(username.text, password:"mypass") {
-            (user: PFUser?, error: NSError?) -> Void in
-            if user != nil {
-                println("logged in")
-            } else {
-                
-                var user = PFUser()
-                user.username = self.username.text
-                user.password = "mypass"
-                //                user.email = "email@example.com"
-                //                // other fields can be set just like with PFObject
-                //                user["phone"] = "415-392-0202"
-                //
-                user.signUpInBackgroundWithBlock {
-                    (succeeded: Bool, error: NSError?) -> Void in
-                    if let error = error {
-                        let errorString = error.userInfo?["error"] as? NSString
-                        // Show the errorString somewhere and let the user try again.
-                        println("ERROR")
-                    } else {
-                        // Hooray! Let them use the app now.
-                        println("Signed Up!!")
-                    }
+        if username.text == "" || password.text == "" {
+            SCLAlertView().showWarning("SignIn Info", subTitle: "Please include your username and password")
+        } else {
+            PFUser.logInWithUsernameInBackground(username.text, password: password.text) {
+                (user: PFUser?, error: NSError?) -> Void in
+                if user != nil{
+                    println("logged in")
+                } else {
+                    // signUp()
+                    // wrong user or pass
                 }
-                
             }
         }
-        
+    }
+    
+    
+    @IBAction func signUp(sender: AnyObject) {
+        signUp2()
+    }
+    
+    func signUp2() {
+        var user = PFUser()
+        if username.text == "" || password.text == "" {
+            SCLAlertView().showWarning("SignIn Info", subTitle: "Please include your username and password")
+        } else {
+            user.username = self.username.text
+            user.password = self.password.text
+            //                user.email = "email@example.com"
+            //                // other fields can be set just like with PFObject
+            //                user["phone"] = "415-392-0202"
+            //
+            user.signUpInBackgroundWithBlock {
+                (succeeded: Bool, error: NSError?) -> Void in
+                if let error = error {
+                    let errorString = error.userInfo?["error"] as? NSString
+                    // Show the errorString somewhere and let the user try again.
+                    println("ERROR")
+                    SCLAlertView().showWarning("SignUp Info", subTitle: "The Username Is Already Taken")
+                } else {
+                    println("Signed Up!!")
+                    SCLAlertView().showInfo("Signed Up", subTitle: "Let's Get Going!", closeButtonTitle: "", duration: 3)
+                }
+            }
+        }
         
     }
     

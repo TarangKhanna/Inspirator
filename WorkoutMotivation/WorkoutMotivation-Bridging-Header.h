@@ -7,9 +7,9 @@
 #import <Parse/Parse.h>
 #import <ParseUI/ParseUI.h>
 #import <Bolts/BFTask.h>
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <FBSDKCoreKit/FBSDKTestUsersManager.h>
 #ifndef FacebookTutorial_Bridging_Header_h
 #define FacebookTutorial_Bridging_Header_h
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 #endif

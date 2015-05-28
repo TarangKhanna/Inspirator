@@ -33,6 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         object.addObject("passed!", forKey: "test1")
         object.saveInBackground()
         return true
+        //FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     
     func application(application: UIApplication,
