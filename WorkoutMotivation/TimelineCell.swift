@@ -35,6 +35,10 @@ class TimelineCell : PFTableViewCell {
         dateLabel.font = UIFont(name: "Avenir-Book", size: 14)
         dateLabel.textColor = UIColor(white: 0.6, alpha: 1.0)
         
+        //var width = photoImageView.frame.size.width / 2
+        //photoImageView?.layer.cornerRadius = width //10.0
+        //photoImageView?.layer.borderColor = UIColor.whiteColor().CGColor
+        //photoImageView?.layer.borderWidth = 3.0
         photoImageView?.layer.borderWidth = 0.4
         photoImageView?.layer.borderColor = UIColor(white: 0.92, alpha: 1.0).CGColor
     }

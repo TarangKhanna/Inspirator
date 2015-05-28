@@ -221,7 +221,6 @@
 				7109A8E81B04306900435D3C /* AppDelegate.swift */,
 				716B874C1B152E9D00B7E955 /* TimelineCell.swift */,
 				7109A8EC1B04306900435D3C /* Main.storyboard */,
-				71AF79C71B17D272007953CD /* AvatarImageView.swift */,
 				71AF79C51B17D1F1007953CD /* profileVC.swift */,
 				716B87501B15384000B7E955 /* ParseTableView.swift */,
 				7128A91F1B087FF70035C41E /* ProgrammingQuotes.swift */,
@@ -244,6 +243,7 @@
 		7109A8E61B04306900435D3C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				71AF79C71B17D272007953CD /* AvatarImageView.swift */,
 				71CEE5F71B12C00D00E85AA2 /* WorkoutMotivation-Bridging-Header.h */,
 				716B874B1B152A6C00B7E955 /* MaterialKit */,
 				7109A8E71B04306900435D3C /* Info.plist */,
