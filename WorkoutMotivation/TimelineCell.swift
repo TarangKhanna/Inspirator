@@ -39,8 +39,8 @@ class TimelineCell : PFTableViewCell {
         //photoImageView?.layer.cornerRadius = width //10.0
         //photoImageView?.layer.borderColor = UIColor.whiteColor().CGColor
         //photoImageView?.layer.borderWidth = 3.0
-        photoImageView?.layer.borderWidth = 0.4
-        photoImageView?.layer.borderColor = UIColor(white: 0.92, alpha: 1.0).CGColor
+        //photoImageView?.layer.borderWidth = 0.4
+        //photoImageView?.layer.borderColor = UIColor(white: 0.92, alpha: 1.0).CGColor
     }
     
     override func layoutSubviews() {

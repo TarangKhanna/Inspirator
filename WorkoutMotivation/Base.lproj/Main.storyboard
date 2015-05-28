@@ -736,7 +736,7 @@
                                                     <rect key="frame" x="28" y="0.0" width="5" height="106"/>
                                                     <color key="backgroundColor" white="0.92000000000000004" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1VD-lv-ylW">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1VD-lv-ylW" customClass="AvatarImageView" customModule="WorkoutMotivation" customModuleProvider="target">
                                                     <rect key="frame" x="52" y="14" width="54" height="54"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="54" id="1bo-G1-1lQ"/>
@@ -1102,6 +1102,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="WVb-AW-T6s"/>
-        <segue reference="mb0-1b-JyG"/>
+        <segue reference="8cE-Yl-DNe"/>
     </inferredMetricsTieBreakers>
 </document>
