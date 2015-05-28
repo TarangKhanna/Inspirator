@@ -217,7 +217,6 @@
 				7128A91F1B087FF70035C41E /* ProgrammingQuotes.swift */,
 				7128A9551B0A98520035C41E /* SCLAlertView.swift */,
 				7135F2C21B080711002ACD53 /* WeigthsQuotes.swift */,
-				71CEE60E1B13085700E85AA2 /* TextFieldViewController.swift */,
 				719D53891B066E1900DD34CD /* NavigationControl.swift */,
 				719D537F1B046D6900DD34CD /* MotivationCell.swift */,
 				719D538D1B068FC100DD34CD /* Motivate.swift */,
@@ -290,6 +289,7 @@
 		716B874B1B152A6C00B7E955 /* MaterialKit */ = {
 			isa = PBXGroup;
 			children = (
+				71CEE60E1B13085700E85AA2 /* TextFieldViewController.swift */,
 				71CEE6121B13089200E85AA2 /* MKTableViewCell.swift */,
 				71CEE6131B13089200E85AA2 /* MKLabel.swift */,
 				71CEE6141B13089200E85AA2 /* MKImageView.swift */,

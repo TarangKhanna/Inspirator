@@ -167,8 +167,8 @@ class NoBack: UIViewController, floatMenuDelegate , FBSDKLoginButtonDelegate, UI
         if username.text == "" || password.text == "" {
             SCLAlertView().showWarning("SignIn Info", subTitle: "Please include your username and password")
         } else {
-            user.username = self.username.text
-            user.password = self.password.text
+            user.username = self.username.text.lowercaseString
+            user.password = self.password.text.lowercaseString
             //                user.email = "email@example.com"
             //                // other fields can be set just like with PFObject
             //                user["phone"] = "415-392-0202"
@@ -182,7 +182,7 @@ class NoBack: UIViewController, floatMenuDelegate , FBSDKLoginButtonDelegate, UI
                     SCLAlertView().showWarning("SignUp Info", subTitle: "The Username Is Already Taken")
                 } else {
                     println("Signed Up!!")
-                    SCLAlertView().showInfo("Signed Up", subTitle: "Let's Get Going!", closeButtonTitle: "", duration: 3)
+                    SCLAlertView().showInfo("Signed Up", subTitle: "Let's Get Going!", closeButtonTitle: "", duration: 2)
                 }
             }
         }
