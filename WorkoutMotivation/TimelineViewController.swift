@@ -20,7 +20,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     var currLocation: CLLocationCoordinate2D?
     let locationManager = CLLocationManager()
     //var transitionOperator = TransitionOperator()
-    
+    var messages = [String]()
     
     var userArray: [String] = []
     //var counter = userArray.
@@ -85,7 +85,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         //        locationManager.requestWhenInUseAuthorization()
         //        locationManager.startUpdatingLocation()
         post()
-        
+        retrieve()
     }
     
     
@@ -100,8 +100,9 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             if (success) {
                 println("Posted!")
                 // The object has been saved.
-                self.tableView.reloadData()
+                //self.tableView.reloadData()
             } else {
+                println("Couldn't post!")
                 // There was a problem, check error.description
             }
         }
@@ -111,16 +112,20 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         if var query = PFQuery(className: "Person") as PFQuery? { //querying parse for user data
             var usr = PFUser.currentUser()!.username
             //query.whereKey("username", EqualTo: usr!)
-            query.whereKey("username", equalTo: PFUser.currentUser()!.username!)
-            var users = query.findObjects()
-            
-            if let users = users as? [PFObject] {
-                for user in users {
-                    var user2:PFUser = user as! PFUser
-                    println(user2.username!)
-                    self.userArray.append(user2.username!)
+            query.whereKey("text", notEqualTo: "")
+            query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
+                
+                if let objects = objects {
+                    
+                    for object in objects {
+                        
+                        self.messages.append(object["message"] as! String)
+
+                        println(object["message"] as! String)
+                        self.tableView.reloadData()
+                    }
                 }
-            }
+            })
         }
 
     }

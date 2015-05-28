@@ -141,21 +141,21 @@ class NoBack: UIViewController, floatMenuDelegate , FBSDKLoginButtonDelegate, UI
     }
     
     
-    @IBAction func signIn(sender: AnyObject) {
-        if username.text == "" || password.text == "" {
-            SCLAlertView().showWarning("SignIn Info", subTitle: "Please include your username and password")
-        } else {
-            PFUser.logInWithUsernameInBackground(username.text, password: password.text) {
-                (user: PFUser?, error: NSError?) -> Void in
-                if user != nil{
-                    println("logged in")
-                } else {
-                    // signUp()
-                    // wrong user or pass
-                }
-            }
-        }
-    }
+//    @IBAction func signIn(sender: AnyObject) {
+//        if username.text == "" || password.text == "" {
+//            SCLAlertView().showWarning("SignIn Info", subTitle: "Please include your username and password")
+//        } else {
+//            PFUser.logInWithUsernameInBackground(username.text, password: password.text) {
+//                (user: PFUser?, error: NSError?) -> Void in
+//                if user != nil{
+//                    println("logged in")
+//                } else {
+//                    // signUp()
+//                    // wrong user or pass
+//                }
+//            }
+//        }
+//    }
     
     
     @IBAction func signUp(sender: AnyObject) {

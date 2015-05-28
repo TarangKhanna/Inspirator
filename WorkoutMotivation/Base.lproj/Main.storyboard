@@ -294,7 +294,6 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="signIn:" destination="cXI-kJ-w0P" eventType="touchUpInside" id="EIT-Hd-kau"/>
                                     <segue destination="idO-jR-V2Q" kind="show" id="mb0-1b-JyG"/>
                                 </connections>
                             </button>
@@ -342,7 +341,9 @@
                             <constraint firstItem="IEP-yx-bqJ" firstAttribute="centerX" secondItem="PzV-jf-CAZ" secondAttribute="centerX" constant="-70.5" id="xgD-1z-Fbu"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Sign Up" id="HNo-qx-yYC"/>
+                    <navigationItem key="navigationItem" title="Sign Up" id="HNo-qx-yYC">
+                        <barButtonItem key="backBarButtonItem" title="Motivation" id="dUd-6H-UaK"/>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="password" destination="fSd-6z-mQT" id="sQV-xo-SlD"/>
@@ -371,7 +372,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XwJ-Ad-Yi1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="522.5" y="-538.5"/>
+            <point key="canvasLocation" x="584.5" y="-538.5"/>
         </scene>
         <!--Navigation Control-->
         <scene sceneID="4pk-jg-ouh">
