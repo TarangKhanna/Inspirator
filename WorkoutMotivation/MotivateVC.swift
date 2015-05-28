@@ -51,13 +51,10 @@ class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         userDefaults.setValue(shown, forKey: "shown")
         userDefaults.synchronize()
         let floatFrame:CGRect = (CGRectMake(UIScreen.mainScreen().bounds.size.width - 44 - 20, UIScreen.mainScreen().bounds.size.height - 44 - 20, 44, 44))
-        // Do any additional setup after loading the view, typically from a nib.
         // self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0.6, alpha: 0.5)
         let actionButton : VCFloatingActionButton = VCFloatingActionButton(frame: floatFrame, normalImage: UIImage(named: "plus.png"), andPressedImage: UIImage(named: "cross.png"), withScrollview: tableView)
         //actionButton.normalImage = UIImage(named: "plus.png")!
         self.view.addSubview(actionButton)
-        //actionButton.frame = floatFrame
-        //actionButton.center = self.view.center
         actionButton.imageArray = ["fb-icon.png","twitter-icon.png","google-icon.png","linkedin-icon.png"]
         actionButton.labelArray = ["Facebook","Twitter","Google Plus","LinkedIn"]
         actionButton.delegate = self
@@ -100,6 +97,8 @@ class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.motivate.count
     }
+    
+    
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let motivate1 = self.motivate[indexPath.row] as? Motivate
@@ -146,6 +145,15 @@ class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             performSegueWithIdentifier("Pure", sender: self)
         }
     }
+    
+    @IBAction func timelineShow(sender: AnyObject) {
+        if PFUser.currentUser()?.username == nil {
+        performSegueWithIdentifier("signIn2", sender: self)
+        } else {
+        performSegueWithIdentifier("timeline", sender: self)
+        }
+    }
+    
     
     
     override func didReceiveMemoryWarning() {

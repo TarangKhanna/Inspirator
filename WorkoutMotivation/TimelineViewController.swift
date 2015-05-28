@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Thacked. All rights reserved.
 //
 
+//MAKE SURE USER IS LOGGED IN
 
 import Foundation
 import UIKit
@@ -21,11 +22,16 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     let locationManager = CLLocationManager()
     //var transitionOperator = TransitionOperator()
     var messages = [String]()
-    
+    var score = [Int]()
     var userArray: [String] = []
     //var counter = userArray.
     
     override func viewWillAppear(animated: Bool) {
+        if PFUser.currentUser()?.username == nil {
+            //signin vc
+            //performSegueWithIdentifier("signIn", sender: self)
+        }
+        
         if var query = PFUser.query() { //querying parse for user names
             query.whereKey("username", notEqualTo: "")
             
@@ -35,7 +41,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                 for user in users {
                     var user2:PFUser = user as! PFUser
                     println(user2.username!)
-                    self.userArray.append(user2.username!)
+                    //self.userArray.append(user2.username!)
                 }
             }
         }
@@ -92,7 +98,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     func post() {
         var person = PFObject(className:"Person")
         person["score"] = 1337
-        person["username"] = "Tarang"
+        person["username"] = PFUser.currentUser()?.username //"Tarang"
         person["admin"] = true
         person["text"] = "First Check"
         person.saveInBackgroundWithBlock {
@@ -115,13 +121,14 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             query.whereKey("text", notEqualTo: "")
             query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
                 
-                if let objects = objects {
+                if let objects = objects as? [PFObject]  {
                     
                     for object in objects {
                         
-                        self.messages.append(object["message"] as! String)
-
-                        println(object["message"] as! String)
+                        self.messages.append(object["text"] as! String)
+                        self.userArray.append(object["username"] as! String)
+                        self.score.append(object["score"] as! Int)
+                        println(object["text"] as! String)
                         self.tableView.reloadData()
                     }
                 }
@@ -166,8 +173,9 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             cell.typeImageView.image = UIImage(named: "timeline-chat")
             cell.profileImageView.image = UIImage(named: "profile-pic-1")
             cell.nameLabel.text = userArray[indexPath.row]
-            cell.postLabel?.text = "The park bench located to the north of my location is really chill to take a nap or get some inspiration to code from a beautiful scenery"
-            cell.dateLabel.text = "2 mins ago from UIUC (100m away)"
+            cell.postLabel?.text = messages[indexPath.row]
+            cell.dateLabel.text = String(score[indexPath.row])
+            
             return cell
             
         } else{

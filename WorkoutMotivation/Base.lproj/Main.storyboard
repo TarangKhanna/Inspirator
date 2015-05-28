@@ -125,7 +125,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Login" id="9Hu-Jb-Uc6">
                             <connections>
-                                <segue destination="KBP-Cf-XLc" kind="show" id="aB1-kz-8TE"/>
+                                <action selector="timelineShow:" destination="BYZ-38-t0r" id="peG-EJ-LDX"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -137,6 +137,8 @@
                         <segue destination="fS0-zt-uCr" kind="show" identifier="Pure" id="50U-jA-FBS"/>
                         <segue destination="sAM-YE-GWF" kind="show" identifier="Cardio" id="ZVr-yz-dpw"/>
                         <segue destination="qj0-y5-FDT" kind="show" identifier="Study" id="nSD-lN-2zf"/>
+                        <segue destination="idO-jR-V2Q" kind="show" identifier="signIn2" id="Udb-FK-6c5"/>
+                        <segue destination="KBP-Cf-XLc" kind="show" identifier="timeline" id="nfZ-5d-aso"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -286,7 +288,7 @@
                                     <constraint firstAttribute="height" constant="38" id="Rzn-FJ-aEh"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PzV-jf-CAZ">
                                 <rect key="frame" x="234" y="333" width="48" height="30"/>
@@ -303,7 +305,7 @@
                                     <constraint firstAttribute="height" constant="38" id="Q67-0Z-SQL"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ub3-F2-2uP">
                                 <rect key="frame" x="159" y="283" width="55" height="30"/>
@@ -321,8 +323,8 @@
                                     <constraint firstAttribute="width" constant="111" id="7Er-9H-FPN"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="highlightedColor" red="0.1960784495" green="0.94117653369999998" blue="0.20392158630000001" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="textColor" red="0.1960784495" green="0.94117653369999998" blue="0.20392158630000001" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="highlightedColor" red="0.2274509804" green="0.48627450979999998" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -365,7 +367,45 @@
                     <view key="view" contentMode="scaleToFill" id="cg8-1C-nZM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WCy-E0-MFu" customClass="MKTextField" customModule="WorkoutMotivation" customModuleProvider="target">
+                                <rect key="frame" x="55" y="218" width="265" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="bN5-XC-YDM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ah7-GB-hCh">
+                                <rect key="frame" x="160" y="355" width="48" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="X1I-9H-nPR"/>
+                                </constraints>
+                                <state key="normal" title="Sign In">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="signUp:" destination="cXI-kJ-w0P" eventType="touchUpInside" id="fGT-0J-cxV"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UCc-7J-9m2" customClass="MKTextField" customModule="WorkoutMotivation" customModuleProvider="target">
+                                <rect key="frame" x="55" y="299" width="265" height="38"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WCy-E0-MFu" firstAttribute="top" secondItem="FOe-8F-W2m" secondAttribute="bottom" constant="154" id="LZc-uw-n5x"/>
+                            <constraint firstItem="WCy-E0-MFu" firstAttribute="trailing" secondItem="UCc-7J-9m2" secondAttribute="trailing" id="TeU-5Q-36f"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="WCy-E0-MFu" secondAttribute="trailing" constant="39" id="a0m-Vd-Xvt"/>
+                            <constraint firstItem="WCy-E0-MFu" firstAttribute="leading" secondItem="cg8-1C-nZM" secondAttribute="leadingMargin" constant="39" id="adV-hb-kvc"/>
+                            <constraint firstItem="epD-HR-pzJ" firstAttribute="top" secondItem="Ah7-GB-hCh" secondAttribute="bottom" constant="282" id="cBu-hx-ydE"/>
+                            <constraint firstItem="Ah7-GB-hCh" firstAttribute="top" secondItem="UCc-7J-9m2" secondAttribute="bottom" constant="18" id="eGG-Id-afG"/>
+                            <constraint firstItem="Ah7-GB-hCh" firstAttribute="leading" secondItem="cg8-1C-nZM" secondAttribute="leading" constant="160" id="qWj-R3-twu"/>
+                            <constraint firstItem="UCc-7J-9m2" firstAttribute="top" secondItem="WCy-E0-MFu" secondAttribute="bottom" constant="43" id="vLb-ac-II3"/>
+                            <constraint firstItem="UCc-7J-9m2" firstAttribute="leading" secondItem="WCy-E0-MFu" secondAttribute="leading" id="vcZ-Zq-4gf"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Sign In" id="f8D-wZ-dtR"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -445,7 +485,7 @@
                     <navigationItem key="navigationItem" title="Code On" id="JgL-48-bIc">
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="1e6-CK-QnR">
                             <connections>
-                                <segue destination="AGK-Wh-OvA" kind="show" id="QHR-B3-n0W"/>
+                                <segue destination="XbU-Ea-KNw" kind="show" id="WVb-AW-T6s"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -522,51 +562,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3mQ-WH-4AX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1846.5" y="1462.5"/>
-        </scene>
-        <!--SocialVC-->
-        <scene sceneID="jZT-94-LlF">
-            <objects>
-                <viewController id="AGK-Wh-OvA" customClass="SocialVC" customModule="WorkoutMotivation" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="FoQ-tV-do1"/>
-                        <viewControllerLayoutGuide type="bottom" id="F8e-qI-YSw"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Lqr-7C-SxX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0xU-zs-ib8">
-                                <rect key="frame" x="0.0" y="64" width="375" height="290"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="290" id="dyy-qF-bS7"/>
-                                </constraints>
-                            </webView>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="euj-29-RDZ">
-                                <rect key="frame" x="0.0" y="369" width="375" height="298"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </webView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="0xU-zs-ib8" firstAttribute="leading" secondItem="Lqr-7C-SxX" secondAttribute="leading" id="8C1-rh-G3k"/>
-                            <constraint firstItem="0xU-zs-ib8" firstAttribute="trailing" secondItem="euj-29-RDZ" secondAttribute="trailing" id="By2-UG-5Y9"/>
-                            <constraint firstAttribute="trailing" secondItem="0xU-zs-ib8" secondAttribute="trailing" id="JdM-iZ-SBy"/>
-                            <constraint firstItem="0xU-zs-ib8" firstAttribute="top" secondItem="FoQ-tV-do1" secondAttribute="bottom" id="bC6-dV-54Q"/>
-                            <constraint firstItem="0xU-zs-ib8" firstAttribute="leading" secondItem="euj-29-RDZ" secondAttribute="leading" id="nK5-yE-CL9"/>
-                            <constraint firstItem="euj-29-RDZ" firstAttribute="bottom" secondItem="F8e-qI-YSw" secondAttribute="top" id="nqY-nM-d5W"/>
-                            <constraint firstItem="euj-29-RDZ" firstAttribute="top" secondItem="0xU-zs-ib8" secondAttribute="bottom" constant="15" id="tI7-Lk-cZz"/>
-                        </constraints>
-                    </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <connections>
-                        <outlet property="webView1" destination="0xU-zs-ib8" id="old-rA-rDd"/>
-                        <outlet property="webView2" destination="euj-29-RDZ" id="5ij-1H-1ds"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LhQ-JW-JxI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2452.5" y="568.5"/>
         </scene>
         <!--Cardio-->
         <scene sceneID="nx9-by-hPV">
@@ -946,6 +941,7 @@
                     <navigationItem key="navigationItem" id="al2-Uw-owd"/>
                     <connections>
                         <outlet property="tableView" destination="lNp-7M-5Pw" id="Ha4-fP-bLh"/>
+                        <segue destination="idO-jR-V2Q" kind="show" identifier="signIn" id="8cE-Yl-DNe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iw4-MH-Q4Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -961,4 +957,8 @@
     <resources>
         <image name="Left-100" width="33" height="33"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="WVb-AW-T6s"/>
+        <segue reference="mb0-1b-JyG"/>
+    </inferredMetricsTieBreakers>
 </document>

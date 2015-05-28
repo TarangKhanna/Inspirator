@@ -11,15 +11,15 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NewLaunchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="e9u-MH-Ooq">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="674"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="e9u-MH-Ooq" secondAttribute="trailing" id="bwr-vM-ffP"/>
-                <constraint firstItem="e9u-MH-Ooq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="h1Z-a8-OTo"/>
-                <constraint firstAttribute="bottom" secondItem="e9u-MH-Ooq" secondAttribute="bottom" constant="-7" id="rZv-8y-plo"/>
-                <constraint firstItem="e9u-MH-Ooq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="xtQ-Ul-0hO"/>
+                <constraint firstItem="e9u-MH-Ooq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="8Ff-YV-Ya8"/>
+                <constraint firstAttribute="trailing" secondItem="e9u-MH-Ooq" secondAttribute="trailing" id="MoF-6F-QaZ"/>
+                <constraint firstAttribute="bottom" secondItem="e9u-MH-Ooq" secondAttribute="bottom" id="YNr-OV-fMl"/>
+                <constraint firstItem="e9u-MH-Ooq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="auA-z5-yyd"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
