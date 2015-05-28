@@ -6,6 +6,7 @@
 #import "VCFloatingActionButton.h"
 #import <Parse/Parse.h>
 #import <ParseUI/ParseUI.h>
+#import "FXBlurView.h"
 #import <Bolts/BFTask.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <FBSDKCoreKit/FBSDKTestUsersManager.h>

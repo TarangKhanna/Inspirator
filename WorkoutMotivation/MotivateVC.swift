@@ -148,9 +148,9 @@ class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     
     @IBAction func timelineShow(sender: AnyObject) {
         if PFUser.currentUser()?.username == nil {
-        performSegueWithIdentifier("signIn2", sender: self)
+           performSegueWithIdentifier("signIn2", sender: self)
         } else {
-        performSegueWithIdentifier("timeline", sender: self)
+           performSegueWithIdentifier("timeline", sender: self)
         }
     }
     

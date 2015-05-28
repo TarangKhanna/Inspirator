@@ -20,7 +20,7 @@ class loginVC: UIViewController,floatMenuDelegate, UITextFieldDelegate  {
         
         let floatFrame:CGRect = (CGRectMake(UIScreen.mainScreen().bounds.size.width - 44 - 20, UIScreen.mainScreen().bounds.size.height - 44 - 20, 44, 44))
         // Do any additional setup after loading the view, typically from a nib.
-        // self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0.6, alpha: 0.5)
+        //self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0.6, alpha: 0.5)
         let actionButton : VCFloatingActionButton = VCFloatingActionButton(frame: floatFrame, normalImage: UIImage(named: "plus.png"), andPressedImage: UIImage(named: "cross.png"), withScrollview: nil)
         //actionButton.normalImage = UIImage(named: "plus.png")!
         self.view.addSubview(actionButton)

@@ -209,7 +209,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier("NearbySegue", sender: self)
+        performSegueWithIdentifier("profileView", sender: self)
     }
     
     @IBAction func presentNavigation(sender: AnyObject?){
