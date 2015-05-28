@@ -197,6 +197,7 @@ private extension MKTextField {
     
     private func updateFloatingLabelText() {
         floatingLabel.text = placeholder
+        //floatingLabel.backgroundColor = UIColor.yellowColor()
         floatingLabel.sizeToFit()
         setFloatingLabelOverlapTextField()
     }

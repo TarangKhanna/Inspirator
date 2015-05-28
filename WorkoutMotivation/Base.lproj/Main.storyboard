@@ -270,7 +270,7 @@
             </objects>
             <point key="canvasLocation" x="2452.5" y="-243.5"/>
         </scene>
-        <!--Sign Up-->
+        <!--No Back-->
         <scene sceneID="z7O-Z1-Nxl">
             <objects>
                 <viewController id="cXI-kJ-w0P" customClass="NoBack" customModule="WorkoutMotivation" customModuleProvider="target" sceneMemberID="viewController">
@@ -287,6 +287,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="Rzn-FJ-aEh"/>
                                 </constraints>
+                                <color key="textColor" red="1" green="0.55039779259999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </textField>
@@ -304,6 +305,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="Q67-0Z-SQL"/>
                                 </constraints>
+                                <color key="textColor" red="1" green="0.55039779259999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                             </textField>
@@ -343,7 +345,7 @@
                             <constraint firstItem="IEP-yx-bqJ" firstAttribute="centerX" secondItem="PzV-jf-CAZ" secondAttribute="centerX" constant="-70.5" id="xgD-1z-Fbu"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Sign Up" id="HNo-qx-yYC">
+                    <navigationItem key="navigationItem" id="HNo-qx-yYC">
                         <barButtonItem key="backBarButtonItem" title="Motivation" id="dUd-6H-UaK"/>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -373,6 +375,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="bN5-XC-YDM"/>
                                 </constraints>
+                                <color key="textColor" red="1" green="0.55039779259999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -391,6 +394,7 @@
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UCc-7J-9m2" customClass="MKTextField" customModule="WorkoutMotivation" customModuleProvider="target">
                                 <rect key="frame" x="55" y="299" width="265" height="38"/>
+                                <color key="textColor" red="1" green="0.55039779259999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -1097,7 +1101,7 @@
         <image name="profile-pic-1" width="592" height="592"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8cE-Yl-DNe"/>
         <segue reference="WVb-AW-T6s"/>
+        <segue reference="mb0-1b-JyG"/>
     </inferredMetricsTieBreakers>
 </document>

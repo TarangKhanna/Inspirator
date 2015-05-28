@@ -16,8 +16,8 @@ class loginVC: UIViewController,floatMenuDelegate, UITextFieldDelegate  {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor(red: 65.0 / 255.0, green: 62.0 / 255.0, blue: 79.0 / 255.0, alpha: 1)
-        
+        //self.view.backgroundColor = UIColor(red: 65.0 / 255.0, green: 62.0 / 255.0, blue: 79.0 / 255.0, alpha: 1)
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "loginBG2.png")!)
         let floatFrame:CGRect = (CGRectMake(UIScreen.mainScreen().bounds.size.width - 44 - 20, UIScreen.mainScreen().bounds.size.height - 44 - 20, 44, 44))
         // Do any additional setup after loading the view, typically from a nib.
         //self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0.6, alpha: 0.5)
@@ -38,6 +38,8 @@ class loginVC: UIViewController,floatMenuDelegate, UITextFieldDelegate  {
         username.rippleLocation = .Right
         username.cornerRadius = 0
         username.bottomBorderEnabled = true
+        username.attributedPlaceholder = NSAttributedString(string:"Username..",
+            attributes:[NSForegroundColorAttributeName: UIColor.orangeColor()])
         
         password.layer.borderColor = UIColor.clearColor().CGColor
         password.floatingPlaceholderEnabled = true
@@ -47,6 +49,8 @@ class loginVC: UIViewController,floatMenuDelegate, UITextFieldDelegate  {
         password.cornerRadius = 0
         password.bottomBorderEnabled = true
         //self.view.backgroundColor = UIColor.orangeColor()
+        password.attributedPlaceholder = NSAttributedString(string:"Password..",
+            attributes:[NSForegroundColorAttributeName: UIColor.orangeColor()])
     }
     
     override func didReceiveMemoryWarning() {

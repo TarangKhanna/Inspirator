@@ -27,7 +27,6 @@ class NoBack: UIViewController, floatMenuDelegate , FBSDKLoginButtonDelegate, UI
         actionButton.imageArray = ["fb-icon.png","twitter-icon.png","google-icon.png","linkedin-icon.png"]
         actionButton.labelArray = ["Facebook","Twitter","Google Plus","Linked in"]
         actionButton.delegate = self
-        
         // No border, no shadow, floatingPlaceholderEnabled
         username.layer.borderColor = UIColor.clearColor().CGColor
         username.floatingPlaceholderEnabled = true
@@ -36,6 +35,8 @@ class NoBack: UIViewController, floatMenuDelegate , FBSDKLoginButtonDelegate, UI
         username.rippleLocation = .Right
         username.cornerRadius = 0
         username.bottomBorderEnabled = true
+        username.attributedPlaceholder = NSAttributedString(string:"Username..",
+            attributes:[NSForegroundColorAttributeName: UIColor.orangeColor()])
         
         password.layer.borderColor = UIColor.clearColor().CGColor
         password.floatingPlaceholderEnabled = true
@@ -44,6 +45,8 @@ class NoBack: UIViewController, floatMenuDelegate , FBSDKLoginButtonDelegate, UI
         password.rippleLocation = .Right
         password.cornerRadius = 0
         password.bottomBorderEnabled = true
+        password.attributedPlaceholder = NSAttributedString(string:"Password..",
+            attributes:[NSForegroundColorAttributeName: UIColor.orangeColor()])
         if (FBSDKAccessToken.currentAccessToken() != nil)
         {
             // User is already logged in, do work such as go to next view controller.
