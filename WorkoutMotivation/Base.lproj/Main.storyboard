@@ -1020,9 +1020,6 @@
                                             <color key="titleColor" red="0.33333333329999998" green="0.67450980390000004" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <connections>
-                                            <action selector="shamelessActionThatBringsYouToMyTwitterProfile" destination="FII-2A-NBI" eventType="touchUpInside" id="VfX-Ld-ELH"/>
-                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score here" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVj-p4-KAj" userLabel="TwitterUsername">
                                         <rect key="frame" x="8" y="177" width="128" height="21"/>
@@ -1071,7 +1068,7 @@
                         <constraints>
                             <constraint firstItem="j8H-mu-O7O" firstAttribute="top" secondItem="gTH-TM-Ao4" secondAttribute="top" id="7f1-MR-z3S"/>
                             <constraint firstAttribute="width" secondItem="MbN-N1-CTl" secondAttribute="width" id="JXy-Bc-EYH"/>
-                            <constraint firstItem="7ig-aa-S34" firstAttribute="top" secondItem="rad-oV-0VQ" secondAttribute="bottom" constant="-20" id="Y2I-vg-b76"/>
+                            <constraint firstItem="7ig-aa-S34" firstAttribute="top" secondItem="rad-oV-0VQ" secondAttribute="bottom" constant="-64" id="Y2I-vg-b76"/>
                             <constraint firstItem="j8H-mu-O7O" firstAttribute="trailing" secondItem="7ig-aa-S34" secondAttribute="trailing" id="aD5-Ct-aoB"/>
                             <constraint firstItem="j8H-mu-O7O" firstAttribute="bottom" secondItem="RNb-bQ-nFA" secondAttribute="top" id="ave-do-psD"/>
                             <constraint firstItem="7ig-aa-S34" firstAttribute="leading" secondItem="gTH-TM-Ao4" secondAttribute="leading" id="bTV-53-YeY"/>

@@ -112,11 +112,4 @@ class profileVC: UIViewController, UIScrollViewDelegate {
         header.layer.transform = headerTransform
         avatarImage.layer.transform = avatarTransform
     }
-    
-    @IBAction func shamelessActionThatBringsYouToMyTwitterProfile() {
-        
-        if !UIApplication.sharedApplication().openURL(NSURL(string:"twitter://user?screen_name=bitwaker")!){
-            UIApplication.sharedApplication().openURL(NSURL(string:"https://twitter.com/bitwaker")!)
-        }
-    }
 }
