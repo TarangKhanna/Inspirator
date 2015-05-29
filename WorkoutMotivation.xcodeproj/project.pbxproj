@@ -68,6 +68,10 @@
 		71AF79EB1B1909EF007953CD /* gears 3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71AF79E21B1909EF007953CD /* gears 3@2x.png */; };
 		71AF79EC1B1909EF007953CD /* gears 3@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71AF79E31B1909EF007953CD /* gears 3@3x.png */; };
 		71AF79ED1B1909EF007953CD /* imgDemo.png in Resources */ = {isa = PBXBuildFile; fileRef = 71AF79E41B1909EF007953CD /* imgDemo.png */; };
+		71AF79F01B192F52007953CD /* pulltorefresharrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 71AF79EF1B192F52007953CD /* pulltorefresharrow.png */; };
+		71AF79F31B192F68007953CD /* PullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AF79F11B192F68007953CD /* PullToRefreshView.swift */; };
+		71AF79F41B192F68007953CD /* UIScrollViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AF79F21B192F68007953CD /* UIScrollViewExtension.swift */; };
+		71AF79F61B192F98007953CD /* PullToRefreshOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AF79F51B192F98007953CD /* PullToRefreshOption.swift */; };
 		71CEE5F31B1283F000E85AA2 /* CardioVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CEE5F21B1283F000E85AA2 /* CardioVC.swift */; };
 		71CEE5F61B12BB8100E85AA2 /* StudyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CEE5F51B12BB8100E85AA2 /* StudyVC.swift */; };
 		71CEE6001B12C46B00E85AA2 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71CEE5FF1B12C46B00E85AA2 /* Bolts.framework */; };
@@ -165,6 +169,10 @@
 		71AF79E21B1909EF007953CD /* gears 3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gears 3@2x.png"; sourceTree = "<group>"; };
 		71AF79E31B1909EF007953CD /* gears 3@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gears 3@3x.png"; sourceTree = "<group>"; };
 		71AF79E41B1909EF007953CD /* imgDemo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imgDemo.png; sourceTree = "<group>"; };
+		71AF79EF1B192F52007953CD /* pulltorefresharrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pulltorefresharrow.png; sourceTree = "<group>"; };
+		71AF79F11B192F68007953CD /* PullToRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefreshView.swift; sourceTree = "<group>"; };
+		71AF79F21B192F68007953CD /* UIScrollViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewExtension.swift; sourceTree = "<group>"; };
+		71AF79F51B192F98007953CD /* PullToRefreshOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefreshOption.swift; sourceTree = "<group>"; };
 		71CEE5F21B1283F000E85AA2 /* CardioVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardioVC.swift; path = WorkoutMotivation/CardioVC.swift; sourceTree = "<group>"; };
 		71CEE5F51B12BB8100E85AA2 /* StudyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyVC.swift; sourceTree = "<group>"; };
 		71CEE5F71B12C00D00E85AA2 /* WorkoutMotivation-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WorkoutMotivation-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -248,6 +256,7 @@
 		7109A8E51B04306900435D3C /* WorkoutMotivation */ = {
 			isa = PBXGroup;
 			children = (
+				71AF79F71B192F9F007953CD /* Pull to refresh */,
 				71AF79DB1B19098C007953CD /* GearsLoading */,
 				71AF79CE1B181574007953CD /* CardTableViewCell.swift */,
 				71AF79CF1B181574007953CD /* MainViewController.swift */,
@@ -374,6 +383,17 @@
 			name = gearImages;
 			sourceTree = "<group>";
 		};
+		71AF79F71B192F9F007953CD /* Pull to refresh */ = {
+			isa = PBXGroup;
+			children = (
+				71AF79F11B192F68007953CD /* PullToRefreshView.swift */,
+				71AF79F51B192F98007953CD /* PullToRefreshOption.swift */,
+				71AF79F21B192F68007953CD /* UIScrollViewExtension.swift */,
+				71AF79EF1B192F52007953CD /* pulltorefresharrow.png */,
+			);
+			name = "Pull to refresh";
+			sourceTree = "<group>";
+		};
 		71CEE5F41B12BA7E00E85AA2 /* VC's */ = {
 			isa = PBXGroup;
 			children = (
@@ -492,6 +512,7 @@
 				71AF79D71B181647007953CD /* TeamMembers.json in Resources */,
 				71AF79E81B1909EF007953CD /* gears 1@3x.png in Resources */,
 				7109A8EE1B04306900435D3C /* Main.storyboard in Resources */,
+				71AF79F01B192F52007953CD /* pulltorefresharrow.png in Resources */,
 				7109A8F31B04306900435D3C /* LaunchScreen.xib in Resources */,
 				71AF79E91B1909EF007953CD /* gears 2@2x.png in Resources */,
 				71AF79EB1B1909EF007953CD /* gears 3@2x.png in Resources */,
@@ -536,6 +557,7 @@
 				719D53801B046D6900DD34CD /* MotivationCell.swift in Sources */,
 				71CEE6191B13089200E85AA2 /* MKImageView.swift in Sources */,
 				71AF79D21B181574007953CD /* CardTableViewCell.swift in Sources */,
+				71AF79F41B192F68007953CD /* UIScrollViewExtension.swift in Sources */,
 				7128A9201B087FF70035C41E /* ProgrammingQuotes.swift in Sources */,
 				716B874E1B152E9D00B7E955 /* TimelineCell.swift in Sources */,
 				71AF79D51B181574007953CD /* TipInCellAnimator.swift in Sources */,
@@ -544,6 +566,7 @@
 				719D538A1B066E1900DD34CD /* NavigationControl.swift in Sources */,
 				7128A9541B0A93C30035C41E /* PureVC.swift in Sources */,
 				7109A8E91B04306900435D3C /* AppDelegate.swift in Sources */,
+				71AF79F61B192F98007953CD /* PullToRefreshOption.swift in Sources */,
 				71CEE6171B13089200E85AA2 /* MKTableViewCell.swift in Sources */,
 				71AF79D41B181574007953CD /* Member.swift in Sources */,
 				71CEE5F61B12BB8100E85AA2 /* StudyVC.swift in Sources */,
@@ -553,6 +576,7 @@
 				719D53841B046F7A00DD34CD /* cell1.swift in Sources */,
 				71CEE61B1B13089200E85AA2 /* MKColor.swift in Sources */,
 				71CEE60A1B12CBDE00E85AA2 /* VCFloatingActionButton.m in Sources */,
+				71AF79F31B192F68007953CD /* PullToRefreshView.swift in Sources */,
 				7128A9561B0A98520035C41E /* SCLAlertView.swift in Sources */,
 				71142A761B0DCE0900AB3600 /* SocialVC.swift in Sources */,
 				71CEE5F31B1283F000E85AA2 /* CardioVC.swift in Sources */,

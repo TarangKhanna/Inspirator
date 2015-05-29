@@ -123,6 +123,12 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         actionButton.delegate = self
         actionButton.hideWhileScrolling = true
         retrieve()
+        self.tableView.addPullToRefresh({ [weak self] in
+            // refresh code
+            self?.retrieve()
+            self?.tableView.reloadData()
+            self?.tableView.stopPullToRefresh()
+            })
     }
     
     
