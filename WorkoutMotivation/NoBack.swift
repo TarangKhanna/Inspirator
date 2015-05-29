@@ -37,6 +37,7 @@ class NoBack: UIViewController, floatMenuDelegate , FBSDKLoginButtonDelegate, UI
         username.bottomBorderEnabled = true
         username.attributedPlaceholder = NSAttributedString(string:"Username..",
             attributes:[NSForegroundColorAttributeName: UIColor.orangeColor()])
+        username.delegate = self
         
         password.layer.borderColor = UIColor.clearColor().CGColor
         password.floatingPlaceholderEnabled = true
@@ -47,6 +48,7 @@ class NoBack: UIViewController, floatMenuDelegate , FBSDKLoginButtonDelegate, UI
         password.bottomBorderEnabled = true
         password.attributedPlaceholder = NSAttributedString(string:"Password..",
             attributes:[NSForegroundColorAttributeName: UIColor.orangeColor()])
+        password.delegate = self
         if (FBSDKAccessToken.currentAccessToken() != nil)
         {
             // User is already logged in, do work such as go to next view controller.
@@ -185,6 +187,7 @@ class NoBack: UIViewController, floatMenuDelegate , FBSDKLoginButtonDelegate, UI
                     SCLAlertView().showWarning("SignUp Info", subTitle: "The Username Is Already Taken")
                 } else {
                     println("Signed Up!!")
+                    self.performSegueWithIdentifier("signedUp2", sender: self)
                     SCLAlertView().showInfo("Signed Up", subTitle: "Let's Get Going!", closeButtonTitle: "Ok", duration: 2)
                 }
             }
@@ -193,9 +196,11 @@ class NoBack: UIViewController, floatMenuDelegate , FBSDKLoginButtonDelegate, UI
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
+        //println("KFEVWKVFUWEL")
         self.view.endEditing(true)
         return false
     }
+    
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         self.view.endEditing(true)

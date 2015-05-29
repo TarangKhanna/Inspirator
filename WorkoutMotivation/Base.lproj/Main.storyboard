@@ -276,17 +276,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IEP-yx-bqJ" customClass="MKTextField" customModule="WorkoutMotivation" customModuleProvider="target">
-                                <rect key="frame" x="55" y="145" width="265" height="38"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="38" id="Rzn-FJ-aEh"/>
-                                </constraints>
-                                <color key="textColor" red="1" green="0.55039779259999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PzV-jf-CAZ">
-                                <rect key="frame" x="234" y="333" width="48" height="30"/>
+                                <rect key="frame" x="235" y="437" width="48" height="30"/>
                                 <state key="normal" title="Sign In">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -295,7 +286,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fSd-6z-mQT" customClass="MKTextField" customModule="WorkoutMotivation" customModuleProvider="target">
-                                <rect key="frame" x="55" y="226" width="265" height="38"/>
+                                <rect key="frame" x="55" y="315" width="265" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="Q67-0Z-SQL"/>
                                 </constraints>
@@ -304,7 +295,7 @@
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ub3-F2-2uP">
-                                <rect key="frame" x="159" y="283" width="55" height="30"/>
+                                <rect key="frame" x="160" y="386" width="55" height="30"/>
                                 <state key="normal" title="Sign Up">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -313,7 +304,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Existing User?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CoN-EZ-HPa">
-                                <rect key="frame" x="115" y="337" width="111" height="21"/>
+                                <rect key="frame" x="68" y="441" width="111" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="6KR-Sp-Lql"/>
                                     <constraint firstAttribute="width" constant="111" id="7Er-9H-FPN"/>
@@ -322,21 +313,31 @@
                                 <color key="textColor" red="0.1960784495" green="0.94117653369999998" blue="0.20392158630000001" alpha="1" colorSpace="deviceRGB"/>
                                 <color key="highlightedColor" red="0.2274509804" green="0.48627450979999998" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IEP-yx-bqJ" customClass="MKTextField" customModule="WorkoutMotivation" customModuleProvider="target">
+                                <rect key="frame" x="55" y="234" width="265" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="Rzn-FJ-aEh"/>
+                                </constraints>
+                                <color key="textColor" red="1" green="0.55039779259999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="fSd-6z-mQT" firstAttribute="trailing" secondItem="IEP-yx-bqJ" secondAttribute="trailing" id="71U-k3-hs7"/>
-                            <constraint firstItem="PzV-jf-CAZ" firstAttribute="centerX" secondItem="KXH-lC-Sga" secondAttribute="centerX" constant="70.5" id="8lv-mM-L4e"/>
-                            <constraint firstItem="PzV-jf-CAZ" firstAttribute="leading" secondItem="CoN-EZ-HPa" secondAttribute="trailing" constant="8" symbolic="YES" id="DFd-R0-CxC"/>
-                            <constraint firstItem="IEP-yx-bqJ" firstAttribute="top" secondItem="URQ-cY-93c" secondAttribute="bottom" constant="81" id="JFc-m8-k0h"/>
+                            <constraint firstItem="PzV-jf-CAZ" firstAttribute="centerX" secondItem="KXH-lC-Sga" secondAttribute="centerX" constant="71.5" id="8lv-mM-L4e"/>
+                            <constraint firstItem="PzV-jf-CAZ" firstAttribute="leading" secondItem="CoN-EZ-HPa" secondAttribute="trailing" constant="56" id="DFd-R0-CxC"/>
+                            <constraint firstItem="IEP-yx-bqJ" firstAttribute="top" secondItem="URQ-cY-93c" secondAttribute="bottom" constant="170" id="JFc-m8-k0h"/>
                             <constraint firstItem="fSd-6z-mQT" firstAttribute="leading" secondItem="IEP-yx-bqJ" secondAttribute="leading" id="Oov-S9-NSA"/>
-                            <constraint firstItem="PzV-jf-CAZ" firstAttribute="top" secondItem="fSd-6z-mQT" secondAttribute="bottom" constant="69" id="a6t-8Z-nHh"/>
-                            <constraint firstItem="ub3-F2-2uP" firstAttribute="top" secondItem="fSd-6z-mQT" secondAttribute="bottom" constant="19" id="h0U-T8-zuh"/>
-                            <constraint firstItem="uDd-qL-mB5" firstAttribute="top" secondItem="PzV-jf-CAZ" secondAttribute="bottom" constant="304" id="ii1-Nc-lCg"/>
+                            <constraint firstItem="PzV-jf-CAZ" firstAttribute="top" secondItem="fSd-6z-mQT" secondAttribute="bottom" constant="84" id="a6t-8Z-nHh"/>
+                            <constraint firstItem="ub3-F2-2uP" firstAttribute="top" secondItem="fSd-6z-mQT" secondAttribute="bottom" constant="33" id="h0U-T8-zuh"/>
+                            <constraint firstItem="uDd-qL-mB5" firstAttribute="top" secondItem="PzV-jf-CAZ" secondAttribute="bottom" constant="200" id="ii1-Nc-lCg"/>
                             <constraint firstItem="CoN-EZ-HPa" firstAttribute="baseline" secondItem="PzV-jf-CAZ" secondAttribute="baseline" id="muD-L5-1D1"/>
+                            <constraint firstItem="fSd-6z-mQT" firstAttribute="top" secondItem="IEP-yx-bqJ" secondAttribute="bottom" constant="43" id="qMK-Om-WYY"/>
                             <constraint firstItem="IEP-yx-bqJ" firstAttribute="leading" secondItem="KXH-lC-Sga" secondAttribute="leadingMargin" constant="39" id="uzS-PR-fAC"/>
-                            <constraint firstItem="ub3-F2-2uP" firstAttribute="centerX" secondItem="fSd-6z-mQT" secondAttribute="centerX" constant="-1" id="wDA-dg-C8t"/>
-                            <constraint firstItem="IEP-yx-bqJ" firstAttribute="centerX" secondItem="PzV-jf-CAZ" secondAttribute="centerX" constant="-70.5" id="xgD-1z-Fbu"/>
+                            <constraint firstItem="ub3-F2-2uP" firstAttribute="centerX" secondItem="fSd-6z-mQT" secondAttribute="centerX" id="wDA-dg-C8t"/>
+                            <constraint firstItem="IEP-yx-bqJ" firstAttribute="centerX" secondItem="PzV-jf-CAZ" secondAttribute="centerX" constant="-71.5" id="xgD-1z-Fbu"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="HNo-qx-yYC">
@@ -346,6 +347,7 @@
                     <connections>
                         <outlet property="password" destination="fSd-6z-mQT" id="sQV-xo-SlD"/>
                         <outlet property="username" destination="IEP-yx-bqJ" id="CC5-UI-I0u"/>
+                        <segue destination="KBP-Cf-XLc" kind="show" identifier="signedUp2" id="HaJ-eE-7kj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zL7-O0-S3y" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -958,7 +960,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1177.5" y="-602.5"/>
+            <point key="canvasLocation" x="1177.5" y="-538.5"/>
         </scene>
         <!--ProfileVC-->
         <scene sceneID="wj0-dc-yr4">
@@ -1097,8 +1099,8 @@
         <image name="profile-pic-1" width="592" height="592"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Udb-FK-6c5"/>
-        <segue reference="nfZ-5d-aso"/>
         <segue reference="WVb-AW-T6s"/>
+        <segue reference="HaJ-eE-7kj"/>
+        <segue reference="8cE-Yl-DNe"/>
     </inferredMetricsTieBreakers>
 </document>

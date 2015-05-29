@@ -8,7 +8,7 @@
 
 import UIKit
 
-class loginVC: UIViewController,floatMenuDelegate, UITextFieldDelegate  {
+class loginVC: UIViewController, floatMenuDelegate, UITextFieldDelegate  {
     
     @IBOutlet var username: MKTextField!
     
@@ -40,6 +40,7 @@ class loginVC: UIViewController,floatMenuDelegate, UITextFieldDelegate  {
         username.bottomBorderEnabled = true
         username.attributedPlaceholder = NSAttributedString(string:"Username..",
             attributes:[NSForegroundColorAttributeName: UIColor.orangeColor()])
+        username.delegate = self
         
         password.layer.borderColor = UIColor.clearColor().CGColor
         password.floatingPlaceholderEnabled = true
@@ -51,6 +52,7 @@ class loginVC: UIViewController,floatMenuDelegate, UITextFieldDelegate  {
         //self.view.backgroundColor = UIColor.orangeColor()
         password.attributedPlaceholder = NSAttributedString(string:"Password..",
             attributes:[NSForegroundColorAttributeName: UIColor.orangeColor()])
+        password.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
