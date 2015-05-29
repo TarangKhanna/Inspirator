@@ -712,10 +712,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="106" sectionHeaderHeight="18" sectionFooterHeight="20" translatesAutoresizingMaskIntoConstraints="NO" id="lNp-7M-5Pw">
-                                <rect key="frame" x="0.0" y="36" width="400" height="659"/>
+                                <rect key="frame" x="0.0" y="64" width="400" height="631"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="659" id="KAd-bV-VzF"/>
+                                    <constraint firstAttribute="height" constant="631" id="KAd-bV-VzF"/>
                                     <constraint firstAttribute="width" constant="400" id="cbw-CP-Yq3"/>
                                 </constraints>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="xP9-5q-Qpy">
@@ -931,7 +931,7 @@
                             <constraint firstItem="lNp-7M-5Pw" firstAttribute="leading" secondItem="wYT-dr-d0t" secondAttribute="leading" id="WXA-Nt-C0c"/>
                             <constraint firstItem="lNp-7M-5Pw" firstAttribute="top" secondItem="MZu-n5-CTc" secondAttribute="bottom" constant="-44" id="bgC-yU-Ti3"/>
                             <constraint firstItem="a4L-Rt-oWz" firstAttribute="top" secondItem="lNp-7M-5Pw" secondAttribute="bottom" constant="-29" id="fJI-6k-KvU"/>
-                            <constraint firstItem="lNp-7M-5Pw" firstAttribute="top" secondItem="wYT-dr-d0t" secondAttribute="topMargin" constant="36" id="n2t-Gb-1sf"/>
+                            <constraint firstItem="lNp-7M-5Pw" firstAttribute="top" secondItem="wYT-dr-d0t" secondAttribute="topMargin" constant="64" id="n2t-Gb-1sf"/>
                             <constraint firstAttribute="bottomMargin" secondItem="lNp-7M-5Pw" secondAttribute="bottom" constant="-28" id="sjo-bw-bHm"/>
                             <constraint firstItem="lNp-7M-5Pw" firstAttribute="leading" secondItem="wYT-dr-d0t" secondAttribute="leadingMargin" constant="-16" id="wor-ls-97j"/>
                         </constraints>
