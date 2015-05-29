@@ -185,7 +185,7 @@ class NoBack: UIViewController, floatMenuDelegate , FBSDKLoginButtonDelegate, UI
                     SCLAlertView().showWarning("SignUp Info", subTitle: "The Username Is Already Taken")
                 } else {
                     println("Signed Up!!")
-                    SCLAlertView().showInfo("Signed Up", subTitle: "Let's Get Going!", closeButtonTitle: "", duration: 2)
+                    SCLAlertView().showInfo("Signed Up", subTitle: "Let's Get Going!", closeButtonTitle: "Ok", duration: 2)
                 }
             }
         }

@@ -95,26 +95,14 @@
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="p8z-fX-CwG" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="AIZ-ld-Y1a"/>
                             <constraint firstItem="p8z-fX-CwG" firstAttribute="top" secondItem="YAu-e6-wkM" secondAttribute="bottom" constant="8" symbolic="YES" id="ChW-LF-yiq"/>
                             <constraint firstItem="YAu-e6-wkM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="15" id="HNz-cf-7wq"/>
-                            <constraint firstAttribute="trailing" secondItem="p8z-fX-CwG" secondAttribute="trailing" id="KEV-gG-TdU"/>
                             <constraint firstAttribute="bottom" secondItem="p8z-fX-CwG" secondAttribute="bottom" constant="20" symbolic="YES" id="Oug-cy-2kI"/>
-                            <constraint firstItem="p8z-fX-CwG" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="PlX-OP-9M5"/>
                             <constraint firstItem="YAu-e6-wkM" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="XOR-DI-W3i"/>
                             <constraint firstItem="YAu-e6-wkM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lW5-ga-B8q"/>
                             <constraint firstItem="p8z-fX-CwG" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="167" id="oIe-hz-757"/>
-                            <constraint firstItem="p8z-fX-CwG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="xGH-e4-fkR"/>
                             <constraint firstItem="p8z-fX-CwG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="zPg-uq-eF6"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="AIZ-ld-Y1a"/>
-                                <exclude reference="KEV-gG-TdU"/>
-                                <exclude reference="PlX-OP-9M5"/>
-                                <exclude reference="xGH-e4-fkR"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Motivation" id="96W-GF-yRU">
                         <barButtonItem key="backBarButtonItem" title="OK maybe this time" id="5Mz-La-gOf"/>
@@ -123,7 +111,7 @@
                                 <segue destination="cXI-kJ-w0P" kind="show" identifier="noBack" id="eLD-pB-yh1"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Login" id="9Hu-Jb-Uc6">
+                        <barButtonItem key="rightBarButtonItem" image="M-50" id="9Hu-Jb-Uc6">
                             <connections>
                                 <action selector="timelineShow:" destination="BYZ-38-t0r" id="peG-EJ-LDX"/>
                             </connections>
@@ -417,6 +405,7 @@
                     <connections>
                         <outlet property="password" destination="UCc-7J-9m2" id="Wfq-bh-HbO"/>
                         <outlet property="username" destination="WCy-E0-MFu" id="VmR-Og-naT"/>
+                        <segue destination="KBP-Cf-XLc" kind="show" identifier="loggedIn2" id="RbL-F9-heb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XwJ-Ad-Yi1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1097,11 +1086,13 @@
     <resources>
         <image name="EditFile-50" width="25" height="25"/>
         <image name="Left-100" width="33" height="33"/>
+        <image name="M-50" width="16" height="16"/>
         <image name="icon-star" width="30" height="30"/>
         <image name="profile-pic-1" width="592" height="592"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Udb-FK-6c5"/>
+        <segue reference="nfZ-5d-aso"/>
         <segue reference="WVb-AW-T6s"/>
-        <segue reference="8cE-Yl-DNe"/>
     </inferredMetricsTieBreakers>
 </document>

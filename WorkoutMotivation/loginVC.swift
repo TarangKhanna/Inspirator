@@ -67,7 +67,8 @@ class loginVC: UIViewController,floatMenuDelegate, UITextFieldDelegate  {
                     (user: PFUser?, error: NSError?) -> Void in
                     if user != nil{
                         println("logged in")
-                        
+                        self.performSegueWithIdentifier("loggedIn2", sender: self)
+                        SCLAlertView().showInfo("Signed In", subTitle: "Let's Get Going!", closeButtonTitle: "Ok", duration: 2)
                     } else {
                         // signUp()
                         SCLAlertView().showWarning("SignIn Info", subTitle: "Incorrect Username or Password")
@@ -76,4 +77,14 @@ class loginVC: UIViewController,floatMenuDelegate, UITextFieldDelegate  {
                 }
             }
         }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        self.view.endEditing(true)
+    }
+    
 }

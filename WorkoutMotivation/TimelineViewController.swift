@@ -33,19 +33,19 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             performSegueWithIdentifier("signIn", sender: self)
         }
         
-        if var query = PFUser.query() { //querying parse for user names
-            query.whereKey("username", notEqualTo: "")
-            
-            var users = query.findObjects()
-            
-            if let users = users as? [PFObject] {
-                for user in users {
-                    var user2:PFUser = user as! PFUser
-                    println(user2.username!)
-                    //self.userArray.append(user2.username!)
-                }
-            }
-        }
+//        if var query = PFUser.query() { //querying parse for user names
+//            query.whereKey("username", notEqualTo: "")
+//            
+//            var users = query.findObjects()
+//            
+//            if let users = users as? [PFObject] {
+//                for user in users {
+//                    var user2:PFUser = user as! PFUser
+//                    println(user2.username!)
+//                    //self.userArray.append(user2.username!)
+//                }
+//            }
+//        }
         
         //            query.findObjectsInBackgroundWithBlock {
         //                (users: [AnyObject]?, error: NSError?) -> Void in
@@ -105,16 +105,16 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         //        locationManager.delegate = self
         //        locationManager.requestWhenInUseAuthorization()
         //        locationManager.startUpdatingLocation()
-        post()
+        //post1()
         retrieve()
     }
     
     
-    func post() {
+    func post1() {
         var person = PFObject(className:"Person")
         person["score"] = 1337
         person["username"] = PFUser.currentUser()?.username //"Tarang"
-        person["admin"] = true
+        //person["admin"] = true
         person["text"] = "First Check"
         person.saveInBackgroundWithBlock {
             (success: Bool, error: NSError?) -> Void in
