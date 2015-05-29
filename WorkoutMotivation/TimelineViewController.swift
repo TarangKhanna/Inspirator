@@ -94,8 +94,8 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
 //        postData.placeholder = "Placeholder"
 //        postData.tintColor = UIColor.grayColor()
         //self.navigationController?.navigationBar.barStyle = UIBarStyle.BlackTranslucent
-        //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "loginBG.png")!)
-        self.view.backgroundColor = UIColor(red: 90/255.0, green: 187/255.0, blue: 181/255.0, alpha: 1.0) //teal
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "loginBG.png")!)
+        //self.view.backgroundColor = UIColor(red: 90/255.0, green: 187/255.0, blue: 181/255.0, alpha: 1.0) //teal
         //self.navigationController?.hidesBarsOnSwipe = true
         //self.navigationController?.navigationBar.backgroundColor = UIColor(red: 90/255.0, green: 187/255.0, blue: 181/255.0, alpha: 1.0) //teal
         tableView.delegate = self
@@ -195,9 +195,9 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         
             let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCell") as! TimelineCell
             if  indexPath.row % 2 == 0 {
-                cell.backgroundColor = UIColor.orangeColor()
-            } else {
                 cell.backgroundColor = UIColor.redColor()
+            } else {
+                cell.backgroundColor = UIColor.purpleColor()
             }
             cell.typeImageView.image = UIImage(named: "timeline-chat")
             cell.profileImageView.image = UIImage(named: "profile-pic-1")
@@ -233,6 +233,8 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         self.modalPresentationStyle = UIModalPresentationStyle.Custom
         //toViewController.transitioningDelegate = self.transitionOperator
     }
-    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
 }
 
