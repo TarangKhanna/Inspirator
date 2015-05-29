@@ -919,7 +919,7 @@
                             <constraint firstItem="lNp-7M-5Pw" firstAttribute="leading" secondItem="wYT-dr-d0t" secondAttribute="leading" id="zNi-Um-8JQ"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="al2-Uw-owd">
                         <barButtonItem key="rightBarButtonItem" image="EditFile-50" id="R66-Ia-ygQ"/>
                     </navigationItem>
