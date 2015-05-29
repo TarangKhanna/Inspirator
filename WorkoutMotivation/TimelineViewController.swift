@@ -167,7 +167,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                 }
             })
         }
-
+        
     }
     
     @IBAction func GoLeft(sender: AnyObject) {
@@ -281,6 +281,36 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         } else if(row == 4) {
             //new
         }
+    }
+    @IBAction func post(sender: AnyObject) {
+        let alert = SCLAlertView() // input dialog
+        let txt = alert.addTextField(title:"Enter Your Thoughts")
+        alert.addButton("Post") {
+            println("Text value: \(txt.text)")
+        }
+        alert.showEdit("Post", subTitle:"Type Something Inspirational:")
+        
+        var person = PFObject(className:"Person")
+        person["score"] = 42
+        person["username"] = PFUser.currentUser()?.username //"Tarang"
+        //person["admin"] = true
+        person["text"] = txt.text
+        person.saveInBackgroundWithBlock {
+            (success: Bool, error: NSError?) -> Void in
+            if (success) {
+                println("Posted!")
+                // refresh
+                self.retrieve()
+                //tableView.reloadData()
+                // The object has been saved.
+                //self.tableView.reloadData()
+            } else {
+                println("Couldn't post!")
+                SCLAlertView().showWarning("Error Posting", subTitle: "Check Your Internet Connection.")
+                // There was a problem, check error.description
+            }
+        }
+        // parse
     }
 }
 

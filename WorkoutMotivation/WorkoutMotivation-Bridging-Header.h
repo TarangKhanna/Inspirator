@@ -9,6 +9,7 @@
 #import "FXBlurView.h"
 #import <Bolts/BFTask.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "VMGearLoadingView.h"
 #import <FBSDKCoreKit/FBSDKTestUsersManager.h>
 #ifndef FacebookTutorial_Bridging_Header_h
 #define FacebookTutorial_Bridging_Header_h

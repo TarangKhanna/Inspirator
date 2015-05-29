@@ -58,6 +58,16 @@
 		71AF79D41B181574007953CD /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AF79D01B181574007953CD /* Member.swift */; };
 		71AF79D51B181574007953CD /* TipInCellAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AF79D11B181574007953CD /* TipInCellAnimator.swift */; };
 		71AF79D71B181647007953CD /* TeamMembers.json in Resources */ = {isa = PBXBuildFile; fileRef = 71AF79D61B181647007953CD /* TeamMembers.json */; };
+		71AF79DA1B190987007953CD /* VMGearLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AF79D91B190987007953CD /* VMGearLoadingView.m */; };
+		71AF79E51B1909EF007953CD /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71AF79DC1B1909EF007953CD /* background@2x.png */; };
+		71AF79E61B1909EF007953CD /* background@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71AF79DD1B1909EF007953CD /* background@3x.png */; };
+		71AF79E71B1909EF007953CD /* gears 1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71AF79DE1B1909EF007953CD /* gears 1@2x.png */; };
+		71AF79E81B1909EF007953CD /* gears 1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71AF79DF1B1909EF007953CD /* gears 1@3x.png */; };
+		71AF79E91B1909EF007953CD /* gears 2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71AF79E01B1909EF007953CD /* gears 2@2x.png */; };
+		71AF79EA1B1909EF007953CD /* gears 2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71AF79E11B1909EF007953CD /* gears 2@3x.png */; };
+		71AF79EB1B1909EF007953CD /* gears 3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71AF79E21B1909EF007953CD /* gears 3@2x.png */; };
+		71AF79EC1B1909EF007953CD /* gears 3@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71AF79E31B1909EF007953CD /* gears 3@3x.png */; };
+		71AF79ED1B1909EF007953CD /* imgDemo.png in Resources */ = {isa = PBXBuildFile; fileRef = 71AF79E41B1909EF007953CD /* imgDemo.png */; };
 		71CEE5F31B1283F000E85AA2 /* CardioVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CEE5F21B1283F000E85AA2 /* CardioVC.swift */; };
 		71CEE5F61B12BB8100E85AA2 /* StudyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CEE5F51B12BB8100E85AA2 /* StudyVC.swift */; };
 		71CEE6001B12C46B00E85AA2 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71CEE5FF1B12C46B00E85AA2 /* Bolts.framework */; };
@@ -144,6 +154,17 @@
 		71AF79D01B181574007953CD /* Member.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 		71AF79D11B181574007953CD /* TipInCellAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipInCellAnimator.swift; sourceTree = "<group>"; };
 		71AF79D61B181647007953CD /* TeamMembers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TeamMembers.json; sourceTree = "<group>"; };
+		71AF79D81B190987007953CD /* VMGearLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VMGearLoadingView.h; sourceTree = "<group>"; };
+		71AF79D91B190987007953CD /* VMGearLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VMGearLoadingView.m; sourceTree = "<group>"; };
+		71AF79DC1B1909EF007953CD /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
+		71AF79DD1B1909EF007953CD /* background@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@3x.png"; sourceTree = "<group>"; };
+		71AF79DE1B1909EF007953CD /* gears 1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gears 1@2x.png"; sourceTree = "<group>"; };
+		71AF79DF1B1909EF007953CD /* gears 1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gears 1@3x.png"; sourceTree = "<group>"; };
+		71AF79E01B1909EF007953CD /* gears 2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gears 2@2x.png"; sourceTree = "<group>"; };
+		71AF79E11B1909EF007953CD /* gears 2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gears 2@3x.png"; sourceTree = "<group>"; };
+		71AF79E21B1909EF007953CD /* gears 3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gears 3@2x.png"; sourceTree = "<group>"; };
+		71AF79E31B1909EF007953CD /* gears 3@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gears 3@3x.png"; sourceTree = "<group>"; };
+		71AF79E41B1909EF007953CD /* imgDemo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imgDemo.png; sourceTree = "<group>"; };
 		71CEE5F21B1283F000E85AA2 /* CardioVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardioVC.swift; path = WorkoutMotivation/CardioVC.swift; sourceTree = "<group>"; };
 		71CEE5F51B12BB8100E85AA2 /* StudyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyVC.swift; sourceTree = "<group>"; };
 		71CEE5F71B12C00D00E85AA2 /* WorkoutMotivation-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WorkoutMotivation-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -227,6 +248,7 @@
 		7109A8E51B04306900435D3C /* WorkoutMotivation */ = {
 			isa = PBXGroup;
 			children = (
+				71AF79DB1B19098C007953CD /* GearsLoading */,
 				71AF79CE1B181574007953CD /* CardTableViewCell.swift */,
 				71AF79CF1B181574007953CD /* MainViewController.swift */,
 				71AF79D01B181574007953CD /* Member.swift */,
@@ -256,6 +278,7 @@
 		7109A8E61B04306900435D3C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				71AF79EE1B1909FE007953CD /* gearImages */,
 				71AF79D61B181647007953CD /* TeamMembers.json */,
 				7128A9551B0A98520035C41E /* SCLAlertView.swift */,
 				71AF79C71B17D272007953CD /* AvatarImageView.swift */,
@@ -324,6 +347,31 @@
 				71CEE6101B13087900E85AA2 /* MKTextField.swift */,
 			);
 			name = MaterialKit;
+			sourceTree = "<group>";
+		};
+		71AF79DB1B19098C007953CD /* GearsLoading */ = {
+			isa = PBXGroup;
+			children = (
+				71AF79D81B190987007953CD /* VMGearLoadingView.h */,
+				71AF79D91B190987007953CD /* VMGearLoadingView.m */,
+			);
+			name = GearsLoading;
+			sourceTree = "<group>";
+		};
+		71AF79EE1B1909FE007953CD /* gearImages */ = {
+			isa = PBXGroup;
+			children = (
+				71AF79DC1B1909EF007953CD /* background@2x.png */,
+				71AF79DD1B1909EF007953CD /* background@3x.png */,
+				71AF79DE1B1909EF007953CD /* gears 1@2x.png */,
+				71AF79DF1B1909EF007953CD /* gears 1@3x.png */,
+				71AF79E01B1909EF007953CD /* gears 2@2x.png */,
+				71AF79E11B1909EF007953CD /* gears 2@3x.png */,
+				71AF79E21B1909EF007953CD /* gears 3@2x.png */,
+				71AF79E31B1909EF007953CD /* gears 3@3x.png */,
+				71AF79E41B1909EF007953CD /* imgDemo.png */,
+			);
+			name = gearImages;
 			sourceTree = "<group>";
 		};
 		71CEE5F41B12BA7E00E85AA2 /* VC's */ = {
@@ -442,11 +490,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				71AF79D71B181647007953CD /* TeamMembers.json in Resources */,
+				71AF79E81B1909EF007953CD /* gears 1@3x.png in Resources */,
 				7109A8EE1B04306900435D3C /* Main.storyboard in Resources */,
 				7109A8F31B04306900435D3C /* LaunchScreen.xib in Resources */,
+				71AF79E91B1909EF007953CD /* gears 2@2x.png in Resources */,
+				71AF79EB1B1909EF007953CD /* gears 3@2x.png in Resources */,
+				71AF79E51B1909EF007953CD /* background@2x.png in Resources */,
 				7109A8F01B04306900435D3C /* Images.xcassets in Resources */,
+				71AF79ED1B1909EF007953CD /* imgDemo.png in Resources */,
+				71AF79E71B1909EF007953CD /* gears 1@2x.png in Resources */,
+				71AF79EA1B1909EF007953CD /* gears 2@3x.png in Resources */,
 				71CEE6091B12CBDE00E85AA2 /* floatTableViewCell.xib in Resources */,
+				71AF79EC1B1909EF007953CD /* gears 3@3x.png in Resources */,
 				7128A98A1B0B17590035C41E /* Button.xcassets in Resources */,
+				71AF79E61B1909EF007953CD /* background@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,6 +540,7 @@
 				716B874E1B152E9D00B7E955 /* TimelineCell.swift in Sources */,
 				71AF79D51B181574007953CD /* TipInCellAnimator.swift in Sources */,
 				716B87511B15384000B7E955 /* ParseTableView.swift in Sources */,
+				71AF79DA1B190987007953CD /* VMGearLoadingView.m in Sources */,
 				719D538A1B066E1900DD34CD /* NavigationControl.swift in Sources */,
 				7128A9541B0A93C30035C41E /* PureVC.swift in Sources */,
 				7109A8E91B04306900435D3C /* AppDelegate.swift in Sources */,
