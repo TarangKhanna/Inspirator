@@ -68,7 +68,7 @@ class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             //fb
             if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook){
                 var facebookSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
-                facebookSheet.setInitialText("Share on Facebook")
+                facebookSheet.setInitialText("#GetMotivated")
                 self.presentViewController(facebookSheet, animated: true, completion: nil)
             } else {
                 //var alert = UIAlertController(title: "Accounts", message: "Please login to a Facebook account from the iOS app to share.", preferredStyle: UIAlertControllerStyle.Alert)
@@ -80,7 +80,7 @@ class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             //twitter
             if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter){
                 var twitterSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-                twitterSheet.setInitialText("Share on Twitter")
+                twitterSheet.setInitialText("#GetMotivated")
                 self.presentViewController(twitterSheet, animated: true, completion: nil)
             } else {
                 SCLAlertView().showWarning("Accounts", subTitle: "Please login to a Twitter account from the iOS app to share.")

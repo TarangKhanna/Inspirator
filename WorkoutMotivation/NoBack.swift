@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Social
 
 class NoBack: UIViewController, floatMenuDelegate , FBSDKLoginButtonDelegate, UITextFieldDelegate {
     @IBOutlet var username: MKTextField!
@@ -141,11 +142,6 @@ class NoBack: UIViewController, floatMenuDelegate , FBSDKLoginButtonDelegate, UI
         })
     }
     
-    func didSelectMenuOptionAtIndex(row : NSInteger) {
-        println(row)
-    }
-    
-    
 //    @IBAction func signIn(sender: AnyObject) {
 //        if username.text == "" || password.text == "" {
 //            SCLAlertView().showWarning("SignIn Info", subTitle: "Please include your username and password")
@@ -204,6 +200,39 @@ class NoBack: UIViewController, floatMenuDelegate , FBSDKLoginButtonDelegate, UI
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         self.view.endEditing(true)
+    }
+    
+    func didSelectMenuOptionAtIndex(row : NSInteger) {
+        println(row)
+        if(row == 0) {
+            //fb
+            if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook){
+                var facebookSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+                facebookSheet.setInitialText("#GetMotivated")
+                self.presentViewController(facebookSheet, animated: true, completion: nil)
+            } else {
+                //var alert = UIAlertController(title: "Accounts", message: "Please login to a Facebook account from the iOS app to share.", preferredStyle: UIAlertControllerStyle.Alert)
+                SCLAlertView().showWarning("Accounts", subTitle: "Please login to a Facebook account from the iOS app to share.")
+                //alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                //self.presentViewController(alert, animated: true, completion: nil)
+            }
+        } else if(row == 1) {
+            //twitter
+            if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter){
+                var twitterSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+                twitterSheet.setInitialText("#GetMotivated")
+                self.presentViewController(twitterSheet, animated: true, completion: nil)
+            } else {
+                SCLAlertView().showWarning("Accounts", subTitle: "Please login to a Twitter account from the iOS app to share.")
+                //self.presentViewController(alert, animated: true, completion: nil)
+            }
+        } else if(row == 2) {
+            //google+
+        } else if(row == 3) {
+            //LinkedIn
+        } else if(row == 4) {
+            //new
+        }
     }
     
 }

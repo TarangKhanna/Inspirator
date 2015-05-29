@@ -12,8 +12,9 @@ import Foundation
 import UIKit
 import MapKit
 import Parse
+import Social
 
-class TimelineViewController : UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+class TimelineViewController : UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, floatMenuDelegate {
     
     @IBOutlet var postData: MKTextField!
     @IBOutlet var tableView : UITableView!
@@ -113,6 +114,14 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         //        locationManager.requestWhenInUseAuthorization()
         //        locationManager.startUpdatingLocation()
         //post1()
+        let floatFrame:CGRect = (CGRectMake(UIScreen.mainScreen().bounds.size.width - 44 - 20, UIScreen.mainScreen().bounds.size.height - 44 - 20, 44, 44))
+        let actionButton : VCFloatingActionButton = VCFloatingActionButton(frame: floatFrame, normalImage: UIImage(named: "plus.png"), andPressedImage: UIImage(named: "cross.png"), withScrollview: tableView)
+        //actionButton.normalImage = UIImage(named: "plus.png")!
+        self.view.addSubview(actionButton)
+        actionButton.imageArray = ["fb-icon.png","twitter-icon.png","google-icon.png","linkedin-icon.png"]
+        actionButton.labelArray = ["Facebook","Twitter","Google Plus","LinkedIn"]
+        actionButton.delegate = self
+        actionButton.hideWhileScrolling = true
         retrieve()
     }
     
@@ -220,6 +229,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
 //            cell.dateLabel.text = "3 mins ago from UIUC (200m away)"
 //            return cell
 //        }
+        
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -238,6 +248,39 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     }
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+    
+    func didSelectMenuOptionAtIndex(row : NSInteger) {
+        println(row)
+        if(row == 0) {
+            //fb
+            if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook){
+                var facebookSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+                facebookSheet.setInitialText("#GetMotivated")
+                self.presentViewController(facebookSheet, animated: true, completion: nil)
+            } else {
+                //var alert = UIAlertController(title: "Accounts", message: "Please login to a Facebook account from the iOS app to share.", preferredStyle: UIAlertControllerStyle.Alert)
+                SCLAlertView().showWarning("Accounts", subTitle: "Please login to a Facebook account from the iOS app to share.")
+                //alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                //self.presentViewController(alert, animated: true, completion: nil)
+            }
+        } else if(row == 1) {
+            //twitter
+            if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter){
+                var twitterSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+                twitterSheet.setInitialText("#GetMotivated")
+                self.presentViewController(twitterSheet, animated: true, completion: nil)
+            } else {
+                SCLAlertView().showWarning("Accounts", subTitle: "Please login to a Twitter account from the iOS app to share.")
+                //self.presentViewController(alert, animated: true, completion: nil)
+            }
+        } else if(row == 2) {
+            //google+
+        } else if(row == 3) {
+            //LinkedIn
+        } else if(row == 4) {
+            //new
+        }
     }
 }
 
