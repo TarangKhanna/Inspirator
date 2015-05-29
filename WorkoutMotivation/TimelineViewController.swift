@@ -92,11 +92,9 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
 //        postData.layer.borderColor = UIColor.clearColor().CGColor
 //        postData.placeholder = "Placeholder"
 //        postData.tintColor = UIColor.grayColor()
-        
-        navigationController?.hidesBarsOnSwipe = true
-        navigationController?.navigationBar.backgroundColor = UIColor(red: 90/255.0, green: 187/255.0, blue: 181/255.0, alpha: 1.0) //teal
-        navigationController?.hidesBarsOnTap = true
-        navigationController?.interactivePopGestureRecognizer.delegate = nil
+        self.view.backgroundColor = UIColor(red: 90/255.0, green: 187/255.0, blue: 181/255.0, alpha: 1.0) //teal
+        self.navigationController?.hidesBarsOnSwipe = true
+        //self.navigationController?.navigationBar.backgroundColor = UIColor(red: 90/255.0, green: 187/255.0, blue: 181/255.0, alpha: 1.0) //teal
         tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = 100.0;
