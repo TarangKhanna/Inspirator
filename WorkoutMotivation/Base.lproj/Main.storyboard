@@ -978,8 +978,22 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7ig-aa-S34" userLabel="Header">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="107"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tarang Khanna" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lry-MD-VL6">
+                                        <rect key="frame" x="114" y="104" width="148" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="148" id="hXm-zi-f5k"/>
+                                            <constraint firstAttribute="height" constant="21" id="pVG-kD-aqx"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="lry-MD-VL6" firstAttribute="leading" secondItem="7ig-aa-S34" secondAttribute="leading" constant="114" id="C1T-1X-HUW"/>
+                                    <constraint firstAttribute="bottom" secondItem="lry-MD-VL6" secondAttribute="bottom" constant="-18" id="fHH-az-knb"/>
                                     <constraint firstAttribute="height" constant="107" id="sDb-rO-o5n"/>
                                 </constraints>
                             </view>
@@ -1074,6 +1088,7 @@
                     <connections>
                         <outlet property="avatarImage" destination="1Mp-km-1dp" id="rMb-1T-Jjy"/>
                         <outlet property="header" destination="7ig-aa-S34" id="yZf-8L-Re9"/>
+                        <outlet property="headerLabel" destination="lry-MD-VL6" id="pO0-j5-nTO"/>
                         <outlet property="scrollView" destination="j8H-mu-O7O" id="ktU-Ca-203"/>
                     </connections>
                 </viewController>
