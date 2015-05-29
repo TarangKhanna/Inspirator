@@ -78,6 +78,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.automaticallyAdjustsScrollViewInsets = false
 //        let imgView = MKImageView(frame: CGRect(x: 0, y: 0, width: 44, height: 32))
 //        imgView.image = UIImage(named: "EditFile-50.png")
 //        imgView.backgroundAniEnabled = false
@@ -93,6 +94,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
 //        postData.placeholder = "Placeholder"
 //        postData.tintColor = UIColor.grayColor()
         //self.navigationController?.navigationBar.barStyle = UIBarStyle.BlackTranslucent
+        //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "loginBG.png")!)
         self.view.backgroundColor = UIColor(red: 90/255.0, green: 187/255.0, blue: 181/255.0, alpha: 1.0) //teal
         //self.navigationController?.hidesBarsOnSwipe = true
         //self.navigationController?.navigationBar.backgroundColor = UIColor(red: 90/255.0, green: 187/255.0, blue: 181/255.0, alpha: 1.0) //teal
@@ -101,6 +103,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         tableView.estimatedRowHeight = 100.0;
         tableView.rowHeight = UITableViewAutomaticDimension;
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        
         
         //menuItem.image = UIImage(named: "menu")
         //toolbar.tintColor = UIColor.blackColor()
@@ -189,8 +192,13 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         //if (indexPath.row == 0) {
+        
             let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCell") as! TimelineCell
-            
+            if  indexPath.row % 2 == 0 {
+                cell.backgroundColor = UIColor.orangeColor()
+            } else {
+                cell.backgroundColor = UIColor.redColor()
+            }
             cell.typeImageView.image = UIImage(named: "timeline-chat")
             cell.profileImageView.image = UIImage(named: "profile-pic-1")
             cell.nameLabel.text = userArray[indexPath.row]

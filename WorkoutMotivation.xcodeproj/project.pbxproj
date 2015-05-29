@@ -224,7 +224,6 @@
 				71AF79C51B17D1F1007953CD /* profileVC.swift */,
 				716B87501B15384000B7E955 /* ParseTableView.swift */,
 				7128A91F1B087FF70035C41E /* ProgrammingQuotes.swift */,
-				7128A9551B0A98520035C41E /* SCLAlertView.swift */,
 				7135F2C21B080711002ACD53 /* WeigthsQuotes.swift */,
 				719D53891B066E1900DD34CD /* NavigationControl.swift */,
 				719D537F1B046D6900DD34CD /* MotivationCell.swift */,
@@ -243,6 +242,7 @@
 		7109A8E61B04306900435D3C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7128A9551B0A98520035C41E /* SCLAlertView.swift */,
 				71AF79C71B17D272007953CD /* AvatarImageView.swift */,
 				71CEE5F71B12C00D00E85AA2 /* WorkoutMotivation-Bridging-Header.h */,
 				716B874B1B152A6C00B7E955 /* MaterialKit */,

@@ -2,6 +2,8 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gwd-AI-R31">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -92,10 +94,20 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="vaF-t4-1eb"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aqk-xY-4vf">
+                                <rect key="frame" x="164" y="97" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="SmG-4h-JjE" kind="show" id="QUI-6E-DYR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="p8z-fX-CwG" firstAttribute="top" secondItem="YAu-e6-wkM" secondAttribute="bottom" constant="18" id="EWj-G4-Vi2"/>
+                            <constraint firstItem="aqk-xY-4vf" firstAttribute="baseline" secondItem="YAu-e6-wkM" secondAttribute="firstBaseline" id="KQd-pn-GQI"/>
                             <constraint firstItem="p8z-fX-CwG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="MPA-0z-B5o"/>
                             <constraint firstAttribute="trailing" secondItem="p8z-fX-CwG" secondAttribute="trailing" id="TdT-Ed-7eX"/>
                             <constraint firstItem="p8z-fX-CwG" firstAttribute="top" secondItem="YAu-e6-wkM" secondAttribute="bottom" constant="18" id="Tky-Aq-U4S"/>
@@ -103,6 +115,7 @@
                             <constraint firstItem="YAu-e6-wkM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="15" id="faR-ci-ebS"/>
                             <constraint firstItem="YAu-e6-wkM" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="qQg-yS-M7H"/>
                             <constraint firstItem="YAu-e6-wkM" firstAttribute="centerX" secondItem="p8z-fX-CwG" secondAttribute="centerX" id="uEZ-rt-3hW"/>
+                            <constraint firstItem="aqk-xY-4vf" firstAttribute="centerX" secondItem="YAu-e6-wkM" secondAttribute="centerX" id="wQj-t5-NAt"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -111,7 +124,6 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Motivation" id="96W-GF-yRU">
-                        <barButtonItem key="backBarButtonItem" title="OK maybe this time" id="5Mz-La-gOf"/>
                         <barButtonItem key="leftBarButtonItem" image="Left-100" id="FPF-nm-X6U">
                             <connections>
                                 <segue destination="cXI-kJ-w0P" kind="show" identifier="noBack" id="eLD-pB-yh1"/>
@@ -439,6 +451,25 @@
             </objects>
             <point key="canvasLocation" x="584.5" y="326.5"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="63l-yJ-gIb">
+            <objects>
+                <viewController id="SmG-4h-JjE" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JzU-lg-GPw"/>
+                        <viewControllerLayoutGuide type="bottom" id="a5b-bs-3Ip"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8dx-yj-4Wg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="0.55039779259999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="chE-SK-TdV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="641" y="1054"/>
+        </scene>
         <!--Programming-->
         <scene sceneID="voM-a2-bY3">
             <objects>
@@ -708,11 +739,11 @@
                         <viewControllerLayoutGuide type="bottom" id="a4L-Rt-oWz"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="wYT-dr-d0t">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="106" sectionHeaderHeight="18" sectionFooterHeight="20" translatesAutoresizingMaskIntoConstraints="NO" id="lNp-7M-5Pw">
-                                <rect key="frame" x="0.0" y="0.0" width="377" height="607"/>
+                                <rect key="frame" x="0.0" y="64" width="377" height="607"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="xP9-5q-Qpy">
                                     <rect key="frame" x="0.0" y="498" width="377" height="44"/>
@@ -919,7 +950,7 @@
                             <constraint firstItem="lNp-7M-5Pw" firstAttribute="leading" secondItem="wYT-dr-d0t" secondAttribute="leading" id="zNi-Um-8JQ"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" id="al2-Uw-owd">
                         <barButtonItem key="rightBarButtonItem" image="EditFile-50" id="R66-Ia-ygQ"/>
                     </navigationItem>
