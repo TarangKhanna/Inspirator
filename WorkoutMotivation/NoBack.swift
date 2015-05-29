@@ -166,7 +166,7 @@ class NoBack: UIViewController, floatMenuDelegate , FBSDKLoginButtonDelegate, UI
     func signUp2() {
         var user = PFUser()
         if username.text == "" || password.text == "" {
-            SCLAlertView().showWarning("SignIn Info", subTitle: "Please include your username and password")
+            SCLAlertView().showWarning("Sign Up Info", subTitle: "Please include your username and password")
         } else {
             user.username = self.username.text.lowercaseString
             user.password = self.password.text.lowercaseString

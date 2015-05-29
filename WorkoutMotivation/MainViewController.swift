@@ -27,7 +27,7 @@ class MainViewController: UITableViewController {
     super.viewDidLoad()
     
     // appearance and layout customization
-    self.tableView.backgroundView = UIImageView(image:UIImage(named:"background"))
+    self.tableView.backgroundView = UIImageView(image:UIImage(named:"background-2"))
     self.tableView.estimatedRowHeight = 280
     self.tableView.rowHeight = UITableViewAutomaticDimension
     

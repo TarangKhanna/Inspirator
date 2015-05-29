@@ -34,19 +34,19 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             performSegueWithIdentifier("signIn", sender: self)
         }
         
-//        if var query = PFUser.query() { //querying parse for user names
-//            query.whereKey("username", notEqualTo: "")
-//            
-//            var users = query.findObjects()
-//            
-//            if let users = users as? [PFObject] {
-//                for user in users {
-//                    var user2:PFUser = user as! PFUser
-//                    println(user2.username!)
-//                    //self.userArray.append(user2.username!)
-//                }
-//            }
-//        }
+        //        if var query = PFUser.query() { //querying parse for user names
+        //            query.whereKey("username", notEqualTo: "")
+        //
+        //            var users = query.findObjects()
+        //
+        //            if let users = users as? [PFObject] {
+        //                for user in users {
+        //                    var user2:PFUser = user as! PFUser
+        //                    println(user2.username!)
+        //                    //self.userArray.append(user2.username!)
+        //                }
+        //            }
+        //        }
         
         //            query.findObjectsInBackgroundWithBlock {
         //                (users: [AnyObject]?, error: NSError?) -> Void in
@@ -80,20 +80,20 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false
-//        let imgView = MKImageView(frame: CGRect(x: 0, y: 0, width: 44, height: 32))
-//        imgView.image = UIImage(named: "EditFile-50.png")
-//        imgView.backgroundAniEnabled = false
-//        imgView.rippleLocation = .Center
-//        imgView.ripplePercent = 1.15
-//        imgView.userInteractionEnabled = true
-//        
-//        let rightButton = UIBarButtonItem(customView: imgView)
-//        self.navigationItem.rightBarButtonItem = rightButton
+        //        let imgView = MKImageView(frame: CGRect(x: 0, y: 0, width: 44, height: 32))
+        //        imgView.image = UIImage(named: "EditFile-50.png")
+        //        imgView.backgroundAniEnabled = false
+        //        imgView.rippleLocation = .Center
+        //        imgView.ripplePercent = 1.15
+        //        imgView.userInteractionEnabled = true
+        //
+        //        let rightButton = UIBarButtonItem(customView: imgView)
+        //        self.navigationItem.rightBarButtonItem = rightButton
         
         
-//        postData.layer.borderColor = UIColor.clearColor().CGColor
-//        postData.placeholder = "Placeholder"
-//        postData.tintColor = UIColor.grayColor()
+        //        postData.layer.borderColor = UIColor.clearColor().CGColor
+        //        postData.placeholder = "Placeholder"
+        //        postData.tintColor = UIColor.grayColor()
         //self.navigationController?.navigationBar.barStyle = UIBarStyle.BlackTranslucent
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "loginBG.png")!)
         //self.view.backgroundColor = UIColor(red: 90/255.0, green: 187/255.0, blue: 181/255.0, alpha: 1.0) //teal
@@ -186,9 +186,9 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     //        }
     //    }
     
-//    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
-//        println(error)
-//    }
+    //    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
+    //        println(error)
+    //    }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -203,32 +203,32 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         
         //if (indexPath.row == 0) {
         
-            let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCell") as! TimelineCell
-             cell.backgroundColor = UIColor.clearColor()
-//            if  indexPath.row % 2 == 0 {
-//                cell.backgroundColor = UIColor.redColor()
-//            } else {
-//                cell.backgroundColor = UIColor.purpleColor()
-//            }
-            cell.typeImageView.image = UIImage(named: "timeline-chat")
-            cell.profileImageView.image = UIImage(named: "profile-pic-1")
-            cell.nameLabel.text = userArray[indexPath.row]
-            cell.nameLabel.textColor = UIColor.whiteColor()
-            cell.postLabel?.text = messages[indexPath.row]
-            cell.dateLabel.text = String(score[indexPath.row])
-            
-            return cell
-            
-//        } else{
-//            let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCellPhoto") as! TimelineCell
-//            
-//            cell.typeImageView.image = UIImage(named: "timeline-photo")
-//            cell.profileImageView.image = UIImage(named: "profile-pic-2")
-//            cell.nameLabel.text = "Charlie Su"
-//            cell.photoImageView?.image = UIImage(named: "dish")
-//            cell.dateLabel.text = "3 mins ago from UIUC (200m away)"
-//            return cell
-//        }
+        let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCell") as! TimelineCell
+        cell.backgroundColor = UIColor.clearColor()
+        //            if  indexPath.row % 2 == 0 {
+        //                cell.backgroundColor = UIColor.redColor()
+        //            } else {
+        //                cell.backgroundColor = UIColor.purpleColor()
+        //            }
+        cell.typeImageView.image = UIImage(named: "timeline-chat")
+        cell.profileImageView.image = UIImage(named: "profile-pic-1")
+        cell.nameLabel.text = userArray[userArray.count-indexPath.row-1] // to flip
+        cell.nameLabel.textColor = UIColor.whiteColor()
+        cell.postLabel?.text = messages[userArray.count - indexPath.row-1]
+        cell.dateLabel.text = String(score[userArray.count - indexPath.row-1])
+        
+        return cell
+        
+        //        } else{
+        //            let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCellPhoto") as! TimelineCell
+        //
+        //            cell.typeImageView.image = UIImage(named: "timeline-photo")
+        //            cell.profileImageView.image = UIImage(named: "profile-pic-2")
+        //            cell.nameLabel.text = "Charlie Su"
+        //            cell.photoImageView?.image = UIImage(named: "dish")
+        //            cell.dateLabel.text = "3 mins ago from UIUC (200m away)"
+        //            return cell
+        //        }
         
     }
     
@@ -287,30 +287,36 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         let txt = alert.addTextField(title:"Enter Your Thoughts")
         alert.addButton("Post") {
             println("Text value: \(txt.text)")
+            if txt.text != " " && txt.text != nil && txt.text != ""{
+                var person = PFObject(className:"Person")
+                person["score"] = 42
+                person["username"] = PFUser.currentUser()?.username //"Tarang"
+                person["admin"] = true
+                person["text"] = txt.text
+                person.saveInBackgroundWithBlock {
+                    (success: Bool, error: NSError?) -> Void in
+                    if (success) {
+                        println("Posted!")
+                        // refresh
+                        self.retrieve()
+                        //tableView.reloadData()
+                        // The object has been saved.
+                        //self.tableView.reloadData()
+                    } else {
+                        println("Couldn't post!")
+                        SCLAlertView().showWarning("Error Posting", subTitle: "Check Your Internet Connection.")
+                        // There was a problem, check error.description
+                    }
+                }
+            } else {
+                // empty post
+                SCLAlertView().showWarning("Error Posting", subTitle: "You need to write something in your post.")
+            }
+            // parse
+            self.retrieve()
         }
         alert.showEdit("Post", subTitle:"Type Something Inspirational:")
         
-        var person = PFObject(className:"Person")
-        person["score"] = 42
-        person["username"] = PFUser.currentUser()?.username //"Tarang"
-        //person["admin"] = true
-        person["text"] = txt.text
-        person.saveInBackgroundWithBlock {
-            (success: Bool, error: NSError?) -> Void in
-            if (success) {
-                println("Posted!")
-                // refresh
-                self.retrieve()
-                //tableView.reloadData()
-                // The object has been saved.
-                //self.tableView.reloadData()
-            } else {
-                println("Couldn't post!")
-                SCLAlertView().showWarning("Error Posting", subTitle: "Check Your Internet Connection.")
-                // There was a problem, check error.description
-            }
-        }
-        // parse
     }
 }
 
