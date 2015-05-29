@@ -98,6 +98,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         //self.view.backgroundColor = UIColor(red: 90/255.0, green: 187/255.0, blue: 181/255.0, alpha: 1.0) //teal
         //self.navigationController?.hidesBarsOnSwipe = true
         //self.navigationController?.navigationBar.backgroundColor = UIColor(red: 90/255.0, green: 187/255.0, blue: 181/255.0, alpha: 1.0) //teal
+        tableView.backgroundColor = UIColor.clearColor()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = 100.0;
@@ -194,14 +195,16 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         //if (indexPath.row == 0) {
         
             let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCell") as! TimelineCell
-            if  indexPath.row % 2 == 0 {
-                cell.backgroundColor = UIColor.redColor()
-            } else {
-                cell.backgroundColor = UIColor.purpleColor()
-            }
+             cell.backgroundColor = UIColor.clearColor()
+//            if  indexPath.row % 2 == 0 {
+//                cell.backgroundColor = UIColor.redColor()
+//            } else {
+//                cell.backgroundColor = UIColor.purpleColor()
+//            }
             cell.typeImageView.image = UIImage(named: "timeline-chat")
             cell.profileImageView.image = UIImage(named: "profile-pic-1")
             cell.nameLabel.text = userArray[indexPath.row]
+            cell.nameLabel.textColor = UIColor.whiteColor()
             cell.postLabel?.text = messages[indexPath.row]
             cell.dateLabel.text = String(score[indexPath.row])
             
