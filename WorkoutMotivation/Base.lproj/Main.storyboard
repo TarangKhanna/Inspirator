@@ -17,12 +17,18 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="55" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="p8z-fX-CwG">
-                                <rect key="frame" x="0.0" y="231" width="467" height="416"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Achieve And Inspire" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YAu-e6-wkM">
+                                <rect key="frame" x="31" y="84" width="313" height="139"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="467" id="UX9-Mu-NCq"/>
+                                    <constraint firstAttribute="height" constant="139" id="huT-f5-dHC"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <color key="textColor" red="1" green="0.55039779259999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="highlightedColor" red="0.2274509804" green="0.48627450979999998" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="55" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="p8z-fX-CwG">
+                                <rect key="frame" x="0.0" y="241" width="375" height="426"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationWidth="10" reuseIdentifier="Cell" rowHeight="55" id="igR-X9-TxM" customClass="MotivationCell" customModule="WorkoutMotivation" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -86,23 +92,23 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="vaF-t4-1eb"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Achieve And Inspire" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YAu-e6-wkM">
-                                <rect key="frame" x="31" y="84" width="313" height="139"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                <color key="textColor" red="1" green="0.55039779259999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="highlightedColor" red="0.2274509804" green="0.48627450979999998" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="p8z-fX-CwG" firstAttribute="top" secondItem="YAu-e6-wkM" secondAttribute="bottom" constant="8" symbolic="YES" id="ChW-LF-yiq"/>
-                            <constraint firstItem="YAu-e6-wkM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="15" id="HNz-cf-7wq"/>
-                            <constraint firstAttribute="bottom" secondItem="p8z-fX-CwG" secondAttribute="bottom" constant="20" symbolic="YES" id="Oug-cy-2kI"/>
-                            <constraint firstItem="YAu-e6-wkM" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="XOR-DI-W3i"/>
-                            <constraint firstItem="YAu-e6-wkM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lW5-ga-B8q"/>
-                            <constraint firstItem="p8z-fX-CwG" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="167" id="oIe-hz-757"/>
-                            <constraint firstItem="p8z-fX-CwG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="zPg-uq-eF6"/>
+                            <constraint firstItem="p8z-fX-CwG" firstAttribute="top" secondItem="YAu-e6-wkM" secondAttribute="bottom" constant="18" id="EWj-G4-Vi2"/>
+                            <constraint firstItem="p8z-fX-CwG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="MPA-0z-B5o"/>
+                            <constraint firstAttribute="trailing" secondItem="p8z-fX-CwG" secondAttribute="trailing" id="TdT-Ed-7eX"/>
+                            <constraint firstItem="p8z-fX-CwG" firstAttribute="top" secondItem="YAu-e6-wkM" secondAttribute="bottom" constant="18" id="Tky-Aq-U4S"/>
+                            <constraint firstItem="p8z-fX-CwG" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="WUm-Tv-n7i"/>
+                            <constraint firstItem="YAu-e6-wkM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="15" id="faR-ci-ebS"/>
+                            <constraint firstItem="YAu-e6-wkM" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="qQg-yS-M7H"/>
+                            <constraint firstItem="YAu-e6-wkM" firstAttribute="centerX" secondItem="p8z-fX-CwG" secondAttribute="centerX" id="uEZ-rt-3hW"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Tky-Aq-U4S"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Motivation" id="96W-GF-yRU">
                         <barButtonItem key="backBarButtonItem" title="OK maybe this time" id="5Mz-La-gOf"/>
