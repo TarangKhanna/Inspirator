@@ -810,6 +810,15 @@
                                                         </mask>
                                                     </variation>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bu6-A4-jho">
+                                                    <rect key="frame" x="339" y="36" width="30" height="33"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="orE-vW-Xg1"/>
+                                                    </constraints>
+                                                    <state key="normal" image="like">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="8oQ-8C-j8R" firstAttribute="leading" secondItem="CBX-8x-5qb" secondAttribute="trailing" constant="81" id="11l-rp-hVg"/>
@@ -831,8 +840,10 @@
                                                 <constraint firstItem="CBX-8x-5qb" firstAttribute="leading" secondItem="l5k-ct-UgM" secondAttribute="leadingMargin" constant="20" id="Z1O-XD-AUu"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="7jN-n0-nBp" secondAttribute="bottom" constant="5.5" id="awp-qJ-uqX"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="CBX-8x-5qb" secondAttribute="bottom" constant="-8" id="cyl-c8-zdx"/>
+                                                <constraint firstItem="bu6-A4-jho" firstAttribute="centerY" secondItem="l5k-ct-UgM" secondAttribute="centerY" id="ei9-Fc-apP"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="1VD-lv-ylW" secondAttribute="bottom" constant="30" id="eqP-Fq-Wl5"/>
                                                 <constraint firstItem="SZ5-DN-WpO" firstAttribute="top" secondItem="89m-Ea-two" secondAttribute="top" id="fnZ-id-zJk"/>
+                                                <constraint firstItem="bu6-A4-jho" firstAttribute="top" secondItem="l5k-ct-UgM" secondAttribute="topMargin" constant="28" id="gP1-et-rJA"/>
                                                 <constraint firstItem="1VD-lv-ylW" firstAttribute="leading" secondItem="CBX-8x-5qb" secondAttribute="trailing" constant="19" id="h04-sG-62f"/>
                                                 <constraint firstItem="7jN-n0-nBp" firstAttribute="top" secondItem="OKs-kP-P5g" secondAttribute="bottom" constant="1" id="jro-1f-0Hf"/>
                                                 <constraint firstItem="OKs-kP-P5g" firstAttribute="leading" secondItem="8oQ-8C-j8R" secondAttribute="leading" id="m7D-vW-6wg"/>
@@ -843,6 +854,7 @@
                                                 <constraint firstItem="OKs-kP-P5g" firstAttribute="bottom" secondItem="1VD-lv-ylW" secondAttribute="bottom" id="tK7-l7-7Xu"/>
                                                 <constraint firstItem="CBX-8x-5qb" firstAttribute="leading" secondItem="l5k-ct-UgM" secondAttribute="leadingMargin" constant="13" id="uKb-n8-SfT"/>
                                                 <constraint firstItem="OKs-kP-P5g" firstAttribute="leading" secondItem="1VD-lv-ylW" secondAttribute="trailing" constant="8" symbolic="YES" id="xrN-nf-AsT"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="bu6-A4-jho" secondAttribute="trailing" id="y4E-nJ-2X2"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
@@ -1353,6 +1365,7 @@
         <image name="M-50" width="16" height="16"/>
         <image name="fb" width="14" height="28"/>
         <image name="icon-star" width="30" height="30"/>
+        <image name="like" width="266" height="274"/>
         <image name="profile-pic-1" width="296" height="296"/>
         <image name="twitter" width="32" height="22"/>
     </resources>

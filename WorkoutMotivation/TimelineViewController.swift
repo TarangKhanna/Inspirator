@@ -114,6 +114,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         //        locationManager.requestWhenInUseAuthorization()
         //        locationManager.startUpdatingLocation()
         //post1()
+        
         let floatFrame:CGRect = (CGRectMake(UIScreen.mainScreen().bounds.size.width - 44 - 20, UIScreen.mainScreen().bounds.size.height - 44 - 20, 44, 44))
         let actionButton : VCFloatingActionButton = VCFloatingActionButton(frame: floatFrame, normalImage: UIImage(named: "plus.png"), andPressedImage: UIImage(named: "cross.png"), withScrollview: tableView)
         //actionButton.normalImage = UIImage(named: "plus.png")!
