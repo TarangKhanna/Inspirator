@@ -12,6 +12,8 @@ import Social
 class SignUpVC: UIViewController, floatMenuDelegate , FBSDKLoginButtonDelegate, UITextFieldDelegate {
     @IBOutlet var username: MKTextField!
     @IBOutlet var password: MKTextField!
+    @IBOutlet var aboutYou: MKTextField!
+    @IBOutlet var SignUpBtn: MKButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         
