@@ -316,6 +316,15 @@
                                     <action selector="signUp:" destination="cXI-kJ-w0P" eventType="touchUpInside" id="n1s-tR-CpC"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0hK-7I-ede">
+                                <rect key="frame" x="313" y="629" width="48" height="30"/>
+                                <state key="normal" title="Sign In">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="idO-jR-V2Q" kind="show" id="Qex-8r-3gQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1384,9 +1393,9 @@
         <image name="twitter" width="32" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8cE-Yl-DNe"/>
-        <segue reference="HaJ-eE-7kj"/>
+        <segue reference="Qex-8r-3gQ"/>
         <segue reference="eLD-pB-yh1"/>
         <segue reference="WVb-AW-T6s"/>
+        <segue reference="HaJ-eE-7kj"/>
     </inferredMetricsTieBreakers>
 </document>

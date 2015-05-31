@@ -62,7 +62,7 @@ class SignUpVC: UIViewController, floatMenuDelegate , FBSDKLoginButtonDelegate, 
         aboutYou.bottomBorderEnabled = true
         aboutYou.attributedPlaceholder = NSAttributedString(string:"Describe Yourself In A Few Words..",
             attributes:[NSForegroundColorAttributeName: UIColor.orangeColor()])
-        password.delegate = self
+        aboutYou.delegate = self
         
         if (FBSDKAccessToken.currentAccessToken() != nil)
         {
