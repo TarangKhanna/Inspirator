@@ -300,7 +300,7 @@
                                 <rect key="frame" x="0.0" y="315" width="375" height="38"/>
                                 <color key="textColor" red="1" green="0.55039779259999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ub3-F2-2uP" customClass="MKButton" customModule="WorkoutMotivation" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="413" width="375" height="32"/>
@@ -769,9 +769,9 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="huQ-Ow-EL0" id="l5k-ct-UgM">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CBX-8x-5qb">
+                                                <view alpha="0.69999999999999973" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CBX-8x-5qb">
                                                     <rect key="frame" x="28" y="0.0" width="5" height="106"/>
-                                                    <color key="backgroundColor" red="0.1960784495" green="0.94117653369999998" blue="0.20392158630000001" alpha="1" colorSpace="deviceRGB"/>
+                                                    <color key="backgroundColor" red="0.98823535442352295" green="0.054901964962482452" blue="0.1098039299249649" alpha="1" colorSpace="deviceRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="106" id="81A-kN-GlT"/>
                                                         <constraint firstAttribute="width" constant="5" id="fwb-JG-58W"/>
@@ -901,7 +901,7 @@
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RB1-VA-ykS">
                                                     <rect key="frame" x="28" y="0.0" width="5" height="374"/>
-                                                    <color key="backgroundColor" red="0.1960784495" green="0.94117653369999998" blue="0.20392158630000001" alpha="1" colorSpace="deviceRGB"/>
+                                                    <color key="backgroundColor" red="0.98823535439999999" green="0.054901964960000001" blue="0.1098039299" alpha="1" colorSpace="deviceRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="374" id="BCc-9Z-tdy"/>
                                                         <constraint firstAttribute="width" constant="5" id="zLv-uE-bRg"/>
@@ -1384,9 +1384,9 @@
         <image name="twitter" width="32" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Udb-FK-6c5"/>
-        <segue reference="WVb-AW-T6s"/>
-        <segue reference="121-Eu-qdE"/>
+        <segue reference="8cE-Yl-DNe"/>
         <segue reference="HaJ-eE-7kj"/>
+        <segue reference="eLD-pB-yh1"/>
+        <segue reference="WVb-AW-T6s"/>
     </inferredMetricsTieBreakers>
 </document>

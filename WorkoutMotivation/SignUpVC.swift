@@ -181,9 +181,12 @@ class SignUpVC: UIViewController, floatMenuDelegate , FBSDKLoginButtonDelegate, 
         var user = PFUser()
         if username.text == "" || password.text == "" {
             SCLAlertView().showWarning("Sign Up Info", subTitle: "Please include your username and password")
+        } else if self.password.text == ""{
+            SCLAlertView().showWarning("Sign Up Info", subTitle: "Please include Something About You")
         } else {
             user.username = self.username.text.lowercaseString
             user.password = self.password.text.lowercaseString
+            user["AboutYou"] = self.aboutYou.text
             //                user.email = "email@example.com"
             //                // other fields can be set just like with PFObject
             //                user["phone"] = "415-392-0202"
