@@ -21,14 +21,20 @@ class profileVC: UIViewController, UIScrollViewDelegate {
     @IBOutlet var headerLabel:UILabel!
     @IBOutlet var headerImageView:UIImageView!
     @IBOutlet var headerBlurImageView:UIImageView!
+    var name : String = ""
     var blurredHeaderImageView:UIImageView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView.delegate = self
+       
     }
     
     override func viewDidAppear(animated: Bool) {
+        
+        headerLabel.text = name
+        println("fbjwjkbef")
+        println(name)
         
         // Header - Image
         
@@ -46,7 +52,10 @@ class profileVC: UIViewController, UIScrollViewDelegate {
         header.insertSubview(headerBlurImageView, belowSubview: headerLabel)
         
         header.clipsToBounds = true
+        
+        headerLabel.text = "HV,mf"
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

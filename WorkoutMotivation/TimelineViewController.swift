@@ -261,6 +261,12 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        let selectedName = userArray[userArray.count-indexPath.row-1]
+
+        let destinationVC = profileVC()
+        destinationVC.name = selectedName
+        
         performSegueWithIdentifier("profileView", sender: self)
     }
     
