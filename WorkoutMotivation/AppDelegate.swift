@@ -29,9 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Parse.setApplicationId("8HWVCwLAEWaLHmXBQ9hKl77YhmfHKPAoiZFJM4Ds", clientKey:"LbugyjO6Pr2GPM5m4JexSCahNMG5e4qjFBq85Yec")
         
-        var object = PFObject(className: "User")
-        object.addObject("passed!", forKey: "test1")
-        object.saveInBackground()
+//        var object = PFObject(className: "User")
+//        object.addObject("passed!", forKey: "test1")
+//        object.saveInBackground()
         return true
         //FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }

@@ -24,10 +24,11 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     let locationManager = CLLocationManager()
     //var transitionOperator = TransitionOperator()
     var messages = [String]()
+    var createdAt = [String]()
     var score = [Int]()
     var userArray: [String] = []
     //var counter = userArray.
-    
+    var startTime: CFAbsoluteTime!
     override func viewWillAppear(animated: Bool) {
         if PFUser.currentUser()?.username == nil {
             //signin vc
@@ -139,6 +140,8 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         person["username"] = PFUser.currentUser()?.username //"Tarang"
         //person["admin"] = true
         person["text"] = "First Check"
+        person["startTime"] = CFAbsoluteTimeGetCurrent()
+        //startTime = CFAbsoluteTimeGetCurrent()
         person.saveInBackgroundWithBlock {
             (success: Bool, error: NSError?) -> Void in
             if (success) {
@@ -157,10 +160,15 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     func retrieve() {
         if var query = PFQuery(className: "Person") as PFQuery? { //querying parse for user data
             var usr = PFUser.currentUser()!.username
+            
             //query.whereKey("username", EqualTo: usr!)
             query.whereKey("text", notEqualTo: "")
+            messages.removeAll(keepCapacity: false)
+            userArray.removeAll(keepCapacity: false)
+            score.removeAll(keepCapacity: false)
+            createdAt.removeAll(keepCapacity: false)
             query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
-                
+                //self.createdAt.append("gwef")
                 if let objects = objects as? [PFObject]  {
                     
                     for object in objects {
@@ -168,9 +176,21 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                         self.messages.append(object["text"] as! String)
                         self.userArray.append(object["username"] as! String)
                         self.score.append(object["score"] as! Int)
-                        println(object["text"] as! String)
-                        self.tableView.reloadData()
+                        let date = object.createdAt
+                        var dateFormatter = NSDateFormatter()
+                        var dateString = dateFormatter.stringFromDate(date!)
+                        //dateFormatter.dateFormat = "HH:mm"
+                        println("HERJBHE")
+                        //var datastring = NSString(data: date, encoding:NSUTF8StringEncoding) as! String
+                        let createdAt2 = object.createdAt
+                        
+                        let elapsedTime = CFAbsoluteTimeGetCurrent() - (object["startTime"] as! CFAbsoluteTime)
+                        println(elapsedTime)
+                        self.createdAt.append(dateString)
+                        println(dateString)
+                        
                     }
+                    self.tableView.reloadData()
                 }
             })
         }
@@ -199,7 +219,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        tableView.reloadData()
+        //tableView.reloadData()
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -222,7 +242,8 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         cell.nameLabel.text = userArray[userArray.count-indexPath.row-1] // to flip
         cell.nameLabel.textColor = UIColor.whiteColor()
         cell.postLabel?.text = messages[userArray.count - indexPath.row-1]
-        cell.dateLabel.text = String(score[userArray.count - indexPath.row-1])
+        cell.dateLabel.text = (createdAt[userArray.count - indexPath.row-1])
+        cell.scoreLabel.text = String(score[userArray.count - indexPath.row-1])
         
         return cell
         
@@ -289,6 +310,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             //new
         }
     }
+    
     @IBAction func post(sender: AnyObject) {
         let alert = SCLAlertView() // input dialog
         let txt = alert.addTextField(title:"Enter Your Thoughts")
@@ -300,6 +322,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                 person["username"] = PFUser.currentUser()?.username //"Tarang"
                 person["admin"] = true
                 person["text"] = txt.text
+                person["startTime"] = CFAbsoluteTimeGetCurrent()
                 person.saveInBackgroundWithBlock {
                     (success: Bool, error: NSError?) -> Void in
                     if (success) {
@@ -318,11 +341,13 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             } else {
                 // empty post
                 SCLAlertView().showWarning("Error Posting", subTitle: "You need to write something in your post.")
+                //SCLAlertView().showWarning("Error Posting", subTitle: "You need to write something in your post.", closeButtonTitle: "Cancel")
+                //self.post(self)
             }
             // parse
-            self.retrieve()
+            //self.retrieve()
         }
-        alert.showEdit("Post", subTitle:"Type Something Inspirational:")
+        alert.showEdit("Post", subTitle:"Type Something Inspirational:", closeButtonTitle: "Cancel")
         
     }
 }

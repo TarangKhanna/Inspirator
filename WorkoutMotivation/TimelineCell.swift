@@ -21,6 +21,8 @@ class TimelineCell : PFTableViewCell {
     @IBOutlet var postLabel : UILabel?
     @IBOutlet var dateLabel : UILabel!
     
+    @IBOutlet var scoreLabel: UILabel!
+    
     override func awakeFromNib() {
         
         dateImageView.image = UIImage(named: "clock")
@@ -34,6 +36,10 @@ class TimelineCell : PFTableViewCell {
         
         dateLabel.font = UIFont(name: "Avenir-Book", size: 14)
         dateLabel.textColor = UIColor(white: 0.6, alpha: 1.0)
+        
+        scoreLabel.font = UIFont(name: "Avenir-Book", size: 14)
+        scoreLabel.textColor = UIColor(white: 0.6, alpha: 1.0)
+        
         
         //var width = photoImageView.frame.size.width / 2
         //photoImageView?.layer.cornerRadius = width //10.0

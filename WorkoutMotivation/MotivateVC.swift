@@ -90,7 +90,8 @@ class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             //google+
         } else if(row == 3) {
             //LinkedIn
-        } else if(row == 4) {
+        } else {
+            performSegueWithIdentifier("About", sender: self)
             //new
         }
     }
