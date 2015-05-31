@@ -9,7 +9,7 @@
 import UIKit
 import Social
 
-class NoBack: UIViewController, floatMenuDelegate , FBSDKLoginButtonDelegate, UITextFieldDelegate {
+class SignUpVC: UIViewController, floatMenuDelegate , FBSDKLoginButtonDelegate, UITextFieldDelegate {
     @IBOutlet var username: MKTextField!
     @IBOutlet var password: MKTextField!
     override func viewDidLoad() {
