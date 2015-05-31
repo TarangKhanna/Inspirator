@@ -56,8 +56,8 @@ class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         let actionButton : VCFloatingActionButton = VCFloatingActionButton(frame: floatFrame, normalImage: UIImage(named: "plus.png"), andPressedImage: UIImage(named: "cross.png"), withScrollview: tableView)
         //actionButton.normalImage = UIImage(named: "plus.png")!
         self.view.addSubview(actionButton)
-        actionButton.imageArray = ["fb-icon.png","twitter-icon.png","google-icon.png","linkedin-icon.png"]
-        actionButton.labelArray = ["Facebook","Twitter","Google Plus","LinkedIn"]
+        actionButton.imageArray = ["fb-icon.png","twitter-icon.png","google-icon.png","linkedin-icon.png","profile-pic-1.jpg"]
+        actionButton.labelArray = ["Facebook","Twitter","Google Plus","LinkedIn","About"]
         actionButton.delegate = self
         actionButton.hideWhileScrolling = true
     }
@@ -87,10 +87,11 @@ class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                 //self.presentViewController(alert, animated: true, completion: nil)
             }
         } else if(row == 2) {
+            performSegueWithIdentifier("About", sender: self)
             //google+
         } else if(row == 3) {
             //LinkedIn
-        } else {
+        } else if(row == 4){
             performSegueWithIdentifier("About", sender: self)
             //new
         }
