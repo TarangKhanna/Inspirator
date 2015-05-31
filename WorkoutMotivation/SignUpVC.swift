@@ -52,6 +52,18 @@ class SignUpVC: UIViewController, floatMenuDelegate , FBSDKLoginButtonDelegate, 
         password.attributedPlaceholder = NSAttributedString(string:"Password..",
             attributes:[NSForegroundColorAttributeName: UIColor.orangeColor()])
         password.delegate = self
+        
+        aboutYou.layer.borderColor = UIColor.clearColor().CGColor
+        aboutYou.floatingPlaceholderEnabled = true
+        aboutYou.placeholder = "Describe Yourself In A Few Words.."
+        aboutYou.tintColor = UIColor.MKColor.Blue
+        aboutYou.rippleLocation = .Right
+        aboutYou.cornerRadius = 0
+        aboutYou.bottomBorderEnabled = true
+        aboutYou.attributedPlaceholder = NSAttributedString(string:"Describe Yourself In A Few Words..",
+            attributes:[NSForegroundColorAttributeName: UIColor.orangeColor()])
+        password.delegate = self
+        
         if (FBSDKAccessToken.currentAccessToken() != nil)
         {
             // User is already logged in, do work such as go to next view controller.
