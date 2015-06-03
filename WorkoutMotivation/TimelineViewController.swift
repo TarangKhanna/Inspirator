@@ -27,6 +27,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     var createdAt = [String]()
     var score = [Int]()
     var userArray: [String] = []
+    var selectedName: String = "default"
     //var counter = userArray.
     var startTime: CFAbsoluteTime!
     override func viewWillAppear(animated: Bool) {
@@ -262,24 +263,28 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        let selectedName = userArray[userArray.count-indexPath.row-1]
+        selectedName = userArray[userArray.count-indexPath.row-1]
 
-        let destinationVC = profileVC()
-        destinationVC.name = selectedName
+        //let destinationVC = profileVC()
+        //destinationVC.name = selectedName
         
         performSegueWithIdentifier("profileView", sender: self)
     }
-    
-    @IBAction func presentNavigation(sender: AnyObject?){
-        // performSegueWithIdentifier("presentNav", sender: self)
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "profileView") { //pass data to VC
+            var svc = segue.destinationViewController as! profileVC;
+            println(selectedName)
+            svc.name = selectedName
+        }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        let toViewController = segue.destinationViewController as! UIViewController
-        self.modalPresentationStyle = UIModalPresentationStyle.Custom
+        //let toViewController = segue.destinationViewController as! UIViewController
+        //self.modalPresentationStyle = UIModalPresentationStyle.Custom
         //toViewController.transitioningDelegate = self.transitionOperator
-    }
+  //  }
     override func prefersStatusBarHidden() -> Bool {
         return true
     }

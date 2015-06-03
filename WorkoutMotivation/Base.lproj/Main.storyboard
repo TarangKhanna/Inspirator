@@ -268,7 +268,6 @@
         <!--Sign Up-->
         <scene sceneID="z7O-Z1-Nxl">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zL7-O0-S3y" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="cXI-kJ-w0P" userLabel="Sign Up" customClass="SignUpVC" customModule="WorkoutMotivation" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="URQ-cY-93c"/>
@@ -281,7 +280,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fSd-6z-mQT" customClass="MKTextField" customModule="WorkoutMotivation" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="242" width="375" height="38"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="38" id="dfJ-oA-qu6"/>
+                                    <constraint firstAttribute="height" constant="38" id="bSL-Rh-wda"/>
                                 </constraints>
                                 <color key="textColor" red="1" green="0.55039779259999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
@@ -290,7 +289,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IEP-yx-bqJ" customClass="MKTextField" customModule="WorkoutMotivation" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="168" width="375" height="38"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="38" id="yfZ-R9-Pmd"/>
+                                    <constraint firstAttribute="height" constant="38" id="lzg-Sb-98F"/>
                                 </constraints>
                                 <color key="textColor" red="1" green="0.55039779259999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
@@ -298,6 +297,9 @@
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cUG-ft-1cz" customClass="MKTextField" customModule="WorkoutMotivation" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="315" width="375" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="Szr-Eg-mcA"/>
+                                </constraints>
                                 <color key="textColor" red="1" green="0.55039779259999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -306,7 +308,7 @@
                                 <rect key="frame" x="0.0" y="413" width="375" height="32"/>
                                 <color key="backgroundColor" red="1" green="0.55039779259999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="diJ-ow-k46"/>
+                                    <constraint firstAttribute="height" constant="32" id="czd-6V-xWZ"/>
                                 </constraints>
                                 <state key="normal" title="Sign Up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -316,8 +318,8 @@
                                     <action selector="signUp:" destination="cXI-kJ-w0P" eventType="touchUpInside" id="n1s-tR-CpC"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0hK-7I-ede">
-                                <rect key="frame" x="313" y="629" width="48" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0hK-7I-ede">
+                                <rect key="frame" x="16" y="629" width="48" height="30"/>
                                 <state key="normal" title="Sign In">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -328,19 +330,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="fSd-6z-mQT" secondAttribute="trailing" id="0dC-Pt-aEY"/>
-                            <constraint firstItem="fSd-6z-mQT" firstAttribute="leading" secondItem="IEP-yx-bqJ" secondAttribute="leading" id="5vi-j5-Fed"/>
-                            <constraint firstItem="cUG-ft-1cz" firstAttribute="trailing" secondItem="fSd-6z-mQT" secondAttribute="trailing" id="7DV-id-Faa"/>
-                            <constraint firstItem="ub3-F2-2uP" firstAttribute="top" secondItem="cUG-ft-1cz" secondAttribute="bottom" constant="60" id="EVa-cy-kVn"/>
-                            <constraint firstItem="fSd-6z-mQT" firstAttribute="leading" secondItem="cUG-ft-1cz" secondAttribute="leading" id="HEr-qW-Ib6"/>
-                            <constraint firstItem="cUG-ft-1cz" firstAttribute="top" secondItem="fSd-6z-mQT" secondAttribute="bottom" constant="35" id="IMS-sm-0G2"/>
-                            <constraint firstItem="IEP-yx-bqJ" firstAttribute="top" secondItem="URQ-cY-93c" secondAttribute="bottom" constant="104" id="QzW-vb-6Al"/>
-                            <constraint firstItem="cUG-ft-1cz" firstAttribute="leading" secondItem="KXH-lC-Sga" secondAttribute="leading" id="YcX-8i-EJX"/>
-                            <constraint firstItem="fSd-6z-mQT" firstAttribute="top" secondItem="IEP-yx-bqJ" secondAttribute="bottom" constant="36" id="d1Q-td-hCD"/>
-                            <constraint firstItem="fSd-6z-mQT" firstAttribute="trailing" secondItem="IEP-yx-bqJ" secondAttribute="trailing" id="f2O-j7-GgJ"/>
-                            <constraint firstItem="cUG-ft-1cz" firstAttribute="leading" secondItem="ub3-F2-2uP" secondAttribute="leading" id="hQJ-vq-MfE"/>
-                            <constraint firstItem="uDd-qL-mB5" firstAttribute="top" secondItem="ub3-F2-2uP" secondAttribute="bottom" constant="222" id="hnc-8P-pUk"/>
-                            <constraint firstItem="cUG-ft-1cz" firstAttribute="trailing" secondItem="ub3-F2-2uP" secondAttribute="trailing" id="zwm-uf-umI"/>
+                            <constraint firstItem="fSd-6z-mQT" firstAttribute="trailing" secondItem="cUG-ft-1cz" secondAttribute="trailing" id="2uf-JS-TOa"/>
+                            <constraint firstItem="IEP-yx-bqJ" firstAttribute="top" secondItem="URQ-cY-93c" secondAttribute="bottom" constant="104" id="38S-x8-5T3"/>
+                            <constraint firstItem="fSd-6z-mQT" firstAttribute="leading" secondItem="IEP-yx-bqJ" secondAttribute="leading" id="52U-AF-o1V"/>
+                            <constraint firstItem="0hK-7I-ede" firstAttribute="leading" secondItem="KXH-lC-Sga" secondAttribute="leadingMargin" id="Br4-kX-HFs"/>
+                            <constraint firstAttribute="trailing" secondItem="cUG-ft-1cz" secondAttribute="trailing" id="NGo-W8-et6"/>
+                            <constraint firstItem="IEP-yx-bqJ" firstAttribute="trailing" secondItem="fSd-6z-mQT" secondAttribute="trailing" id="P9K-X2-iAj"/>
+                            <constraint firstItem="uDd-qL-mB5" firstAttribute="top" secondItem="0hK-7I-ede" secondAttribute="bottom" constant="8" symbolic="YES" id="SLw-kW-1ca"/>
+                            <constraint firstItem="cUG-ft-1cz" firstAttribute="top" secondItem="fSd-6z-mQT" secondAttribute="bottom" constant="35" id="TVB-gl-0Hl"/>
+                            <constraint firstItem="cUG-ft-1cz" firstAttribute="leading" secondItem="KXH-lC-Sga" secondAttribute="leading" id="Y4x-oX-L8o"/>
+                            <constraint firstItem="fSd-6z-mQT" firstAttribute="top" secondItem="IEP-yx-bqJ" secondAttribute="bottom" constant="36" id="g1j-bG-xY3"/>
+                            <constraint firstItem="cUG-ft-1cz" firstAttribute="trailing" secondItem="ub3-F2-2uP" secondAttribute="trailing" id="krJ-MI-EvW"/>
+                            <constraint firstItem="ub3-F2-2uP" firstAttribute="top" secondItem="cUG-ft-1cz" secondAttribute="bottom" constant="60" id="mPJ-3W-9gf"/>
+                            <constraint firstItem="cUG-ft-1cz" firstAttribute="leading" secondItem="ub3-F2-2uP" secondAttribute="leading" id="o0x-Zh-2cy"/>
+                            <constraint firstItem="cUG-ft-1cz" firstAttribute="leading" secondItem="fSd-6z-mQT" secondAttribute="leading" id="os9-P5-8uI"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="HNo-qx-yYC">
@@ -355,6 +358,7 @@
                         <segue destination="KBP-Cf-XLc" kind="show" identifier="signedUp2" id="HaJ-eE-7kj"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zL7-O0-S3y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="76.5" y="326.5"/>
         </scene>
@@ -1151,6 +1155,7 @@
                         <outlet property="avatarImage" destination="1Mp-km-1dp" id="rMb-1T-Jjy"/>
                         <outlet property="header" destination="7ig-aa-S34" id="yZf-8L-Re9"/>
                         <outlet property="headerLabel" destination="lry-MD-VL6" id="pO0-j5-nTO"/>
+                        <outlet property="profileName" destination="Ceh-s5-VGc" id="kKF-Qm-Ybx"/>
                         <outlet property="scrollView" destination="j8H-mu-O7O" id="ktU-Ca-203"/>
                     </connections>
                 </viewController>

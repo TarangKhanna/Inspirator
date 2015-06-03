@@ -181,7 +181,7 @@ class SignUpVC: UIViewController, floatMenuDelegate , FBSDKLoginButtonDelegate, 
         var user = PFUser()
         if username.text == "" || password.text == "" {
             SCLAlertView().showWarning("Sign Up Info", subTitle: "Please include your username and password")
-        } else if self.password.text == ""{
+        } else if self.aboutYou.text == ""{
             SCLAlertView().showWarning("Sign Up Info", subTitle: "Please include Something About You")
         } else {
             user.username = self.username.text.lowercaseString

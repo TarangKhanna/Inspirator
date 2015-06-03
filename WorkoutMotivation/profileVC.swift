@@ -15,12 +15,14 @@ let distance_W_LabelHeader:CGFloat = 35.0 // The distance between the bottom of 
 
 class profileVC: UIViewController, UIScrollViewDelegate {
     
+    @IBOutlet var profileName: UILabel!
     @IBOutlet var scrollView:UIScrollView!
     @IBOutlet var avatarImage:UIImageView!
     @IBOutlet var header:UIView!
     @IBOutlet var headerLabel:UILabel!
     @IBOutlet var headerImageView:UIImageView!
     @IBOutlet var headerBlurImageView:UIImageView!
+    
     var name : String = ""
     var blurredHeaderImageView:UIImageView?
     
@@ -32,7 +34,7 @@ class profileVC: UIViewController, UIScrollViewDelegate {
     
     override func viewDidAppear(animated: Bool) {
         
-        headerLabel.text = name
+        profileName.text = name
         println("fbjwjkbef")
         println(name)
         
@@ -53,7 +55,7 @@ class profileVC: UIViewController, UIScrollViewDelegate {
         
         header.clipsToBounds = true
         
-        headerLabel.text = "HV,mf"
+        headerLabel.text = "You Broke it"
     }
     
     
