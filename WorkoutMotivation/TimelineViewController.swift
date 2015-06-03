@@ -35,6 +35,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     var timeAtPress: NSDate!
     var elapsedTime: NSDate!
     var duration : Int = 0
+    var circleColors = [UIColor.MKColor.LightBlue, UIColor.MKColor.Grey, UIColor.MKColor.LightGreen]
     override func viewWillAppear(animated: Bool) {
         if PFUser.currentUser()?.username == nil {
             //signin vc
@@ -253,6 +254,8 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         
         let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCell") as! TimelineCell
         cell.backgroundColor = UIColor.clearColor()
+        let index = indexPath.row % circleColors.count
+        cell.rippleLayerColor = circleColors[index]
         //            if  indexPath.row % 2 == 0 {
         //                cell.backgroundColor = UIColor.redColor()
         //            } else {
@@ -261,9 +264,11 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         cell.typeImageView.image = UIImage(named: "timeline-chat")
         cell.profileImageView.image = UIImage(named: "profile-pic-1")
         cell.nameLabel.text = userArray[userArray.count-indexPath.row-1] // to flip
+        cell.nameLabel.textColor = UIColor(hex: 0xF44336)
         cell.nameLabel.textColor = UIColor.whiteColor()
         cell.postLabel?.text = messages[userArray.count - indexPath.row-1]
         cell.dateLabel.text = String(createdAt[userArray.count - indexPath.row-1]) + " min ago"
+        cell.scoreLabel.textColor = UIColor.greenColor()
         cell.scoreLabel.text = "Likes - " + String(score[userArray.count - indexPath.row-1])
         
         return cell
