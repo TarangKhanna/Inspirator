@@ -22,21 +22,21 @@ class profileVC: UIViewController, UIScrollViewDelegate {
     @IBOutlet var headerLabel:UILabel!
     @IBOutlet var headerImageView:UIImageView!
     @IBOutlet var headerBlurImageView:UIImageView!
+    @IBOutlet var scoreLabel: UILabel!
     
     var name : String = ""
+    var score: String = ""
     var blurredHeaderImageView:UIImageView?
-    
+    override func viewWillAppear(animated: Bool) {
+        scoreLabel.text = score
+        profileName.text = name
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView.delegate = self
-       
     }
     
     override func viewDidAppear(animated: Bool) {
-        
-        profileName.text = name
-        println("fbjwjkbef")
-        println(name)
         
         // Header - Image
         

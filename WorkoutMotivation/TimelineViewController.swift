@@ -24,12 +24,17 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     let locationManager = CLLocationManager()
     //var transitionOperator = TransitionOperator()
     var messages = [String]()
-    var createdAt = [String]()
+    var createdAt = [Int]()
     var score = [Int]()
     var userArray: [String] = []
     var selectedName: String = "default"
+    var selectedScore: String = "default"
+    var selectedAbout: String = "default"
     //var counter = userArray.
     var startTime: CFAbsoluteTime!
+    var timeAtPress: NSDate!
+    var elapsedTime: NSDate!
+    var duration : Int = 0
     override func viewWillAppear(animated: Bool) {
         if PFUser.currentUser()?.username == nil {
             //signin vc
@@ -141,6 +146,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         person["username"] = PFUser.currentUser()?.username //"Tarang"
         //person["admin"] = true
         person["text"] = "First Check"
+        timeAtPress = NSDate()
         person["startTime"] = CFAbsoluteTimeGetCurrent()
         //startTime = CFAbsoluteTimeGetCurrent()
         person.saveInBackgroundWithBlock {
@@ -184,10 +190,13 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                         println("HERJBHE")
                         //var datastring = NSString(data: date, encoding:NSUTF8StringEncoding) as! String
                         let createdAt2 = object.createdAt
-                        
+                        //let elapsed = NSDate().timeIntervalSinceDate(object["startTime"] as! NSDecimalNumber)
+                        //let duration = Int(elapsed)
                         let elapsedTime = CFAbsoluteTimeGetCurrent() - (object["startTime"] as! CFAbsoluteTime)
-                        println(elapsedTime)
-                        self.createdAt.append(dateString)
+                        self.duration = Int(elapsedTime/60)
+                        println(self.duration)
+                        println("TIMEEEE")
+                        self.createdAt.append(self.duration)
                         println(dateString)
                         
                     }
@@ -243,8 +252,8 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         cell.nameLabel.text = userArray[userArray.count-indexPath.row-1] // to flip
         cell.nameLabel.textColor = UIColor.whiteColor()
         cell.postLabel?.text = messages[userArray.count - indexPath.row-1]
-        cell.dateLabel.text = (createdAt[userArray.count - indexPath.row-1])
-        cell.scoreLabel.text = String(score[userArray.count - indexPath.row-1])
+        cell.dateLabel.text = String(createdAt[userArray.count - indexPath.row-1]) + " min ago"
+        cell.scoreLabel.text = "Likes - " + String(score[userArray.count - indexPath.row-1])
         
         return cell
         
@@ -264,7 +273,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         selectedName = userArray[userArray.count-indexPath.row-1]
-
+        selectedScore = String(score[userArray.count - indexPath.row-1])
         //let destinationVC = profileVC()
         //destinationVC.name = selectedName
         
@@ -276,6 +285,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             var svc = segue.destinationViewController as! profileVC;
             println(selectedName)
             svc.name = selectedName
+            svc.score = selectedScore
         }
     }
     

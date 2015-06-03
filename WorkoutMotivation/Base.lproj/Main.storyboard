@@ -835,16 +835,16 @@
                                                         </mask>
                                                     </variation>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i7C-yI-aT5">
-                                                    <rect key="frame" x="136" y="70" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7jN-n0-nBp">
-                                                    <rect key="frame" x="201" y="23" width="42" height="23"/>
+                                                    <rect key="frame" x="136" y="69" width="42" height="23"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i7C-yI-aT5">
+                                                    <rect key="frame" x="207" y="23" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -857,24 +857,24 @@
                                                 <constraint firstItem="1VD-lv-ylW" firstAttribute="leading" secondItem="89m-Ea-two" secondAttribute="trailing" constant="4" id="4xm-S7-uIv"/>
                                                 <constraint firstItem="89m-Ea-two" firstAttribute="leading" secondItem="l5k-ct-UgM" secondAttribute="leadingMargin" constant="4" id="6B4-GK-Gmf"/>
                                                 <constraint firstItem="1VD-lv-ylW" firstAttribute="leading" secondItem="CBX-8x-5qb" secondAttribute="trailing" constant="19" id="8zG-XC-7HA"/>
-                                                <constraint firstItem="7jN-n0-nBp" firstAttribute="centerX" secondItem="OKs-kP-P5g" secondAttribute="centerX" id="BFN-sD-jhJ"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="i7C-yI-aT5" secondAttribute="bottom" constant="6.5" id="C88-qc-nM9"/>
                                                 <constraint firstItem="1VD-lv-ylW" firstAttribute="leading" secondItem="89m-Ea-two" secondAttribute="trailing" constant="4" id="EbN-4v-sip"/>
-                                                <constraint firstItem="OKs-kP-P5g" firstAttribute="top" secondItem="7jN-n0-nBp" secondAttribute="bottom" constant="1" id="Gwk-zf-Cqh"/>
+                                                <constraint firstItem="i7C-yI-aT5" firstAttribute="firstBaseline" secondItem="SZ5-DN-WpO" secondAttribute="firstBaseline" id="G4d-6p-SZ8"/>
                                                 <constraint firstItem="CBX-8x-5qb" firstAttribute="centerX" secondItem="89m-Ea-two" secondAttribute="centerX" id="HXJ-7s-9XY"/>
                                                 <constraint firstItem="1VD-lv-ylW" firstAttribute="leading" secondItem="89m-Ea-two" secondAttribute="trailing" constant="4" id="KR9-AT-1I9"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="OKs-kP-P5g" secondAttribute="trailing" constant="38" id="MDG-Sy-y6a"/>
                                                 <constraint firstItem="1VD-lv-ylW" firstAttribute="leading" secondItem="89m-Ea-two" secondAttribute="trailing" constant="4" id="N1Q-R5-bCh"/>
-                                                <constraint firstItem="i7C-yI-aT5" firstAttribute="leading" secondItem="8oQ-8C-j8R" secondAttribute="trailing" constant="8" symbolic="YES" id="S0v-ua-Ulg"/>
-                                                <constraint firstItem="7jN-n0-nBp" firstAttribute="firstBaseline" secondItem="SZ5-DN-WpO" secondAttribute="firstBaseline" id="TUT-bH-b7G"/>
+                                                <constraint firstItem="7jN-n0-nBp" firstAttribute="top" secondItem="OKs-kP-P5g" secondAttribute="bottom" constant="1" id="SGh-e4-2mb"/>
+                                                <constraint firstItem="i7C-yI-aT5" firstAttribute="leading" secondItem="SZ5-DN-WpO" secondAttribute="trailing" constant="51" id="UBf-Lv-Ky4"/>
                                                 <constraint firstItem="1VD-lv-ylW" firstAttribute="top" secondItem="l5k-ct-UgM" secondAttribute="topMargin" constant="6" id="V3V-Sy-51S"/>
+                                                <constraint firstItem="i7C-yI-aT5" firstAttribute="baseline" secondItem="SZ5-DN-WpO" secondAttribute="baseline" id="Xrc-zf-0N0"/>
                                                 <constraint firstItem="89m-Ea-two" firstAttribute="top" secondItem="l5k-ct-UgM" secondAttribute="topMargin" constant="15" id="YBC-1f-ZFL"/>
                                                 <constraint firstItem="CBX-8x-5qb" firstAttribute="leading" secondItem="l5k-ct-UgM" secondAttribute="leadingMargin" constant="20" id="Z1O-XD-AUu"/>
+                                                <constraint firstItem="7jN-n0-nBp" firstAttribute="leading" secondItem="8oQ-8C-j8R" secondAttribute="trailing" constant="8" symbolic="YES" id="ags-Ig-dF8"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="7jN-n0-nBp" secondAttribute="bottom" constant="5.5" id="cUi-BU-jey"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="CBX-8x-5qb" secondAttribute="bottom" constant="-8" id="cyl-c8-zdx"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="1VD-lv-ylW" secondAttribute="bottom" constant="30" id="eqP-Fq-Wl5"/>
                                                 <constraint firstItem="SZ5-DN-WpO" firstAttribute="top" secondItem="89m-Ea-two" secondAttribute="top" id="fnZ-id-zJk"/>
                                                 <constraint firstItem="1VD-lv-ylW" firstAttribute="leading" secondItem="CBX-8x-5qb" secondAttribute="trailing" constant="19" id="h04-sG-62f"/>
-                                                <constraint firstItem="i7C-yI-aT5" firstAttribute="top" secondItem="OKs-kP-P5g" secondAttribute="bottom" constant="2" id="jB6-O3-sBR"/>
                                                 <constraint firstItem="OKs-kP-P5g" firstAttribute="leading" secondItem="8oQ-8C-j8R" secondAttribute="leading" id="m7D-vW-6wg"/>
                                                 <constraint firstItem="1VD-lv-ylW" firstAttribute="leading" secondItem="89m-Ea-two" secondAttribute="trailing" constant="4" id="nVn-Im-aDr"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="89m-Ea-two" secondAttribute="bottom" constant="39" id="oST-kE-Vu1"/>
@@ -1089,12 +1089,12 @@
                                             <constraint firstAttribute="width" constant="112" id="FUE-eS-eMo"/>
                                             <constraint firstAttribute="height" constant="30" id="H1k-Fe-TRz"/>
                                         </constraints>
-                                        <state key="normal" title="Follow">
+                                        <state key="normal" title="Like">
                                             <color key="titleColor" red="0.33333333329999998" green="0.67450980390000004" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score here" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVj-p4-KAj" userLabel="TwitterUsername">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score here" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVj-p4-KAj" userLabel="Score">
                                         <rect key="frame" x="8" y="177" width="128" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="BnM-YG-Oqq"/>
@@ -1156,6 +1156,7 @@
                         <outlet property="header" destination="7ig-aa-S34" id="yZf-8L-Re9"/>
                         <outlet property="headerLabel" destination="lry-MD-VL6" id="pO0-j5-nTO"/>
                         <outlet property="profileName" destination="Ceh-s5-VGc" id="kKF-Qm-Ybx"/>
+                        <outlet property="scoreLabel" destination="bVj-p4-KAj" id="aW8-bp-8Ph"/>
                         <outlet property="scrollView" destination="j8H-mu-O7O" id="ktU-Ca-203"/>
                     </connections>
                 </viewController>
@@ -1398,9 +1399,9 @@
         <image name="twitter" width="32" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Qex-8r-3gQ"/>
         <segue reference="eLD-pB-yh1"/>
         <segue reference="WVb-AW-T6s"/>
         <segue reference="HaJ-eE-7kj"/>
+        <segue reference="8cE-Yl-DNe"/>
     </inferredMetricsTieBreakers>
 </document>
