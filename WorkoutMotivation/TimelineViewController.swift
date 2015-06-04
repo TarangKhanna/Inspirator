@@ -170,34 +170,6 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     
     func retrieve() {
         imageFiles.removeAll(keepCapacity: true)
-        
-//        var queryUser = PFUser.query() as PFQuery?
-//        queryUser!.findObjectsInBackgroundWithBlock {
-//            (users: [AnyObject]?, error: NSError?) -> Void in
-//            
-//            self.tableView.reloadData()
-//            
-//            if error == nil {
-//                // The find succeeded.
-//                println("Successfully retrieved \(users!.count) users.")
-//                // Do something with the found users
-//                if let users = users as? [PFObject] {
-//                    for user in users {
-//                        var user2:PFUser = user as! PFUser
-//                        println(user2.username!)
-//                        self.imageFiles.append(user2["ProfilePictue"] as! PFFile)
-//                        //println("HERE\(self.userArray[0])")
-//                        //println(user.objectId!)
-//                        //self.userArray.append(user.username)
-//                    }
-//                    //self.tableView.reloadData()
-//                }
-//            } else {
-//                // Log details of the failure
-//                println("Error: \(error!) \(error!.userInfo!)")
-//            }
-//        }
-    
     
         if var query = PFQuery(className: "Person") as PFQuery? { //querying parse for user data
             var usr = PFUser.currentUser()!.username
@@ -296,7 +268,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         queryUser!.findObjectsInBackgroundWithBlock {
             (users: [AnyObject]?, error: NSError?) -> Void in
             
-            self.tableView.reloadData()
+            //self.tableView.reloadData()
             queryUser!.whereKey("username", equalTo: self.userArray[self.userArray.count-indexPath.row-1])
             if error == nil {
                 // The find succeeded.
@@ -365,7 +337,6 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         selectedScore = String(score[userArray.count - indexPath.row-1])
         //let destinationVC = profileVC()
         //destinationVC.name = selectedName
-        
         performSegueWithIdentifier("profileView", sender: self)
     }
 
