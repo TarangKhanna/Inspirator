@@ -8,8 +8,9 @@
 
 import UIKit
 import Social
+import Parse
 
-class SignUpVC: UIViewController, floatMenuDelegate , FBSDKLoginButtonDelegate, UITextFieldDelegate {
+class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UITextFieldDelegate, UINavigationControllerDelegate,  floatMenuDelegate  {
     @IBOutlet var username: MKTextField!
     @IBOutlet var password: MKTextField!
     @IBOutlet var aboutYou: MKTextField!
@@ -108,70 +109,54 @@ class SignUpVC: UIViewController, floatMenuDelegate , FBSDKLoginButtonDelegate, 
         default:
             self.view.backgroundColor = UIColor.clearColor()
         }
-    }
-    
-    
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        println("User Logged In")
-        
-        if ((error) != nil)
-        {
-            // Process error
-        }
-        else if result.isCancelled {
-            // Handle cancellations
-        }
-        else {
-            // If you ask for multiple permissions at once, you
-            // should check if specific permissions missing
-            if result.grantedPermissions.contains("email")
-            {
-                // Do work
-            }
-        }
-    }
-    
-    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        println("User Logged Out")
-    }
-    
-    func returnUserData() // call this method anytime after a user has logged in by calling self.returnUserData()
-    {
-        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
-        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
-            
-            if ((error) != nil)
-            {
-                // Process error
-                println("Error: \(error)")
-            }
-            else
-            {
-                println("fetched user: \(result)")
-                let userName : NSString = result.valueForKey("name") as! NSString
-                println("User Name is: \(userName)")
-                let userEmail : NSString = result.valueForKey("email") as! NSString
-                println("User Email is: \(userEmail)")
-            }
-        })
-    }
-    
-//    @IBAction func signIn(sender: AnyObject) {
-//        if username.text == "" || password.text == "" {
-//            SCLAlertView().showWarning("SignIn Info", subTitle: "Please include your username and password")
-//        } else {
-//            PFUser.logInWithUsernameInBackground(username.text, password: password.text) {
-//                (user: PFUser?, error: NSError?) -> Void in
-//                if user != nil{
-//                    println("logged in")
-//                } else {
-//                    // signUp()
-//                    // wrong user or pass
-//                }
+     }
+//    
+//    
+//    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+//        println("User Logged In")
+//        
+//        if ((error) != nil)
+//        {
+//            // Process error
+//        }
+//        else if result.isCancelled {
+//            // Handle cancellations
+//        }
+//        else {
+//            // If you ask for multiple permissions at once, you
+//            // should check if specific permissions missing
+//            if result.grantedPermissions.contains("email")
+//            {
+//                // Do work
 //            }
 //        }
 //    }
-    
+//    
+//    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+//        println("User Logged Out")
+//    }
+//    
+//    func returnUserData() // call this method anytime after a user has logged in by calling self.returnUserData()
+//    {
+//        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
+//        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+//            
+//            if ((error) != nil)
+//            {
+//                // Process error
+//                println("Error: \(error)")
+//            }
+//            else
+//            {
+//                println("fetched user: \(result)")
+//                let userName : NSString = result.valueForKey("name") as! NSString
+//                println("User Name is: \(userName)")
+//                let userEmail : NSString = result.valueForKey("email") as! NSString
+//                println("User Email is: \(userEmail)")
+//            }
+//        })
+//    }
+//    
     
     @IBAction func signUp(sender: AnyObject) {
         signUp2()
@@ -187,6 +172,11 @@ class SignUpVC: UIViewController, floatMenuDelegate , FBSDKLoginButtonDelegate, 
             user.username = self.username.text.lowercaseString
             user.password = self.password.text.lowercaseString
             user["AboutYou"] = self.aboutYou.text
+            let imageData = UIImagePNGRepresentation(imageToPost.image)
+            
+            let imageFile = PFFile(name: "image.png", data: imageData)
+            
+            user["ProfilePicture"] = imageFile
             //                user.email = "email@example.com"
             //                // other fields can be set just like with PFObject
             //                user["phone"] = "415-392-0202"
@@ -252,4 +242,94 @@ class SignUpVC: UIViewController, floatMenuDelegate , FBSDKLoginButtonDelegate, 
         }
     }
     
+    func displayAlert(title: String, message: String) {
+        
+        var alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction((UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+            
+            self.dismissViewControllerAnimated(true, completion: nil)
+            
+        })))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+        
+    }
+    
+    
+    
+    var activityIndicator = UIActivityIndicatorView()
+    
+    @IBOutlet var imageToPost: UIImageView!
+    
+    @IBAction func chooseImage(sender: AnyObject) {
+        
+        var image = UIImagePickerController()
+        image.delegate = self
+        image.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        image.allowsEditing = false
+        
+        self.presentViewController(image, animated: true, completion: nil)
+        
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+        
+        self.dismissViewControllerAnimated(true, completion:nil)
+        
+        imageToPost.image = image
+        
+    }
+    
+    
+    @IBAction func postImage(sender: AnyObject) {
+        
+        // profile pic
+        
+        activityIndicator = UIActivityIndicatorView(frame: self.view.frame)
+        activityIndicator.backgroundColor = UIColor(white: 1.0, alpha: 0.5)
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        
+        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+        
+        var post = PFObject(className: "Post")
+        
+        //post["message"] = message.text
+        
+        post["userId"] = PFUser.currentUser()!.objectId!
+        
+        post["username"] = PFUser.currentUser()?.username
+        
+        let imageData = UIImagePNGRepresentation(imageToPost.image)
+        
+        let imageFile = PFFile(name: "image.png", data: imageData)
+        
+        post["imageFile"] = imageFile
+        
+        post.saveInBackgroundWithBlock{(success, error) -> Void in
+            
+            self.activityIndicator.stopAnimating()
+            
+            UIApplication.sharedApplication().endIgnoringInteractionEvents()
+            
+            if error == nil {
+                
+                self.displayAlert("Image Posted!", message: "Your image has been posted successfully")
+                
+                self.imageToPost.image = UIImage(named: "315px-Blank_woman_placeholder.svg.png")
+                
+                
+            } else {
+                
+                self.displayAlert("Could not post image", message: "Please try again later")
+                
+            }
+            
+        }
+        
+    }
 }

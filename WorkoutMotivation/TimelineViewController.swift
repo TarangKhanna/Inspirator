@@ -27,6 +27,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     var createdAt = [Int]()
     var score = [Int]()
     var userArray: [String] = []
+    var imageFiles = [PFFile]()
     var selectedName: String = "default"
     var selectedScore: String = "default"
     var selectedAbout: String = "default"
@@ -35,6 +36,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     var timeAtPress: NSDate!
     var elapsedTime: NSDate!
     var duration : Int = 0
+    var profileImageFile = PFFile()
     var circleColors = [UIColor.MKColor.LightBlue, UIColor.MKColor.Grey, UIColor.MKColor.LightGreen]
     override func viewWillAppear(animated: Bool) {
         if PFUser.currentUser()?.username == nil {
@@ -167,15 +169,47 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     }
     
     func retrieve() {
+        imageFiles.removeAll(keepCapacity: true)
+        
+//        var queryUser = PFUser.query() as PFQuery?
+//        queryUser!.findObjectsInBackgroundWithBlock {
+//            (users: [AnyObject]?, error: NSError?) -> Void in
+//            
+//            self.tableView.reloadData()
+//            
+//            if error == nil {
+//                // The find succeeded.
+//                println("Successfully retrieved \(users!.count) users.")
+//                // Do something with the found users
+//                if let users = users as? [PFObject] {
+//                    for user in users {
+//                        var user2:PFUser = user as! PFUser
+//                        println(user2.username!)
+//                        self.imageFiles.append(user2["ProfilePictue"] as! PFFile)
+//                        //println("HERE\(self.userArray[0])")
+//                        //println(user.objectId!)
+//                        //self.userArray.append(user.username)
+//                    }
+//                    //self.tableView.reloadData()
+//                }
+//            } else {
+//                // Log details of the failure
+//                println("Error: \(error!) \(error!.userInfo!)")
+//            }
+//        }
+    
+    
         if var query = PFQuery(className: "Person") as PFQuery? { //querying parse for user data
             var usr = PFUser.currentUser()!.username
             
             //query.whereKey("username", EqualTo: usr!)
-            query.whereKey("text", notEqualTo: "")
+            
             messages.removeAll(keepCapacity: false)
             userArray.removeAll(keepCapacity: false)
             score.removeAll(keepCapacity: false)
             createdAt.removeAll(keepCapacity: false)
+        
+            query.whereKey("text", notEqualTo: "")
             query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
                 //self.createdAt.append("gwef")
                 if let objects = objects as? [PFObject]  {
@@ -185,10 +219,8 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                         self.messages.append(object["text"] as! String)
                         self.userArray.append(object["username"] as! String)
                         self.score.append(object["score"] as! Int)
+                        //self.imageFiles.append(object[ as! PFFile)
                         let date = object.createdAt
-                        var dateFormatter = NSDateFormatter()
-                        var dateString = dateFormatter.stringFromDate(date!)
-                        //dateFormatter.dateFormat = "HH:mm"
                         println("HERJBHE")
                         //var datastring = NSString(data: date, encoding:NSUTF8StringEncoding) as! String
                         let createdAt2 = object.createdAt
@@ -196,11 +228,8 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                         //let duration = Int(elapsed)
                         let elapsedTime = CFAbsoluteTimeGetCurrent() - (object["startTime"] as! CFAbsoluteTime)
                         self.duration = Int(elapsedTime/60)
-                        println(self.duration)
                         println("TIMEEEE")
                         self.createdAt.append(self.duration)
-                        println(dateString)
-                        
                     }
                     self.tableView.reloadData()
                 }
@@ -261,13 +290,57 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         //            } else {
         //                cell.backgroundColor = UIColor.purpleColor()
         //            }
+        
+        //get profile pic
+        var queryUser = PFUser.query() as PFQuery?
+        queryUser!.findObjectsInBackgroundWithBlock {
+            (users: [AnyObject]?, error: NSError?) -> Void in
+            
+            self.tableView.reloadData()
+            queryUser!.whereKey("username", equalTo: self.userArray[self.userArray.count-indexPath.row-1])
+            if error == nil {
+                // The find succeeded.
+                println("Successfully retrieved \(users!.count) users.")
+                // Do something with the found users
+                if let users = users as? [PFObject] {
+                    for user in users {
+                        var user2:PFUser = user as! PFUser
+                        println(user2.username!)
+                        println("hjbebhkjebh")
+                        self.profileImageFile = user2["ProfilePicture"] as! PFFile
+                        self.profileImageFile.getDataInBackgroundWithBlock { (data, error) -> Void in
+                            
+                            if let downloadedImage = UIImage(data: data!) {
+                                
+                                 cell.profileImageView.image = downloadedImage
+                                
+                            }
+                            
+                        }
+                        //self.imageFiles.append(user2["ProfilePictue"] as! PFFile)
+
+                    }
+                    //self.tableView.reloadData()
+                }
+            } else {
+                // Log details of the failure
+                println("Error: \(error!) \(error!.userInfo!)")
+            }
+        }
+        //got profile pic
+        //self.tableView.insertRowsAtIndexPaths(0, withRowAnimation: UITableViewRowAnimation.Bottom)
         cell.typeImageView.image = UIImage(named: "timeline-chat")
-        cell.profileImageView.image = UIImage(named: "profile-pic-1")
+        //cell.profileImageView.image = UIImage(named: "profile-pic-1")
         cell.nameLabel.text = userArray[userArray.count-indexPath.row-1] // to flip
-        cell.nameLabel.textColor = UIColor(hex: 0xF44336)
-        cell.nameLabel.textColor = UIColor.whiteColor()
+        println("HFBHDNJDEWDN")
+        println(userArray.count-indexPath.row-1)
+        
+        cell.nameLabel.textColor = UIColor.greenColor()
+        //cell.nameLabel.textColor = UIColor.whiteColor()
         cell.postLabel?.text = messages[userArray.count - indexPath.row-1]
+        cell.postLabel?.textColor = UIColor.whiteColor()
         cell.dateLabel.text = String(createdAt[userArray.count - indexPath.row-1]) + " min ago"
+        cell.dateLabel.textColor = UIColor.whiteColor()
         cell.scoreLabel.textColor = UIColor.greenColor()
         cell.scoreLabel.text = "Likes - " + String(score[userArray.count - indexPath.row-1])
         

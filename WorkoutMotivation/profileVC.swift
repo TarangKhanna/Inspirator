@@ -26,6 +26,7 @@ class profileVC: UIViewController, UIScrollViewDelegate {
     
     var name : String = ""
     var score: String = ""
+    
     var blurredHeaderImageView:UIImageView?
     override func viewWillAppear(animated: Bool) {
         scoreLabel.text = score
