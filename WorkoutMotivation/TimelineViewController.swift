@@ -168,7 +168,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             userArray.removeAll(keepCapacity: false)
             score.removeAll(keepCapacity: false)
             createdAt.removeAll(keepCapacity: false)
-        
+            query.orderByDescending("createdAt")
             query.whereKey("text", notEqualTo: "")
             query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
                 //self.createdAt.append("gwef")
@@ -255,9 +255,9 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         var queryUser = PFUser.query() as PFQuery?
         queryUser!.findObjectsInBackgroundWithBlock {
             (users: [AnyObject]?, error: NSError?) -> Void in
-            
+            queryUser!.orderByDescending("createdAt")
             //self.tableView.reloadData()
-            queryUser!.whereKey("username", equalTo: self.userArray[self.userArray.count-indexPath.row-1])
+            queryUser!.whereKey("username", equalTo: self.userArray[indexPath.row])
             if error == nil {
                 // The find succeeded.
                 println("Successfully retrieved \(users!.count) users.")
@@ -291,18 +291,18 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         //self.tableView.insertRowsAtIndexPaths(0, withRowAnimation: UITableViewRowAnimation.Bottom)
         cell.typeImageView.image = UIImage(named: "timeline-chat")
         //cell.profileImageView.image = UIImage(named: "profile-pic-1")
-        cell.nameLabel.text = userArray[userArray.count-indexPath.row-1] // to flip
+        cell.nameLabel.text = userArray[indexPath.row] // to flip
         println("HFBHDNJDEWDN")
-        println(userArray.count-indexPath.row-1)
+        println(indexPath.row)
         
         cell.nameLabel.textColor = UIColor.greenColor()
         //cell.nameLabel.textColor = UIColor.whiteColor()
-        cell.postLabel?.text = messages[userArray.count - indexPath.row-1]
+        cell.postLabel?.text = messages[indexPath.row]
         cell.postLabel?.textColor = UIColor.whiteColor()
-        cell.dateLabel.text = String(createdAt[userArray.count - indexPath.row-1]) + " min ago"
+        cell.dateLabel.text = String(createdAt[indexPath.row]) + " min ago"
         cell.dateLabel.textColor = UIColor.whiteColor()
         cell.scoreLabel.textColor = UIColor.greenColor()
-        cell.scoreLabel.text = "Likes - " + String(score[userArray.count - indexPath.row-1])
+        cell.scoreLabel.text = "Likes - " + String(score[indexPath.row])
         
         return cell
         
@@ -321,8 +321,8 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        selectedName = userArray[userArray.count-indexPath.row-1]
-        selectedScore = String(score[userArray.count - indexPath.row-1])
+        selectedName = userArray[indexPath.row]
+        selectedScore = String(score[indexPath.row])
         //let destinationVC = profileVC()
         //destinationVC.name = selectedName
         performSegueWithIdentifier("profileView", sender: self)
