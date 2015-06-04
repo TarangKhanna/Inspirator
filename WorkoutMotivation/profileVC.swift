@@ -24,6 +24,7 @@ class profileVC: UIViewController, UIScrollViewDelegate {
     @IBOutlet var headerBlurImageView:UIImageView!
     @IBOutlet var scoreLabel: UILabel!
     
+    @IBOutlet var aboutYouLabel: UILabel!
     var name : String = ""
     var score: String = ""
     var profileImageFile = PFFile()
@@ -43,8 +44,7 @@ class profileVC: UIViewController, UIScrollViewDelegate {
                 if let users = users as? [PFObject] {
                     for user in users {
                         var user2:PFUser = user as! PFUser
-                        println(user2.username!)
-                        println("hjbebhkjebh")
+                        self.aboutYouLabel.text = user2["AboutYou"] as? String
                         self.profileImageFile = user2["ProfilePicture"] as! PFFile
                         self.profileImageFile.getDataInBackgroundWithBlock { (data, error) -> Void in
                             
@@ -55,7 +55,7 @@ class profileVC: UIViewController, UIScrollViewDelegate {
                             }
                             
                         }
-                        //self.imageFiles.append(user2["ProfilePictue"] as! PFFile)
+                        
                         
                     }
                     //self.tableView.reloadData()

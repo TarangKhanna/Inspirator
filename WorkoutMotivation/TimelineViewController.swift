@@ -43,20 +43,8 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             //signin vc
             performSegueWithIdentifier("signIn", sender: self)
         }
-        
-        //        if var query = PFUser.query() { //querying parse for user names
-        //            query.whereKey("username", notEqualTo: "")
-        //
-        //            var users = query.findObjects()
-        //
-        //            if let users = users as? [PFObject] {
-        //                for user in users {
-        //                    var user2:PFUser = user as! PFUser
-        //                    println(user2.username!)
-        //                    //self.userArray.append(user2.username!)
-        //                }
-        //            }
-        //        }
+        println("BHWJBE")
+        println(PFUser.currentUser()?.username)
         
         //            query.findObjectsInBackgroundWithBlock {
         //                (users: [AnyObject]?, error: NSError?) -> Void in
