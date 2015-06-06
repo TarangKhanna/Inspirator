@@ -158,7 +158,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     
     func retrieve() {
         imageFiles.removeAll(keepCapacity: true)
-    
+        
         if var query = PFQuery(className: "Person") as PFQuery? { //querying parse for user data
             var usr = PFUser.currentUser()!.username
             
@@ -250,38 +250,39 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         //            } else {
         //                cell.backgroundColor = UIColor.purpleColor()
         //            }
-        
-        //get profile pic
-        var queryUser = PFUser.query() as PFQuery?
-        queryUser!.findObjectsInBackgroundWithBlock {
-            (users: [AnyObject]?, error: NSError?) -> Void in
-            queryUser!.orderByDescending("createdAt")
-            queryUser!.whereKey("username", equalTo: self.userArray[indexPath.row])
-            if error == nil {
-                // The find succeeded.
-                println("Successfully retrieved \(users!.count) users.")
-                // Do something with the found users
-                if let users = users as? [PFObject] {
-                    for user in users {
-                        var user2:PFUser = user as! PFUser
-                        self.profileImageFile = user2["ProfilePicture"] as! PFFile
-                        self.profileImageFile.getDataInBackgroundWithBlock { (data, error) -> Void in
-                            
-                            if let downloadedImage = UIImage(data: data!) {
+        if !userArray[indexPath.row].isEmpty{
+            //get profile pic
+            var queryUser = PFUser.query() as PFQuery?
+            queryUser!.findObjectsInBackgroundWithBlock {
+                (users: [AnyObject]?, error: NSError?) -> Void in
+                queryUser!.orderByDescending("createdAt")
+                queryUser!.whereKey("username", equalTo: self.userArray[indexPath.row])
+                if error == nil {
+                    // The find succeeded.
+                    println("Successfully retrieved \(users!.count) users.")
+                    // Do something with the found users
+                    if let users = users as? [PFObject] {
+                        for user in users {
+                            var user2:PFUser = user as! PFUser
+                            self.profileImageFile = user2["ProfilePicture"] as! PFFile
+                            self.profileImageFile.getDataInBackgroundWithBlock { (data, error) -> Void in
                                 
-                                 cell.profileImageView.image = downloadedImage
+                                if let downloadedImage = UIImage(data: data!) {
+                                    
+                                    cell.profileImageView.image = downloadedImage
+                                    
+                                }
                                 
                             }
+                            //self.imageFiles.append(user2["ProfilePictue"] as! PFFile)
                             
                         }
-                        //self.imageFiles.append(user2["ProfilePictue"] as! PFFile)
-
+                        //self.tableView.reloadData()
                     }
-                    //self.tableView.reloadData()
+                } else {
+                    // Log details of the failure
+                    println("Error: \(error!) \(error!.userInfo!)")
                 }
-            } else {
-                // Log details of the failure
-                println("Error: \(error!) \(error!.userInfo!)")
             }
         }
         //got profile pic
@@ -332,7 +333,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         //destinationVC.name = selectedName
         performSegueWithIdentifier("profileView", sender: self)
     }
-
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "profileView") { //pass data to VC
             var svc = segue.destinationViewController as! profileVC;
@@ -342,12 +343,12 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        //let toViewController = segue.destinationViewController as! UIViewController
-        //self.modalPresentationStyle = UIModalPresentationStyle.Custom
-        //toViewController.transitioningDelegate = self.transitionOperator
-  //  }
+    //    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    
+    //let toViewController = segue.destinationViewController as! UIViewController
+    //self.modalPresentationStyle = UIModalPresentationStyle.Custom
+    //toViewController.transitioningDelegate = self.transitionOperator
+    //  }
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
