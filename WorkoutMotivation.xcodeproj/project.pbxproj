@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		710394F61B22ADB800F01B5B /* LayoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710394F51B22ADB800F01B5B /* LayoutController.swift */; };
 		710394F81B22ADC700F01B5B /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710394F71B22ADC700F01B5B /* CollectionViewCell.swift */; };
+		710394FA1B22BB6300F01B5B /* layoutPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710394F91B22BB6300F01B5B /* layoutPost.swift */; };
 		7109A8E91B04306900435D3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7109A8E81B04306900435D3C /* AppDelegate.swift */; };
 		7109A8EB1B04306900435D3C /* MotivateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7109A8EA1B04306900435D3C /* MotivateVC.swift */; };
 		7109A8EE1B04306900435D3C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7109A8EC1B04306900435D3C /* Main.storyboard */; };
@@ -105,6 +106,7 @@
 /* Begin PBXFileReference section */
 		710394F51B22ADB800F01B5B /* LayoutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutController.swift; sourceTree = "<group>"; };
 		710394F71B22ADC700F01B5B /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		710394F91B22BB6300F01B5B /* layoutPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = layoutPost.swift; sourceTree = "<group>"; };
 		7109A8E31B04306900435D3C /* WorkoutMotivation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkoutMotivation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7109A8E71B04306900435D3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7109A8E81B04306900435D3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 				716B874C1B152E9D00B7E955 /* TimelineCell.swift */,
 				710394F51B22ADB800F01B5B /* LayoutController.swift */,
 				7109A8EC1B04306900435D3C /* Main.storyboard */,
+				710394F91B22BB6300F01B5B /* layoutPost.swift */,
 				7128A91F1B087FF70035C41E /* ProgrammingQuotes.swift */,
 				7135F2C21B080711002ACD53 /* WeigthsQuotes.swift */,
 				719D53891B066E1900DD34CD /* NavigationControl.swift */,
@@ -562,6 +565,7 @@
 				71CEE6191B13089200E85AA2 /* MKImageView.swift in Sources */,
 				71AF79D21B181574007953CD /* CardTableViewCell.swift in Sources */,
 				71AF79F41B192F68007953CD /* UIScrollViewExtension.swift in Sources */,
+				710394FA1B22BB6300F01B5B /* layoutPost.swift in Sources */,
 				7128A9201B087FF70035C41E /* ProgrammingQuotes.swift in Sources */,
 				716B874E1B152E9D00B7E955 /* TimelineCell.swift in Sources */,
 				71AF79D51B181574007953CD /* TipInCellAnimator.swift in Sources */,
