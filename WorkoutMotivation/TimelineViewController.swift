@@ -256,7 +256,6 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         queryUser!.findObjectsInBackgroundWithBlock {
             (users: [AnyObject]?, error: NSError?) -> Void in
             queryUser!.orderByDescending("createdAt")
-            //self.tableView.reloadData()
             queryUser!.whereKey("username", equalTo: self.userArray[indexPath.row])
             if error == nil {
                 // The find succeeded.
@@ -265,8 +264,6 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                 if let users = users as? [PFObject] {
                     for user in users {
                         var user2:PFUser = user as! PFUser
-                        println(user2.username!)
-                        println("hjbebhkjebh")
                         self.profileImageFile = user2["ProfilePicture"] as! PFFile
                         self.profileImageFile.getDataInBackgroundWithBlock { (data, error) -> Void in
                             
@@ -299,7 +296,15 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         //cell.nameLabel.textColor = UIColor.whiteColor()
         cell.postLabel?.text = messages[indexPath.row]
         cell.postLabel?.textColor = UIColor.whiteColor()
-        cell.dateLabel.text = String(createdAt[indexPath.row]) + " min ago"
+        var seconds = createdAt[indexPath.row]*60
+        var temp = seconds
+        var timeAgo = (seconds/60) // + " m ago"
+        var ending = " Min Ago"
+        if timeAgo >= 60 {
+            timeAgo = (temp / 3600)
+            ending = " Hours Ago"
+        }
+        cell.dateLabel.text = String(timeAgo) + ending
         cell.dateLabel.textColor = UIColor.whiteColor()
         cell.scoreLabel.textColor = UIColor.greenColor()
         cell.scoreLabel.text = "Likes - " + String(score[indexPath.row])
@@ -387,8 +392,8 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             println("Text value: \(txt.text)")
             if txt.text != " " && txt.text != nil && txt.text != ""{
                 var person = PFObject(className:"Person")
-                person["score"] = 42
-                person["username"] = PFUser.currentUser()?.username //"Tarang"
+                person["score"] = 0
+                person["username"] = PFUser.currentUser()?.username
                 person["admin"] = true
                 person["text"] = txt.text
                 person["startTime"] = CFAbsoluteTimeGetCurrent()
@@ -404,7 +409,6 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                     } else {
                         println("Couldn't post!")
                         SCLAlertView().showWarning("Error Posting", subTitle: "Check Your Internet Connection.")
-                        // There was a problem, check error.description
                     }
                 }
             } else {
