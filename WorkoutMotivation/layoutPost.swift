@@ -8,11 +8,14 @@
 
 import UIKit
 
-
+let reuseIdentifier2 = "Cell"
 
 class layoutPost: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    let reuseIdentifier = "Cell"
+    //pass in value for a post for ZOOM in feature
+    
+    let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
+    let titles = ["Sand Harbor, Lake Tahoe - California","Beautiful View of Manhattan skyline.","Watcher in the Fog","Great Smoky Mountains National Park, Tennessee","Most beautiful place"]
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -22,14 +25,25 @@ class layoutPost: UICollectionViewController, UICollectionViewDelegateFlowLayout
         // Dispose of any resources that can be recreated.
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-    println(self.view.frame.size)
-    return CGSizeMake(200, self.view.frame.size.height - 10)
+    // MARK: UICollectionViewDataSource
+    
+    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        //#warning Incomplete method implementation -- Return the number of sections
+        return 1
     }
     
+    
+    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        //#warning Incomplete method implementation -- Return the number of items in the section
+        return 1
+    }
+    
+    
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! CollectionViewCell
-        cell.title.text = "test1"
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier2, forIndexPath: indexPath) as! CollectionViewCell
+        cell.title.text = "test1 - random- might want to fix width and height as well, if you want to preserve size."
+        //cell.title.sizeToFit()
+        cell.title2.text = "test1 - random- might want to fix width and height as well, if you want to preserve size. "
         let curr = indexPath.row % 5  + 1
         let imgName = "profile-pic-1"
         cell.Image.image = UIImage(named: imgName)
@@ -37,24 +51,17 @@ class layoutPost: UICollectionViewController, UICollectionViewDelegateFlowLayout
         return cell
     }
     
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        println(self.view.frame.size)
+        return CGSizeMake(200, (self.view.frame.size.height - 10))
+    }
+    
+    
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-    return UIEdgeInsetsMake(5, 0, 5, 0)
+        return UIEdgeInsetsMake(5, 0, 5, 0)
     }
     
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-    return 1
-    }
-    
-    
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 200
-    }
-    
-//    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-//    let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! UICollectionViewCell
-//    
-//    return cell
-//    }
-    
+
     
 }

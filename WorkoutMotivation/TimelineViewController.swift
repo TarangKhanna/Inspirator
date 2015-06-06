@@ -31,7 +31,6 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     var selectedName: String = "default"
     var selectedScore: String = "default"
     var selectedAbout: String = "default"
-    //var counter = userArray.
     var startTime: CFAbsoluteTime!
     var timeAtPress: NSDate!
     var elapsedTime: NSDate!
@@ -112,7 +111,6 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         //        locationManager.delegate = self
         //        locationManager.requestWhenInUseAuthorization()
         //        locationManager.startUpdatingLocation()
-        //post1()
         
         let floatFrame:CGRect = (CGRectMake(UIScreen.mainScreen().bounds.size.width - 44 - 20, UIScreen.mainScreen().bounds.size.height - 44 - 20, 44, 44))
         let actionButton : VCFloatingActionButton = VCFloatingActionButton(frame: floatFrame, normalImage: UIImage(named: "plus.png"), andPressedImage: UIImage(named: "cross.png"), withScrollview: tableView)
@@ -130,30 +128,6 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             //self?.tableView.reloadData()
             self?.tableView.stopPullToRefresh()
             })
-    }
-    
-    func post1() {
-        var person = PFObject(className:"Person")
-        person["score"] = 1337
-        person["username"] = PFUser.currentUser()?.username //"Tarang"
-        //person["admin"] = true
-        person["text"] = "First Check"
-        timeAtPress = NSDate()
-        person["startTime"] = CFAbsoluteTimeGetCurrent()
-        //startTime = CFAbsoluteTimeGetCurrent()
-        person.saveInBackgroundWithBlock {
-            (success: Bool, error: NSError?) -> Void in
-            if (success) {
-                println("Posted!")
-                // The object has been saved.
-                //self.tableView.reloadData()
-            } else {
-                println("Couldn't post!")
-                // There was a problem, check error.description
-            }
-        }
-        
-        
     }
     
     func retrieve() {
@@ -258,7 +232,6 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             queryUser!.findObjectsInBackgroundWithBlock {
                 (users: [AnyObject]?, error: NSError?) -> Void in
                 queryUser!.orderByDescending("createdAt")
-                println(self.userArray)
                 queryUser!.whereKey("username", equalTo: self.userArray[indexPath.row])
                 if error == nil {
                     // The find succeeded.
@@ -293,8 +266,6 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         cell.typeImageView.image = UIImage(named: "timeline-chat")
         //cell.profileImageView.image = UIImage(named: "profile-pic-1")
         cell.nameLabel.text = userArray[indexPath.row] // to flip
-        println("HFBHDNJDEWDN")
-        println(indexPath.row)
         
         cell.nameLabel.textColor = UIColor.greenColor()
         //cell.nameLabel.textColor = UIColor.whiteColor()

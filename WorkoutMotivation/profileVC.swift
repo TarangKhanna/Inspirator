@@ -79,7 +79,7 @@ class profileVC: UIViewController, UIScrollViewDelegate, UIPopoverPresentationCo
     
     func addCategory() {
         
-        var popoverContent = self.storyboard?.instantiateViewControllerWithIdentifier("login") as! UIViewController
+        var popoverContent = self.storyboard?.instantiateViewControllerWithIdentifier("PopUp") as! UIViewController
         var nav = UINavigationController(rootViewController: popoverContent)
         nav.modalPresentationStyle = UIModalPresentationStyle.Popover
         //nav.popoverPresentationController!.delegate = implOfUIAPCDelegate
@@ -87,7 +87,7 @@ class profileVC: UIViewController, UIScrollViewDelegate, UIPopoverPresentationCo
         popoverContent.preferredContentSize = CGSizeMake(500,600)
         popover!.delegate = self
         popover!.sourceView = self.view
-        popover!.sourceRect = CGRectMake(100,100,0,0)
+        popover!.sourceRect = CGRectMake(self.view.bounds.width/2,self.view.bounds.height/2,0,0)
         
         self.presentViewController(nav, animated: true, completion: nil)
         

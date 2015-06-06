@@ -9,10 +9,8 @@
 import UIKit
 
 let reuseIdentifier = "collCell"
-
-class LayoutController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-    let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
-    let titles = ["Sand Harbor, Lake Tahoe - California","Beautiful View of Manhattan skyline.","Watcher in the Fog","Great Smoky Mountains National Park, Tennessee","Most beautiful place"]
+//in profileVC
+class LayoutController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UIPopoverPresentationControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -34,7 +32,26 @@ class LayoutController: UICollectionViewController, UICollectionViewDelegateFlow
         //#warning Incomplete method implementation -- Return the number of items in the section
         return 3
     }
+    
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        addCategory()
+    }
 
+    func addCategory() {
+        
+        var popoverContent = self.storyboard?.instantiateViewControllerWithIdentifier("PopUp") as! UIViewController
+        var nav = UINavigationController(rootViewController: popoverContent)
+        nav.modalPresentationStyle = UIModalPresentationStyle.Popover
+        //nav.popoverPresentationController!.delegate = implOfUIAPCDelegate
+        var popover = nav.popoverPresentationController
+        popoverContent.preferredContentSize = CGSizeMake(500,600)
+        popover!.delegate = self
+        popover!.sourceView = self.view
+        popover!.sourceRect = CGRectMake(self.view.bounds.width/2,self.view.bounds.height/2,0,0)
+        
+        self.presentViewController(nav, animated: true, completion: nil)
+        
+    }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! CollectionViewCell
@@ -57,6 +74,11 @@ class LayoutController: UICollectionViewController, UICollectionViewDelegateFlow
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
         return UIEdgeInsetsMake(5, 0, 5, 0)
+    }
+    
+    func adaptivePresentationStyleForPresentationController(PC: UIPresentationController) -> UIModalPresentationStyle {
+        // This *forces* a popover to be displayed on the iPhone
+        return .None
     }
 
 }
