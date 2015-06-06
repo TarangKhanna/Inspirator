@@ -27,6 +27,16 @@ class layoutPost: UICollectionViewController, UICollectionViewDelegateFlowLayout
     return CGSizeMake(200, self.view.frame.size.height - 10)
     }
     
+    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! CollectionViewCell
+        cell.title.text = "test1"
+        let curr = indexPath.row % 5  + 1
+        let imgName = "profile-pic-1"
+        cell.Image.image = UIImage(named: imgName)
+        
+        return cell
+    }
+    
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
     return UIEdgeInsetsMake(5, 0, 5, 0)
     }
@@ -40,11 +50,11 @@ class layoutPost: UICollectionViewController, UICollectionViewDelegateFlowLayout
     return 200
     }
     
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! UICollectionViewCell
-    
-    return cell
-    }
+//    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+//    let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! UICollectionViewCell
+//    
+//    return cell
+//    }
     
     
 }

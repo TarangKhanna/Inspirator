@@ -38,26 +38,24 @@ class LayoutController: UICollectionViewController, UICollectionViewDelegateFlow
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! CollectionViewCell
-        cell.title.text = self.titles[indexPath.row % 5]
+        cell.title.text = "test1 - random- "
+        //cell.title.sizeToFit()
         let curr = indexPath.row % 5  + 1
-        let imgName = "pin\(curr).jpg"
+        let imgName = "profile-pic-1"
         cell.Image.image = UIImage(named: imgName)
-
+        
         return cell
     }
     
-   
-    func collectionView(collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-            return CGSize(width: 220, height: 300)
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        println(self.view.frame.size)
+        return CGSizeMake(200, (self.view.frame.size.height - 10))
     }
 
     
-    func collectionView(collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-            return sectionInsets
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+        return UIEdgeInsetsMake(5, 0, 5, 0)
     }
 
 }
