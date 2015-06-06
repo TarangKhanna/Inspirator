@@ -125,12 +125,12 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         retrieve()
         self.tableView.addPullToRefresh({ [weak self] in
             // refresh code
-            self?.retrieve()
-            self?.tableView.reloadData()
+            self!.retrieve()
+            //self?.retrieve()
+            //self?.tableView.reloadData()
             self?.tableView.stopPullToRefresh()
             })
     }
-    
     
     func post1() {
         var person = PFObject(className:"Person")
@@ -157,21 +157,23 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     }
     
     func retrieve() {
-        imageFiles.removeAll(keepCapacity: true)
+        
         
         if var query = PFQuery(className: "Person") as PFQuery? { //querying parse for user data
             var usr = PFUser.currentUser()!.username
             
             //query.whereKey("username", EqualTo: usr!)
             
-            messages.removeAll(keepCapacity: false)
-            userArray.removeAll(keepCapacity: false)
-            score.removeAll(keepCapacity: false)
-            createdAt.removeAll(keepCapacity: false)
+            
             query.orderByDescending("createdAt")
             query.whereKey("text", notEqualTo: "")
             query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
                 //self.createdAt.append("gwef")
+                self.imageFiles.removeAll(keepCapacity: true)
+                self.messages.removeAll(keepCapacity: false)
+                self.userArray.removeAll(keepCapacity: false)
+                self.score.removeAll(keepCapacity: false)
+                self.createdAt.removeAll(keepCapacity: false)
                 if let objects = objects as? [PFObject]  {
                     
                     for object in objects {
@@ -256,6 +258,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             queryUser!.findObjectsInBackgroundWithBlock {
                 (users: [AnyObject]?, error: NSError?) -> Void in
                 queryUser!.orderByDescending("createdAt")
+                println(self.userArray)
                 queryUser!.whereKey("username", equalTo: self.userArray[indexPath.row])
                 if error == nil {
                     // The find succeeded.
