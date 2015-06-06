@@ -38,8 +38,9 @@ class LayoutController: UICollectionViewController, UICollectionViewDelegateFlow
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! CollectionViewCell
-        cell.title.text = "test1 - random- "
+        cell.title.text = "test1 - random- might want to fix width and height as well, if you want to preserve size."
         //cell.title.sizeToFit()
+        cell.title2.text = "test1 - random- might want to fix width and height as well, if you want to preserve size. "
         let curr = indexPath.row % 5  + 1
         let imgName = "profile-pic-1"
         cell.Image.image = UIImage(named: imgName)
