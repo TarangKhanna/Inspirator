@@ -104,9 +104,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		710394F51B22ADB800F01B5B /* LayoutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutController.swift; sourceTree = "<group>"; };
+		710394F51B22ADB800F01B5B /* LayoutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LayoutController.swift; path = WorkoutMotivation/LayoutController.swift; sourceTree = "<group>"; };
 		710394F71B22ADC700F01B5B /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
-		710394F91B22BB6300F01B5B /* layoutPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = layoutPost.swift; sourceTree = "<group>"; };
+		710394F91B22BB6300F01B5B /* layoutPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = layoutPost.swift; path = WorkoutMotivation/layoutPost.swift; sourceTree = "<group>"; };
 		7109A8E31B04306900435D3C /* WorkoutMotivation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkoutMotivation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7109A8E71B04306900435D3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7109A8E81B04306900435D3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -267,9 +267,7 @@
 				71CEE60B1B12CBEA00E85AA2 /* VCFloatingButton */,
 				716B874C1B152E9D00B7E955 /* TimelineCell.swift */,
 				710394F71B22ADC700F01B5B /* CollectionViewCell.swift */,
-				710394F51B22ADB800F01B5B /* LayoutController.swift */,
 				7109A8EC1B04306900435D3C /* Main.storyboard */,
-				710394F91B22BB6300F01B5B /* layoutPost.swift */,
 				7128A91F1B087FF70035C41E /* ProgrammingQuotes.swift */,
 				7135F2C21B080711002ACD53 /* WeigthsQuotes.swift */,
 				719D53891B066E1900DD34CD /* NavigationControl.swift */,
@@ -401,6 +399,8 @@
 		71CEE5F41B12BA7E00E85AA2 /* VC's */ = {
 			isa = PBXGroup;
 			children = (
+				710394F91B22BB6300F01B5B /* layoutPost.swift */,
+				710394F51B22ADB800F01B5B /* LayoutController.swift */,
 				71AF79C51B17D1F1007953CD /* profileVC.swift */,
 				716B874D1B152E9D00B7E955 /* TimelineViewController.swift */,
 				7109A8EA1B04306900435D3C /* MotivateVC.swift */,

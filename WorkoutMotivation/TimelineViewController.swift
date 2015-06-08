@@ -155,16 +155,8 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                         self.messages.append(object["text"] as! String)
                         self.userArray.append(object["username"] as! String)
                         self.score.append(object["score"] as! Int)
-                        //self.imageFiles.append(object[ as! PFFile)
-                        let date = object.createdAt
-                        println("HERJBHE")
-                        //var datastring = NSString(data: date, encoding:NSUTF8StringEncoding) as! String
-                        let createdAt2 = object.createdAt
-                        //let elapsed = NSDate().timeIntervalSinceDate(object["startTime"] as! NSDecimalNumber)
-                        //let duration = Int(elapsed)
                         let elapsedTime = CFAbsoluteTimeGetCurrent() - (object["startTime"] as! CFAbsoluteTime)
                         self.duration = Int(elapsedTime/60)
-                        println("TIMEEEE")
                         self.createdAt.append(self.duration)
                     }
                     self.tableView.reloadData()
@@ -234,12 +226,6 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         return true
     }
     
-//    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-//        if (editingStyle == UITableViewCellEditingStyle.Delete) {
-//            // handle delete (by removing the data from your array and updating the tableview)
-//        }
-//    }
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         //if (indexPath.row == 0) {
@@ -261,8 +247,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                 queryUser!.orderByDescending("createdAt")
                 queryUser!.whereKey("username", equalTo: self.userArray[indexPath.row])
                 if error == nil {
-                    // The find succeeded.
-                    println("Successfully retrieved \(users!.count) users.")
+                    //println("Successfully retrieved \(users!.count) users.")
                     // Do something with the found users
                     if let users = users as? [PFObject] {
                         for user in users {

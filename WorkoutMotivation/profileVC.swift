@@ -72,20 +72,11 @@ class profileVC: UIViewController, UIScrollViewDelegate, UIPopoverPresentationCo
         scrollView.delegate = self
     }
     
-    func addCategory() {
-        
-        var popoverContent = self.storyboard?.instantiateViewControllerWithIdentifier("PopUp") as! UIViewController
-        var nav = UINavigationController(rootViewController: popoverContent)
-        nav.modalPresentationStyle = UIModalPresentationStyle.Popover
-        //nav.popoverPresentationController!.delegate = implOfUIAPCDelegate
-        var popover = nav.popoverPresentationController
-        popoverContent.preferredContentSize = CGSizeMake(500,600)
-        popover!.delegate = self
-        popover!.sourceView = self.view
-        popover!.sourceRect = CGRectMake(self.view.bounds.width/2,self.view.bounds.height/2,0,0)
-        
-        self.presentViewController(nav, animated: true, completion: nil)
-        
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "zoomIn") { //pass data to VC
+            var svc = segue.destinationViewController as! LayoutController;
+            svc.name2 = name
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
