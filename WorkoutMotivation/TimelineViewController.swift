@@ -37,7 +37,9 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     var elapsedTime: NSDate!
     var duration : Int = 0
     var profileImageFile = PFFile()
-    var circleColors = [UIColor.MKColor.LightBlue, UIColor.MKColor.Grey, UIColor.MKColor.LightGreen]
+    var backupImage = UIImage()
+    var previousUser = String()
+    var circleColors = [UIColor.MKColor.LightBlue, UIColor.MKColor.Grey, UIColor.MKColor.LightGreen, UIColor.MKColor.Amber]
     override func viewWillAppear(animated: Bool) {
         if PFUser.currentUser()?.username == nil {
             //signin vc
@@ -240,7 +242,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         //            } else {
         //                cell.backgroundColor = UIColor.purpleColor()
         //            }
-        if !userArray[indexPath.row].isEmpty{
+        if previousUser != userArray[indexPath.row]{
             //get profile pic
             var queryUser = PFUser.query() as PFQuery?
             queryUser!.findObjectsInBackgroundWithBlock {
@@ -259,29 +261,28 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                                 if let downloadedImage = UIImage(data: data!) {
                                     
                                     cell.profileImageView.image = downloadedImage
-                                    
+                                    self.backupImage = downloadedImage
                                 }
                                 
                             }
                             //self.imageFiles.append(user2["ProfilePictue"] as! PFFile)
                             
                         }
-                        //self.tableView.reloadData()
                     }
                 } else {
-                    // Log details of the failure
                     println("Error: \(error!) \(error!.userInfo!)")
                 }
             }
+        } else {
+            cell.profileImageView.image = self.backupImage
+            previousUser = userArray[indexPath.row]
         }
         //got profile pic
         //self.tableView.insertRowsAtIndexPaths(0, withRowAnimation: UITableViewRowAnimation.Bottom)
         cell.typeImageView.image = UIImage(named: "timeline-chat")
         //cell.profileImageView.image = UIImage(named: "profile-pic-1")
-        cell.nameLabel.text = userArray[indexPath.row] // to flip
-        
+        cell.nameLabel.text = previousUser
         cell.nameLabel.textColor = UIColor.greenColor()
-        //cell.nameLabel.textColor = UIColor.whiteColor()
         cell.postLabel?.text = messages[indexPath.row]
         cell.postLabel?.textColor = UIColor.whiteColor()
         var seconds = createdAt[indexPath.row]*60
@@ -339,8 +340,8 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                     if let users = users as? [PFObject] {
                         for user in users {
                             var user2:PFUser = user as! PFUser
-                            self.profileImageFile = user2["ProfilePicture"] as! PFFile
                             svc.aboutYouLabel.text = user2["AboutYou"] as? String
+                            self.profileImageFile = user2["ProfilePicture"] as! PFFile
                             self.profileImageFile.getDataInBackgroundWithBlock { (data, error) -> Void in
                                 
                                 if let downloadedImage = UIImage(data: data!) {

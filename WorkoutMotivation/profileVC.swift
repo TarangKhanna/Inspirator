@@ -26,46 +26,13 @@ class profileVC: UIViewController, UIScrollViewDelegate, UIPopoverPresentationCo
     
     @IBOutlet var aboutYouLabel: UILabel!
     var name : String = ""
+    var aboutYou : String = ""
     var score: String = ""
     var profileImageFile = PFFile()
     var blurredHeaderImageView:UIImageView?
     override func viewWillAppear(animated: Bool) {
         scoreLabel.text = score
         profileName.text = name
-//        var queryUser = PFUser.query() as PFQuery?
-//        queryUser!.findObjectsInBackgroundWithBlock {
-//            (users: [AnyObject]?, error: NSError?) -> Void in
-//            
-//            //self.tableView.reloadData()
-//            queryUser!.whereKey("username", equalTo: self.name)
-//            if error == nil {
-//                // The find succeeded.
-//                // Do something with the found users
-//                if let users = users as? [PFObject] {
-//                    for user in users {
-//                        var user2:PFUser = user as! PFUser
-//                        self.aboutYouLabel.text = user2["AboutYou"] as? String
-//                        self.profileImageFile = user2["ProfilePicture"] as! PFFile
-//                        self.profileImageFile.getDataInBackgroundWithBlock { (data, error) -> Void in
-//                            
-//                            if let downloadedImage = UIImage(data: data!) {
-//                                
-//                                //self.avatarImage.image = downloadedImage
-//                                
-//                            }
-//                            
-//                        }
-//                        
-//                        
-//                    }
-//                    //self.tableView.reloadData()
-//                }
-//            } else {
-//                // Log details of the failure
-//                println("Error: \(error!) \(error!.userInfo!)")
-//            }
-//        }
-        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
