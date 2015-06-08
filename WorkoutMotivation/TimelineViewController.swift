@@ -20,6 +20,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet var tableView : UITableView!
     @IBOutlet var menuItem : UIBarButtonItem!
     @IBOutlet var toolbar : UIToolbar!
+    var parseObject:PFObject?
     var currLocation: CLLocationCoordinate2D?
     let locationManager = CLLocationManager()
     //var transitionOperator = TransitionOperator()
@@ -326,6 +327,40 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             println(selectedName)
             svc.name = selectedName
             svc.score = selectedScore
+            //get profile pic
+            var queryUser = PFUser.query() as PFQuery?
+            queryUser!.findObjectsInBackgroundWithBlock {
+                (users: [AnyObject]?, error: NSError?) -> Void in
+                queryUser!.orderByDescending("createdAt")
+                queryUser!.whereKey("username", equalTo: self.selectedName)
+                if error == nil {
+                    //println("Successfully retrieved \(users!.count) users.")
+                    // Do something with the found users
+                    if let users = users as? [PFObject] {
+                        for user in users {
+                            var user2:PFUser = user as! PFUser
+                            self.profileImageFile = user2["ProfilePicture"] as! PFFile
+                            svc.aboutYouLabel.text = user2["AboutYou"] as? String
+                            self.profileImageFile.getDataInBackgroundWithBlock { (data, error) -> Void in
+                                
+                                if let downloadedImage = UIImage(data: data!) {
+                                    
+                                    svc.avatarImage.image = downloadedImage
+                                    
+                                }
+                                
+                            }
+                            //self.imageFiles.append(user2["ProfilePictue"] as! PFFile)
+                            
+                        }
+                        //self.tableView.reloadData()
+                    }
+                } else {
+                    // Log details of the failure
+                    println("Error: \(error!) \(error!.userInfo!)")
+                }
+            }
+
         }
     }
     
@@ -379,6 +414,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             println("Text value: \(txt.text)")
             if txt.text != " " && txt.text != nil && txt.text != ""{
                 var person = PFObject(className:"Person")
+                self.parseObject = person
                 person["score"] = 0
                 person["username"] = PFUser.currentUser()?.username
                 person["admin"] = true
@@ -387,12 +423,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                 person.saveInBackgroundWithBlock {
                     (success: Bool, error: NSError?) -> Void in
                     if (success) {
-                        println("Posted!")
-                        // refresh
                         self.retrieve()
-                        //tableView.reloadData()
-                        // The object has been saved.
-                        //self.tableView.reloadData()
                     } else {
                         println("Couldn't post!")
                         SCLAlertView().showWarning("Error Posting", subTitle: "Check Your Internet Connection.")

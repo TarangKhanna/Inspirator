@@ -9,12 +9,12 @@
 import UIKit
 
 let reuseIdentifier = "collCell"
-//in profileVC
+// in profileVC
 // pass in data to the container- atleast username- then load their image and posts
 class LayoutController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UIPopoverPresentationControllerDelegate {
     
     var name2 : String = "" // passed from parent
-    var profileImageFile = PFFile()
+    //var profileImageFile = PFFile()
     var downloadedImage2 = UIImage()
     var messages = [String]()
     var createdAt = [Int]()
@@ -22,37 +22,38 @@ class LayoutController: UICollectionViewController, UICollectionViewDelegateFlow
     
     override func viewWillAppear(animated: Bool) {
         retrieve()
-        var queryUser = PFUser.query() as PFQuery?
-        queryUser!.findObjectsInBackgroundWithBlock {
-            (users: [AnyObject]?, error: NSError?) -> Void in
-            queryUser!.whereKey("username", equalTo: self.name2)
-            if error == nil {
-                // The find succeeded.
-                // Do something with the found users
-                if let users = users as? [PFObject] {
-                    for user in users {
-                        var user2:PFUser = user as! PFUser
-                        self.profileImageFile = user2["ProfilePicture"] as! PFFile
-                        self.profileImageFile.getDataInBackgroundWithBlock { (data, error) -> Void in
-                            
-                            if let downloadedImage = UIImage(data: data!) {
-                                
-                                self.downloadedImage2 = downloadedImage
-                                //self.avatarImage.image = downloadedImage
-                                
-                            }
-                            
-                        }
-                        
-                        
-                    }
-                    //self.tableView.reloadData()
-                }
-            } else {
-                // Log details of the failure
-                println("Error: \(error!) \(error!.userInfo!)")
-            }
-        }
+        
+//        var queryUser = PFUser.query() as PFQuery?
+//        queryUser!.findObjectsInBackgroundWithBlock {
+//            (users: [AnyObject]?, error: NSError?) -> Void in
+//            queryUser!.whereKey("username", equalTo: self.name2)
+//            if error == nil {
+//                // The find succeeded.
+//                // Do something with the found users
+//                if let users = users as? [PFObject] {
+//                    for user in users {
+//                        var user2:PFUser = user as! PFUser
+//                        self.profileImageFile = user2["ProfilePicture"] as! PFFile
+//                        self.profileImageFile.getDataInBackgroundWithBlock { (data, error) -> Void in
+//                            
+//                            if let downloadedImage = UIImage(data: data!) {
+//                                
+//                                self.downloadedImage2 = downloadedImage
+//                                //self.avatarImage.image = downloadedImage
+//                                
+//                            }
+//                            
+//                        }
+//                        
+//                        
+//                    }
+//                    //self.tableView.reloadData()
+//                }
+//            } else {
+//                // Log details of the failure
+//                println("Error: \(error!) \(error!.userInfo!)")
+//            }
+//        }
         
     }
     
