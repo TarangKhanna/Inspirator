@@ -14,8 +14,7 @@ class layoutPost: UICollectionViewController, UICollectionViewDelegateFlowLayout
     
     //pass in value for a post for ZOOM in feature
     
-    let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
-    let titles = ["Sand Harbor, Lake Tahoe - California","Beautiful View of Manhattan skyline.","Watcher in the Fog","Great Smoky Mountains National Park, Tennessee","Most beautiful place"]
+    let sectionInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -41,12 +40,7 @@ class layoutPost: UICollectionViewController, UICollectionViewDelegateFlowLayout
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier2, forIndexPath: indexPath) as! CollectionViewCell
-        cell.title.text = "test1 - random- might want to fix width and height as well, if you want to preserve size."
-        //cell.title.sizeToFit()
         cell.title2.text = "test1 - random- might want to fix width and height as well, if you want to preserve size. "
-        let curr = indexPath.row % 5  + 1
-        let imgName = "profile-pic-1"
-        cell.Image.image = UIImage(named: imgName)
         
         return cell
     }
@@ -54,12 +48,12 @@ class layoutPost: UICollectionViewController, UICollectionViewDelegateFlowLayout
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         println(self.view.frame.size)
-        return CGSizeMake(200, (self.view.frame.size.height - 10))
+        return CGSizeMake(self.view.frame.size.width, (self.view.frame.size.height - 10))
     }
     
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        return UIEdgeInsetsMake(5, 0, 5, 0)
+        return UIEdgeInsetsMake(-2, 0, 0, 0)
     }
     
 

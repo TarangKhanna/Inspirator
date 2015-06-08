@@ -199,6 +199,33 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         //tableView.reloadData()
     }
     
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    }
+    
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]?  {
+        
+        var shareAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Share" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+            
+            let shareMenu = UIAlertController(title: nil, message: "Share using", preferredStyle: .ActionSheet)
+            
+            let twitterAction = UIAlertAction(title: "Twitter", style: UIAlertActionStyle.Default, handler: nil)
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
+            
+            shareMenu.addAction(twitterAction)
+            shareMenu.addAction(cancelAction)
+            
+            
+            self.presentViewController(shareMenu, animated: true, completion: nil)
+        })
+        
+        var likeAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Like" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+            // parse like and notification
+        })
+        
+        return [shareAction,likeAction]
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return userArray.count
     }
@@ -207,11 +234,11 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         return true
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if (editingStyle == UITableViewCellEditingStyle.Delete) {
-            // handle delete (by removing the data from your array and updating the tableview)
-        }
-    }
+//    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+//        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+//            // handle delete (by removing the data from your array and updating the tableview)
+//        }
+//    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
@@ -398,5 +425,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         alert.showEdit("Post", subTitle:"Type Something Inspirational:", closeButtonTitle: "Cancel")
         
     }
+    
+    
 }
 

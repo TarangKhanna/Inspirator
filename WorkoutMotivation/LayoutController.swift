@@ -44,7 +44,7 @@ class LayoutController: UICollectionViewController, UICollectionViewDelegateFlow
         nav.modalPresentationStyle = UIModalPresentationStyle.Popover
         //nav.popoverPresentationController!.delegate = implOfUIAPCDelegate
         var popover = nav.popoverPresentationController
-        popoverContent.preferredContentSize = CGSizeMake(500,600)
+        popoverContent.preferredContentSize = CGSizeMake(600,700)
         popover!.delegate = self
         popover!.sourceView = self.view
         popover!.sourceRect = CGRectMake(self.view.bounds.width/2,self.view.bounds.height/2,0,0)

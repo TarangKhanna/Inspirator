@@ -72,11 +72,6 @@ class profileVC: UIViewController, UIScrollViewDelegate, UIPopoverPresentationCo
         scrollView.delegate = self
     }
     
-    
-    @IBAction func popOver(sender: AnyObject) {
-        addCategory()
-    }
-    
     func addCategory() {
         
         var popoverContent = self.storyboard?.instantiateViewControllerWithIdentifier("PopUp") as! UIViewController

@@ -1147,7 +1147,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="popOver:" destination="FII-2A-NBI" eventType="touchUpInside" id="Yr2-Kr-0ec"/>
+                                            <segue destination="xZE-EX-Yxn" kind="show" id="E6C-pa-EOu"/>
                                         </connections>
                                     </button>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g7k-0i-Fx9">
@@ -1596,81 +1596,54 @@
             <objects>
                 <collectionViewController storyboardIdentifier="PopUp" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xZE-EX-Yxn" userLabel="CardsView" customClass="layoutPost" customModule="WorkoutMotivation" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="gex-t2-VoQ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.8666666666666667" green="0.8666666666666667" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="20" id="FNe-eJ-jSC">
                             <size key="itemSize" width="331.5" height="327"/>
-                            <size key="headerReferenceSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="YdD-VQ-AVZ" customClass="CollectionViewCell" customModule="WorkoutMotivation" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" reuseIdentifier="Cell" id="YdD-VQ-AVZ" customClass="CollectionViewCell" customModule="WorkoutMotivation" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="331.5" height="327"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="332" height="327"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sample" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w2x-pV-mGq">
-                                            <rect key="frame" x="73" y="27" width="25" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="25" id="DqI-zb-0Xw"/>
-                                                <constraint firstAttribute="height" constant="21" id="R8b-Mw-Qsd"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                            <color key="textColor" red="0.47604776069999999" green="0.43302370480000002" blue="0.48086144180000001" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" text="d" translatesAutoresizingMaskIntoConstraints="NO" id="YAZ-4O-AiE">
-                                            <rect key="frame" x="4" y="155" width="324" height="135"/>
+                                            <rect key="frame" x="5" y="23" width="321" height="282"/>
                                             <color key="backgroundColor" red="0.99215686270000003" green="0.99215686270000003" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-pic-1" translatesAutoresizingMaskIntoConstraints="NO" id="j7d-gr-QjW" customClass="AvatarImageView" customModule="WorkoutMotivation" customModuleProvider="target">
-                                            <rect key="frame" x="8" y="24" width="54" height="44"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="44" id="R9t-7U-chx"/>
-                                                <constraint firstAttribute="width" constant="54" id="RI3-Sz-Ml3"/>
-                                            </constraints>
-                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <color key="backgroundColor" red="0.99215686270000003" green="0.99215686270000003" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="YAZ-4O-AiE" firstAttribute="centerX" secondItem="YdD-VQ-AVZ" secondAttribute="centerX" id="2os-MX-Us3"/>
-                                    <constraint firstItem="j7d-gr-QjW" firstAttribute="top" secondItem="YdD-VQ-AVZ" secondAttribute="topMargin" constant="16" id="7CF-b6-3gG"/>
-                                    <constraint firstItem="w2x-pV-mGq" firstAttribute="top" secondItem="YdD-VQ-AVZ" secondAttribute="topMargin" constant="19" id="LjB-EO-wNr"/>
-                                    <constraint firstItem="YAZ-4O-AiE" firstAttribute="leading" secondItem="YdD-VQ-AVZ" secondAttribute="leadingMargin" constant="-4" id="Vrg-QN-UY6"/>
-                                    <constraint firstItem="YAZ-4O-AiE" firstAttribute="top" secondItem="j7d-gr-QjW" secondAttribute="bottom" constant="87" id="ahc-Io-iet"/>
-                                    <constraint firstItem="j7d-gr-QjW" firstAttribute="leading" secondItem="YdD-VQ-AVZ" secondAttribute="leadingMargin" id="r3D-XS-KNW"/>
-                                    <constraint firstItem="w2x-pV-mGq" firstAttribute="leading" secondItem="j7d-gr-QjW" secondAttribute="trailing" constant="11" id="rZk-Cl-cwy"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="YAZ-4O-AiE" secondAttribute="bottom" constant="29" id="tfS-W5-SBq"/>
+                                    <constraint firstItem="YAZ-4O-AiE" firstAttribute="leading" secondItem="YdD-VQ-AVZ" secondAttribute="leadingMargin" constant="-3" id="R2m-0J-8i9"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="YAZ-4O-AiE" secondAttribute="trailing" constant="-2" id="bjl-Cm-QjY"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="YAZ-4O-AiE" secondAttribute="bottom" constant="14" id="tZt-WU-48c"/>
+                                    <constraint firstItem="YAZ-4O-AiE" firstAttribute="top" secondItem="YdD-VQ-AVZ" secondAttribute="topMargin" constant="15" id="wjs-Dc-hXN"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="Image" destination="j7d-gr-QjW" id="czP-4Y-HSB"/>
-                                    <outlet property="title" destination="w2x-pV-mGq" id="VnH-7B-RXx"/>
                                     <outlet property="title2" destination="YAZ-4O-AiE" id="mHD-XF-y5f"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="us7-SE-0dH">
-                            <rect key="frame" x="0.0" y="0.0" width="50" height="600"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="xZE-EX-Yxn" id="8aH-xw-a1W"/>
                             <outlet property="delegate" destination="xZE-EX-Yxn" id="VB2-0D-dpz"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Test" id="OMG-eg-lqk"/>
+                    <navigationItem key="navigationItem" title="Zoomed" id="OMG-eg-lqk"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H2c-yh-USZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1718" y="-1804"/>
+            <point key="canvasLocation" x="1696.5" y="-1805.5"/>
         </scene>
     </scenes>
     <resources>
