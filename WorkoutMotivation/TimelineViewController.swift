@@ -45,8 +45,8 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             //signin vc
             performSegueWithIdentifier("signIn", sender: self)
         }
-        println("BHWJBE")
-        println(PFUser.currentUser()?.username)
+        //println("BHWJBE")
+        //println(PFUser.currentUser()?.username)
         
         //            query.findObjectsInBackgroundWithBlock {
         //                (users: [AnyObject]?, error: NSError?) -> Void in

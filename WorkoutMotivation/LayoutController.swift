@@ -19,6 +19,7 @@ class LayoutController: UICollectionViewController, UICollectionViewDelegateFlow
     var messages = [String]()
     var createdAt = [Int]()
     var duration : Int = 0
+    var currentMessage = String()
     
     override func viewWillAppear(animated: Bool) {
         retrieve()
@@ -111,12 +112,14 @@ class LayoutController: UICollectionViewController, UICollectionViewDelegateFlow
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        currentMessage = messages[indexPath.row]
         addCategory()
     }
 
     func addCategory() {
         
-        var popoverContent = self.storyboard?.instantiateViewControllerWithIdentifier("PopUp") as! UIViewController
+        var popoverContent = self.storyboard?.instantiateViewControllerWithIdentifier("PopUp") as! layoutPost
+        popoverContent.message = currentMessage
         var nav = UINavigationController(rootViewController: popoverContent)
         nav.modalPresentationStyle = UIModalPresentationStyle.Popover
         //nav.popoverPresentationController!.delegate = implOfUIAPCDelegate
@@ -126,9 +129,7 @@ class LayoutController: UICollectionViewController, UICollectionViewDelegateFlow
         popover!.delegate = self
         popover!.sourceView = self.view
         popover!.sourceRect = CGRectMake(self.view.bounds.width/2,self.view.bounds.height/2,0,0)
-        
         self.presentViewController(nav, animated: true, completion: nil)
-        
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {

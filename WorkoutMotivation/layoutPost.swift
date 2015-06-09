@@ -42,7 +42,7 @@ class layoutPost: UICollectionViewController, UICollectionViewDelegateFlowLayout
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier2, forIndexPath: indexPath) as! CollectionViewCell
-        cell.title2.text = "test1 - random- might want to fix width and height as well, if you want to preserve size. "
+        cell.title2.text = message
         
         return cell
     }
