@@ -267,7 +267,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         //self.tableView.insertRowsAtIndexPaths(0, withRowAnimation: UITableViewRowAnimation.Bottom)
         cell.typeImageView.image = UIImage(named: "timeline-chat")
         //cell.profileImageView.image = UIImage(named: "profile-pic-1")
-        cell.nameLabel.text = previousUser
+        cell.nameLabel.text = userArray[indexPath.row]
         cell.nameLabel.textColor = UIColor.greenColor()
         cell.postLabel?.text = messages[indexPath.row]
         cell.postLabel?.textColor = UIColor.whiteColor()
@@ -282,7 +282,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         cell.dateLabel.text = String(timeAgo) + ending
         cell.dateLabel.textColor = UIColor.whiteColor()
         cell.scoreLabel.textColor = UIColor.greenColor()
-        cell.scoreLabel.text = "Likes - " + String(score[indexPath.row])
+        cell.scoreLabel.text = String(score[indexPath.row])
         
         return cell
         
