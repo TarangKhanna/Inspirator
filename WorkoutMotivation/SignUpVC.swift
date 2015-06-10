@@ -31,7 +31,6 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UITextFieldDe
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //self.view.backgroundColor = UIColor(red: 65.0 / 255.0, green: 62.0 / 255.0, blue: 79.0 / 255.0, alpha: 1)
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "loginBG.png")!)
         let floatFrame:CGRect = (CGRectMake(UIScreen.mainScreen().bounds.size.width - 44 - 20, UIScreen.mainScreen().bounds.size.height - 44 - 20, 44, 44))
@@ -101,6 +100,7 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UITextFieldDe
             // self.performSegueWithIdentifier("showUsers", sender: self)
             
         }
+        println("wfijbw")
         
     }
     

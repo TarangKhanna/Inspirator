@@ -58,6 +58,4 @@ class layoutPost: UICollectionViewController, UICollectionViewDelegateFlowLayout
         return UIEdgeInsetsMake(-2, 0, 0, 0)
     }
     
-
-    
 }
