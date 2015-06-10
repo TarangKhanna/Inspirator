@@ -15,6 +15,20 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UITextFieldDe
     @IBOutlet var password: MKTextField!
     @IBOutlet var aboutYou: MKTextField!
     @IBOutlet var SignUpBtn: MKButton!
+    
+    override func viewWillAppear(animated: Bool) {
+        SignUpBtn.center.x  -= view.bounds.width
+        username.center.x -= view.bounds.width
+        password.center.x -= view.bounds.width
+        aboutYou.center.x -= view.bounds.width
+    }
+    
+    func viewWillAppear() {
+        SignUpBtn.center.x  -= view.bounds.width
+        username.center.x -= view.bounds.width
+        password.center.x -= view.bounds.width
+        aboutYou.center.x -= view.bounds.width
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -110,53 +124,6 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UITextFieldDe
             self.view.backgroundColor = UIColor.clearColor()
         }
      }
-//    
-//    
-//    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-//        println("User Logged In")
-//        
-//        if ((error) != nil)
-//        {
-//            // Process error
-//        }
-//        else if result.isCancelled {
-//            // Handle cancellations
-//        }
-//        else {
-//            // If you ask for multiple permissions at once, you
-//            // should check if specific permissions missing
-//            if result.grantedPermissions.contains("email")
-//            {
-//                // Do work
-//            }
-//        }
-//    }
-//    
-//    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-//        println("User Logged Out")
-//    }
-//    
-//    func returnUserData() // call this method anytime after a user has logged in by calling self.returnUserData()
-//    {
-//        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
-//        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
-//            
-//            if ((error) != nil)
-//            {
-//                // Process error
-//                println("Error: \(error)")
-//            }
-//            else
-//            {
-//                println("fetched user: \(result)")
-//                let userName : NSString = result.valueForKey("name") as! NSString
-//                println("User Name is: \(userName)")
-//                let userEmail : NSString = result.valueForKey("email") as! NSString
-//                println("User Email is: \(userEmail)")
-//            }
-//        })
-//    }
-//    
     
     @IBAction func signUp(sender: AnyObject) {
         signUp2()
