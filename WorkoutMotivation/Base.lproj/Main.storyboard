@@ -775,7 +775,7 @@
                         <viewControllerLayoutGuide type="bottom" id="a4L-Rt-oWz"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="wYT-dr-d0t">
-                        <rect key="frame" x="0.0" y="64" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="106" sectionHeaderHeight="18" sectionFooterHeight="20" translatesAutoresizingMaskIntoConstraints="NO" id="lNp-7M-5Pw">
@@ -878,6 +878,9 @@
                                                     <state key="normal" title="Button">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="downVote:" destination="KBP-Cf-XLc" eventType="touchUpInside" id="haj-xv-ipO"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zkh-wL-Ykj">
                                                     <rect key="frame" x="316" y="23" width="46" height="30"/>
@@ -887,6 +890,9 @@
                                                     <state key="normal" title="Button">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="upVote:" destination="huQ-Ow-EL0" eventType="touchUpInside" id="Gre-CQ-faK"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -945,6 +951,7 @@
                                         <connections>
                                             <outlet property="dateImageView" destination="8oQ-8C-j8R" id="VxM-TH-RkR"/>
                                             <outlet property="dateLabel" destination="7jN-n0-nBp" id="pcs-z5-hlW"/>
+                                            <outlet property="downVoteBtn" destination="CTZ-Mk-MGQ" id="S1x-PX-vGD"/>
                                             <outlet property="nameLabel" destination="SZ5-DN-WpO" id="v4g-sF-p9l"/>
                                             <outlet property="postLabel" destination="OKs-kP-P5g" id="Vaa-f5-WKS"/>
                                             <outlet property="profileImageView" destination="1VD-lv-ylW" id="cOJ-RZ-jLz"/>
@@ -1712,7 +1719,7 @@
                                                 <constraint firstAttribute="height" constant="21" id="g06-3K-vzZ"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -1755,8 +1762,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="WVb-AW-T6s"/>
-        <segue reference="121-Eu-qdE"/>
+        <segue reference="nfZ-5d-aso"/>
+        <segue reference="eLD-pB-yh1"/>
         <segue reference="8cE-Yl-DNe"/>
-        <segue reference="RbL-F9-heb"/>
     </inferredMetricsTieBreakers>
 </document>

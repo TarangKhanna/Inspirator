@@ -9,6 +9,7 @@
 
 import Foundation
 import UIKit
+import Parse
 
 class TimelineCell : MKTableViewCell {
     
@@ -22,6 +23,9 @@ class TimelineCell : MKTableViewCell {
     @IBOutlet var dateLabel : UILabel!
     
     @IBOutlet var scoreLabel: UILabel!
+    
+    @IBOutlet var downVoteBtn: UIButton!
+    var parseObject:PFObject?
     
     override func awakeFromNib() {
         
@@ -49,6 +53,21 @@ class TimelineCell : MKTableViewCell {
         //photoImageView?.layer.borderColor = UIColor(white: 0.92, alpha: 1.0).CGColor
     }
     
+    @IBAction func upVote(sender: AnyObject) {
+        
+        println("Pressed")
+        if(parseObject != nil) {
+            if var votes:Int? = parseObject!.objectForKey("votes") as? Int {
+                votes!++
+                println("VOTING")
+                parseObject!.setObject(votes!, forKey: "votes");
+                parseObject!.saveInBackground();
+                
+                scoreLabel?.text = "\(votes!) votes";
+            }
+        }
+        
+    }
     override func layoutSubviews() {
         super.layoutSubviews()
         

@@ -40,6 +40,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     var backupImage = UIImage()
     var previousUser = String()
     var circleColors = [UIColor.MKColor.LightBlue, UIColor.MKColor.Grey, UIColor.MKColor.LightGreen, UIColor.MKColor.Amber]
+    //var potentialVoteCounter : Int? = object["count"]
     override func viewWillAppear(animated: Bool) {
         if PFUser.currentUser()?.username == nil {
             //signin vc
@@ -76,7 +77,12 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         //        }
         
     }
+
     
+    @IBAction func downVote(sender: AnyObject) {
+        let buttonRow = sender.tag
+        println(buttonRow)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -232,9 +238,10 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         //if (indexPath.row == 0) {
-        
         let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCell") as! TimelineCell
         cell.backgroundColor = UIColor.clearColor()
+        cell.downVoteBtn.tag = indexPath.row
+        cell.downVoteBtn.addTarget(self, action: "downVote:", forControlEvents: UIControlEvents.TouchUpInside)
         let index = indexPath.row % circleColors.count
         cell.rippleLayerColor = circleColors[index]
         //            if  indexPath.row % 2 == 0 {
@@ -319,6 +326,8 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         selectedScore = String(score[indexPath.row])
         //let destinationVC = profileVC()
         //destinationVC.name = selectedName
+        println("selected")
+        println(indexPath.row)
         performSegueWithIdentifier("profileView", sender: self)
     }
     
