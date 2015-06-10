@@ -40,6 +40,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     var backupImage = UIImage()
     var previousUser = String()
     var circleColors = [UIColor.MKColor.LightBlue, UIColor.MKColor.Grey, UIColor.MKColor.LightGreen, UIColor.MKColor.Amber]
+    var voteObject = [PFObject]()
     //var potentialVoteCounter : Int? = object["count"]
     override func viewWillAppear(animated: Bool) {
         if PFUser.currentUser()?.username == nil {
@@ -49,39 +50,27 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         //println("BHWJBE")
         //println(PFUser.currentUser()?.username)
         
-        //            query.findObjectsInBackgroundWithBlock {
-        //                (users: [AnyObject]?, error: NSError?) -> Void in
-        //
-        //                self.tableView.reloadData()
-        //
-        //                if error == nil {
-        //                    // The find succeeded.
-        //                    println("Successfully retrieved \(users!.count) users.")
-        //                    // Do something with the found users
-        //                    if let users = users as? [PFObject] {
-        //                        for user in users {
-        //                            var user2:PFUser = user as! PFUser
-        //                            println(user2.username!)
-        //                            self.userArray.append(user2.username!)
-        //                            //println("HERE\(self.userArray[0])")
-        //                            //println(user.objectId!)
-        //                            //self.userArray.append(user.username)
-        //                        }
-        //                        self.tableView.reloadData()
-        //                    }
-        //                } else {
-        //                    // Log details of the failure
-        //                    println("Error: \(error!) \(error!.userInfo!)")
-        //                }
-        //            }
-        //        }
-        
     }
-
     
-    @IBAction func downVote(sender: AnyObject) {
+    
+    
+    
+    @IBAction func upVote(sender: AnyObject) {
         let buttonRow = sender.tag
         println(buttonRow)
+        var scoreParse = voteObject[buttonRow]["score"]! as? Int
+        scoreParse = scoreParse! + 1
+        voteObject[buttonRow].setObject(NSNumber(integer: scoreParse!), forKey: "score")
+        voteObject[buttonRow].saveInBackgroundWithBlock {
+            (success: Bool, error: NSError?) -> Void in
+            if (success) {
+                self.retrieve()
+            } else {
+                println("Couldn't Vote!")
+                SCLAlertView().showWarning("Error Voting", subTitle: "Check Your Internet Connection.")
+            }
+            //cell.scoreLabel?.text = "\(score!) votes";
+        }
     }
     
     override func viewDidLoad() {
@@ -140,27 +129,19 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     }
     
     func retrieve() {
-        
-        
         if var query = PFQuery(className: "Person") as PFQuery? { //querying parse for user data
-            var usr = PFUser.currentUser()!.username
-            
-            //query.whereKey("username", EqualTo: usr!)
-            
-            
             query.orderByDescending("createdAt")
             query.whereKey("text", notEqualTo: "")
             query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
-                //self.createdAt.append("gwef")
                 self.imageFiles.removeAll(keepCapacity: true)
                 self.messages.removeAll(keepCapacity: false)
                 self.userArray.removeAll(keepCapacity: false)
                 self.score.removeAll(keepCapacity: false)
                 self.createdAt.removeAll(keepCapacity: false)
+                self.voteObject.removeAll(keepCapacity: false)
                 if let objects = objects as? [PFObject]  {
-                    
                     for object in objects {
-                        
+                        self.voteObject.append(object)
                         self.messages.append(object["text"] as! String)
                         self.userArray.append(object["username"] as! String)
                         self.score.append(object["score"] as! Int)
@@ -175,25 +156,19 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         
     }
     
-    @IBAction func GoLeft(sender: AnyObject) {
-        // print("detected left 1")
-        print("detected left ")
-        performSegueWithIdentifier("presentNav", sender: self)
-        
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        locationManager.stopUpdatingLocation()
+        if(locations.count > 0){
+            let location = locations[0] as! CLLocation
+            currLocation = location.coordinate
+        } else {
+            println("error")
+        }
     }
-    //    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-    //        locationManager.stopUpdatingLocation()
-    //        if(locations.count > 0){
-    //            let location = locations[0] as! CLLocation
-    //            currLocation = location.coordinate
-    //        } else {
-    //            println("error")
-    //        }
-    //    }
     
-    //    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
-    //        println(error)
-    //    }
+    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
+        println(error)
+    }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -241,7 +216,11 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCell") as! TimelineCell
         cell.backgroundColor = UIColor.clearColor()
         cell.downVoteBtn.tag = indexPath.row
+        
         cell.downVoteBtn.addTarget(self, action: "downVote:", forControlEvents: UIControlEvents.TouchUpInside)
+        cell.upVoteBtn.tag = indexPath.row
+        
+        cell.upVoteBtn.addTarget(self, action: "upVote:", forControlEvents: UIControlEvents.TouchUpInside)
         let index = indexPath.row % circleColors.count
         cell.rippleLayerColor = circleColors[index]
         //            if  indexPath.row % 2 == 0 {
@@ -370,7 +349,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                     println("Error: \(error!) \(error!.userInfo!)")
                 }
             }
-
+            
         }
     }
     
@@ -452,6 +431,23 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         
     }
     
+    @IBAction func downVote(sender: AnyObject) {
+        let buttonRow = sender.tag
+        println(buttonRow)
+        var scoreParse = voteObject[buttonRow]["score"]! as? Int
+        scoreParse = scoreParse! - 1
+        voteObject[buttonRow].setObject(NSNumber(integer: scoreParse!), forKey: "score")
+        voteObject[buttonRow].saveInBackgroundWithBlock {
+            (success: Bool, error: NSError?) -> Void in
+            if (success) {
+                self.retrieve()
+            } else {
+                println("Couldn't Vote!")
+                SCLAlertView().showWarning("Error Voting", subTitle: "Check Your Internet Connection.")
+            }
+            //cell.scoreLabel?.text = "\(score!) votes";
+        }
+    }
     
 }
 
