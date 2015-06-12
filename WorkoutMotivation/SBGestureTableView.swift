@@ -102,10 +102,8 @@ class SBGestureTableView: UITableView, UIGestureRecognizerDelegate {
     func removeCellAt(indexPath: NSIndexPath, duration: NSTimeInterval, completion:(() -> Void)?) {
         let cell = cellForRowAtIndexPath(indexPath)! as! SBGestureTableViewCell;
         removeCell(cell, indexPath: indexPath, duration: duration, completion: completion)
-
     }
  
-    
     func removeCell(cell: SBGestureTableViewCell, duration: NSTimeInterval, completion:(() -> Void)?) {
         let indexPath = indexPathForCell(cell)!
         removeCell(cell, indexPath: indexPath, duration: duration, completion: completion)

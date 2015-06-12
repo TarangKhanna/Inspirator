@@ -107,6 +107,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="filterIt:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mG8-Be-P1h"/>
                                     <segue destination="I4d-FR-BNv" kind="show" id="Qa3-gZ-yPZ"/>
                                 </connections>
                             </button>
@@ -142,6 +143,7 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="filterBtn" destination="2vC-zB-DwO" id="jUx-nm-eif"/>
                         <outlet property="tableView" destination="p8z-fX-CwG" id="eTe-cS-4Yq"/>
                         <segue destination="t5x-L8-bWh" kind="show" identifier="Weights" id="Sqi-S6-0M4"/>
                         <segue destination="qog-yW-MfU" kind="show" identifier="Programming" id="dJ9-kF-6jc"/>
@@ -504,10 +506,10 @@
             </objects>
             <point key="canvasLocation" x="584.5" y="-538.5"/>
         </scene>
-        <!--Navigation Control-->
+        <!--Navigation Controller-->
         <scene sceneID="4pk-jg-ouh">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gwd-AI-R31" customClass="NavigationControl" customModule="WorkoutMotivation" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gwd-AI-R31" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="LoJ-c0-J9E">
@@ -516,10 +518,16 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
+                        <outlet property="delegate" destination="5dq-kc-DHw" id="xie-Qb-MeN"/>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="17q-V9-Ogh"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kKM-BD-hIf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="5dq-kc-DHw" customClass="NavigationControllerDelegate" customModule="WorkoutMotivation" customModuleProvider="target">
+                    <connections>
+                        <outlet property="navigationController" destination="gwd-AI-R31" id="MYP-Oy-X65"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="584.5" y="326.5"/>
         </scene>
@@ -1923,9 +1931,9 @@
         <image name="up" width="30" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8cE-Yl-DNe"/>
-        <segue reference="HaJ-eE-7kj"/>
-        <segue reference="121-Eu-qdE"/>
+        <segue reference="Udb-FK-6c5"/>
+        <segue reference="nfZ-5d-aso"/>
+        <segue reference="eLD-pB-yh1"/>
         <segue reference="WVb-AW-T6s"/>
     </inferredMetricsTieBreakers>
 </document>

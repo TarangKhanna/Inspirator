@@ -21,8 +21,8 @@ let kDefaultAnimationDuration = 2.0
 
 class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource, floatMenuDelegate {
     
-    
     @IBOutlet var tableView: UITableView!
+    @IBOutlet weak var filterBtn: UIButton!
     let manager = DataSource()
     var motivate = []
     let userDefaults = NSUserDefaults.standardUserDefaults()
@@ -39,6 +39,8 @@ class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         //self.navigationController?.navigationBar.translucent = true
 
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "BG.png"), forBarMetrics: UIBarMetrics.Compact)
+        self.navigationController?.navigationBar.tintColor = UIColor.redColor()
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.redColor()]
         //self.navigationController?.view.backgroundColor = UIColor.clearColor()
         //self.tableView!.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         self.tableView.delegate = self
@@ -169,6 +171,9 @@ class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         //self.tableView.contentInset = UIEdgeInsetsMake(0,0,70,0)
     }
     
+    @IBAction func filterIt(sender: AnyObject) {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
 
 }
 

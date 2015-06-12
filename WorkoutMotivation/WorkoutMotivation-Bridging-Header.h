@@ -9,7 +9,6 @@
 #import "FXBlurView.h"
 #import <Bolts/BFTask.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
-#import "VMGearLoadingView.h"
 #import <UIKit/UIKit.h>
 
 //! Project version number for Spring.
