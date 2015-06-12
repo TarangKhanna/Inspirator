@@ -159,8 +159,6 @@ class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         }
     }
     
-    
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
