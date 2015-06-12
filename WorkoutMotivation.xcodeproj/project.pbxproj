@@ -103,6 +103,19 @@
 		71C553911B2801A500357D8A /* TransitionZoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C553751B2801A500357D8A /* TransitionZoom.swift */; };
 		71C553921B2801A500357D8A /* UnwindSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C553761B2801A500357D8A /* UnwindSegue.swift */; };
 		71C553951B281D8500357D8A /* PicUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C553941B281D8500357D8A /* PicUpload.swift */; };
+		71C553CC1B2ACB1800357D8A /* SBGestureTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C553C81B2ACB1800357D8A /* SBGestureTableView.swift */; };
+		71C553CD1B2ACB1800357D8A /* SBGestureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C553C91B2ACB1800357D8A /* SBGestureTableViewCell.swift */; };
+		71C553CE1B2ACB1800357D8A /* SBGestureTableViewCellAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C553CA1B2ACB1800357D8A /* SBGestureTableViewCellAction.swift */; };
+		71C553CF1B2ACB1800357D8A /* SBGestureTableViewCellSideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C553CB1B2ACB1800357D8A /* SBGestureTableViewCellSideView.swift */; };
+		71C553E01B2ACBD900357D8A /* FAKFontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C553D21B2ACBD900357D8A /* FAKFontAwesome.m */; };
+		71C553E11B2ACBD900357D8A /* FAKFoundationIcons.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C553D41B2ACBD900357D8A /* FAKFoundationIcons.m */; };
+		71C553E21B2ACBD900357D8A /* FAKIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C553D61B2ACBD900357D8A /* FAKIcon.m */; };
+		71C553E31B2ACBD900357D8A /* FAKIonIcons.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C553D81B2ACBD900357D8A /* FAKIonIcons.m */; };
+		71C553E41B2ACBD900357D8A /* FAKZocial.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C553DA1B2ACBD900357D8A /* FAKZocial.m */; };
+		71C553E51B2ACBD900357D8A /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 71C553DB1B2ACBD900357D8A /* FontAwesome.otf */; };
+		71C553E61B2ACBD900357D8A /* foundation-icons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 71C553DD1B2ACBD900357D8A /* foundation-icons.ttf */; };
+		71C553E71B2ACBD900357D8A /* ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 71C553DE1B2ACBD900357D8A /* ionicons.ttf */; };
+		71C553E81B2ACBD900357D8A /* zocial-regular-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 71C553DF1B2ACBD900357D8A /* zocial-regular-webfont.ttf */; };
 		71CEE5F31B1283F000E85AA2 /* CardioVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CEE5F21B1283F000E85AA2 /* CardioVC.swift */; };
 		71CEE5F61B12BB8100E85AA2 /* StudyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CEE5F51B12BB8100E85AA2 /* StudyVC.swift */; };
 		71CEE6001B12C46B00E85AA2 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71CEE5FF1B12C46B00E85AA2 /* Bolts.framework */; };
@@ -235,6 +248,25 @@
 		71C553751B2801A500357D8A /* TransitionZoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionZoom.swift; sourceTree = "<group>"; };
 		71C553761B2801A500357D8A /* UnwindSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnwindSegue.swift; sourceTree = "<group>"; };
 		71C553941B281D8500357D8A /* PicUpload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PicUpload.swift; sourceTree = "<group>"; };
+		71C553C81B2ACB1800357D8A /* SBGestureTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBGestureTableView.swift; sourceTree = "<group>"; };
+		71C553C91B2ACB1800357D8A /* SBGestureTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBGestureTableViewCell.swift; sourceTree = "<group>"; };
+		71C553CA1B2ACB1800357D8A /* SBGestureTableViewCellAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBGestureTableViewCellAction.swift; sourceTree = "<group>"; };
+		71C553CB1B2ACB1800357D8A /* SBGestureTableViewCellSideView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBGestureTableViewCellSideView.swift; sourceTree = "<group>"; };
+		71C553D11B2ACBD900357D8A /* FAKFontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAKFontAwesome.h; sourceTree = "<group>"; };
+		71C553D21B2ACBD900357D8A /* FAKFontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAKFontAwesome.m; sourceTree = "<group>"; };
+		71C553D31B2ACBD900357D8A /* FAKFoundationIcons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAKFoundationIcons.h; sourceTree = "<group>"; };
+		71C553D41B2ACBD900357D8A /* FAKFoundationIcons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAKFoundationIcons.m; sourceTree = "<group>"; };
+		71C553D51B2ACBD900357D8A /* FAKIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAKIcon.h; sourceTree = "<group>"; };
+		71C553D61B2ACBD900357D8A /* FAKIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAKIcon.m; sourceTree = "<group>"; };
+		71C553D71B2ACBD900357D8A /* FAKIonIcons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAKIonIcons.h; sourceTree = "<group>"; };
+		71C553D81B2ACBD900357D8A /* FAKIonIcons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAKIonIcons.m; sourceTree = "<group>"; };
+		71C553D91B2ACBD900357D8A /* FAKZocial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAKZocial.h; sourceTree = "<group>"; };
+		71C553DA1B2ACBD900357D8A /* FAKZocial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAKZocial.m; sourceTree = "<group>"; };
+		71C553DB1B2ACBD900357D8A /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
+		71C553DC1B2ACBD900357D8A /* FontAwesomeKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontAwesomeKit.h; sourceTree = "<group>"; };
+		71C553DD1B2ACBD900357D8A /* foundation-icons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "foundation-icons.ttf"; sourceTree = "<group>"; };
+		71C553DE1B2ACBD900357D8A /* ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ionicons.ttf; sourceTree = "<group>"; };
+		71C553DF1B2ACBD900357D8A /* zocial-regular-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "zocial-regular-webfont.ttf"; sourceTree = "<group>"; };
 		71CEE5F21B1283F000E85AA2 /* CardioVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardioVC.swift; sourceTree = "<group>"; };
 		71CEE5F51B12BB8100E85AA2 /* StudyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudyVC.swift; path = ../StudyVC.swift; sourceTree = "<group>"; };
 		71CEE5F71B12C00D00E85AA2 /* WorkoutMotivation-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WorkoutMotivation-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -318,15 +350,18 @@
 		7109A8E51B04306900435D3C /* WorkoutMotivation */ = {
 			isa = PBXGroup;
 			children = (
+				71C553E91B2ACBDE00357D8A /* FontAwesomeKit */,
 				71C553931B2801AB00357D8A /* Spring */,
 				71AF79F71B192F9F007953CD /* Pull to refresh */,
 				71AF79DB1B19098C007953CD /* GearsLoading */,
+				71C553D01B2ACB1E00357D8A /* SBGestureTableView */,
+				7109A8EC1B04306900435D3C /* Main.storyboard */,
+				716B874D1B152E9D00B7E955 /* TimelineViewController.swift */,
 				7109A8E81B04306900435D3C /* AppDelegate.swift */,
 				716B874C1B152E9D00B7E955 /* TimelineCell.swift */,
 				710394F91B22BB6300F01B5B /* layoutPost.swift */,
 				710394F51B22ADB800F01B5B /* LayoutController.swift */,
 				71AF79C51B17D1F1007953CD /* profileVC.swift */,
-				716B874D1B152E9D00B7E955 /* TimelineViewController.swift */,
 				7109A8EA1B04306900435D3C /* MotivateVC.swift */,
 				71AF79D11B181574007953CD /* TipInCellAnimator.swift */,
 				71D803F71B0E8B3D0072541D /* loginVC.swift */,
@@ -340,7 +375,6 @@
 				71C553941B281D8500357D8A /* PicUpload.swift */,
 				71CEE60B1B12CBEA00E85AA2 /* VCFloatingButton */,
 				710394F71B22ADC700F01B5B /* CollectionViewCell.swift */,
-				7109A8EC1B04306900435D3C /* Main.storyboard */,
 				71CEE5F41B12BA7E00E85AA2 /* VC's */,
 				7109A8EF1B04306900435D3C /* Images.xcassets */,
 				7128A9891B0B17590035C41E /* Button.xcassets */,
@@ -498,6 +532,39 @@
 			name = Spring;
 			sourceTree = "<group>";
 		};
+		71C553D01B2ACB1E00357D8A /* SBGestureTableView */ = {
+			isa = PBXGroup;
+			children = (
+				71C553C81B2ACB1800357D8A /* SBGestureTableView.swift */,
+				71C553C91B2ACB1800357D8A /* SBGestureTableViewCell.swift */,
+				71C553CA1B2ACB1800357D8A /* SBGestureTableViewCellAction.swift */,
+				71C553CB1B2ACB1800357D8A /* SBGestureTableViewCellSideView.swift */,
+			);
+			name = SBGestureTableView;
+			sourceTree = "<group>";
+		};
+		71C553E91B2ACBDE00357D8A /* FontAwesomeKit */ = {
+			isa = PBXGroup;
+			children = (
+				71C553D11B2ACBD900357D8A /* FAKFontAwesome.h */,
+				71C553D21B2ACBD900357D8A /* FAKFontAwesome.m */,
+				71C553D31B2ACBD900357D8A /* FAKFoundationIcons.h */,
+				71C553D41B2ACBD900357D8A /* FAKFoundationIcons.m */,
+				71C553D51B2ACBD900357D8A /* FAKIcon.h */,
+				71C553D61B2ACBD900357D8A /* FAKIcon.m */,
+				71C553D71B2ACBD900357D8A /* FAKIonIcons.h */,
+				71C553D81B2ACBD900357D8A /* FAKIonIcons.m */,
+				71C553D91B2ACBD900357D8A /* FAKZocial.h */,
+				71C553DA1B2ACBD900357D8A /* FAKZocial.m */,
+				71C553DB1B2ACBD900357D8A /* FontAwesome.otf */,
+				71C553DC1B2ACBD900357D8A /* FontAwesomeKit.h */,
+				71C553DD1B2ACBD900357D8A /* foundation-icons.ttf */,
+				71C553DE1B2ACBD900357D8A /* ionicons.ttf */,
+				71C553DF1B2ACBD900357D8A /* zocial-regular-webfont.ttf */,
+			);
+			name = FontAwesomeKit;
+			sourceTree = "<group>";
+		};
 		71CEE5F41B12BA7E00E85AA2 /* VC's */ = {
 			isa = PBXGroup;
 			children = (
@@ -616,14 +683,18 @@
 				71AF79F01B192F52007953CD /* pulltorefresharrow.png in Resources */,
 				7109A8F31B04306900435D3C /* LaunchScreen.xib in Resources */,
 				71AF79E91B1909EF007953CD /* gears 2@2x.png in Resources */,
+				71C553E71B2ACBD900357D8A /* ionicons.ttf in Resources */,
 				71AF79EB1B1909EF007953CD /* gears 3@2x.png in Resources */,
 				71AF79E51B1909EF007953CD /* background@2x.png in Resources */,
 				7109A8F01B04306900435D3C /* Images.xcassets in Resources */,
+				71C553E81B2ACBD900357D8A /* zocial-regular-webfont.ttf in Resources */,
 				71AF79ED1B1909EF007953CD /* imgDemo.png in Resources */,
+				71C553E61B2ACBD900357D8A /* foundation-icons.ttf in Resources */,
 				71AF79E71B1909EF007953CD /* gears 1@2x.png in Resources */,
 				71C5537B1B2801A500357D8A /* LoadingView.xib in Resources */,
 				71AF79EA1B1909EF007953CD /* gears 2@3x.png in Resources */,
 				71CEE6091B12CBDE00E85AA2 /* floatTableViewCell.xib in Resources */,
+				71C553E51B2ACBD900357D8A /* FontAwesome.otf in Resources */,
 				71AF79EC1B1909EF007953CD /* gears 3@3x.png in Resources */,
 				7128A98A1B0B17590035C41E /* Button.xcassets in Resources */,
 				71AF79E61B1909EF007953CD /* background@3x.png in Resources */,
@@ -664,6 +735,7 @@
 				71CEE61A1B13089200E85AA2 /* MKLayer.swift in Sources */,
 				71C553771B2801A500357D8A /* AsyncButton.swift in Sources */,
 				719D53801B046D6900DD34CD /* MotivationCell.swift in Sources */,
+				71C553E11B2ACBD900357D8A /* FAKFoundationIcons.m in Sources */,
 				71CEE6191B13089200E85AA2 /* MKImageView.swift in Sources */,
 				71C553811B2801A500357D8A /* DesignableTextView.swift in Sources */,
 				71AF79D21B181574007953CD /* CardTableViewCell.swift in Sources */,
@@ -671,10 +743,15 @@
 				710394FA1B22BB6300F01B5B /* layoutPost.swift in Sources */,
 				71C553841B2801A500357D8A /* ImageLoader.swift in Sources */,
 				7128A9201B087FF70035C41E /* ProgrammingQuotes.swift in Sources */,
+				71C553E31B2ACBD900357D8A /* FAKIonIcons.m in Sources */,
 				71C553951B281D8500357D8A /* PicUpload.swift in Sources */,
+				71C553CF1B2ACB1800357D8A /* SBGestureTableViewCellSideView.swift in Sources */,
 				71C553831B2801A500357D8A /* DesignableTabBarController.swift in Sources */,
+				71C553CC1B2ACB1800357D8A /* SBGestureTableView.swift in Sources */,
+				71C553CD1B2ACB1800357D8A /* SBGestureTableViewCell.swift in Sources */,
 				716B874E1B152E9D00B7E955 /* TimelineCell.swift in Sources */,
 				71AF79D51B181574007953CD /* TipInCellAnimator.swift in Sources */,
+				71C553E21B2ACBD900357D8A /* FAKIcon.m in Sources */,
 				71C5537D1B2801A500357D8A /* DesignableButton.swift in Sources */,
 				710394F81B22ADC700F01B5B /* CollectionViewCell.swift in Sources */,
 				71C553901B2801A500357D8A /* TransitionManager.swift in Sources */,
@@ -694,9 +771,11 @@
 				71C5538F1B2801A500357D8A /* SpringView.swift in Sources */,
 				71C553801B2801A500357D8A /* DesignableTextField.swift in Sources */,
 				71CEE60A1B12CBDE00E85AA2 /* VCFloatingActionButton.m in Sources */,
+				71C553CE1B2ACB1800357D8A /* SBGestureTableViewCellAction.swift in Sources */,
 				71C5538C1B2801A500357D8A /* SpringLabel.swift in Sources */,
 				71AF79F31B192F68007953CD /* PullToRefreshView.swift in Sources */,
 				71C553791B2801A500357D8A /* AutoTextView.swift in Sources */,
+				71C553E41B2ACBD900357D8A /* FAKZocial.m in Sources */,
 				71C5538B1B2801A500357D8A /* SpringImageView.swift in Sources */,
 				71C553861B2801A500357D8A /* Misc.swift in Sources */,
 				7128A9561B0A98520035C41E /* SCLAlertView.swift in Sources */,
@@ -712,6 +791,7 @@
 				71C553911B2801A500357D8A /* TransitionZoom.swift in Sources */,
 				71CEE60F1B13085700E85AA2 /* TextFieldViewController.swift in Sources */,
 				71C5537C1B2801A500357D8A /* BlurView.swift in Sources */,
+				71C553E01B2ACBD900357D8A /* FAKFontAwesome.m in Sources */,
 				71CEE6081B12CBDE00E85AA2 /* floatTableViewCell.m in Sources */,
 				71CEE60D1B12D27400E85AA2 /* RAMPaperSwitch.swift in Sources */,
 				71C5537F1B2801A500357D8A /* DesignableLabel.swift in Sources */,

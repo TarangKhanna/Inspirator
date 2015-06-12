@@ -21,18 +21,37 @@ var CIFilterNames = [
 ]
 
 var filterButton = UIButton()
-class PicUpload: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class PicUpload: UIViewController,UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
+    @IBOutlet var uploadBtn: MKButton!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var originalImage: UIImageView!
     @IBOutlet weak var imageToFilter: UIImageView!
     
-    
-    
+    @IBOutlet var textLabel: UILabel!
     @IBOutlet weak var filtersScrollView: UIScrollView!
-//    override func prefersStatusBarHidden() -> Bool {
-//        return true
-//    }
+    
+    @IBOutlet var text: MKTextField!
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        originalImage.contentMode = UIViewContentMode.Center
+        imageToFilter.contentMode = UIViewContentMode.Center
+        //uploadBtn.hidden = true
+        textLabel.hidden = true
+        text.hidden = true
+    }
+    
+    func unhide() {
+        
+        uploadBtn.hidden = false
+        textLabel.hidden = false
+        //text.hidden = false
+        textLabel.bringSubviewToFront(view)
+        UIView.animateWithDuration(1, animations: {self.text.hidden = false})
+    }
     
     func displayAlert(title: String, message: String) {
         
@@ -48,8 +67,6 @@ class PicUpload: UIViewController, UINavigationControllerDelegate, UIImagePicker
         
     }
     
-    
-    
     var activityIndicator = UIActivityIndicatorView()
     
     @IBOutlet var imageToPost: UIImageView!
@@ -60,8 +77,17 @@ class PicUpload: UIViewController, UINavigationControllerDelegate, UIImagePicker
         image.delegate = self
         image.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         image.allowsEditing = false
-        
         self.presentViewController(image, animated: true, completion: nil)
+        //imageToFilter.hidden = false
+        
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+        imageToFilter.hidden = true
+        self.dismissViewControllerAnimated(true, completion:nil)
+        
+        imageToPost.image = image
+        
         var xCoord: CGFloat = 5
         var yCoord: CGFloat = 5
         var buttonWidth:CGFloat = 70
@@ -104,35 +130,31 @@ class PicUpload: UIViewController, UINavigationControllerDelegate, UIImagePicker
         
         // Resize Scroll View
         filtersScrollView.contentSize = CGSizeMake(buttonWidth * CGFloat(itemCount+1), yCoord)
-        
-
-    }
-    
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
-        
-        self.dismissViewControllerAnimated(true, completion:nil)
-        
-        imageToPost.image = image
-        
-        
-        
+        unhide()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        text.layer.borderColor = UIColor.clearColor().CGColor
+        text.floatingPlaceholderEnabled = true
+        text.placeholder = "text.."
+        text.tintColor = UIColor.MKColor.Blue
+        text.rippleLocation = .Right
+        text.cornerRadius = 0
+        text.bottomBorderEnabled = true
+        text.attributedPlaceholder = NSAttributedString(string:"text..",
+            attributes:[NSForegroundColorAttributeName: UIColor.orangeColor()])
+        text.delegate = self
     }
     
     
     // FILTER BUTTON ACTION
     func filterButtonTapped(sender: UIButton) {
         var button = sender as UIButton
-        
+        imageToFilter.hidden = false
         imageToFilter.image = button.backgroundImageForState(UIControlState.Normal)
-        
     }
     
-    
-    // SAVE PICTURE BUTTON
     @IBAction func savePicButton(sender: AnyObject) {
         // Save the image into camera roll
         UIImageWriteToSavedPhotosAlbum(imageToFilter.image, nil, nil, nil)
@@ -144,11 +166,67 @@ class PicUpload: UIViewController, UINavigationControllerDelegate, UIImagePicker
         alert.show()
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+            var svc = segue.destinationViewController as! PostImageViewController;
+            svc.imageToPost = imageToFilter
+    }
     
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func uploadImage(sender: AnyObject) {
+        unhide()
+        // profile pic
+        
+//        activityIndicator = UIActivityIndicatorView(frame: self.view.frame)
+//        activityIndicator.backgroundColor = UIColor(white: 1.0, alpha: 0.5)
+//        activityIndicator.center = self.view.center
+//        activityIndicator.hidesWhenStopped = true
+//        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+//        view.addSubview(activityIndicator)
+//        activityIndicator.startAnimating()
+//        
+//        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+//        
+//        var post = PFObject(className: "Post")
+//        
+//        //post["message"] = message.text
+//        
+//        post["userId"] = PFUser.currentUser()!.objectId!
+//        
+//        //post["text"] = PFUser.currentUser()?.text
+//        
+//        let imageData = UIImagePNGRepresentation(imageToPost.image)
+//        
+//        let imageFile = PFFile(name: "image.png", data: imageData)
+//        
+//        post["imageFile"] = imageFile
+//        
+//        post.saveInBackgroundWithBlock{(success, error) -> Void in
+//            
+//            self.activityIndicator.stopAnimating()
+//            
+//            UIApplication.sharedApplication().endIgnoringInteractionEvents()
+//            
+//            if error == nil {
+//                
+//                self.displayAlert("Image Posted!", message: "Your image has been posted successfully")
+//                
+//                self.imageToPost.image = UIImage(named: "315px-Blank_woman_placeholder.svg.png")
+//                
+//               // self.message.text = ""
+//                
+//            } else {
+//                
+//                self.displayAlert("Could not post image", message: "Please try again later")
+//                
+//            }
+//            
+//        }
+//        
+//    }
+//    
+//    override func didReceiveMemoryWarning() {
+//        super.didReceiveMemoryWarning()
+//        // Dispose of any resources that can be recreated.
+
     }
 
 }

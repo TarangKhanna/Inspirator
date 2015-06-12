@@ -21,3 +21,5 @@ FOUNDATION_EXPORT const unsigned char SpringVersionString[];
 #define FacebookTutorial_Bridging_Header_h
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #endif
+#pragma once
+#import "FontAwesomeKit.h"

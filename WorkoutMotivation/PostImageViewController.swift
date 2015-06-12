@@ -48,8 +48,6 @@ class PostImageViewController: UIViewController, UINavigationControllerDelegate,
         
         imageToPost.image = image
         
-        
-        
     }
     
     @IBOutlet var message: UITextField!

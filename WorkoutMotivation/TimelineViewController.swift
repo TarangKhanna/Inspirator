@@ -1,8 +1,8 @@
 //
-//  ViewController.swift
+//  TimeLineViewController.swift
 //  AutomatePortal
 //
-//  Created by Tarang Khanna on 2/28/15. Design inspiration form AppDesign Vault.
+//  Created by Tarang Khanna on 2/28/15. Design inspiration from AppDesign Vault.
 //  Copyright (c) 2015 Thacked. All rights reserved.
 //
 
@@ -18,9 +18,11 @@ import Social
 class TimelineViewController : UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, floatMenuDelegate {
     
     @IBOutlet var postData: MKTextField!
-    @IBOutlet var tableView : UITableView!
+    @IBOutlet var tableView : SBGestureTableView!
     @IBOutlet var menuItem : UIBarButtonItem!
-    @IBOutlet var toolbar : UIToolbar!
+    @IBOutlet var statusLabel: UILabel!
+    
+    
     var parseObject:PFObject?
     var currLocation: CLLocationCoordinate2D?
     let locationManager = CLLocationManager()
@@ -43,6 +45,19 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     var circleColors = [UIColor.MKColor.LightBlue, UIColor.MKColor.Grey, UIColor.MKColor.LightGreen, UIColor.MKColor.Amber]
     var voteObject = [PFObject]()
     //var potentialVoteCounter : Int? = object["count"]
+    
+    let checkIcon = FAKIonIcons.ios7CheckmarkIconWithSize(30)
+    let closeIcon = FAKIonIcons.ios7CloseIconWithSize(30)
+    let composeIcon = FAKIonIcons.ios7ComposeIconWithSize(30)
+    let clockIcon = FAKIonIcons.ios7ClockIconWithSize(30)
+    let greenColor = UIColor(red: 85.0/255, green: 213.0/255, blue: 80.0/255, alpha: 1)
+    let redColor = UIColor(red: 213.0/255, green: 70.0/255, blue: 70.0/255, alpha: 1)
+    let yellowColor = UIColor(red: 236.0/255, green: 223.0/255, blue: 60.0/255, alpha: 1)
+    let brownColor = UIColor(red: 182.0/255, green: 127.0/255, blue: 78.0/255, alpha: 1)
+    
+    var removeCellBlock: ((SBGestureTableView, SBGestureTableViewCell) -> Void)!
+    
+    
     override func viewWillAppear(animated: Bool) {
         if PFUser.currentUser()?.username == nil {
             //signin vc
@@ -57,20 +72,21 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     
     
     @IBAction func upVote(sender: AnyObject) {
-        let buttonRow = sender.tag
-        println(buttonRow)
-        var scoreParse = voteObject[buttonRow]["score"]! as? Int
-        scoreParse = scoreParse! + 1
-        voteObject[buttonRow].setObject(NSNumber(integer: scoreParse!), forKey: "score")
-        voteObject[buttonRow].saveInBackgroundWithBlock {
-            (success: Bool, error: NSError?) -> Void in
-            if (success) {
-                self.retrieve()
-            } else {
-                println("Couldn't Vote!")
-                SCLAlertView().showWarning("Error Voting", subTitle: "Check Your Internet Connection.")
+        //let buttonRow = sender.tag
+        if let buttonRow = sender.tag {
+            var scoreParse = voteObject[buttonRow]["score"]! as? Int
+            scoreParse = scoreParse! + 1
+            voteObject[buttonRow].setObject(NSNumber(integer: scoreParse!), forKey: "score")
+            voteObject[buttonRow].saveInBackgroundWithBlock {
+                (success: Bool, error: NSError?) -> Void in
+                if (success) {
+                    self.retrieve()
+                } else {
+                    println("Couldn't Vote!")
+                    SCLAlertView().showWarning("Error Voting", subTitle: "Check Your Internet Connection.")
+                }
+                //cell.scoreLabel?.text = "\(score!) votes";
             }
-            //cell.scoreLabel?.text = "\(score!) votes";
         }
     }
     
@@ -127,6 +143,22 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             //self?.tableView.reloadData()
             self?.tableView.stopPullToRefresh()
             })
+        setupIcons()
+        tableView.didMoveCellFromIndexPathToIndexPathBlock = {(fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) -> Void in
+            //self.objects.exchangeObjectAtIndex(toIndexPath.row, withObjectAtIndex: fromIndexPath.row)
+        }
+        removeCellBlock = {(tableView: SBGestureTableView, cell: SBGestureTableViewCell) -> Void in
+            let indexPath = tableView.indexPathForCell(cell)
+            self.upVote(self)
+        }
+        
+    }
+    
+    func setupIcons() {
+        checkIcon.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
+        closeIcon.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
+        composeIcon.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
+        clockIcon.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor())
     }
     
     func retrieve() {
@@ -134,6 +166,10 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             query.orderByDescending("createdAt")
             query.whereKey("text", notEqualTo: "")
             query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
+                if error != nil {
+                    //println("No Internet")
+                    self.statusLabel.text = "No Internet. Try refreshing."
+                }
                 self.imageFiles.removeAll(keepCapacity: true)
                 self.messages.removeAll(keepCapacity: false)
                 self.userArray.removeAll(keepCapacity: false)
@@ -180,28 +216,28 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
     }
     
-    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]?  {
-        
-        var shareAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Share" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
-            
-            let shareMenu = UIAlertController(title: nil, message: "Share using", preferredStyle: .ActionSheet)
-            
-            let twitterAction = UIAlertAction(title: "Twitter", style: UIAlertActionStyle.Default, handler: nil)
-            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
-            
-            shareMenu.addAction(twitterAction)
-            shareMenu.addAction(cancelAction)
-            
-            
-            self.presentViewController(shareMenu, animated: true, completion: nil)
-        })
-        
-        var likeAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Like" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
-            // parse like and notification
-        })
-        
-        return [shareAction,likeAction]
-    }
+//    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]?  {
+//        
+//        var shareAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Share" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+//            
+//            let shareMenu = UIAlertController(title: nil, message: "Share using", preferredStyle: .ActionSheet)
+//            
+//            let twitterAction = UIAlertAction(title: "Twitter", style: UIAlertActionStyle.Default, handler: nil)
+//            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
+//            
+//            shareMenu.addAction(twitterAction)
+//            shareMenu.addAction(cancelAction)
+//            
+//            
+//            self.presentViewController(shareMenu, animated: true, completion: nil)
+//        })
+//        
+//        var likeAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Like" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+//            // parse like and notification
+//        })
+//        
+//        return [shareAction,likeAction]
+//    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return userArray.count
@@ -214,7 +250,13 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         //if (indexPath.row == 0) {
-        let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCell") as! TimelineCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCell") as! SBGestureTableViewCell
+        let size = CGSizeMake(30, 30)
+        cell.firstLeftAction = SBGestureTableViewCellAction(icon: checkIcon.imageWithSize(size), color: greenColor, fraction: 0.3, didTriggerBlock: removeCellBlock)
+        cell.secondLeftAction = SBGestureTableViewCellAction(icon: closeIcon.imageWithSize(size), color: redColor, fraction: 0.6, didTriggerBlock: removeCellBlock)
+        cell.firstRightAction = SBGestureTableViewCellAction(icon: composeIcon.imageWithSize(size), color: yellowColor, fraction: 0.3, didTriggerBlock: removeCellBlock)
+        cell.secondRightAction = SBGestureTableViewCellAction(icon: clockIcon.imageWithSize(size), color: brownColor, fraction: 0.6, didTriggerBlock: removeCellBlock)
+        
         cell.backgroundColor = UIColor.clearColor()
         cell.downVoteBtn.tag = indexPath.row
         
