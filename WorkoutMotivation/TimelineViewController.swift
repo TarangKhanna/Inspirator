@@ -22,6 +22,9 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet var menuItem : UIBarButtonItem!
     @IBOutlet var statusLabel: UILabel!
     
+    var votedArray = [String]()
+    var activityIndicator = UIActivityIndicatorView()
+    var indexPathStore = NSIndexPath()
     var parseObject:PFObject?
     var currLocation: CLLocationCoordinate2D?
     let locationManager = CLLocationManager()
@@ -57,50 +60,76 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     
     var removeCellBlock: ((SBGestureTableView, SBGestureTableViewCell) -> Void)!
     
+    var currentUser = String()
     
     override func viewWillAppear(animated: Bool) {
-        if PFUser.currentUser()?.username == nil {
+        var currentUser = PFUser.currentUser()?.username
+        if currentUser == nil{
             //signin vc
             performSegueWithIdentifier("signIn", sender: self)
+        } else {
+            //println("BHWJBE")
+            //println(PFUser.currentUser()?.username)
+            
         }
-        //println("BHWJBE")
-        //println(PFUser.currentUser()?.username)
-        
     }
     
     @IBAction func upVote(sender: AnyObject) {
         //let buttonRow = sender.tag
         if let buttonRow = sender.tag {
-            var scoreParse = voteObject[buttonRow]["score"]! as? Int
-            scoreParse = scoreParse! + 1
-            voteObject[buttonRow].setObject(NSNumber(integer: scoreParse!), forKey: "score")
-            voteObject[buttonRow].saveInBackgroundWithBlock {
-                (success: Bool, error: NSError?) -> Void in
-                if (success) {
-                    self.retrieve()
-                } else {
-                    println("Couldn't Vote!")
-                    SCLAlertView().showWarning("Error Voting", subTitle: "Check Your Internet Connection.")
+            var votedBy = voteObject[buttonRow]["votedBy"] as! [String]
+            if !contains(votedBy, currentUser) {
+                var scoreParse = voteObject[buttonRow]["score"]! as? Int
+                scoreParse = scoreParse! + 1
+                voteObject[buttonRow].setObject(NSNumber(integer: scoreParse!), forKey: "score")
+                votedBy.append(currentUser)
+                voteObject[buttonRow]["votedBy"] = votedBy
+                voteObject[buttonRow].saveInBackgroundWithBlock {
+                    (success: Bool, error: NSError?) -> Void in
+                    if (success) {
+                        self.retrieve()
+                    } else {
+                        println("Couldn't Vote!")
+                        SCLAlertView().showWarning("Error Voting", subTitle: "Check Your Internet Connection.")
+                    }
                 }
-                //cell.scoreLabel?.text = "\(score!) votes";
+                
+            } else { // already voted -- add to retrieve also
+                //               var indexPath = NSIndexPath(forRow: buttonRow, inSection: 0)
+                println("Already Voted")
+                //             self.tableView.reloadRowsAtIndexPaths([indexPathStore], withRowAnimation: UITableViewRowAnimation.Top)
             }
         }
     }
     
+    @IBAction func downVote(sender: AnyObject) {
+        if let buttonRow = sender.tag {
+            var votedBy = voteObject[buttonRow]["votedBy"] as! [String]
+            if !contains(votedBy, currentUser) {
+                var scoreParse = voteObject[buttonRow]["score"]! as? Int
+                scoreParse = scoreParse! - 1
+                voteObject[buttonRow].setObject(NSNumber(integer: scoreParse!), forKey: "score")
+                votedBy.append(currentUser)
+                voteObject[buttonRow]["votedBy"] = votedBy
+                voteObject[buttonRow].saveInBackgroundWithBlock {
+                    (success: Bool, error: NSError?) -> Void in
+                    if (success) {
+                        self.retrieve()
+                    } else {
+                        println("Couldn't Vote!")
+                        SCLAlertView().showWarning("Error Voting", subTitle: "Check Your Internet Connection.")
+                    }
+                }
+            } else { // already voted -- add to retrieve also
+                println("Already Voted")
+            }
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false
-        //        let imgView = MKImageView(frame: CGRect(x: 0, y: 0, width: 44, height: 32))
-        //        imgView.image = UIImage(named: "EditFile-50.png")
-        //        imgView.backgroundAniEnabled = false
-        //        imgView.rippleLocation = .Center
-        //        imgView.ripplePercent = 1.15
-        //        imgView.userInteractionEnabled = true
-        //
-        //        let rightButton = UIBarButtonItem(customView: imgView)
-        //        self.navigationItem.rightBarButtonItem = rightButton
-        
-        
         //        postData.layer.borderColor = UIColor.clearColor().CGColor
         //        postData.placeholder = "Placeholder"
         //        postData.tintColor = UIColor.grayColor()
@@ -115,8 +144,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         tableView.estimatedRowHeight = 100.0;
         tableView.rowHeight = UITableViewAutomaticDimension;
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
-        
-        
+    
         //menuItem.image = UIImage(named: "menu")
         //toolbar.tintColor = UIColor.blackColor()
         //        locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -129,10 +157,18 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         //actionButton.normalImage = UIImage(named: "plus.png")!
         self.view.addSubview(actionButton)
         actionButton.imageArray = ["fb-icon.png","twitter-icon.png","google-icon.png","linkedin-icon.png"]
-        actionButton.labelArray = ["Facebook","Twitter","Google Plus","LinkedIn"]
+        actionButton.labelArray = ["Facebook","Twitter","Google Plus","Log Out"]
         actionButton.delegate = self
         actionButton.hideWhileScrolling = true
+        activityIndicator = UIActivityIndicatorView(frame: self.view.frame)
+        activityIndicator.backgroundColor = UIColor(white: 1.0, alpha: 0.5)
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
         retrieve()
+        
         self.tableView.addPullToRefresh({ [weak self] in
             // refresh code
             self!.retrieve()
@@ -159,10 +195,15 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     }
     
     func retrieve() {
+        
+        //UIApplication.sharedApplication().beginIgnoringInteractionEvents()
         if var query = PFQuery(className: "Person") as PFQuery? { //querying parse for user data
             query.orderByDescending("createdAt")
             query.whereKey("text", notEqualTo: "")
             query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
+                self.activityIndicator.stopAnimating()
+                
+                //UIApplication.sharedApplication().endIgnoringInteractionEvents()
                 if error != nil {
                     //println("No Internet")
                     self.statusLabel.text = "No Internet. Try refreshing."
@@ -174,6 +215,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                 self.score.removeAll(keepCapacity: false)
                 self.createdAt.removeAll(keepCapacity: false)
                 self.voteObject.removeAll(keepCapacity: false)
+                self.votedArray.removeAll(keepCapacity: false)
                 if let objects = objects as? [PFObject]  {
                     for object in objects {
                         self.voteObject.append(object)
@@ -244,6 +286,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         //if (indexPath.row == 0) {
+        indexPathStore = indexPath
         let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCell") as! SBGestureTableViewCell
         let size = CGSizeMake(30, 30)
         cell.firstLeftAction = SBGestureTableViewCellAction(icon: checkIcon.imageWithSize(size), color: greenColor, fraction: 0.3, didTriggerBlock: removeCellBlock)
@@ -422,7 +465,9 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         } else if(row == 2) {
             //google+
         } else if(row == 3) {
-            //LinkedIn
+            //LinkedIn//to logout
+            PFUser.logOut()
+            performSegueWithIdentifier("signIn", sender: self)
         } else if(row == 4) {
             //new
         }
@@ -441,6 +486,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                 person["admin"] = true
                 person["text"] = txt.text
                 person["startTime"] = CFAbsoluteTimeGetCurrent()
+                person["votedBy"] = []
                 person.saveInBackgroundWithBlock {
                     (success: Bool, error: NSError?) -> Void in
                     if (success) {
@@ -463,24 +509,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         
     }
     
-    @IBAction func downVote(sender: AnyObject) {
-        let buttonRow = sender.tag
-        println(buttonRow)
-        var scoreParse = voteObject[buttonRow]["score"]! as? Int
-        scoreParse = scoreParse! - 1
-        voteObject[buttonRow].setObject(NSNumber(integer: scoreParse!), forKey: "score")
-        voteObject[buttonRow].saveInBackgroundWithBlock {
-            (success: Bool, error: NSError?) -> Void in
-            if (success) {
-                self.retrieve()
-            } else {
-                println("Couldn't Vote!")
-                SCLAlertView().showWarning("Error Voting", subTitle: "Check Your Internet Connection.")
-            }
-            //cell.scoreLabel?.text = "\(score!) votes";
-        }
-    }
-    
+   
     //func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
     //  var ns = self.messages[indexPath.row] as NSString
     // ns.sizeWithAttributes(ns)

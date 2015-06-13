@@ -153,8 +153,7 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UITextFieldDe
                 if let error = error {
                     let errorString = error.userInfo?["error"] as? NSString
                     // Show the errorString somewhere and let the user try again.
-                    println("ERROR")
-                    SCLAlertView().showWarning("SignUp Info", subTitle: "The Username Is Already Taken")
+                    SCLAlertView().showWarning("SignUp Error", subTitle: errorString! as String)
                 } else {
                     println("Signed Up!!")
                     self.performSegueWithIdentifier("signedUp2", sender: self)

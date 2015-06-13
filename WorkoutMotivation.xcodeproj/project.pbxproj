@@ -54,7 +54,6 @@
 		71AF79CB1B17D272007953CD /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AF79C71B17D272007953CD /* AvatarImageView.swift */; };
 		71AF79CC1B17D272007953CD /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AF79C91B17D272007953CD /* FXBlurView.m */; };
 		71AF79CD1B17D272007953CD /* TWTButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AF79CA1B17D272007953CD /* TWTButton.swift */; };
-		71AF79D51B181574007953CD /* TipInCellAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AF79D11B181574007953CD /* TipInCellAnimator.swift */; };
 		71AF79F01B192F52007953CD /* pulltorefresharrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 71AF79EF1B192F52007953CD /* pulltorefresharrow.png */; };
 		71AF79F31B192F68007953CD /* PullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AF79F11B192F68007953CD /* PullToRefreshView.swift */; };
 		71AF79F41B192F68007953CD /* UIScrollViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AF79F21B192F68007953CD /* UIScrollViewExtension.swift */; };
@@ -185,7 +184,6 @@
 		71AF79C81B17D272007953CD /* FXBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXBlurView.h; sourceTree = "<group>"; };
 		71AF79C91B17D272007953CD /* FXBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXBlurView.m; sourceTree = "<group>"; };
 		71AF79CA1B17D272007953CD /* TWTButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWTButton.swift; sourceTree = "<group>"; };
-		71AF79D11B181574007953CD /* TipInCellAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipInCellAnimator.swift; sourceTree = "<group>"; };
 		71AF79EF1B192F52007953CD /* pulltorefresharrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pulltorefresharrow.png; sourceTree = "<group>"; };
 		71AF79F11B192F68007953CD /* PullToRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefreshView.swift; sourceTree = "<group>"; };
 		71AF79F21B192F68007953CD /* UIScrollViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewExtension.swift; sourceTree = "<group>"; };
@@ -325,15 +323,14 @@
 			children = (
 				71C553D01B2ACB1E00357D8A /* SBGestureTableView */,
 				716B874D1B152E9D00B7E955 /* TimelineViewController.swift */,
+				71561D001B1FD6A70052B5F7 /* PostImageViewController.swift */,
 				71AF79C51B17D1F1007953CD /* profileVC.swift */,
+				710394F51B22ADB800F01B5B /* LayoutController.swift */,
 				71C553EC1B2B3DC400357D8A /* AnimateTransition.swift */,
 				7109A8EC1B04306900435D3C /* Main.storyboard */,
 				71C553F01B2B464B00357D8A /* NavigationControllerDelegate.swift */,
 				7109A8E81B04306900435D3C /* AppDelegate.swift */,
 				710394F91B22BB6300F01B5B /* layoutPost.swift */,
-				710394F51B22ADB800F01B5B /* LayoutController.swift */,
-				71AF79D11B181574007953CD /* TipInCellAnimator.swift */,
-				71561D001B1FD6A70052B5F7 /* PostImageViewController.swift */,
 				71C553941B281D8500357D8A /* PicUpload.swift */,
 				71CEE60B1B12CBEA00E85AA2 /* VCFloatingButton */,
 				71CEE5F41B12BA7E00E85AA2 /* VC's */,
@@ -681,7 +678,6 @@
 				71C553CC1B2ACB1800357D8A /* SBGestureTableView.swift in Sources */,
 				71C553ED1B2B3DC400357D8A /* AnimateTransition.swift in Sources */,
 				71C553CD1B2ACB1800357D8A /* SBGestureTableViewCell.swift in Sources */,
-				71AF79D51B181574007953CD /* TipInCellAnimator.swift in Sources */,
 				71C553E21B2ACBD900357D8A /* FAKIcon.m in Sources */,
 				71C5537D1B2801A500357D8A /* DesignableButton.swift in Sources */,
 				710394F81B22ADC700F01B5B /* CollectionViewCell.swift in Sources */,

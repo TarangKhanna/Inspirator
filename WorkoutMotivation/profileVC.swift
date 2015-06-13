@@ -67,8 +67,6 @@ class profileVC: UIViewController, UIScrollViewDelegate, UIPopoverPresentationCo
                 println("Error: \(error!) \(error!.userInfo!)")
             }
         }
-        println("efwhjvfev")
-        println(aboutYouLabel.text)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,21 +91,24 @@ class profileVC: UIViewController, UIScrollViewDelegate, UIPopoverPresentationCo
                     if let users = users as? [PFObject] {
                         for user in users {
                             var user2:PFUser = user as! PFUser
-                            self.profileImageFile = user2["ProfilePicture"] as! PFFile
-                            self.profileImageFile.getDataInBackgroundWithBlock { (data, error) -> Void in
-                                
-                                if let downloadedImage = UIImage(data: data!) {
+                            if user2.username == self.name {
+                                self.profileImageFile = user2["ProfilePicture"] as! PFFile
+                                self.profileImageFile.getDataInBackgroundWithBlock { (data, error) -> Void in
                                     
-                                    svc.downloadedImage2 = downloadedImage
+                                    if let downloadedImage = UIImage(data: data!) {
+                                        
+                                        svc.downloadedImage2 = downloadedImage
+                                        
+                                    }
                                     
                                 }
+                                //self.imageFiles.append(user2["ProfilePictue"] as! PFFile)
                                 
                             }
-                            //self.imageFiles.append(user2["ProfilePictue"] as! PFFile)
-                            
                         }
                         //self.tableView.reloadData()
                     }
+                    
                 } else {
                     // Log details of the failure
                     println("Error: \(error!) \(error!.userInfo!)")

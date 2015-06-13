@@ -7,7 +7,9 @@
 //
 
 import UIKit
+import Parse
 import Social
+import Foundation
 var shown : Bool = false
 let kSuccessTitle = "Congratulations"
 let kErrorTitle = "Connection error"

@@ -237,6 +237,9 @@ class SBGestureTableViewCell: MKTableViewCell, UIGestureRecognizerDelegate {
     @IBOutlet var upVoteBtn: UIButton!
     @IBOutlet var downVoteBtn: UIButton!
     
+    @IBAction func upVoteCell(sender: AnyObject) {
+        upVoteBtn.backgroundColor = UIColor.MKColor.DeepOrange
+    }
     override func awakeFromNib() {
         
         dateImageView.image = UIImage(named: "clock")
