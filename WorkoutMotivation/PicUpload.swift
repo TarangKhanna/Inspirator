@@ -153,6 +153,7 @@ class PicUpload: UIViewController,UITextFieldDelegate, UINavigationControllerDel
         var button = sender as UIButton
         imageToFilter.hidden = false
         imageToFilter.image = button.backgroundImageForState(UIControlState.Normal)
+        imageToPost.image = imageToFilter.image
     }
     
     @IBAction func savePicButton(sender: AnyObject) {
@@ -167,66 +168,101 @@ class PicUpload: UIViewController,UITextFieldDelegate, UINavigationControllerDel
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-            var svc = segue.destinationViewController as! PostImageViewController;
-            svc.imageToPost = imageToFilter
+        var svc = segue.destinationViewController as! PostImageViewController;
+        svc.imageToPost = imageToFilter
     }
     
     @IBAction func uploadImage(sender: AnyObject) {
         unhide()
         // profile pic
+        activityIndicator = UIActivityIndicatorView(frame: self.view.frame)
+        activityIndicator.backgroundColor = UIColor(white: 1.0, alpha: 0.5)
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
         
-//        activityIndicator = UIActivityIndicatorView(frame: self.view.frame)
-//        activityIndicator.backgroundColor = UIColor(white: 1.0, alpha: 0.5)
-//        activityIndicator.center = self.view.center
-//        activityIndicator.hidesWhenStopped = true
-//        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
-//        view.addSubview(activityIndicator)
-//        activityIndicator.startAnimating()
-//        
-//        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
-//        
-//        var post = PFObject(className: "Post")
-//        
-//        //post["message"] = message.text
-//        
-//        post["userId"] = PFUser.currentUser()!.objectId!
-//        
-//        //post["text"] = PFUser.currentUser()?.text
-//        
-//        let imageData = UIImagePNGRepresentation(imageToPost.image)
-//        
-//        let imageFile = PFFile(name: "image.png", data: imageData)
-//        
-//        post["imageFile"] = imageFile
-//        
-//        post.saveInBackgroundWithBlock{(success, error) -> Void in
-//            
-//            self.activityIndicator.stopAnimating()
-//            
-//            UIApplication.sharedApplication().endIgnoringInteractionEvents()
-//            
-//            if error == nil {
-//                
-//                self.displayAlert("Image Posted!", message: "Your image has been posted successfully")
-//                
-//                self.imageToPost.image = UIImage(named: "315px-Blank_woman_placeholder.svg.png")
-//                
-//               // self.message.text = ""
-//                
-//            } else {
-//                
-//                self.displayAlert("Could not post image", message: "Please try again later")
-//                
-//            }
-//            
-//        }
-//        
-//    }
-//    
-//    override func didReceiveMemoryWarning() {
-//        super.didReceiveMemoryWarning()
-//        // Dispose of any resources that can be recreated.
-
+        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+        
+        var person = PFObject(className:"Person")
+        person["score"] = 0
+        person["username"] = PFUser.currentUser()?.username
+        person["admin"] = true
+        person["text"] = "Testsss"
+        person["startTime"] = CFAbsoluteTimeGetCurrent()
+        person["votedBy"] = []
+        let imageData = UIImagePNGRepresentation(imageToPost.image)
+        
+        let imageFile = PFFile(name: "image.png", data: imageData)
+        
+        person["imageFile"] = imageFile
+        person.saveInBackgroundWithBlock {
+            (success: Bool, error: NSError?) -> Void in
+            self.activityIndicator.stopAnimating()
+            
+            UIApplication.sharedApplication().endIgnoringInteractionEvents()
+            if (success) {
+                //self.retrieve()
+                println("posted!")
+            } else {
+                println("Couldn't post!")
+                SCLAlertView().showWarning("Error Posting", subTitle: "Check Your Internet Connection.")
+            }
+        }
+        
+        //        activityIndicator = UIActivityIndicatorView(frame: self.view.frame)
+        //        activityIndicator.backgroundColor = UIColor(white: 1.0, alpha: 0.5)
+        //        activityIndicator.center = self.view.center
+        //        activityIndicator.hidesWhenStopped = true
+        //        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        //        view.addSubview(activityIndicator)
+        //        activityIndicator.startAnimating()
+        //
+        //        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+        //
+        //        var post = PFObject(className: "Post")
+        //
+        //        //post["message"] = message.text
+        //
+        //        post["userId"] = PFUser.currentUser()!.objectId!
+        //
+        //        //post["text"] = PFUser.currentUser()?.text
+        //
+        //        let imageData = UIImagePNGRepresentation(imageToPost.image)
+        //
+        //        let imageFile = PFFile(name: "image.png", data: imageData)
+        //
+        //        post["imageFile"] = imageFile
+        //
+        //        post.saveInBackgroundWithBlock{(success, error) -> Void in
+        //
+        //            self.activityIndicator.stopAnimating()
+        //
+        //            UIApplication.sharedApplication().endIgnoringInteractionEvents()
+        //
+        //            if error == nil {
+        //
+        //                self.displayAlert("Image Posted!", message: "Your image has been posted successfully")
+        //
+        //                self.imageToPost.image = UIImage(named: "315px-Blank_woman_placeholder.svg.png")
+        //
+        //               // self.message.text = ""
+        //
+        //            } else {
+        //
+        //                self.displayAlert("Could not post image", message: "Please try again later")
+        //
+        //            }
+        //
+        //        }
+        //
+        //    }
+        //
+        //    override func didReceiveMemoryWarning() {
+        //        super.didReceiveMemoryWarning()
+        //        // Dispose of any resources that can be recreated.
+        
     }
-
+    
 }

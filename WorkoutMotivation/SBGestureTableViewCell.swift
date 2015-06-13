@@ -238,7 +238,7 @@ class SBGestureTableViewCell: MKTableViewCell, UIGestureRecognizerDelegate {
     @IBOutlet var downVoteBtn: UIButton!
     
     @IBAction func upVoteCell(sender: AnyObject) {
-        upVoteBtn.backgroundColor = UIColor.MKColor.DeepOrange
+        
     }
     override func awakeFromNib() {
         

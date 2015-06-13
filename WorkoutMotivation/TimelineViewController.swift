@@ -50,9 +50,9 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     
     // gesture tableview configs
     let checkIcon = FAKIonIcons.ios7CheckmarkIconWithSize(30)
-    let closeIcon = FAKIonIcons.ios7ArrowDownIconWithSize(30) // downvote swipe left
+    let closeIcon = FAKIonIcons.ios7ArrowUpIconWithSize(30) // downvote swipe left
     let composeIcon = FAKIonIcons.ios7ComposeIconWithSize(30)
-    let clockIcon = FAKIonIcons.ios7ArrowUpIconWithSize(30) // upvote -swipe right
+    let clockIcon = FAKIonIcons.ios7ArrowDownIconWithSize(30) // upvote -swipe right
     let greenColor = UIColor(red: 85.0/255, green: 213.0/255, blue: 80.0/255, alpha: 1)
     let redColor = UIColor(red: 213.0/255, green: 70.0/255, blue: 70.0/255, alpha: 1)
     let yellowColor = UIColor(red: 236.0/255, green: 223.0/255, blue: 60.0/255, alpha: 1)
@@ -290,9 +290,9 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCell") as! SBGestureTableViewCell
         let size = CGSizeMake(30, 30)
         cell.firstLeftAction = SBGestureTableViewCellAction(icon: checkIcon.imageWithSize(size), color: greenColor, fraction: 0.3, didTriggerBlock: removeCellBlock)
-        cell.secondLeftAction = SBGestureTableViewCellAction(icon: closeIcon.imageWithSize(size), color: redColor, fraction: 0.6, didTriggerBlock: removeCellBlock)
+        cell.secondLeftAction = SBGestureTableViewCellAction(icon: closeIcon.imageWithSize(size), color: greenColor, fraction: 0.6, didTriggerBlock: removeCellBlock)
         cell.firstRightAction = SBGestureTableViewCellAction(icon: composeIcon.imageWithSize(size), color: yellowColor, fraction: 0.3, didTriggerBlock: removeCellBlock)
-        cell.secondRightAction = SBGestureTableViewCellAction(icon: clockIcon.imageWithSize(size), color: brownColor, fraction: 0.6, didTriggerBlock: removeCellBlock)
+        cell.secondRightAction = SBGestureTableViewCellAction(icon: clockIcon.imageWithSize(size), color: redColor, fraction: 0.6, didTriggerBlock: removeCellBlock)
         
         cell.backgroundColor = UIColor.clearColor()
         cell.downVoteBtn.tag = indexPath.row
@@ -363,7 +363,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         
         return cell
         
-        //        } else{
+        //        } else {
         //            let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCellPhoto") as! TimelineCell
         //
         //            cell.typeImageView.image = UIImage(named: "timeline-photo")
@@ -382,6 +382,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         selectedScore = String(score[indexPath.row])
         //let destinationVC = profileVC()
         //destinationVC.name = selectedName
+        //ce
         println("selected")
         println(indexPath.row)
         performSegueWithIdentifier("profileView", sender: self)
@@ -393,38 +394,6 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             println(selectedName)
             svc.name = selectedName
             svc.score = selectedScore
-            //get profile pic
-            //            var queryUser = PFUser.query() as PFQuery?
-            //            queryUser!.findObjectsInBackgroundWithBlock {
-            //                (users: [AnyObject]?, error: NSError?) -> Void in
-            //                queryUser!.orderByDescending("createdAt")
-            //                queryUser!.whereKey("username", equalTo: self.selectedName)
-            //                if error == nil {
-            //                    //println("Successfully retrieved \(users!.count) users.")
-            //                    // Do something with the found users
-            //                    if let users = users as? [PFObject] {
-            //                        for user in users {
-            //                            var user2:PFUser = user as! PFUser
-            //                            svc.aboutYou = (user2["AboutYou"] as? String)!
-            //                            println((user2["AboutYou"] as? String)!)
-            //                            self.profileImageFile = user2["ProfilePicture"] as! PFFile
-            //                            self.profileImageFile.getDataInBackgroundWithBlock { (data, error) -> Void in
-            //
-            //                                if let downloadedImage = UIImage(data: data!) {
-            //                                    svc.avatarImage.image = downloadedImage
-            //                                }
-            //
-            //                            }
-            //                            //self.imageFiles.append(user2["ProfilePictue"] as! PFFile)
-            //                        }
-            //                        //self.tableView.reloadData()
-            //                    }
-            //                } else {
-            //                    // Log details of the failure
-            //                    println("Error: \(error!) \(error!.userInfo!)")
-            //                }
-            //            }
-            
         }
     }
     
