@@ -22,7 +22,6 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet var menuItem : UIBarButtonItem!
     @IBOutlet var statusLabel: UILabel!
     
-    
     var parseObject:PFObject?
     var currLocation: CLLocationCoordinate2D?
     let locationManager = CLLocationManager()
@@ -42,14 +41,15 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     var profileImageFile = PFFile()
     var backupImage = UIImage()
     var previousUser = String()
-    var circleColors = [UIColor.MKColor.LightBlue, UIColor.MKColor.Grey, UIColor.MKColor.LightGreen, UIColor.MKColor.Amber]
+    var circleColors = [UIColor.MKColor.LightBlue, UIColor.MKColor.Grey, UIColor.MKColor.LightGreen, UIColor.MKColor.Amber, UIColor.MKColor.DeepOrange]
     var voteObject = [PFObject]()
     //var potentialVoteCounter : Int? = object["count"]
     
+    // gesture tableview configs
     let checkIcon = FAKIonIcons.ios7CheckmarkIconWithSize(30)
-    let closeIcon = FAKIonIcons.ios7CloseIconWithSize(30)
+    let closeIcon = FAKIonIcons.ios7ArrowDownIconWithSize(30) // downvote swipe left
     let composeIcon = FAKIonIcons.ios7ComposeIconWithSize(30)
-    let clockIcon = FAKIonIcons.ios7ClockIconWithSize(30)
+    let clockIcon = FAKIonIcons.ios7ArrowUpIconWithSize(30) // upvote -swipe right
     let greenColor = UIColor(red: 85.0/255, green: 213.0/255, blue: 80.0/255, alpha: 1)
     let redColor = UIColor(red: 213.0/255, green: 70.0/255, blue: 70.0/255, alpha: 1)
     let yellowColor = UIColor(red: 236.0/255, green: 223.0/255, blue: 60.0/255, alpha: 1)
@@ -67,9 +67,6 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         //println(PFUser.currentUser()?.username)
         
     }
-    
-    
-    
     
     @IBAction func upVote(sender: AnyObject) {
         //let buttonRow = sender.tag
@@ -169,6 +166,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                 if error != nil {
                     //println("No Internet")
                     self.statusLabel.text = "No Internet. Try refreshing."
+                    
                 }
                 self.imageFiles.removeAll(keepCapacity: true)
                 self.messages.removeAll(keepCapacity: false)
@@ -212,28 +210,28 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         //tableView.reloadData()
     }
     
-//    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]?  {
-//        
-//        var shareAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Share" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
-//            
-//            let shareMenu = UIAlertController(title: nil, message: "Share using", preferredStyle: .ActionSheet)
-//            
-//            let twitterAction = UIAlertAction(title: "Twitter", style: UIAlertActionStyle.Default, handler: nil)
-//            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
-//            
-//            shareMenu.addAction(twitterAction)
-//            shareMenu.addAction(cancelAction)
-//            
-//            
-//            self.presentViewController(shareMenu, animated: true, completion: nil)
-//        })
-//        
-//        var likeAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Like" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
-//            // parse like and notification
-//        })
-//        
-//        return [shareAction,likeAction]
-//    }
+    //    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]?  {
+    //
+    //        var shareAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Share" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+    //
+    //            let shareMenu = UIAlertController(title: nil, message: "Share using", preferredStyle: .ActionSheet)
+    //
+    //            let twitterAction = UIAlertAction(title: "Twitter", style: UIAlertActionStyle.Default, handler: nil)
+    //            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
+    //
+    //            shareMenu.addAction(twitterAction)
+    //            shareMenu.addAction(cancelAction)
+    //
+    //
+    //            self.presentViewController(shareMenu, animated: true, completion: nil)
+    //        })
+    //
+    //        var likeAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Like" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+    //            // parse like and notification
+    //        })
+    //
+    //        return [shareAction,likeAction]
+    //    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return userArray.count
@@ -267,19 +265,19 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         //            } else {
         //                cell.backgroundColor = UIColor.purpleColor()
         //            }
-        if previousUser != userArray[indexPath.row]{
-            //get profile pic
-            var queryUser = PFUser.query() as PFQuery?
-            queryUser!.findObjectsInBackgroundWithBlock {
-                (users: [AnyObject]?, error: NSError?) -> Void in
-                queryUser!.orderByDescending("createdAt")
-                queryUser!.whereKey("username", equalTo: self.userArray[indexPath.row])
-                if error == nil {
-                    //println("Successfully retrieved \(users!.count) users.")
-                    // Do something with the found users
-                    if let users = users as? [PFObject] {
-                        for user in users {
-                            var user2:PFUser = user as! PFUser
+        //get profile pic
+        var queryUser = PFUser.query() as PFQuery?
+        queryUser!.findObjectsInBackgroundWithBlock {
+            (users: [AnyObject]?, error: NSError?) -> Void in
+            //queryUser!.orderByDescending("createdAt")
+            //queryUser!.whereKey("username", equalTo: self.userArray[indexPath.row])
+            if error == nil {
+                //println("Successfully retrieved \(users!.count) users.")
+                // Do something with the found users
+                if let users = users as? [PFObject] {
+                    for user in users {
+                        var user2:PFUser = user as! PFUser
+                        if user2.username == self.userArray[indexPath.row] {
                             self.profileImageFile = user2["ProfilePicture"] as! PFFile
                             self.profileImageFile.getDataInBackgroundWithBlock { (data, error) -> Void in
                                 
@@ -294,13 +292,10 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                             
                         }
                     }
-                } else {
-                    println("Error: \(error!) \(error!.userInfo!)")
                 }
+            } else {
+                println("Error: \(error!) \(error!.userInfo!)")
             }
-        } else {
-            cell.profileImageView.image = self.backupImage
-            previousUser = userArray[indexPath.row]
         }
         //got profile pic
         //self.tableView.insertRowsAtIndexPaths(0, withRowAnimation: UITableViewRowAnimation.Bottom)
@@ -356,38 +351,36 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             svc.name = selectedName
             svc.score = selectedScore
             //get profile pic
-            var queryUser = PFUser.query() as PFQuery?
-            queryUser!.findObjectsInBackgroundWithBlock {
-                (users: [AnyObject]?, error: NSError?) -> Void in
-                queryUser!.orderByDescending("createdAt")
-                queryUser!.whereKey("username", equalTo: self.selectedName)
-                if error == nil {
-                    //println("Successfully retrieved \(users!.count) users.")
-                    // Do something with the found users
-                    if let users = users as? [PFObject] {
-                        for user in users {
-                            var user2:PFUser = user as! PFUser
-                            svc.aboutYouLabel.text = user2["AboutYou"] as? String
-                            self.profileImageFile = user2["ProfilePicture"] as! PFFile
-                            self.profileImageFile.getDataInBackgroundWithBlock { (data, error) -> Void in
-                                
-                                if let downloadedImage = UIImage(data: data!) {
-                                    
-                                    svc.avatarImage.image = downloadedImage
-                                    
-                                }
-                                
-                            }
-                            //self.imageFiles.append(user2["ProfilePictue"] as! PFFile)
-                            
-                        }
-                        //self.tableView.reloadData()
-                    }
-                } else {
-                    // Log details of the failure
-                    println("Error: \(error!) \(error!.userInfo!)")
-                }
-            }
+            //            var queryUser = PFUser.query() as PFQuery?
+            //            queryUser!.findObjectsInBackgroundWithBlock {
+            //                (users: [AnyObject]?, error: NSError?) -> Void in
+            //                queryUser!.orderByDescending("createdAt")
+            //                queryUser!.whereKey("username", equalTo: self.selectedName)
+            //                if error == nil {
+            //                    //println("Successfully retrieved \(users!.count) users.")
+            //                    // Do something with the found users
+            //                    if let users = users as? [PFObject] {
+            //                        for user in users {
+            //                            var user2:PFUser = user as! PFUser
+            //                            svc.aboutYou = (user2["AboutYou"] as? String)!
+            //                            println((user2["AboutYou"] as? String)!)
+            //                            self.profileImageFile = user2["ProfilePicture"] as! PFFile
+            //                            self.profileImageFile.getDataInBackgroundWithBlock { (data, error) -> Void in
+            //
+            //                                if let downloadedImage = UIImage(data: data!) {
+            //                                    svc.avatarImage.image = downloadedImage
+            //                                }
+            //
+            //                            }
+            //                            //self.imageFiles.append(user2["ProfilePictue"] as! PFFile)
+            //                        }
+            //                        //self.tableView.reloadData()
+            //                    }
+            //                } else {
+            //                    // Log details of the failure
+            //                    println("Error: \(error!) \(error!.userInfo!)")
+            //                }
+            //            }
             
         }
     }
@@ -487,6 +480,11 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             //cell.scoreLabel?.text = "\(score!) votes";
         }
     }
+    
+    //func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    //  var ns = self.messages[indexPath.row] as NSString
+    // ns.sizeWithAttributes(ns)
+    //}
     
 }
 

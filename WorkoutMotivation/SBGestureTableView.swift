@@ -135,6 +135,7 @@ class SBGestureTableView: UITableView, UIGestureRecognizerDelegate {
     }
     
     func replaceCell(cell: SBGestureTableViewCell, var duration: NSTimeInterval, var bounce: (CGFloat), completion:(() -> Void)?) {
+        println("hfiuejb")
         if duration == 0 {
             duration = 0.25
         }
@@ -156,9 +157,14 @@ class SBGestureTableView: UITableView, UIGestureRecognizerDelegate {
     }
     
     func fullSwipeCell(cell: SBGestureTableViewCell, duration: NSTimeInterval, completion:(() -> Void)?) {
+        println("fwjkhfb")
         UIView.animateWithDuration(duration * cell.percentageOffsetFromCenter(), animations: { () -> Void in
             cell.center = CGPointMake(cell.frame.size.width/2 + (cell.frame.origin.x > 0 ? cell.frame.size.width : -cell.frame.size.width), cell.center.y)
+            cell.leftSideView.iconImageView.alpha = 0
+            cell.rightSideView.iconImageView.alpha = 0
             }, completion: {(done) -> Void in
+                cell.leftSideView.removeFromSuperview()
+                cell.rightSideView.removeFromSuperview()
                 completion?()
         })
     }
