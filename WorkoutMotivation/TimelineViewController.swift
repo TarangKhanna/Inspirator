@@ -22,6 +22,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet var menuItem : UIBarButtonItem!
     @IBOutlet var statusLabel: UILabel!
     
+    var containsImage = [Bool]() // for loading images and making sure index is not out of bounds
     var votedArray = [String]()
     var activityIndicator = UIActivityIndicatorView()
     var indexPathStore = NSIndexPath()
@@ -68,9 +69,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             //signin vc
             performSegueWithIdentifier("signIn", sender: self)
         } else {
-            //println("BHWJBE")
             //println(PFUser.currentUser()?.username)
-            
         }
     }
     
@@ -144,7 +143,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         tableView.estimatedRowHeight = 100.0;
         tableView.rowHeight = UITableViewAutomaticDimension;
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
-    
+        
         //menuItem.image = UIImage(named: "menu")
         //toolbar.tintColor = UIColor.blackColor()
         //        locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -195,7 +194,6 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     }
     
     func retrieve() {
-        
         //UIApplication.sharedApplication().beginIgnoringInteractionEvents()
         if var query = PFQuery(className: "Person") as PFQuery? { //querying parse for user data
             query.orderByDescending("createdAt")
@@ -207,9 +205,9 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                 if error != nil {
                     //println("No Internet")
                     self.statusLabel.text = "No Internet. Try refreshing."
-                    
                 }
-                self.imageFiles.removeAll(keepCapacity: true)
+                self.containsImage.removeAll(keepCapacity: false)
+                self.imageFiles.removeAll(keepCapacity: false)
                 self.messages.removeAll(keepCapacity: false)
                 self.userArray.removeAll(keepCapacity: false)
                 self.score.removeAll(keepCapacity: false)
@@ -218,6 +216,14 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                 self.votedArray.removeAll(keepCapacity: false)
                 if let objects = objects as? [PFObject]  {
                     for object in objects {
+                        if let imageFile42 = object["imageFile"] as? PFFile{
+                            self.imageFiles.append(imageFile42)
+                            self.containsImage.append(true)
+                            println("iuhewbd")
+                        } else {
+                            self.containsImage.append(false)
+                            println("jkbdj")
+                        }
                         self.voteObject.append(object)
                         self.messages.append(object["text"] as! String)
                         self.userArray.append(object["username"] as! String)
@@ -309,6 +315,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         //                cell.backgroundColor = UIColor.purpleColor()
         //            }
         //get profile pic
+        
         var queryUser = PFUser.query() as PFQuery?
         queryUser!.findObjectsInBackgroundWithBlock {
             (users: [AnyObject]?, error: NSError?) -> Void in
@@ -341,39 +348,64 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             }
         }
         //got profile pic
-        //self.tableView.insertRowsAtIndexPaths(0, withRowAnimation: UITableViewRowAnimation.Bottom)
-        cell.typeImageView.image = UIImage(named: "timeline-chat")
-        //cell.profileImageView.image = UIImage(named: "profile-pic-1")
-        cell.nameLabel.text = userArray[indexPath.row]
-        cell.nameLabel.textColor = UIColor.greenColor()
-        cell.postLabel?.text = messages[indexPath.row]
-        cell.postLabel?.textColor = UIColor.whiteColor()
-        var seconds = createdAt[indexPath.row]*60
-        var temp = seconds
-        var timeAgo = (seconds/60) // + " m ago"
-        var ending = " Min Ago"
-        if timeAgo >= 60 {
-            timeAgo = (temp / 3600)
-            ending = " Hours Ago"
+        
+        if containsImage[indexPath.row] {
+            let image42 = self.imageFiles[indexPath.row]
+            image42.getDataInBackgroundWithBlock { (data, error) -> Void in
+                if let downloadedImage2 = UIImage(data: data!) {
+                    //cell.profileImageView.image = downloadedImage
+                    //self.backupImage = downloadedImage
+                    println("hererrrffs")
+                    //self.tableView.insertRowsAtIndexPaths(0, withRowAnimation: UITableViewRowAnimation.Bottom)
+                    cell.typeImageView.image = UIImage(named: "timeline-chat")
+                    cell.photoImageView?.image = downloadedImage2
+                    //cell.profileImageView.image = UIImage(named: "profile-pic-1")
+                    cell.nameLabel.text = self.userArray[indexPath.row]
+                    cell.nameLabel.textColor = UIColor.greenColor()
+                    cell.postLabel?.text = self.messages[indexPath.row]
+                    cell.postLabel?.textColor = UIColor.whiteColor()
+                    var seconds = self.createdAt[indexPath.row]*60
+                    var temp = seconds
+                    var timeAgo = (seconds/60) // + " m ago"
+                    var ending = " Min Ago"
+                    if timeAgo >= 60 {
+                        timeAgo = (temp / 3600)
+                        ending = " Hours Ago"
+                    }
+                    cell.dateLabel.text = String(timeAgo) + ending
+                    cell.dateLabel.textColor = UIColor.whiteColor()
+                    cell.scoreLabel.textColor = UIColor.greenColor()
+                    cell.scoreLabel.text = String(self.score[indexPath.row])
+                    cell.typeImageView.image = UIImage(named: "timeline-photo")
+                    cell.nameLabel.text = self.userArray[indexPath.row]
+                    cell.nameLabel.textColor = UIColor.greenColor()
+                    cell.postLabel?.text = self.messages[indexPath.row]
+                    cell.postLabel?.textColor = UIColor.whiteColor()
+                }
+            }
+            
+        } else {
+            //self.tableView.insertRowsAtIndexPaths(0, withRowAnimation: UITableViewRowAnimation.Bottom)
+            cell.typeImageView.image = UIImage(named: "timeline-chat")
+            //cell.profileImageView.image = UIImage(named: "profile-pic-1")
+            cell.nameLabel.text = self.userArray[indexPath.row]
+            cell.nameLabel.textColor = UIColor.greenColor()
+            cell.postLabel?.text = self.messages[indexPath.row]
+            cell.postLabel?.textColor = UIColor.whiteColor()
+            var seconds = self.createdAt[indexPath.row]*60
+            var temp = seconds
+            var timeAgo = (seconds/60) // + " m ago"
+            var ending = " Min Ago"
+            if timeAgo >= 60 {
+                timeAgo = (temp / 3600)
+                ending = " Hours Ago"
+            }
+            cell.dateLabel.text = String(timeAgo) + ending
+            cell.dateLabel.textColor = UIColor.whiteColor()
+            cell.scoreLabel.textColor = UIColor.greenColor()
+            cell.scoreLabel.text = String(self.score[indexPath.row])
         }
-        cell.dateLabel.text = String(timeAgo) + ending
-        cell.dateLabel.textColor = UIColor.whiteColor()
-        cell.scoreLabel.textColor = UIColor.greenColor()
-        cell.scoreLabel.text = String(score[indexPath.row])
-        
         return cell
-        
-        //        } else {
-        //            let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCellPhoto") as! TimelineCell
-        //
-        //            cell.typeImageView.image = UIImage(named: "timeline-photo")
-        //            cell.profileImageView.image = UIImage(named: "profile-pic-2")
-        //            cell.nameLabel.text = "Charlie Su"
-        //            cell.photoImageView?.image = UIImage(named: "dish")
-        //            cell.dateLabel.text = "3 mins ago from UIUC (200m away)"
-        //            return cell
-        //        }
-        
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -478,7 +510,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         
     }
     
-   
+    
     //func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
     //  var ns = self.messages[indexPath.row] as NSString
     // ns.sizeWithAttributes(ns)
