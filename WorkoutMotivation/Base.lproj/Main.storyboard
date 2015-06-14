@@ -1568,77 +1568,6 @@
             </objects>
             <point key="canvasLocation" x="100.5" y="-1442.5"/>
         </scene>
-        <!--Post Image-->
-        <scene sceneID="dI6-vW-01G">
-            <objects>
-                <viewController title="Post Image" id="swO-3e-gbr" customClass="PostImageViewController" customModule="WorkoutMotivation" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="XK1-1B-PIc"/>
-                        <viewControllerLayoutGuide type="bottom" id="Nzf-GI-58N"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="U0K-Ui-K5i">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i0Z-g9-sFC">
-                                <rect key="frame" x="54" y="85" width="267" height="350"/>
-                            </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9um-kq-TIt">
-                                <rect key="frame" x="16" y="511" width="343" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lOY-Mk-NGB">
-                                <rect key="frame" x="16" y="591" width="343" height="36"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="m6n-w7-nPk"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Post Image">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="postImage:" destination="swO-3e-gbr" eventType="touchUpInside" id="Nlw-fy-ird"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LQY-hQ-EkY">
-                                <rect key="frame" x="126" y="456" width="122" height="30"/>
-                                <state key="normal" title="Choose An Image">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="chooseImage:" destination="swO-3e-gbr" eventType="touchUpInside" id="No8-kd-tb8"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="0.91372549020000005" green="0.91372549020000005" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="LQY-hQ-EkY" firstAttribute="centerX" secondItem="i0Z-g9-sFC" secondAttribute="centerX" id="1J6-d6-Pek"/>
-                            <constraint firstItem="i0Z-g9-sFC" firstAttribute="top" secondItem="XK1-1B-PIc" secondAttribute="bottom" constant="41" id="3aO-6A-DoO"/>
-                            <constraint firstItem="LQY-hQ-EkY" firstAttribute="centerX" secondItem="9um-kq-TIt" secondAttribute="centerX" id="4jW-mY-sdX"/>
-                            <constraint firstItem="lOY-Mk-NGB" firstAttribute="leading" secondItem="U0K-Ui-K5i" secondAttribute="leadingMargin" id="DEE-FU-BwS"/>
-                            <constraint firstItem="LQY-hQ-EkY" firstAttribute="top" secondItem="i0Z-g9-sFC" secondAttribute="bottom" constant="21" id="FEP-GP-FTb"/>
-                            <constraint firstItem="lOY-Mk-NGB" firstAttribute="top" secondItem="9um-kq-TIt" secondAttribute="bottom" constant="50" id="Fdc-e1-X3g"/>
-                            <constraint firstItem="i0Z-g9-sFC" firstAttribute="leading" secondItem="U0K-Ui-K5i" secondAttribute="leadingMargin" constant="38" id="fWe-5n-NgT"/>
-                            <constraint firstItem="lOY-Mk-NGB" firstAttribute="trailing" secondItem="9um-kq-TIt" secondAttribute="trailing" id="fv7-0t-exI"/>
-                            <constraint firstItem="9um-kq-TIt" firstAttribute="top" secondItem="LQY-hQ-EkY" secondAttribute="bottom" constant="25" id="hp8-sT-pfA"/>
-                            <constraint firstItem="Nzf-GI-58N" firstAttribute="top" secondItem="lOY-Mk-NGB" secondAttribute="bottom" constant="40" id="imt-OR-JEZ"/>
-                            <constraint firstItem="9um-kq-TIt" firstAttribute="trailing" secondItem="U0K-Ui-K5i" secondAttribute="trailingMargin" id="jrs-EF-Pmk"/>
-                            <constraint firstItem="9um-kq-TIt" firstAttribute="leading" secondItem="lOY-Mk-NGB" secondAttribute="leading" id="t5S-Zu-Efd"/>
-                        </constraints>
-                    </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <connections>
-                        <outlet property="imageToPost" destination="i0Z-g9-sFC" id="zHX-xS-f69"/>
-                        <outlet property="message" destination="9um-kq-TIt" id="BTP-sL-zbT"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="g7B-WG-uYG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="584.5" y="1113.5"/>
-        </scene>
         <!--Layout Controller-->
         <scene sceneID="zgf-6m-Pfb">
             <objects>
@@ -1886,7 +1815,6 @@
                                 </state>
                                 <connections>
                                     <action selector="chooseImage:" destination="I4d-FR-BNv" eventType="touchUpInside" id="3FL-kF-wIr"/>
-                                    <action selector="postImage:" destination="swO-3e-gbr" eventType="touchUpInside" id="2C1-i6-X9p"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YOe-L5-OnF" customClass="MKTextField" customModule="WorkoutMotivation" customModuleProvider="target">

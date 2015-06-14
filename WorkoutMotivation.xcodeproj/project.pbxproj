@@ -119,6 +119,7 @@
 		71CEE61B1B13089200E85AA2 /* MKColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CEE6161B13089200E85AA2 /* MKColor.swift */; };
 		71CEE61D1B13089900E85AA2 /* MKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CEE61C1B13089900E85AA2 /* MKButton.swift */; };
 		71D803F81B0E8B3D0072541D /* loginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D803F71B0E8B3D0072541D /* loginVC.swift */; };
+		71D8762D1B2DFD1B0095A1B4 /* SwiftSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D8762C1B2DFD1B0095A1B4 /* SwiftSpinner.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -258,6 +259,7 @@
 		71CEE6161B13089200E85AA2 /* MKColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKColor.swift; sourceTree = "<group>"; };
 		71CEE61C1B13089900E85AA2 /* MKButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKButton.swift; sourceTree = "<group>"; };
 		71D803F71B0E8B3D0072541D /* loginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = loginVC.swift; path = WorkoutMotivation/loginVC.swift; sourceTree = "<group>"; };
+		71D8762C1B2DFD1B0095A1B4 /* SwiftSpinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftSpinner.swift; path = SwiftSpinner/SwiftSpinner.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -323,6 +325,7 @@
 			children = (
 				71C553D01B2ACB1E00357D8A /* SBGestureTableView */,
 				716B874D1B152E9D00B7E955 /* TimelineViewController.swift */,
+				71D8762C1B2DFD1B0095A1B4 /* SwiftSpinner.swift */,
 				71561D001B1FD6A70052B5F7 /* PostImageViewController.swift */,
 				71AF79C51B17D1F1007953CD /* profileVC.swift */,
 				710394F51B22ADB800F01B5B /* LayoutController.swift */,
@@ -670,6 +673,7 @@
 				71AF79F41B192F68007953CD /* UIScrollViewExtension.swift in Sources */,
 				710394FA1B22BB6300F01B5B /* layoutPost.swift in Sources */,
 				71C553841B2801A500357D8A /* ImageLoader.swift in Sources */,
+				71D8762D1B2DFD1B0095A1B4 /* SwiftSpinner.swift in Sources */,
 				7128A9201B087FF70035C41E /* ProgrammingQuotes.swift in Sources */,
 				71C553E31B2ACBD900357D8A /* FAKIonIcons.m in Sources */,
 				71C553951B281D8500357D8A /* PicUpload.swift in Sources */,

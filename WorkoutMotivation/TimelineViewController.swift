@@ -159,13 +159,9 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         actionButton.labelArray = ["Facebook","Twitter","Google Plus","Log Out"]
         actionButton.delegate = self
         actionButton.hideWhileScrolling = true
-        activityIndicator = UIActivityIndicatorView(frame: self.view.frame)
-        activityIndicator.backgroundColor = UIColor(white: 1.0, alpha: 0.5)
-        activityIndicator.center = self.view.center
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
-        view.addSubview(activityIndicator)
-        activityIndicator.startAnimating()
+        
+        SwiftSpinner.show("Connecting to Matrix...")
+        
         retrieve()
         
         self.tableView.addPullToRefresh({ [weak self] in
@@ -199,8 +195,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             query.orderByDescending("createdAt")
             query.whereKey("text", notEqualTo: "")
             query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
-                self.activityIndicator.stopAnimating()
-                
+                SwiftSpinner.hide()
                 //UIApplication.sharedApplication().endIgnoringInteractionEvents()
                 if error != nil {
                     //println("No Internet")
@@ -347,13 +342,11 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             cell.upVoteBtn.addTarget(self, action: "upVote:", forControlEvents: UIControlEvents.TouchUpInside)
             let index = indexPath.row % circleColors.count
             cell.rippleLayerColor = circleColors[index]
-            
             let image42 = self.imageFiles[indexPath.row]
             image42.getDataInBackgroundWithBlock { (data, error) -> Void in
                 if let downloadedImage2 = UIImage(data: data!) {
                     //cell.profileImageView.image = downloadedImage
                     //self.backupImage = downloadedImage
-                    println("hererrrffs")
                     //self.tableView.insertRowsAtIndexPaths(0, withRowAnimation: UITableViewRowAnimation.Bottom)
                     cell.typeImageView.image = UIImage(named: "timeline-chat")
                     cell.photoImageView?.image = downloadedImage2
@@ -381,6 +374,10 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
 //                    cell.postLabel?.textColor = UIColor.whiteColor()
                 }
             }
+            
+            UIView.animateWithDuration(0.5, delay: 0.5, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+                cell.photoImageView!.alpha = 1.0;
+                },completion: nil)
             return cell
         } else {
             
