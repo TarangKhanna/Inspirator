@@ -240,6 +240,7 @@ class SBGestureTableViewCell: MKTableViewCell, UIGestureRecognizerDelegate {
     @IBAction func upVoteCell(sender: AnyObject) {
         
     }
+    
     override func awakeFromNib() {
         
         dateImageView.image = UIImage(named: "clock")
@@ -265,6 +266,11 @@ class SBGestureTableViewCell: MKTableViewCell, UIGestureRecognizerDelegate {
         
         if postLabel != nil {
             let label = postLabel!
+            label.preferredMaxLayoutWidth = CGRectGetWidth(label.frame)
+        }
+        
+        if scoreLabel != nil {
+            let label = scoreLabel!
             label.preferredMaxLayoutWidth = CGRectGetWidth(label.frame)
         }
     }

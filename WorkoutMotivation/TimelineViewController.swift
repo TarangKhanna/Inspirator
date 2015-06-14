@@ -290,66 +290,64 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        //if (indexPath.row == 0) {
-        indexPathStore = indexPath
-        let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCell") as! SBGestureTableViewCell
-        let size = CGSizeMake(30, 30)
-        cell.firstLeftAction = SBGestureTableViewCellAction(icon: checkIcon.imageWithSize(size), color: greenColor, fraction: 0.3, didTriggerBlock: removeCellBlock)
-        cell.secondLeftAction = SBGestureTableViewCellAction(icon: closeIcon.imageWithSize(size), color: greenColor, fraction: 0.6, didTriggerBlock: removeCellBlock)
-        cell.firstRightAction = SBGestureTableViewCellAction(icon: composeIcon.imageWithSize(size), color: yellowColor, fraction: 0.3, didTriggerBlock: removeCellBlock)
-        cell.secondRightAction = SBGestureTableViewCellAction(icon: clockIcon.imageWithSize(size), color: redColor, fraction: 0.6, didTriggerBlock: removeCellBlock)
-        
-        cell.backgroundColor = UIColor.clearColor()
-        cell.downVoteBtn.tag = indexPath.row
-        
-        cell.downVoteBtn.addTarget(self, action: "downVote:", forControlEvents: UIControlEvents.TouchUpInside)
-        cell.upVoteBtn.tag = indexPath.row
-        
-        cell.upVoteBtn.addTarget(self, action: "upVote:", forControlEvents: UIControlEvents.TouchUpInside)
-        let index = indexPath.row % circleColors.count
-        cell.rippleLayerColor = circleColors[index]
-        //            if  indexPath.row % 2 == 0 {
-        //                cell.backgroundColor = UIColor.redColor()
-        //            } else {
-        //                cell.backgroundColor = UIColor.purpleColor()
-        //            }
-        //get profile pic
-        
-        var queryUser = PFUser.query() as PFQuery?
-        queryUser!.findObjectsInBackgroundWithBlock {
-            (users: [AnyObject]?, error: NSError?) -> Void in
-            //queryUser!.orderByDescending("createdAt")
-            //queryUser!.whereKey("username", equalTo: self.userArray[indexPath.row])
-            if error == nil {
-                //println("Successfully retrieved \(users!.count) users.")
-                // Do something with the found users
-                if let users = users as? [PFObject] {
-                    for user in users {
-                        var user2:PFUser = user as! PFUser
-                        if user2.username == self.userArray[indexPath.row] {
-                            self.profileImageFile = user2["ProfilePicture"] as! PFFile
-                            self.profileImageFile.getDataInBackgroundWithBlock { (data, error) -> Void in
-                                
-                                if let downloadedImage = UIImage(data: data!) {
+        if containsImage[indexPath.row] {
+            
+            println("PIC")
+            
+            indexPathStore = indexPath
+            let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCellPhoto") as! SBGestureTableViewCell
+            let size = CGSizeMake(30, 30)
+            
+            //get profile pic
+            
+            var queryUser = PFUser.query() as PFQuery?
+            queryUser!.findObjectsInBackgroundWithBlock {
+                (users: [AnyObject]?, error: NSError?) -> Void in
+                //queryUser!.orderByDescending("createdAt")
+                //queryUser!.whereKey("username", equalTo: self.userArray[indexPath.row])
+                if error == nil {
+                    //println("Successfully retrieved \(users!.count) users.")
+                    // Do something with the found users
+                    if let users = users as? [PFObject] {
+                        for user in users {
+                            var user2:PFUser = user as! PFUser
+                            if user2.username == self.userArray[indexPath.row] {
+                                self.profileImageFile = user2["ProfilePicture"] as! PFFile
+                                self.profileImageFile.getDataInBackgroundWithBlock { (data, error) -> Void in
                                     
-                                    cell.profileImageView.image = downloadedImage
-                                    self.backupImage = downloadedImage
+                                    if let downloadedImage = UIImage(data: data!) {
+                                        
+                                        cell.profileImageView.image = downloadedImage
+                                        self.backupImage = downloadedImage
+                                    }
+                                    
                                 }
+                                //self.imageFiles.append(user2["ProfilePictue"] as! PFFile)
                                 
                             }
-                            //self.imageFiles.append(user2["ProfilePictue"] as! PFFile)
-                            
                         }
                     }
+                } else {
+                    println("Error: \(error!) \(error!.userInfo!)")
                 }
-            } else {
-                println("Error: \(error!) \(error!.userInfo!)")
             }
-        }
-        //got profile pic
-        
-        if containsImage[indexPath.row] {
+            //got profile pic
+            
+            cell.firstLeftAction = SBGestureTableViewCellAction(icon: checkIcon.imageWithSize(size), color: greenColor, fraction: 0.3, didTriggerBlock: removeCellBlock)
+            cell.secondLeftAction = SBGestureTableViewCellAction(icon: closeIcon.imageWithSize(size), color: greenColor, fraction: 0.6, didTriggerBlock: removeCellBlock)
+            cell.firstRightAction = SBGestureTableViewCellAction(icon: composeIcon.imageWithSize(size), color: yellowColor, fraction: 0.3, didTriggerBlock: removeCellBlock)
+            cell.secondRightAction = SBGestureTableViewCellAction(icon: clockIcon.imageWithSize(size), color: redColor, fraction: 0.6, didTriggerBlock: removeCellBlock)
+            
+            cell.backgroundColor = UIColor.clearColor()
+            cell.downVoteBtn.tag = indexPath.row
+            
+            cell.downVoteBtn.addTarget(self, action: "downVote:", forControlEvents: UIControlEvents.TouchUpInside)
+            cell.upVoteBtn.tag = indexPath.row
+            
+            cell.upVoteBtn.addTarget(self, action: "upVote:", forControlEvents: UIControlEvents.TouchUpInside)
+            let index = indexPath.row % circleColors.count
+            cell.rippleLayerColor = circleColors[index]
+            
             let image42 = self.imageFiles[indexPath.row]
             image42.getDataInBackgroundWithBlock { (data, error) -> Void in
                 if let downloadedImage2 = UIImage(data: data!) {
@@ -372,19 +370,82 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                         timeAgo = (temp / 3600)
                         ending = " Hours Ago"
                     }
-                    cell.dateLabel.text = String(timeAgo) + ending
-                    cell.dateLabel.textColor = UIColor.whiteColor()
+//                    cell.dateLabel.text = String(timeAgo) + ending
+//                    cell.dateLabel.textColor = UIColor.whiteColor()
                     cell.scoreLabel.textColor = UIColor.greenColor()
                     cell.scoreLabel.text = String(self.score[indexPath.row])
                     cell.typeImageView.image = UIImage(named: "timeline-photo")
                     cell.nameLabel.text = self.userArray[indexPath.row]
                     cell.nameLabel.textColor = UIColor.greenColor()
-                    cell.postLabel?.text = self.messages[indexPath.row]
-                    cell.postLabel?.textColor = UIColor.whiteColor()
+//                    cell.postLabel?.text = self.messages[indexPath.row]
+//                    cell.postLabel?.textColor = UIColor.whiteColor()
                 }
             }
-            
+            return cell
         } else {
+            
+             println("TEXT")
+            
+            indexPathStore = indexPath
+            let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCell") as! SBGestureTableViewCell
+            let size = CGSizeMake(30, 30)
+            
+            //get profile pic
+            
+            var queryUser = PFUser.query() as PFQuery?
+            queryUser!.findObjectsInBackgroundWithBlock {
+                (users: [AnyObject]?, error: NSError?) -> Void in
+                //queryUser!.orderByDescending("createdAt")
+                //queryUser!.whereKey("username", equalTo: self.userArray[indexPath.row])
+                if error == nil {
+                    //println("Successfully retrieved \(users!.count) users.")
+                    // Do something with the found users
+                    if let users = users as? [PFObject] {
+                        for user in users {
+                            var user2:PFUser = user as! PFUser
+                            if user2.username == self.userArray[indexPath.row] {
+                                self.profileImageFile = user2["ProfilePicture"] as! PFFile
+                                self.profileImageFile.getDataInBackgroundWithBlock { (data, error) -> Void in
+                                    
+                                    if let downloadedImage = UIImage(data: data!) {
+                                        
+                                        cell.profileImageView.image = downloadedImage
+                                        self.backupImage = downloadedImage
+                                    }
+                                    
+                                }
+                                //self.imageFiles.append(user2["ProfilePictue"] as! PFFile)
+                                
+                            }
+                        }
+                    }
+                } else {
+                    println("Error: \(error!) \(error!.userInfo!)")
+                }
+            }
+            //got profile pic
+            
+            cell.firstLeftAction = SBGestureTableViewCellAction(icon: checkIcon.imageWithSize(size), color: greenColor, fraction: 0.3, didTriggerBlock: removeCellBlock)
+            cell.secondLeftAction = SBGestureTableViewCellAction(icon: closeIcon.imageWithSize(size), color: greenColor, fraction: 0.6, didTriggerBlock: removeCellBlock)
+            cell.firstRightAction = SBGestureTableViewCellAction(icon: composeIcon.imageWithSize(size), color: yellowColor, fraction: 0.3, didTriggerBlock: removeCellBlock)
+            cell.secondRightAction = SBGestureTableViewCellAction(icon: clockIcon.imageWithSize(size), color: redColor, fraction: 0.6, didTriggerBlock: removeCellBlock)
+            
+            cell.backgroundColor = UIColor.clearColor()
+            cell.downVoteBtn.tag = indexPath.row
+            
+            cell.downVoteBtn.addTarget(self, action: "downVote:", forControlEvents: UIControlEvents.TouchUpInside)
+            cell.upVoteBtn.tag = indexPath.row
+            
+            cell.upVoteBtn.addTarget(self, action: "upVote:", forControlEvents: UIControlEvents.TouchUpInside)
+            let index = indexPath.row % circleColors.count
+            cell.rippleLayerColor = circleColors[index]
+            //            if  indexPath.row % 2 == 0 {
+            //                cell.backgroundColor = UIColor.redColor()
+            //            } else {
+            //                cell.backgroundColor = UIColor.purpleColor()
+            //            }
+            //get profile pic
+            
             //self.tableView.insertRowsAtIndexPaths(0, withRowAnimation: UITableViewRowAnimation.Bottom)
             cell.typeImageView.image = UIImage(named: "timeline-chat")
             //cell.profileImageView.image = UIImage(named: "profile-pic-1")
@@ -404,8 +465,9 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             cell.dateLabel.textColor = UIColor.whiteColor()
             cell.scoreLabel.textColor = UIColor.greenColor()
             cell.scoreLabel.text = String(self.score[indexPath.row])
+            return cell
         }
-        return cell
+        
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
