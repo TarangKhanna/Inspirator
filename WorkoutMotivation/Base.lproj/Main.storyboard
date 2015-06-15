@@ -1903,9 +1903,9 @@
         <image name="up" width="30" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8cE-Yl-DNe"/>
         <segue reference="nfZ-5d-aso"/>
         <segue reference="eLD-pB-yh1"/>
         <segue reference="WVb-AW-T6s"/>
+        <segue reference="8cE-Yl-DNe"/>
     </inferredMetricsTieBreakers>
 </document>
