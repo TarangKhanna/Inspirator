@@ -81,6 +81,8 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                 var scoreParse = voteObject[buttonRow]["score"]! as? Int
                 scoreParse = scoreParse! + 1
                 voteObject[buttonRow].setObject(NSNumber(integer: scoreParse!), forKey: "score")
+                println("fqwgref")
+                println(currentUser)
                 votedBy.append(currentUser)
                 voteObject[buttonRow]["votedBy"] = votedBy
                 voteObject[buttonRow].saveInBackgroundWithBlock {
@@ -214,8 +216,10 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                         if let imageFile42 = object["imageFile"] as? PFFile{
                             self.imageFiles.append(imageFile42)
                             self.containsImage.append(true)
+                            println(imageFile42)
                             println("iuhewbd")
                         } else {
+                            self.imageFiles.append(PFFile())
                             self.containsImage.append(false)
                             println("jkbdj")
                         }
@@ -355,6 +359,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                     cell.nameLabel.textColor = UIColor.greenColor()
                     cell.postLabel?.text = self.messages[indexPath.row]
                     cell.postLabel?.textColor = UIColor.whiteColor()
+                    
                     var seconds = self.createdAt[indexPath.row]*60
                     var temp = seconds
                     var timeAgo = (seconds/60) // + " m ago"
@@ -540,6 +545,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             println("Text value: \(txt.text)")
             if txt.text != " " && txt.text != nil && txt.text != ""{
                 var person = PFObject(className:"Person")
+                self.containsImage.append(false)
                 self.parseObject = person
                 person["score"] = 0
                 person["username"] = PFUser.currentUser()?.username
