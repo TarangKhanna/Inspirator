@@ -58,13 +58,12 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     let redColor = UIColor(red: 213.0/255, green: 70.0/255, blue: 70.0/255, alpha: 1)
     let yellowColor = UIColor(red: 236.0/255, green: 223.0/255, blue: 60.0/255, alpha: 1)
     let brownColor = UIColor(red: 182.0/255, green: 127.0/255, blue: 78.0/255, alpha: 1)
-    
     var removeCellBlock: ((SBGestureTableView, SBGestureTableViewCell) -> Void)!
     
-    var currentUser = String()
+    var currentUser : String? = nil
     
     override func viewWillAppear(animated: Bool) {
-        var currentUser = PFUser.currentUser()?.username
+        currentUser = PFUser.currentUser()!.username
         if currentUser == nil{
             //signin vc
             performSegueWithIdentifier("signIn", sender: self)
@@ -77,13 +76,13 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         //let buttonRow = sender.tag
         if let buttonRow = sender.tag {
             var votedBy = voteObject[buttonRow]["votedBy"] as! [String]
-            if !contains(votedBy, currentUser) {
+            if !contains(votedBy, currentUser!) {
                 var scoreParse = voteObject[buttonRow]["score"]! as? Int
                 scoreParse = scoreParse! + 1
                 voteObject[buttonRow].setObject(NSNumber(integer: scoreParse!), forKey: "score")
                 println("fqwgref")
                 println(currentUser)
-                votedBy.append(currentUser)
+                votedBy.append(currentUser!)
                 voteObject[buttonRow]["votedBy"] = votedBy
                 voteObject[buttonRow].saveInBackgroundWithBlock {
                     (success: Bool, error: NSError?) -> Void in
@@ -106,11 +105,11 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     @IBAction func downVote(sender: AnyObject) {
         if let buttonRow = sender.tag {
             var votedBy = voteObject[buttonRow]["votedBy"] as! [String]
-            if !contains(votedBy, currentUser) {
+            if !contains(votedBy, currentUser!) {
                 var scoreParse = voteObject[buttonRow]["score"]! as? Int
                 scoreParse = scoreParse! - 1
                 voteObject[buttonRow].setObject(NSNumber(integer: scoreParse!), forKey: "score")
-                votedBy.append(currentUser)
+                votedBy.append(currentUser!)
                 voteObject[buttonRow]["votedBy"] = votedBy
                 voteObject[buttonRow].saveInBackgroundWithBlock {
                     (success: Bool, error: NSError?) -> Void in
