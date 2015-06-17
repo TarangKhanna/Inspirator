@@ -178,6 +178,19 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         }
         removeCellBlock = {(tableView: SBGestureTableView, cell: SBGestureTableViewCell) -> Void in
             let indexPath = tableView.indexPathForCell(cell)
+            UIView.animateWithDuration(0.2 * cell.percentageOffsetFromCenter(), animations: { () -> Void in
+                //cell.center = CGPointMake(cell.frame.size.width/2 + (cell.frame.origin.x > 0 ? -bounce : bounce), cell.center.y)
+                cell.leftSideView.iconImageView.alpha = 0
+                cell.rightSideView.iconImageView.alpha = 0
+                }, completion: {(done) -> Void in
+                    UIView.animateWithDuration(0.2/2, animations: { () -> Void in
+                        cell.center = CGPointMake(cell.frame.size.width/2, cell.center.y)
+                        }, completion: {(done) -> Void in
+                            cell.leftSideView.removeFromSuperview()
+                            cell.rightSideView.removeFromSuperview()
+                            //completion?()
+                    })
+            })
             self.upVote(self)
         }
         

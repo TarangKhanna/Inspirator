@@ -1025,10 +1025,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FEI-6W-Yl0">
-                                                    <rect key="frame" x="28" y="1" width="5" height="374"/>
+                                                    <rect key="frame" x="28" y="0.0" width="5" height="375"/>
                                                     <color key="backgroundColor" red="0.98823535439999999" green="0.054901964960000001" blue="0.1098039299" alpha="1" colorSpace="deviceRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="374" id="X8D-wm-sqC"/>
+                                                        <constraint firstAttribute="height" constant="375" id="X8D-wm-sqC"/>
                                                         <constraint firstAttribute="width" constant="5" id="kOt-Ff-hVX"/>
                                                         <constraint firstAttribute="height" constant="106" id="yLR-cx-mMk"/>
                                                     </constraints>
@@ -1116,7 +1116,7 @@
                                                 <constraint firstItem="JEd-L6-6WP" firstAttribute="leading" secondItem="cbO-ob-yI0" secondAttribute="trailing" constant="4" id="5Iw-yH-RFR"/>
                                                 <constraint firstItem="BkM-uS-HfQ" firstAttribute="leading" secondItem="wQo-Oe-vA5" secondAttribute="trailing" constant="-11" id="5cH-pn-7Gy"/>
                                                 <constraint firstItem="JEd-L6-6WP" firstAttribute="top" secondItem="esC-Ye-7XA" secondAttribute="topMargin" constant="6" id="6Pi-D4-vqQ"/>
-                                                <constraint firstItem="FEI-6W-Yl0" firstAttribute="top" secondItem="esC-Ye-7XA" secondAttribute="topMargin" constant="-7" id="B0M-10-yw5"/>
+                                                <constraint firstItem="FEI-6W-Yl0" firstAttribute="top" secondItem="esC-Ye-7XA" secondAttribute="topMargin" constant="-8" id="B0M-10-yw5"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="dfI-hg-Xau" secondAttribute="bottom" constant="-8" id="BCs-YB-EdN"/>
                                                 <constraint firstItem="oEy-V2-yee" firstAttribute="centerX" secondItem="mZG-gp-p7f" secondAttribute="centerX" id="CRi-MT-zoB"/>
                                                 <constraint firstItem="dfI-hg-Xau" firstAttribute="leading" secondItem="FEI-6W-Yl0" secondAttribute="trailing" id="EzB-o3-X5P"/>
