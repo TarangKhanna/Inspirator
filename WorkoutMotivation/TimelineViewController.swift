@@ -50,9 +50,9 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     //var potentialVoteCounter : Int? = object["count"]
     
     // gesture tableview configs
-    let checkIcon = FAKIonIcons.ios7CheckmarkIconWithSize(30)
+    let checkIcon = FAKIonIcons.ios7ArrowUpIconWithSize(30)
     let closeIcon = FAKIonIcons.ios7ArrowUpIconWithSize(30) // downvote swipe left
-    let composeIcon = FAKIonIcons.ios7ComposeIconWithSize(30)
+    let composeIcon = FAKIonIcons.ios7ArrowDownIconWithSize(30)
     let clockIcon = FAKIonIcons.ios7ArrowDownIconWithSize(30) // upvote -swipe right
     let greenColor = UIColor(red: 85.0/255, green: 213.0/255, blue: 80.0/255, alpha: 1)
     let redColor = UIColor(red: 213.0/255, green: 70.0/255, blue: 70.0/255, alpha: 1)
@@ -310,7 +310,9 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             let size = CGSizeMake(30, 30)
             
             //get profile pic
-            
+            cell.profileImageView.tag = indexPath.row
+            var tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("profileImageTapped:"))
+            cell.profileImageView.userInteractionEnabled = true
             var queryUser = PFUser.query() as PFQuery?
             queryUser!.findObjectsInBackgroundWithBlock {
                 (users: [AnyObject]?, error: NSError?) -> Void in
@@ -345,9 +347,9 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             //got profile pic
             
             cell.firstLeftAction = SBGestureTableViewCellAction(icon: checkIcon.imageWithSize(size), color: greenColor, fraction: 0.3, didTriggerBlock: removeCellBlock)
-            cell.secondLeftAction = SBGestureTableViewCellAction(icon: closeIcon.imageWithSize(size), color: greenColor, fraction: 0.6, didTriggerBlock: removeCellBlock)
-            cell.firstRightAction = SBGestureTableViewCellAction(icon: composeIcon.imageWithSize(size), color: yellowColor, fraction: 0.3, didTriggerBlock: removeCellBlock)
-            cell.secondRightAction = SBGestureTableViewCellAction(icon: clockIcon.imageWithSize(size), color: redColor, fraction: 0.6, didTriggerBlock: removeCellBlock)
+            //cell.secondLeftAction = SBGestureTableViewCellAction(icon: closeIcon.imageWithSize(size), color: greenColor, fraction: 0.6, didTriggerBlock: removeCellBlock)
+            cell.firstRightAction = SBGestureTableViewCellAction(icon: composeIcon.imageWithSize(size), color: redColor, fraction: 0.3, didTriggerBlock: removeCellBlock)
+            //cell.secondRightAction = SBGestureTableViewCellAction(icon: clockIcon.imageWithSize(size), color: redColor, fraction: 0.6, didTriggerBlock: removeCellBlock)
             
             cell.backgroundColor = UIColor.clearColor()
             cell.downVoteBtn.tag = indexPath.row
@@ -380,8 +382,8 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                         timeAgo = (temp / 3600)
                         ending = " Hours Ago"
                     }
-//                    cell.dateLabel.text = String(timeAgo) + ending
-//                    cell.dateLabel.textColor = UIColor.whiteColor()
+                    cell.dateLabel.text = String(timeAgo) + ending
+                    cell.dateLabel.textColor = UIColor.whiteColor()
                     cell.scoreLabel.textColor = UIColor.greenColor()
                     cell.scoreLabel.text = String(self.score[indexPath.row])
                     cell.typeImageView.image = UIImage(named: "timeline-photo")
@@ -438,7 +440,10 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                 }
             }
             //got profile pic
-            
+            cell.profileImageView.tag = indexPath.row
+            var tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("profileImageTapped:"))
+            cell.profileImageView.userInteractionEnabled = true
+            cell.profileImageView.addGestureRecognizer(tapGestureRecognizer)
             cell.firstLeftAction = SBGestureTableViewCellAction(icon: checkIcon.imageWithSize(size), color: greenColor, fraction: 0.3, didTriggerBlock: removeCellBlock)
             cell.secondLeftAction = SBGestureTableViewCellAction(icon: closeIcon.imageWithSize(size), color: greenColor, fraction: 0.6, didTriggerBlock: removeCellBlock)
             cell.firstRightAction = SBGestureTableViewCellAction(icon: composeIcon.imageWithSize(size), color: yellowColor, fraction: 0.3, didTriggerBlock: removeCellBlock)
@@ -482,6 +487,15 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             return cell
         }
         
+    }
+    
+    func profileImageTapped(recognizer: UITapGestureRecognizer) {
+        println("HEREwef")
+        var imageIndex = recognizer.view!.tag
+        selectedName = userArray[imageIndex]
+        selectedScore = String(score[imageIndex])
+        println(imageIndex)
+        performSegueWithIdentifier("profileView", sender: self)
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

@@ -18,7 +18,6 @@ class NavigationControllerDelegate: NSObject, UINavigationControllerDelegate {
         //var panGesture = UIPanGestureRecognizer(target: self, action: Selector("panned:"))
         //self.navigationController!.view.addGestureRecognizer(panGesture)
     }
-    
     func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         if !fromVC.isKindOfClass(MotivateVC) || !toVC.isKindOfClass(PicUpload){
             return nil

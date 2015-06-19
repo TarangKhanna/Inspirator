@@ -325,6 +325,7 @@
 			children = (
 				71C553D01B2ACB1E00357D8A /* SBGestureTableView */,
 				716B874D1B152E9D00B7E955 /* TimelineViewController.swift */,
+				71C553941B281D8500357D8A /* PicUpload.swift */,
 				71D8762C1B2DFD1B0095A1B4 /* SwiftSpinner.swift */,
 				71561D001B1FD6A70052B5F7 /* PostImageViewController.swift */,
 				71AF79C51B17D1F1007953CD /* profileVC.swift */,
@@ -334,7 +335,6 @@
 				71C553F01B2B464B00357D8A /* NavigationControllerDelegate.swift */,
 				7109A8E81B04306900435D3C /* AppDelegate.swift */,
 				710394F91B22BB6300F01B5B /* layoutPost.swift */,
-				71C553941B281D8500357D8A /* PicUpload.swift */,
 				71CEE60B1B12CBEA00E85AA2 /* VCFloatingButton */,
 				71CEE5F41B12BA7E00E85AA2 /* VC's */,
 				7109A8EF1B04306900435D3C /* Images.xcassets */,
