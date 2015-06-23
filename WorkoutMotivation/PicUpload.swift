@@ -192,7 +192,7 @@ class PicUpload: UIViewController,UITextFieldDelegate, UINavigationControllerDel
         person["text"] = "Testsss"
         person["startTime"] = CFAbsoluteTimeGetCurrent()
         person["votedBy"] = []
-        let imageData = UIImagePNGRepresentation(imageToPost.image)
+        if let imageData = UIImagePNGRepresentation(imageToPost.image) {
         
         let imageFile = PFFile(name: "image.png", data: imageData)
         
@@ -209,6 +209,12 @@ class PicUpload: UIViewController,UITextFieldDelegate, UINavigationControllerDel
                 println("Couldn't post!")
                 SCLAlertView().showWarning("Error Posting", subTitle: "Check Your Internet Connection.")
             }
+            
+        }
+        } else {
+            SCLAlertView().showWarning("No Image", subTitle: "Select An Image to Upload.")
+            self.activityIndicator.stopAnimating()
+            UIApplication.sharedApplication().endIgnoringInteractionEvents()
         }
         
         //        activityIndicator = UIActivityIndicatorView(frame: self.view.frame)

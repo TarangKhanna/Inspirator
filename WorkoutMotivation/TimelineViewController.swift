@@ -352,12 +352,12 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             //cell.secondRightAction = SBGestureTableViewCellAction(icon: clockIcon.imageWithSize(size), color: redColor, fraction: 0.6, didTriggerBlock: removeCellBlock)
             
             cell.backgroundColor = UIColor.clearColor()
-            cell.downVoteBtn.tag = indexPath.row
-            
-            cell.downVoteBtn.addTarget(self, action: "downVote:", forControlEvents: UIControlEvents.TouchUpInside)
-            cell.upVoteBtn.tag = indexPath.row
-            
-            cell.upVoteBtn.addTarget(self, action: "upVote:", forControlEvents: UIControlEvents.TouchUpInside)
+//            cell.downVoteBtn.tag = indexPath.row
+//            
+//            cell.downVoteBtn.addTarget(self, action: "downVote:", forControlEvents: UIControlEvents.TouchUpInside)
+//            cell.upVoteBtn.tag = indexPath.row
+//            
+//            cell.upVoteBtn.addTarget(self, action: "upVote:", forControlEvents: UIControlEvents.TouchUpInside)
             let index = indexPath.row % circleColors.count
             cell.rippleLayerColor = circleColors[index]
             let image42 = self.imageFiles[indexPath.row]
@@ -380,12 +380,16 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                     var ending = " Min Ago"
                     if timeAgo >= 60 {
                         timeAgo = (temp / 3600)
-                        ending = " Hours Ago"
+                        var temp2 = timeAgo
+                        ending = " H"
+                        if timeAgo >= 24 {
+                            //timeAgo =
+                        }
                     }
                     cell.dateLabel.text = String(timeAgo) + ending
                     cell.dateLabel.textColor = UIColor.whiteColor()
                     cell.scoreLabel.textColor = UIColor.greenColor()
-                    cell.scoreLabel.text = String(self.score[indexPath.row])
+                    cell.scoreLabel.text = "[" + String(self.score[indexPath.row]) + "]"
                     cell.typeImageView.image = UIImage(named: "timeline-photo")
                     cell.nameLabel.text = self.userArray[indexPath.row]
                     cell.nameLabel.textColor = UIColor.greenColor()
@@ -483,7 +487,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             cell.dateLabel.text = String(timeAgo) + ending
             cell.dateLabel.textColor = UIColor.whiteColor()
             cell.scoreLabel.textColor = UIColor.greenColor()
-            cell.scoreLabel.text = String(self.score[indexPath.row])
+            cell.scoreLabel.text = "[" + String(self.score[indexPath.row]) + "]"
             return cell
         }
         

@@ -20,6 +20,7 @@ class NavigationControllerDelegate: NSObject, UINavigationControllerDelegate {
     }
     func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         if !fromVC.isKindOfClass(MotivateVC) || !toVC.isKindOfClass(PicUpload){
+            println("ergger")
             return nil
         }
         return AnimateTransition()
