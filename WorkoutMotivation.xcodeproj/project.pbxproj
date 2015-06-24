@@ -25,9 +25,15 @@
 		7128A9541B0A93C30035C41E /* PureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7128A9531B0A93C30035C41E /* PureVC.swift */; };
 		7128A9561B0A98520035C41E /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7128A9551B0A98520035C41E /* SCLAlertView.swift */; };
 		7128A98A1B0B17590035C41E /* Button.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7128A9891B0B17590035C41E /* Button.xcassets */; };
+		7128F3D81B39DA750092094B /* Comments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7128F3D71B39DA750092094B /* Comments.swift */; };
 		7135F2C11B0800FD002ACD53 /* WeightsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7135F2C01B0800FD002ACD53 /* WeightsVC.swift */; };
 		7135F2C31B080711002ACD53 /* WeigthsQuotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7135F2C21B080711002ACD53 /* WeigthsQuotes.swift */; };
 		71561D011B1FD6A70052B5F7 /* PostImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71561D001B1FD6A70052B5F7 /* PostImageViewController.swift */; };
+		71691B861B39DC8D005B6C32 /* CollectionViewCellComments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71691B851B39DC8D005B6C32 /* CollectionViewCellComments.swift */; };
+		71691B8C1B3A8208005B6C32 /* GuillotineMenuSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71691B881B3A8208005B6C32 /* GuillotineMenuSegue.swift */; };
+		71691B8D1B3A8208005B6C32 /* GuillotineMenuTransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71691B891B3A8208005B6C32 /* GuillotineMenuTransitionAnimation.swift */; };
+		71691B8E1B3A8208005B6C32 /* GuillotineMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71691B8A1B3A8208005B6C32 /* GuillotineMenuViewController.swift */; };
+		71691B8F1B3A8208005B6C32 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71691B8B1B3A8208005B6C32 /* UIViewExtension.swift */; };
 		716B872B1B15289D00B7E955 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 716B872A1B15289D00B7E955 /* AudioToolbox.framework */; };
 		716B872D1B1528DA00B7E955 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 716B872C1B1528DA00B7E955 /* CFNetwork.framework */; };
 		716B872F1B1528E600B7E955 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 716B872E1B1528E600B7E955 /* CoreGraphics.framework */; };
@@ -157,9 +163,15 @@
 		7128A9531B0A93C30035C41E /* PureVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PureVC.swift; path = WorkoutMotivation/PureVC.swift; sourceTree = "<group>"; };
 		7128A9551B0A98520035C41E /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLAlertView.swift; sourceTree = "<group>"; };
 		7128A9891B0B17590035C41E /* Button.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Button.xcassets; sourceTree = "<group>"; };
+		7128F3D71B39DA750092094B /* Comments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comments.swift; sourceTree = "<group>"; };
 		7135F2C01B0800FD002ACD53 /* WeightsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeightsVC.swift; path = WorkoutMotivation/WeightsVC.swift; sourceTree = "<group>"; };
 		7135F2C21B080711002ACD53 /* WeigthsQuotes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeigthsQuotes.swift; path = WorkoutMotivation/WeigthsQuotes.swift; sourceTree = "<group>"; };
 		71561D001B1FD6A70052B5F7 /* PostImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostImageViewController.swift; sourceTree = "<group>"; };
+		71691B851B39DC8D005B6C32 /* CollectionViewCellComments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCellComments.swift; sourceTree = "<group>"; };
+		71691B881B3A8208005B6C32 /* GuillotineMenuSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuillotineMenuSegue.swift; sourceTree = "<group>"; };
+		71691B891B3A8208005B6C32 /* GuillotineMenuTransitionAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuillotineMenuTransitionAnimation.swift; sourceTree = "<group>"; };
+		71691B8A1B3A8208005B6C32 /* GuillotineMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuillotineMenuViewController.swift; sourceTree = "<group>"; };
+		71691B8B1B3A8208005B6C32 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		716B872A1B15289D00B7E955 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		716B872C1B1528DA00B7E955 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		716B872E1B1528E600B7E955 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -328,6 +340,7 @@
 			isa = PBXGroup;
 			children = (
 				71C553D01B2ACB1E00357D8A /* SBGestureTableView */,
+				71691B901B3A820F005B6C32 /* GuillotineMenu */,
 				716B874D1B152E9D00B7E955 /* TimelineViewController.swift */,
 				71C553941B281D8500357D8A /* PicUpload.swift */,
 				71D8762C1B2DFD1B0095A1B4 /* SwiftSpinner.swift */,
@@ -336,6 +349,7 @@
 				710394F51B22ADB800F01B5B /* LayoutController.swift */,
 				71EE7A871B349587000EA33E /* FriendController.swift */,
 				71C553EC1B2B3DC400357D8A /* AnimateTransition.swift */,
+				7128F3D71B39DA750092094B /* Comments.swift */,
 				7109A8EC1B04306900435D3C /* Main.storyboard */,
 				71C553F01B2B464B00357D8A /* NavigationControllerDelegate.swift */,
 				7109A8E81B04306900435D3C /* AppDelegate.swift */,
@@ -380,6 +394,17 @@
 				7109A8FD1B04306900435D3C /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		71691B901B3A820F005B6C32 /* GuillotineMenu */ = {
+			isa = PBXGroup;
+			children = (
+				71691B881B3A8208005B6C32 /* GuillotineMenuSegue.swift */,
+				71691B891B3A8208005B6C32 /* GuillotineMenuTransitionAnimation.swift */,
+				71691B8A1B3A8208005B6C32 /* GuillotineMenuViewController.swift */,
+				71691B8B1B3A8208005B6C32 /* UIViewExtension.swift */,
+			);
+			name = GuillotineMenu;
 			sourceTree = "<group>";
 		};
 		716B87401B1529B300B7E955 /* Frameworks */ = {
@@ -509,6 +534,7 @@
 			children = (
 				71CEE5F21B1283F000E85AA2 /* CardioVC.swift */,
 				7135F2C01B0800FD002ACD53 /* WeightsVC.swift */,
+				71691B851B39DC8D005B6C32 /* CollectionViewCellComments.swift */,
 				7128A91D1B087F670035C41E /* ProgrammingVC.swift */,
 				71CEE5F51B12BB8100E85AA2 /* StudyVC.swift */,
 				7128A9531B0A93C30035C41E /* PureVC.swift */,
@@ -654,6 +680,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71691B861B39DC8D005B6C32 /* CollectionViewCellComments.swift in Sources */,
 				71C553871B2801A500357D8A /* SoundPlayer.swift in Sources */,
 				71CEE6111B13087900E85AA2 /* MKTextField.swift in Sources */,
 				7109A8EB1B04306900435D3C /* MotivateVC.swift in Sources */,
@@ -666,6 +693,7 @@
 				71CEE61D1B13089900E85AA2 /* MKButton.swift in Sources */,
 				71CEE6181B13089200E85AA2 /* MKLabel.swift in Sources */,
 				7128A91E1B087F670035C41E /* ProgrammingVC.swift in Sources */,
+				71691B8C1B3A8208005B6C32 /* GuillotineMenuSegue.swift in Sources */,
 				71C5538D1B2801A500357D8A /* SpringTextField.swift in Sources */,
 				719D538E1B068FC100DD34CD /* Motivate.swift in Sources */,
 				71C553781B2801A500357D8A /* AsyncImageView.swift in Sources */,
@@ -679,6 +707,7 @@
 				71CEE6191B13089200E85AA2 /* MKImageView.swift in Sources */,
 				71C553811B2801A500357D8A /* DesignableTextView.swift in Sources */,
 				71AF79F41B192F68007953CD /* UIScrollViewExtension.swift in Sources */,
+				71691B8E1B3A8208005B6C32 /* GuillotineMenuViewController.swift in Sources */,
 				710394FA1B22BB6300F01B5B /* layoutPost.swift in Sources */,
 				71C553841B2801A500357D8A /* ImageLoader.swift in Sources */,
 				71D8762D1B2DFD1B0095A1B4 /* SwiftSpinner.swift in Sources */,
@@ -687,6 +716,7 @@
 				71C553951B281D8500357D8A /* PicUpload.swift in Sources */,
 				71C553CF1B2ACB1800357D8A /* SBGestureTableViewCellSideView.swift in Sources */,
 				71C553831B2801A500357D8A /* DesignableTabBarController.swift in Sources */,
+				7128F3D81B39DA750092094B /* Comments.swift in Sources */,
 				71C553CC1B2ACB1800357D8A /* SBGestureTableView.swift in Sources */,
 				71C553ED1B2B3DC400357D8A /* AnimateTransition.swift in Sources */,
 				71C553CD1B2ACB1800357D8A /* SBGestureTableViewCell.swift in Sources */,
@@ -696,6 +726,7 @@
 				71C553901B2801A500357D8A /* TransitionManager.swift in Sources */,
 				71C553821B2801A500357D8A /* DesignableView.swift in Sources */,
 				719D538A1B066E1900DD34CD /* NavigationControl.swift in Sources */,
+				71691B8F1B3A8208005B6C32 /* UIViewExtension.swift in Sources */,
 				7128A9541B0A93C30035C41E /* PureVC.swift in Sources */,
 				7109A8E91B04306900435D3C /* AppDelegate.swift in Sources */,
 				71AF79F61B192F98007953CD /* PullToRefreshOption.swift in Sources */,
@@ -713,6 +744,7 @@
 				71AF79F31B192F68007953CD /* PullToRefreshView.swift in Sources */,
 				71C553791B2801A500357D8A /* AutoTextView.swift in Sources */,
 				71C553E41B2ACBD900357D8A /* FAKZocial.m in Sources */,
+				71691B8D1B3A8208005B6C32 /* GuillotineMenuTransitionAnimation.swift in Sources */,
 				71C5538B1B2801A500357D8A /* SpringImageView.swift in Sources */,
 				71C553861B2801A500357D8A /* Misc.swift in Sources */,
 				7128A9561B0A98520035C41E /* SCLAlertView.swift in Sources */,

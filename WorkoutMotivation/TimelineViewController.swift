@@ -511,7 +511,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         //ce
         println("selected")
         println(indexPath.row)
-        performSegueWithIdentifier("profileView", sender: self)
+        performSegueWithIdentifier("showComments", sender: self)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {

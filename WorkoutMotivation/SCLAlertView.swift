@@ -205,7 +205,10 @@ public class SCLAlertView: UIViewController {
         kWindowHeight += 40.0
         // Add text field
         let txt = UITextField()
-        txt.borderStyle = UITextBorderStyle.RoundedRect
+//        txt.borderStyle = UITextBorderStyle.RoundedRect
+//        var frameRect = txt.frame
+//        frameRect.size.height = 1000
+//        txt.frame = frameRect
         txt.font = UIFont(name:kDefaultFont, size: 14)
         txt.autocapitalizationType = UITextAutocapitalizationType.Words
         txt.clearButtonMode = UITextFieldViewMode.WhileEditing
