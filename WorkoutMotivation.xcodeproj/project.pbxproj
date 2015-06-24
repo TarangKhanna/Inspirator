@@ -34,6 +34,7 @@
 		71691B8D1B3A8208005B6C32 /* GuillotineMenuTransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71691B891B3A8208005B6C32 /* GuillotineMenuTransitionAnimation.swift */; };
 		71691B8E1B3A8208005B6C32 /* GuillotineMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71691B8A1B3A8208005B6C32 /* GuillotineMenuViewController.swift */; };
 		71691B8F1B3A8208005B6C32 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71691B8B1B3A8208005B6C32 /* UIViewExtension.swift */; };
+		71691B921B3B05DB005B6C32 /* CommentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71691B911B3B05DB005B6C32 /* CommentsVC.swift */; };
 		716B872B1B15289D00B7E955 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 716B872A1B15289D00B7E955 /* AudioToolbox.framework */; };
 		716B872D1B1528DA00B7E955 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 716B872C1B1528DA00B7E955 /* CFNetwork.framework */; };
 		716B872F1B1528E600B7E955 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 716B872E1B1528E600B7E955 /* CoreGraphics.framework */; };
@@ -172,6 +173,7 @@
 		71691B891B3A8208005B6C32 /* GuillotineMenuTransitionAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuillotineMenuTransitionAnimation.swift; sourceTree = "<group>"; };
 		71691B8A1B3A8208005B6C32 /* GuillotineMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuillotineMenuViewController.swift; sourceTree = "<group>"; };
 		71691B8B1B3A8208005B6C32 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		71691B911B3B05DB005B6C32 /* CommentsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsVC.swift; sourceTree = "<group>"; };
 		716B872A1B15289D00B7E955 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		716B872C1B1528DA00B7E955 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		716B872E1B1528E600B7E955 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -351,6 +353,7 @@
 				71C553EC1B2B3DC400357D8A /* AnimateTransition.swift */,
 				7128F3D71B39DA750092094B /* Comments.swift */,
 				7109A8EC1B04306900435D3C /* Main.storyboard */,
+				71691B911B3B05DB005B6C32 /* CommentsVC.swift */,
 				71C553F01B2B464B00357D8A /* NavigationControllerDelegate.swift */,
 				7109A8E81B04306900435D3C /* AppDelegate.swift */,
 				710394F91B22BB6300F01B5B /* layoutPost.swift */,
@@ -745,6 +748,7 @@
 				71C553791B2801A500357D8A /* AutoTextView.swift in Sources */,
 				71C553E41B2ACBD900357D8A /* FAKZocial.m in Sources */,
 				71691B8D1B3A8208005B6C32 /* GuillotineMenuTransitionAnimation.swift in Sources */,
+				71691B921B3B05DB005B6C32 /* CommentsVC.swift in Sources */,
 				71C5538B1B2801A500357D8A /* SpringImageView.swift in Sources */,
 				71C553861B2801A500357D8A /* Misc.swift in Sources */,
 				7128A9561B0A98520035C41E /* SCLAlertView.swift in Sources */,

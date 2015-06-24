@@ -1716,10 +1716,10 @@
             </objects>
             <point key="canvasLocation" x="617.5" y="-1427.5"/>
         </scene>
-        <!--View Controller-->
+        <!--CommentsVC-->
         <scene sceneID="2YX-A9-Kyd">
             <objects>
-                <viewController id="HUk-bH-lJ2" sceneMemberID="viewController">
+                <viewController id="HUk-bH-lJ2" customClass="CommentsVC" customModule="WorkoutMotivation" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cia-F5-0be"/>
                         <viewControllerLayoutGuide type="bottom" id="Qxz-aY-1au"/>
@@ -1729,12 +1729,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wvr-sY-ifs">
-                                <rect key="frame" x="0.0" y="64" width="375" height="571"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <connections>
                                     <segue destination="u9w-SY-LqZ" kind="embed" id="Esi-2B-9Bb"/>
                                 </connections>
                             </containerView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jja-ub-A66">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EVR-xy-QvM">
                                 <rect key="frame" x="0.0" y="637" width="375" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -1742,17 +1742,20 @@
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Jja-ub-A66" firstAttribute="top" secondItem="Wvr-sY-ifs" secondAttribute="bottom" constant="2" id="8c0-hI-Etw"/>
-                            <constraint firstItem="Wvr-sY-ifs" firstAttribute="top" secondItem="cia-F5-0be" secondAttribute="bottom" id="CQN-HQ-3uV"/>
-                            <constraint firstItem="Jja-ub-A66" firstAttribute="trailing" secondItem="Wvr-sY-ifs" secondAttribute="trailing" id="JVS-Ne-svM"/>
-                            <constraint firstItem="Jja-ub-A66" firstAttribute="leading" secondItem="Kh8-op-BRf" secondAttribute="leading" id="Uos-Ll-BqF"/>
-                            <constraint firstAttribute="trailing" secondItem="Wvr-sY-ifs" secondAttribute="trailing" id="ZyO-8q-lqk"/>
-                            <constraint firstItem="Jja-ub-A66" firstAttribute="bottom" secondItem="Qxz-aY-1au" secondAttribute="top" id="fic-tV-Nbb"/>
-                            <constraint firstItem="Wvr-sY-ifs" firstAttribute="leading" secondItem="Jja-ub-A66" secondAttribute="leading" id="rk5-yN-BF1"/>
+                            <constraint firstItem="Wvr-sY-ifs" firstAttribute="bottom" secondItem="Qxz-aY-1au" secondAttribute="top" id="4lR-I1-kkW"/>
+                            <constraint firstItem="Wvr-sY-ifs" firstAttribute="leading" secondItem="EVR-xy-QvM" secondAttribute="leading" id="Bm1-xd-k9g"/>
+                            <constraint firstItem="EVR-xy-QvM" firstAttribute="trailing" secondItem="Wvr-sY-ifs" secondAttribute="trailing" id="C7e-w2-sw6"/>
+                            <constraint firstItem="EVR-xy-QvM" firstAttribute="leading" secondItem="Kh8-op-BRf" secondAttribute="leading" id="acI-BE-Y0d"/>
+                            <constraint firstAttribute="trailing" secondItem="EVR-xy-QvM" secondAttribute="trailing" id="e3P-hd-Qpg"/>
+                            <constraint firstItem="EVR-xy-QvM" firstAttribute="bottom" secondItem="Qxz-aY-1au" secondAttribute="top" id="fir-yd-Aew"/>
+                            <constraint firstItem="Wvr-sY-ifs" firstAttribute="top" secondItem="Kh8-op-BRf" secondAttribute="top" constant="20" symbolic="YES" id="oVX-Nc-iqV"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="commentField" destination="EVR-xy-QvM" id="KTu-ab-Drt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dc4-sf-eKd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1903,7 +1906,7 @@
             <objects>
                 <collectionViewController automaticallyAdjustsScrollViewInsets="NO" id="u9w-SY-LqZ" customClass="Comments" customModule="WorkoutMotivation" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" id="eZN-HD-Vph">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="571"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="C01-4M-D6J">
@@ -1920,10 +1923,11 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="157"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="timeline-chat" translatesAutoresizingMaskIntoConstraints="NO" id="DIi-aj-RDv" customClass="AvatarImageView" customModule="WorkoutMotivation" customModuleProvider="target">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="timeline-chat" translatesAutoresizingMaskIntoConstraints="NO" id="DIi-aj-RDv">
                                             <rect key="frame" x="8" y="8" width="32" height="32"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="32" id="R1s-Jn-QI0"/>
+                                                <constraint firstAttribute="width" constant="32" id="Mdd-7k-2Z5"/>
+                                                <constraint firstAttribute="height" constant="32" id="muX-r9-rDm"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ucZ-Df-i1c">
@@ -1935,7 +1939,7 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tE1-LW-2q9">
                                             <rect key="frame" x="55" y="8" width="290" height="30"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="30" id="t0m-dm-oEi"/>
+                                                <constraint firstAttribute="height" constant="30" id="6rk-9d-ryd"/>
                                             </constraints>
                                             <state key="normal" title="Button">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1946,16 +1950,16 @@
                                 </view>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="DIi-aj-RDv" firstAttribute="leading" secondItem="9DW-Bg-nTF" secondAttribute="leadingMargin" id="0W5-cY-Tku"/>
-                                    <constraint firstItem="ucZ-Df-i1c" firstAttribute="bottom" secondItem="9DW-Bg-nTF" secondAttribute="bottomMargin" id="50D-cc-A1x"/>
-                                    <constraint firstItem="ucZ-Df-i1c" firstAttribute="top" secondItem="tE1-LW-2q9" secondAttribute="bottom" constant="31" id="JT5-8X-ghr"/>
-                                    <constraint firstItem="tE1-LW-2q9" firstAttribute="top" secondItem="9DW-Bg-nTF" secondAttribute="topMargin" id="MXe-SY-rYm"/>
-                                    <constraint firstItem="DIi-aj-RDv" firstAttribute="leading" secondItem="ucZ-Df-i1c" secondAttribute="leading" id="UM3-ps-mvi"/>
-                                    <constraint firstItem="ucZ-Df-i1c" firstAttribute="top" secondItem="DIi-aj-RDv" secondAttribute="bottom" constant="29" id="a61-xY-HDX"/>
-                                    <constraint firstItem="tE1-LW-2q9" firstAttribute="leading" secondItem="DIi-aj-RDv" secondAttribute="trailing" constant="15" id="clO-86-Y1b"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="ucZ-Df-i1c" secondAttribute="trailing" constant="7" id="gg4-b9-YD6"/>
-                                    <constraint firstItem="tE1-LW-2q9" firstAttribute="top" secondItem="DIi-aj-RDv" secondAttribute="top" id="kUu-74-7R9"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="tE1-LW-2q9" secondAttribute="trailing" constant="22" id="lPV-jq-5vb"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="ucZ-Df-i1c" secondAttribute="trailing" constant="7" id="4gG-cJ-eTb"/>
+                                    <constraint firstItem="ucZ-Df-i1c" firstAttribute="bottom" secondItem="9DW-Bg-nTF" secondAttribute="bottomMargin" id="BON-Gk-bpm"/>
+                                    <constraint firstItem="ucZ-Df-i1c" firstAttribute="top" secondItem="tE1-LW-2q9" secondAttribute="bottom" constant="31" id="Ho2-Yn-msC"/>
+                                    <constraint firstItem="DIi-aj-RDv" firstAttribute="leading" secondItem="9DW-Bg-nTF" secondAttribute="leadingMargin" id="I7g-wk-lhA"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="tE1-LW-2q9" secondAttribute="trailing" constant="22" id="MLo-jz-d5F"/>
+                                    <constraint firstItem="ucZ-Df-i1c" firstAttribute="leading" secondItem="9DW-Bg-nTF" secondAttribute="leadingMargin" id="OUs-SS-6Zx"/>
+                                    <constraint firstItem="DIi-aj-RDv" firstAttribute="top" secondItem="9DW-Bg-nTF" secondAttribute="topMargin" id="TnW-vb-nbe"/>
+                                    <constraint firstItem="tE1-LW-2q9" firstAttribute="top" secondItem="9DW-Bg-nTF" secondAttribute="topMargin" id="fd0-KL-c0W"/>
+                                    <constraint firstItem="tE1-LW-2q9" firstAttribute="leading" secondItem="DIi-aj-RDv" secondAttribute="trailing" constant="15" id="pJj-EP-kzI"/>
+                                    <constraint firstItem="ucZ-Df-i1c" firstAttribute="top" secondItem="DIi-aj-RDv" secondAttribute="bottom" constant="29" id="yJg-xG-QSB"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="Image" destination="DIi-aj-RDv" id="JX4-eE-67H"/>

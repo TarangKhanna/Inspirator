@@ -450,7 +450,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             cell.profileImageView.addGestureRecognizer(tapGestureRecognizer)
             cell.firstLeftAction = SBGestureTableViewCellAction(icon: checkIcon.imageWithSize(size), color: greenColor, fraction: 0.3, didTriggerBlock: removeCellBlock)
             cell.secondLeftAction = SBGestureTableViewCellAction(icon: closeIcon.imageWithSize(size), color: greenColor, fraction: 0.6, didTriggerBlock: removeCellBlock)
-            cell.firstRightAction = SBGestureTableViewCellAction(icon: composeIcon.imageWithSize(size), color: yellowColor, fraction: 0.3, didTriggerBlock: removeCellBlock)
+            cell.firstRightAction = SBGestureTableViewCellAction(icon: composeIcon.imageWithSize(size), color: redColor, fraction: 0.3, didTriggerBlock: removeCellBlock)
             cell.secondRightAction = SBGestureTableViewCellAction(icon: clockIcon.imageWithSize(size), color: redColor, fraction: 0.6, didTriggerBlock: removeCellBlock)
             
             cell.backgroundColor = UIColor.clearColor()

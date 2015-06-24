@@ -18,8 +18,7 @@ import UIKit
 
 let reuseIdentifier5 = "CellComments"
 
-class Comments: UICollectionViewController, UICollectionViewDelegateFlowLayout, UIPopoverPresentationControllerDelegate {
-    
+class Comments: UICollectionViewController, UICollectionViewDelegateFlowLayout, UIPopoverPresentationControllerDelegate, UITextViewDelegate {
     
     var name2 : String = "" // passed from parent
     //var profileImageFile = PFFile()
@@ -29,8 +28,10 @@ class Comments: UICollectionViewController, UICollectionViewDelegateFlowLayout, 
     var duration : Int = 0
     var currentMessage = String()
     var imageFiles = [PFFile]()
-    private let cellHeight: CGFloat = 150
+    private let cellHeight: CGFloat = 110
     private let cellSpacing: CGFloat = 20
+    var commentView: UITextView?
+    var footerView: UIView?
     
     override func viewWillAppear(animated: Bool) {
         retrieve()
@@ -125,7 +126,7 @@ class Comments: UICollectionViewController, UICollectionViewDelegateFlowLayout, 
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier5, forIndexPath: indexPath) as! CollectionViewCellComments
-        //cell.title.sizeToFit()
+        cell.title.sizeToFit()
        // cell.Image.clipsToBounds = true
        // cell.Image.layer.masksToBounds = true
        // cell.Image.layer.cornerRadius = cell.Image.layer.frame.size.width/2
@@ -143,6 +144,30 @@ class Comments: UICollectionViewController, UICollectionViewDelegateFlowLayout, 
     }
     
     
+//    override func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+//        println("Footerview")
+//        footerView = UIView(frame: CGRect(x: 0, y: 0, width: collectionView.bounds.width, height: 100))
+//        footerView?.backgroundColor = UIColor(red: 243.0/255, green: 243.0/255, blue: 243.0/255, alpha: 1)
+//        commentView = UITextView(frame: CGRect(x: 10, y: 5, width: collectionView.bounds.width - 80 , height: 40))
+//        commentView?.backgroundColor = UIColor.whiteColor()
+//        commentView?.textContainerInset = UIEdgeInsetsMake(5, 5, 5, 5)
+//        commentView?.layer.cornerRadius = 2
+//        commentView?.scrollsToTop = true
+//        
+//        footerView?.addSubview(commentView!)
+//        let button = UIButton(frame: CGRect(x: collectionView.bounds.width - 65, y: 10, width: 60 , height: 30))
+//        button.setTitle("Reply", forState: UIControlState.Normal)
+//        button.backgroundColor = UIColor(red: 155.0/255, green: 189.0/255, blue: 113.0/255, alpha: 1)
+//        button.layer.cornerRadius = 5
+//        button.addTarget(self, action: "reply", forControlEvents: UIControlEvents.TouchUpInside)
+//        footerView?.addSubview(button)
+//        commentView?.delegate = self
+//        println(self.collectionView!.frame)
+//        println(self.footerView?.frame)
+//        println(self.footerView?.bounds)
+//        return footerView
+//    }
+    
     func collectionView(collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
@@ -158,10 +183,13 @@ class Comments: UICollectionViewController, UICollectionViewDelegateFlowLayout, 
         return CGSize(width: 0, height: 0)
     }
     
+    
+    
     func adaptivePresentationStyleForPresentationController(PC: UIPresentationController) -> UIModalPresentationStyle {
         // This *forces* a popover to be displayed on the iPhone
         return .None
     }
     
-    
+   
+
 }
