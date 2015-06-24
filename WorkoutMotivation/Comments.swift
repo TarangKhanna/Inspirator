@@ -29,7 +29,7 @@ class Comments: UICollectionViewController, UICollectionViewDelegateFlowLayout, 
     var duration : Int = 0
     var currentMessage = String()
     var imageFiles = [PFFile]()
-    private let cellHeight: CGFloat = 210
+    private let cellHeight: CGFloat = 150
     private let cellSpacing: CGFloat = 20
     
     override func viewWillAppear(animated: Bool) {
@@ -95,6 +95,8 @@ class Comments: UICollectionViewController, UICollectionViewDelegateFlowLayout, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.automaticallyAdjustsScrollViewInsets = false
+        //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "loginBG.png")!)
         //println(name2)
     }
     
@@ -113,7 +115,7 @@ class Comments: UICollectionViewController, UICollectionViewDelegateFlowLayout, 
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //#warning Incomplete method implementation -- Return the number of items in the section
-        return 2 //imageFiles.count
+        return 10 //imageFiles.count
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
@@ -123,7 +125,7 @@ class Comments: UICollectionViewController, UICollectionViewDelegateFlowLayout, 
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier5, forIndexPath: indexPath) as! CollectionViewCellComments
-        cell.title.sizeToFit()
+        //cell.title.sizeToFit()
        // cell.Image.clipsToBounds = true
        // cell.Image.layer.masksToBounds = true
        // cell.Image.layer.cornerRadius = cell.Image.layer.frame.size.width/2
@@ -133,6 +135,7 @@ class Comments: UICollectionViewController, UICollectionViewDelegateFlowLayout, 
                 //cell.Image.image = downloadedImage2
             //}
         //}
+        
         cell.nameBtn.setTitle("Name Here", forState: UIControlState.Normal) //name[indexPath.row]
         cell.title.text = "Comments Here" //messages[indexPath.row]
         
@@ -148,7 +151,11 @@ class Comments: UICollectionViewController, UICollectionViewDelegateFlowLayout, 
     
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        return UIEdgeInsetsMake(5, 0, 5, 0)
+        return UIEdgeInsetsMake(10, 5, 10, 5)
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: 0, height: 0)
     }
     
     func adaptivePresentationStyleForPresentationController(PC: UIPresentationController) -> UIModalPresentationStyle {

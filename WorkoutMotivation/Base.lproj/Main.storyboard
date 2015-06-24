@@ -324,7 +324,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fSd-6z-mQT" customClass="MKTextField" customModule="WorkoutMotivation" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fSd-6z-mQT" customClass="MKTextField" customModule="WorkoutMotivation" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="317" width="375" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="grR-KR-lQN"/>
@@ -333,7 +333,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IEP-yx-bqJ" customClass="MKTextField" customModule="WorkoutMotivation" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IEP-yx-bqJ" customClass="MKTextField" customModule="WorkoutMotivation" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="243" width="375" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="94q-If-az7"/>
@@ -342,7 +342,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cUG-ft-1cz" customClass="MKTextField" customModule="WorkoutMotivation" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cUG-ft-1cz" customClass="MKTextField" customModule="WorkoutMotivation" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="390" width="375" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="1JC-AB-cWs"/>
@@ -351,7 +351,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ub3-F2-2uP" customClass="MKButton" customModule="WorkoutMotivation" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ub3-F2-2uP" customClass="MKButton" customModule="WorkoutMotivation" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="488" width="375" height="32"/>
                                 <color key="backgroundColor" red="1" green="0.55039779259999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -374,14 +374,14 @@
                                     <segue destination="idO-jR-V2Q" kind="show" id="Qex-8r-3gQ"/>
                                 </connections>
                             </button>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" misplaced="YES" image="profile-pic-1" translatesAutoresizingMaskIntoConstraints="NO" id="Y2l-4B-8xX" userLabel="AvatarImage" customClass="AvatarImageView" customModule="WorkoutMotivation" customModuleProvider="target">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="profile-pic-1" translatesAutoresizingMaskIntoConstraints="NO" id="Y2l-4B-8xX" userLabel="AvatarImage" customClass="AvatarImageView" customModule="WorkoutMotivation" customModuleProvider="target">
                                 <rect key="frame" x="153" y="109" width="69" height="69"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="69" id="XBR-Tt-BTj"/>
                                     <constraint firstAttribute="width" constant="69" id="eHZ-LP-heK"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kxs-wL-hR2">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kxs-wL-hR2">
                                 <rect key="frame" x="122" y="186" width="131" height="30"/>
                                 <state key="normal" title="Select A Profile Pic">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -442,7 +442,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WCy-E0-MFu" customClass="MKTextField" customModule="WorkoutMotivation" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WCy-E0-MFu" customClass="MKTextField" customModule="WorkoutMotivation" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="164" width="375" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="8Lg-mr-6fD"/>
@@ -451,7 +451,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UCc-7J-9m2" customClass="MKTextField" customModule="WorkoutMotivation" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UCc-7J-9m2" customClass="MKTextField" customModule="WorkoutMotivation" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="246" width="375" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="wYP-7D-GOP"/>
@@ -460,7 +460,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ah7-GB-hCh" customClass="MKButton" customModule="WorkoutMotivation" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ah7-GB-hCh" customClass="MKButton" customModule="WorkoutMotivation" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="326" width="375" height="32"/>
                                 <color key="backgroundColor" red="0.2274509804" green="0.48627450979999998" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -475,7 +475,7 @@
                                     <action selector="signUp:" destination="cXI-kJ-w0P" eventType="touchUpInside" id="fGT-0J-cxV"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BmT-bu-BI4" customClass="MKButton" customModule="WorkoutMotivation" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BmT-bu-BI4" customClass="MKButton" customModule="WorkoutMotivation" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="403" width="375" height="32"/>
                                 <color key="backgroundColor" red="1" green="0.55039779259999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -491,7 +491,7 @@
                                     <segue destination="cXI-kJ-w0P" kind="show" id="121-Eu-qdE"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="New User?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJc-mb-KTj">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New User?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJc-mb-KTj">
                                 <rect key="frame" x="145" y="366" width="85" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="ana-Rq-iIs"/>
@@ -734,9 +734,6 @@
                             <constraint firstItem="ms4-gH-95b" firstAttribute="leading" secondItem="1Nr-r3-FKs" secondAttribute="leading" id="rBZ-3W-21X"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Cardio" id="sZO-90-jtJ">
-                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="DhW-gT-fbM"/>
-                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="ImageView" destination="ms4-gH-95b" id="j6z-RR-nQx"/>
@@ -1728,24 +1725,33 @@
                         <viewControllerLayoutGuide type="bottom" id="Qxz-aY-1au"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Kh8-op-BRf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wvr-sY-ifs">
-                                <rect key="frame" x="0.0" y="66" width="375" height="601"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="571"/>
                                 <connections>
                                     <segue destination="u9w-SY-LqZ" kind="embed" id="Esi-2B-9Bb"/>
                                 </connections>
                             </containerView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jja-ub-A66">
+                                <rect key="frame" x="0.0" y="637" width="375" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Wvr-sY-ifs" firstAttribute="top" secondItem="cia-F5-0be" secondAttribute="bottom" constant="2" id="CHS-Oa-1Dw"/>
-                            <constraint firstAttribute="trailing" secondItem="Wvr-sY-ifs" secondAttribute="trailing" id="KFP-0y-cPb"/>
-                            <constraint firstItem="Wvr-sY-ifs" firstAttribute="leading" secondItem="Kh8-op-BRf" secondAttribute="leading" id="YxV-A3-Cc1"/>
-                            <constraint firstItem="Wvr-sY-ifs" firstAttribute="bottom" secondItem="Qxz-aY-1au" secondAttribute="top" id="wke-Z5-iHJ"/>
+                            <constraint firstItem="Jja-ub-A66" firstAttribute="top" secondItem="Wvr-sY-ifs" secondAttribute="bottom" constant="2" id="8c0-hI-Etw"/>
+                            <constraint firstItem="Wvr-sY-ifs" firstAttribute="top" secondItem="cia-F5-0be" secondAttribute="bottom" id="CQN-HQ-3uV"/>
+                            <constraint firstItem="Jja-ub-A66" firstAttribute="trailing" secondItem="Wvr-sY-ifs" secondAttribute="trailing" id="JVS-Ne-svM"/>
+                            <constraint firstItem="Jja-ub-A66" firstAttribute="leading" secondItem="Kh8-op-BRf" secondAttribute="leading" id="Uos-Ll-BqF"/>
+                            <constraint firstAttribute="trailing" secondItem="Wvr-sY-ifs" secondAttribute="trailing" id="ZyO-8q-lqk"/>
+                            <constraint firstItem="Jja-ub-A66" firstAttribute="bottom" secondItem="Qxz-aY-1au" secondAttribute="top" id="fic-tV-Nbb"/>
+                            <constraint firstItem="Wvr-sY-ifs" firstAttribute="leading" secondItem="Jja-ub-A66" secondAttribute="leading" id="rk5-yN-BF1"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dc4-sf-eKd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1895,9 +1901,9 @@
         <!--Comments-->
         <scene sceneID="3HK-oD-vGi">
             <objects>
-                <collectionViewController id="u9w-SY-LqZ" customClass="Comments" customModule="WorkoutMotivation" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController automaticallyAdjustsScrollViewInsets="NO" id="u9w-SY-LqZ" customClass="Comments" customModule="WorkoutMotivation" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" id="eZN-HD-Vph">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="601"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="571"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="C01-4M-D6J">
@@ -1938,6 +1944,7 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="DIi-aj-RDv" firstAttribute="leading" secondItem="9DW-Bg-nTF" secondAttribute="leadingMargin" id="0W5-cY-Tku"/>
                                     <constraint firstItem="ucZ-Df-i1c" firstAttribute="bottom" secondItem="9DW-Bg-nTF" secondAttribute="bottomMargin" id="50D-cc-A1x"/>
@@ -1962,10 +1969,11 @@
                             <outlet property="delegate" destination="u9w-SY-LqZ" id="TkR-lJ-hoZ"/>
                         </connections>
                     </collectionView>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JN4-UE-neK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2135.5" y="-1782"/>
+            <point key="canvasLocation" x="2136.5" y="-1801.5"/>
         </scene>
     </scenes>
     <resources>
@@ -1983,8 +1991,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="nfZ-5d-aso"/>
-        <segue reference="Udb-FK-6c5"/>
         <segue reference="eLD-pB-yh1"/>
+        <segue reference="8cE-Yl-DNe"/>
         <segue reference="WVb-AW-T6s"/>
     </inferredMetricsTieBreakers>
 </document>
