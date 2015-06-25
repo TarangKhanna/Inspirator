@@ -61,9 +61,11 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     var removeCellBlock: ((SBGestureTableView, SBGestureTableViewCell) -> Void)!
     
     var currentUser : String? = nil
+    var currentUserId : String? = nil
     
     override func viewWillAppear(animated: Bool) {
         currentUser = PFUser.currentUser()!.username
+        currentUserId = PFUser.currentUser()?.objectId
         if currentUser == nil{
             //signin vc
             performSegueWithIdentifier("signIn", sender: self)
@@ -76,17 +78,21 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         //let buttonRow = sender.tag
         if let buttonRow = sender.tag {
             var votedBy = voteObject[buttonRow]["votedBy"] as! [String]
-            if !contains(votedBy, currentUser!) {
+            if !contains(votedBy, currentUserId!) {
                 var scoreParse = voteObject[buttonRow]["score"]! as? Int
                 scoreParse = scoreParse! + 1
                 voteObject[buttonRow].setObject(NSNumber(integer: scoreParse!), forKey: "score")
                 println("fqwgref")
-                println(currentUser)
-                votedBy.append(currentUser!)
+                println(currentUserId)
+                votedBy.append(currentUserId!)
+                voteObject[buttonRow]["upVote"] = true
                 voteObject[buttonRow]["votedBy"] = votedBy
                 voteObject[buttonRow].saveInBackgroundWithBlock {
                     (success: Bool, error: NSError?) -> Void in
                     if (success) {
+                        // update cell locally atleast and maybe not call self.retrieve 
+                        //
+                        //self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Fade)
                         self.retrieve()
                     } else {
                         println("Couldn't Vote!")
@@ -96,6 +102,27 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                 
             } else { // already voted -- add to retrieve also
                 //               var indexPath = NSIndexPath(forRow: buttonRow, inSection: 0)
+                
+                var upVoted : Bool = (voteObject[buttonRow]["upVote"]! as? Bool)!
+                if !upVoted { // if prev was downvote
+                    // then upvote by +2
+                    var scoreParse = voteObject[buttonRow]["score"]! as? Int
+                    scoreParse = scoreParse! + 2
+                    voteObject[buttonRow].setObject(NSNumber(integer: scoreParse!), forKey: "score")
+                    //votedBy.append(currentUserId!)
+                    voteObject[buttonRow]["upVote"] = true
+                    //voteObject[buttonRow]["votedBy"] = votedBy
+                    voteObject[buttonRow].saveInBackgroundWithBlock {
+                        (success: Bool, error: NSError?) -> Void in
+                        if (success) {
+                            self.retrieve()
+                        } else {
+                            println("Couldn't Vote!")
+                            SCLAlertView().showWarning("Error Voting", subTitle: "Check Your Internet Connection.")
+                        }
+                    }
+                }
+                
                 println("Already Voted")
                 //             self.tableView.reloadRowsAtIndexPaths([indexPathStore], withRowAnimation: UITableViewRowAnimation.Top)
             }
@@ -105,11 +132,12 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     @IBAction func downVote(sender: AnyObject) {
         if let buttonRow = sender.tag {
             var votedBy = voteObject[buttonRow]["votedBy"] as! [String]
-            if !contains(votedBy, currentUser!) {
+            if !contains(votedBy, currentUserId!) {
                 var scoreParse = voteObject[buttonRow]["score"]! as? Int
                 scoreParse = scoreParse! - 1
                 voteObject[buttonRow].setObject(NSNumber(integer: scoreParse!), forKey: "score")
-                votedBy.append(currentUser!)
+                votedBy.append(currentUserId!)
+                voteObject[buttonRow]["upVote"] = false
                 voteObject[buttonRow]["votedBy"] = votedBy
                 voteObject[buttonRow].saveInBackgroundWithBlock {
                     (success: Bool, error: NSError?) -> Void in
@@ -121,6 +149,25 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                     }
                 }
             } else { // already voted -- add to retrieve also
+                var upVoted : Bool = (voteObject[buttonRow]["upVote"]! as? Bool)!
+                if upVoted {
+                    // then downvote by -2
+                    var scoreParse = voteObject[buttonRow]["score"]! as? Int
+                    scoreParse = scoreParse! - 2
+                    voteObject[buttonRow].setObject(NSNumber(integer: scoreParse!), forKey: "score")
+                    //votedBy.append(currentUserId!)
+                    voteObject[buttonRow]["upVote"] = false
+                    //voteObject[buttonRow]["votedBy"] = votedBy
+                    voteObject[buttonRow].saveInBackgroundWithBlock {
+                        (success: Bool, error: NSError?) -> Void in
+                        if (success) {
+                            self.retrieve()
+                        } else {
+                            println("Couldn't Vote!")
+                            SCLAlertView().showWarning("Error Voting", subTitle: "Check Your Internet Connection.")
+                        }
+                    }
+                }
                 println("Already Voted")
             }
         }
@@ -191,6 +238,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                             //completion?()
                     })
             })
+            println("rqwqwrw")
             self.upVote(self)
         }
         
