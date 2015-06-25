@@ -16,9 +16,6 @@
 		7109A8F01B04306900435D3C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7109A8EF1B04306900435D3C /* Images.xcassets */; };
 		7109A8F31B04306900435D3C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7109A8F11B04306900435D3C /* LaunchScreen.xib */; };
 		7109A8FF1B04306900435D3C /* WorkoutMotivationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7109A8FE1B04306900435D3C /* WorkoutMotivationTests.swift */; };
-		71142A701B0D621700AB3600 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71142A6E1B0D621700AB3600 /* FBSDKCoreKit.framework */; };
-		71142A711B0D621700AB3600 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71142A6F1B0D621700AB3600 /* FBSDKLoginKit.framework */; };
-		71142A731B0D622700AB3600 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71142A721B0D622700AB3600 /* FBSDKShareKit.framework */; };
 		71142A761B0DCE0900AB3600 /* SocialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71142A751B0DCE0900AB3600 /* SocialVC.swift */; };
 		7128A91E1B087F670035C41E /* ProgrammingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7128A91D1B087F670035C41E /* ProgrammingVC.swift */; };
 		7128A9201B087FF70035C41E /* ProgrammingQuotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7128A91F1B087FF70035C41E /* ProgrammingQuotes.swift */; };
@@ -155,9 +152,6 @@
 		7109A8F81B04306900435D3C /* WorkoutMotivationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WorkoutMotivationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7109A8FD1B04306900435D3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7109A8FE1B04306900435D3C /* WorkoutMotivationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutMotivationTests.swift; sourceTree = "<group>"; };
-		71142A6E1B0D621700AB3600 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		71142A6F1B0D621700AB3600 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
-		71142A721B0D622700AB3600 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		71142A751B0DCE0900AB3600 /* SocialVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocialVC.swift; path = WorkoutMotivation/SocialVC.swift; sourceTree = "<group>"; };
 		7128A91D1B087F670035C41E /* ProgrammingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgrammingVC.swift; path = WorkoutMotivation/ProgrammingVC.swift; sourceTree = "<group>"; };
 		7128A91F1B087FF70035C41E /* ProgrammingQuotes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgrammingQuotes.swift; path = WorkoutMotivation/ProgrammingQuotes.swift; sourceTree = "<group>"; };
@@ -301,10 +295,7 @@
 				716B872D1B1528DA00B7E955 /* CFNetwork.framework in Frameworks */,
 				716B872B1B15289D00B7E955 /* AudioToolbox.framework in Frameworks */,
 				716B87491B152A1D00B7E955 /* ParseFacebookUtilsV4.framework in Frameworks */,
-				71142A711B0D621700AB3600 /* FBSDKLoginKit.framework in Frameworks */,
-				71142A701B0D621700AB3600 /* FBSDKCoreKit.framework in Frameworks */,
 				71CEE6021B12C49900E85AA2 /* FBSDKLoginKit.framework in Frameworks */,
-				71142A731B0D622700AB3600 /* FBSDKShareKit.framework in Frameworks */,
 				71CEE6001B12C46B00E85AA2 /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -341,8 +332,6 @@
 		7109A8E51B04306900435D3C /* WorkoutMotivation */ = {
 			isa = PBXGroup;
 			children = (
-				71C553D01B2ACB1E00357D8A /* SBGestureTableView */,
-				71691B901B3A820F005B6C32 /* GuillotineMenu */,
 				716B874D1B152E9D00B7E955 /* TimelineViewController.swift */,
 				71C553941B281D8500357D8A /* PicUpload.swift */,
 				71D8762C1B2DFD1B0095A1B4 /* SwiftSpinner.swift */,
@@ -370,6 +359,8 @@
 		7109A8E61B04306900435D3C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				71C553D01B2ACB1E00357D8A /* SBGestureTableView */,
+				71691B901B3A820F005B6C32 /* GuillotineMenu */,
 				716B874B1B152A6C00B7E955 /* MaterialKit */,
 				71C553E91B2ACBDE00357D8A /* FontAwesomeKit */,
 				71C553931B2801AB00357D8A /* Spring */,
@@ -431,9 +422,6 @@
 				716B872A1B15289D00B7E955 /* AudioToolbox.framework */,
 				71CEE6011B12C49900E85AA2 /* FBSDKLoginKit.framework */,
 				71CEE5FF1B12C46B00E85AA2 /* Bolts.framework */,
-				71142A721B0D622700AB3600 /* FBSDKShareKit.framework */,
-				71142A6E1B0D621700AB3600 /* FBSDKCoreKit.framework */,
-				71142A6F1B0D621700AB3600 /* FBSDKLoginKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

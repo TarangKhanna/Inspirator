@@ -77,20 +77,6 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UITextFieldDe
         aboutYou.attributedPlaceholder = NSAttributedString(string:"Describe Yourself In A Few Words..",
             attributes:[NSForegroundColorAttributeName: UIColor.orangeColor()])
         aboutYou.delegate = self
-        
-        if (FBSDKAccessToken.currentAccessToken() != nil)
-        {
-            // User is already logged in, do work such as go to next view controller.
-        }
-        else
-        {
-            //            let loginView : FBSDKLoginButton = FBSDKLoginButton()
-            //            self.view.addSubview(loginView)
-            //            loginView.center = self.view.center
-            //            loginView.readPermissions = ["public_profile", "email", "user_friends"]
-            //            loginView.delegate = self
-        }
-        //setBGColor()
     }
     
     override func viewDidAppear(animated: Bool) {

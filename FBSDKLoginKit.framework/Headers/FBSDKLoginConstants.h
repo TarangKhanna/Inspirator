@@ -18,7 +18,6 @@
 
 #import <Foundation/Foundation.h>
 
-#import <FBSDKCoreKit/FBSDKMacros.h>
 
 /*!
  @abstract The error domain for all errors from FBSDKLoginKit

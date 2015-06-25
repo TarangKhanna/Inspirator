@@ -8,7 +8,6 @@
 #import <ParseUI/ParseUI.h>
 #import "FXBlurView.h"
 #import <Bolts/BFTask.h>
-#import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <UIKit/UIKit.h>
 
 //! Project version number for Spring.
@@ -16,9 +15,5 @@ FOUNDATION_EXPORT double SpringVersionNumber;
 
 //! Project version string for Spring.
 FOUNDATION_EXPORT const unsigned char SpringVersionString[];
-#ifndef FacebookTutorial_Bridging_Header_h
-#define FacebookTutorial_Bridging_Header_h
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
-#endif
 #pragma once
 #import "FontAwesomeKit.h"
