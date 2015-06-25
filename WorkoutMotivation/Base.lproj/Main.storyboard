@@ -822,7 +822,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="106" sectionHeaderHeight="18" sectionFooterHeight="20" translatesAutoresizingMaskIntoConstraints="NO" id="lNp-7M-5Pw" customClass="SBGestureTableView" customModule="WorkoutMotivation" customModuleProvider="target">
+                            <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="106" sectionHeaderHeight="18" sectionFooterHeight="20" translatesAutoresizingMaskIntoConstraints="NO" id="lNp-7M-5Pw" customClass="SBGestureTableView" customModule="WorkoutMotivation" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="377" height="607"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="xP9-5q-Qpy">
@@ -1350,7 +1350,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gc4-5v-qMb" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1177.5" y="-1442.5"/>
+            <point key="canvasLocation" x="1149.5" y="-1554.5"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="8jX-Un-nY0">
@@ -1740,7 +1740,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Wvr-sY-ifs" firstAttribute="bottom" secondItem="Qxz-aY-1au" secondAttribute="top" id="4lR-I1-kkW"/>
                             <constraint firstItem="Wvr-sY-ifs" firstAttribute="leading" secondItem="EVR-xy-QvM" secondAttribute="leading" id="Bm1-xd-k9g"/>
@@ -1827,12 +1827,16 @@
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Words:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sPC-Ww-HCw">
                                 <rect key="frame" x="8" y="223" width="54" height="21"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="IQw-oT-LZb"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="eL5-Nu-x8x" appends="YES" id="g61-0i-vbE"/>
+                                </connections>
                             </label>
                             <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="McP-Q0-mu1" userLabel="savePicButton" customClass="MKButton" customModule="WorkoutMotivation" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="540" width="375" height="38"/>
@@ -1883,6 +1887,7 @@
                         <outlet property="text" destination="YOe-L5-OnF" id="e7J-o7-ydy"/>
                         <outlet property="textLabel" destination="sPC-Ww-HCw" id="0AF-sd-PgI"/>
                         <outlet property="uploadBtn" destination="McP-Q0-mu1" id="5TA-GU-9fE"/>
+                        <segue destination="KBP-Cf-XLc" kind="show" identifier="picUploaded" id="JZd-M8-AoU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1iH-Av-hkl" sceneMemberID="firstResponder"/>
@@ -1898,6 +1903,12 @@
                         </mask>
                     </variation>
                 </view>
+                <tapGestureRecognizer id="eL5-Nu-x8x">
+                    <connections>
+                        <action selector="showByTap:" destination="I4d-FR-BNv" id="Wqx-Dt-fAW"/>
+                        <outlet property="delegate" destination="I4d-FR-BNv" id="T5a-vq-B2r"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="446.5" y="1359.5"/>
         </scene>
@@ -1994,9 +2005,9 @@
         <image name="up" width="30" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nfZ-5d-aso"/>
         <segue reference="eLD-pB-yh1"/>
-        <segue reference="8cE-Yl-DNe"/>
         <segue reference="WVb-AW-T6s"/>
+        <segue reference="Qex-8r-3gQ"/>
+        <segue reference="JZd-M8-AoU"/>
     </inferredMetricsTieBreakers>
 </document>

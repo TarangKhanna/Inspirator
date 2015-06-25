@@ -30,7 +30,7 @@ class PicUpload: UIViewController,UITextFieldDelegate, UINavigationControllerDel
     
     @IBOutlet var textLabel: UILabel!
     @IBOutlet weak var filtersScrollView: UIScrollView!
-    
+    let tapRec = UITapGestureRecognizer()
     @IBOutlet var text: MKTextField!
     override func prefersStatusBarHidden() -> Bool {
         return true
@@ -135,6 +135,9 @@ class PicUpload: UIViewController,UITextFieldDelegate, UINavigationControllerDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tapRec.addTarget(self, action: "tappedView")
+        self.view.addGestureRecognizer(tapRec)
+        self.view.userInteractionEnabled = true
         text.layer.borderColor = UIColor.clearColor().CGColor
         text.floatingPlaceholderEnabled = true
         text.placeholder = "text.."
@@ -172,6 +175,11 @@ class PicUpload: UIViewController,UITextFieldDelegate, UINavigationControllerDel
         svc.imageToPost = imageToFilter
     }
     
+    func tappedView() {
+        // if selected image
+        unhide()
+    }
+    
     @IBAction func uploadImage(sender: AnyObject) {
         unhide()
         // profile pic
@@ -189,7 +197,11 @@ class PicUpload: UIViewController,UITextFieldDelegate, UINavigationControllerDel
         person["score"] = 0
         person["username"] = PFUser.currentUser()?.username
         person["admin"] = true
-        person["text"] = "Testsss"
+        if text.text == nil {
+            person["text"] = " "
+        } else {
+        person["text"] = text.text
+        }
         person["startTime"] = CFAbsoluteTimeGetCurrent()
         person["votedBy"] = []
         if let imageData = UIImagePNGRepresentation(imageToPost.image) {
@@ -204,7 +216,9 @@ class PicUpload: UIViewController,UITextFieldDelegate, UINavigationControllerDel
             UIApplication.sharedApplication().endIgnoringInteractionEvents()
             if (success) {
                 //self.retrieve()
+                self.performSegueWithIdentifier("picUploaded", sender: self)
                 println("posted!")
+                
             } else {
                 println("Couldn't post!")
                 SCLAlertView().showWarning("Error Posting", subTitle: "Check Your Internet Connection.")

@@ -17,6 +17,9 @@ class CommentsVC: UIViewController, UITextFieldDelegate {
     @IBAction func editingBegan(sender: UITextField) {
         //activeField = sender
     }
+    
+    
+    
     var kbHeight = CGFloat()
     override func viewDidLoad() {
         super.viewDidLoad()
