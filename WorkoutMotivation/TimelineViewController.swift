@@ -90,7 +90,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                 voteObject[buttonRow].saveInBackgroundWithBlock {
                     (success: Bool, error: NSError?) -> Void in
                     if (success) {
-                        // update cell locally atleast and maybe not call self.retrieve 
+                        // update cell locally atleast and maybe not call self.retrieve
                         //
                         //self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Fade)
                         self.retrieve()
@@ -357,10 +357,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCellPhoto") as! SBGestureTableViewCell
             let size = CGSizeMake(30, 30)
             
-            //get profile pic
-            cell.profileImageView.tag = indexPath.row
-            var tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("profileImageTapped:"))
-            cell.profileImageView.userInteractionEnabled = true
+            // get profile pic
             var queryUser = PFUser.query() as PFQuery?
             queryUser!.findObjectsInBackgroundWithBlock {
                 (users: [AnyObject]?, error: NSError?) -> Void in
@@ -392,20 +389,24 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                     println("Error: \(error!) \(error!.userInfo!)")
                 }
             }
-            //got profile pic
-            
+            // got profile pic
+            // Profile Tap
+            cell.profileImageView.tag = indexPath.row
+            var tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("profileImageTapped:"))
+            cell.profileImageView.userInteractionEnabled = true
+            cell.profileImageView.addGestureRecognizer(tapGestureRecognizer)
             cell.firstLeftAction = SBGestureTableViewCellAction(icon: checkIcon.imageWithSize(size), color: greenColor, fraction: 0.3, didTriggerBlock: removeCellBlock)
             //cell.secondLeftAction = SBGestureTableViewCellAction(icon: closeIcon.imageWithSize(size), color: greenColor, fraction: 0.6, didTriggerBlock: removeCellBlock)
             cell.firstRightAction = SBGestureTableViewCellAction(icon: composeIcon.imageWithSize(size), color: redColor, fraction: 0.3, didTriggerBlock: removeCellBlock)
             //cell.secondRightAction = SBGestureTableViewCellAction(icon: clockIcon.imageWithSize(size), color: redColor, fraction: 0.6, didTriggerBlock: removeCellBlock)
             
             cell.backgroundColor = UIColor.clearColor()
-//            cell.downVoteBtn.tag = indexPath.row
-//            
-//            cell.downVoteBtn.addTarget(self, action: "downVote:", forControlEvents: UIControlEvents.TouchUpInside)
-//            cell.upVoteBtn.tag = indexPath.row
-//            
-//            cell.upVoteBtn.addTarget(self, action: "upVote:", forControlEvents: UIControlEvents.TouchUpInside)
+            //            cell.downVoteBtn.tag = indexPath.row
+            //
+            //            cell.downVoteBtn.addTarget(self, action: "downVote:", forControlEvents: UIControlEvents.TouchUpInside)
+            //            cell.upVoteBtn.tag = indexPath.row
+            //
+            //            cell.upVoteBtn.addTarget(self, action: "upVote:", forControlEvents: UIControlEvents.TouchUpInside)
             let index = indexPath.row % circleColors.count
             cell.rippleLayerColor = circleColors[index]
             let image42 = self.imageFiles[indexPath.row]
@@ -441,8 +442,8 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                     cell.typeImageView.image = UIImage(named: "timeline-photo")
                     cell.nameLabel.text = self.userArray[indexPath.row]
                     cell.nameLabel.textColor = UIColor.greenColor()
-//                    cell.postLabel?.text = self.messages[indexPath.row]
-//                    cell.postLabel?.textColor = UIColor.whiteColor()
+                    //                    cell.postLabel?.text = self.messages[indexPath.row]
+                    //                    cell.postLabel?.textColor = UIColor.whiteColor()
                 }
             }
             
@@ -452,13 +453,13 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             return cell
         } else {
             
-             println("TEXT")
+            println("TEXT")
             
             indexPathStore = indexPath
             let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCell") as! SBGestureTableViewCell
             let size = CGSizeMake(30, 30)
             
-            //get profile pic
+            // get profile pic
             
             var queryUser = PFUser.query() as PFQuery?
             queryUser!.findObjectsInBackgroundWithBlock {
@@ -527,10 +528,10 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             var seconds = self.createdAt[indexPath.row]*60
             var temp = seconds
             var timeAgo = (seconds/60) // + " m ago"
-            var ending = " Min Ago"
+            var ending = " Min"
             if timeAgo >= 60 {
                 timeAgo = (temp / 3600)
-                ending = " Hours Ago"
+                ending = " H"
             }
             cell.dateLabel.text = String(timeAgo) + ending
             cell.dateLabel.textColor = UIColor.whiteColor()

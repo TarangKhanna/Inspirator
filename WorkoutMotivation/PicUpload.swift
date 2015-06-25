@@ -171,8 +171,6 @@ class PicUpload: UIViewController,UITextFieldDelegate, UINavigationControllerDel
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        var svc = segue.destinationViewController as! PostImageViewController;
-        svc.imageToPost = imageToFilter
     }
     
     func tappedView() {
@@ -200,31 +198,31 @@ class PicUpload: UIViewController,UITextFieldDelegate, UINavigationControllerDel
         if text.text == nil {
             person["text"] = " "
         } else {
-        person["text"] = text.text
+            person["text"] = text.text
         }
         person["startTime"] = CFAbsoluteTimeGetCurrent()
         person["votedBy"] = []
         if let imageData = UIImagePNGRepresentation(imageToPost.image) {
-        
-        let imageFile = PFFile(name: "image.png", data: imageData)
-        
-        person["imageFile"] = imageFile
-        person.saveInBackgroundWithBlock {
-            (success: Bool, error: NSError?) -> Void in
-            self.activityIndicator.stopAnimating()
             
-            UIApplication.sharedApplication().endIgnoringInteractionEvents()
-            if (success) {
-                //self.retrieve()
-                self.performSegueWithIdentifier("picUploaded", sender: self)
-                println("posted!")
+            let imageFile = PFFile(name: "image.png", data: imageData)
+            
+            person["imageFile"] = imageFile
+            person.saveInBackgroundWithBlock {
+                (success: Bool, error: NSError?) -> Void in
+                self.activityIndicator.stopAnimating()
                 
-            } else {
-                println("Couldn't post!")
-                SCLAlertView().showWarning("Error Posting", subTitle: "Check Your Internet Connection.")
+                UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                if (success) {
+                    //self.retrieve()
+                    self.performSegueWithIdentifier("picUploaded", sender: self)
+                    println("posted!")
+                    
+                } else {
+                    println("Couldn't post!")
+                    SCLAlertView().showWarning("Error Posting", subTitle: "Check Your Internet Connection.")
+                }
+                
             }
-            
-        }
         } else {
             SCLAlertView().showWarning("No Image", subTitle: "Select An Image to Upload.")
             self.activityIndicator.stopAnimating()
