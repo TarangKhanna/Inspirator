@@ -49,6 +49,8 @@
 		716B87491B152A1D00B7E955 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 716B87441B152A1D00B7E955 /* ParseFacebookUtilsV4.framework */; };
 		716B874A1B152A1D00B7E955 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 716B87451B152A1D00B7E955 /* ParseUI.framework */; };
 		716B874F1B152E9D00B7E955 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B874D1B152E9D00B7E955 /* TimelineViewController.swift */; };
+		71865A3F1B3D9B43009EFE19 /* CoverFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71865A3E1B3D9B43009EFE19 /* CoverFlow.swift */; };
+		71865A411B3D9BD5009EFE19 /* DiscoverGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71865A401B3D9BD5009EFE19 /* DiscoverGroupsViewController.swift */; };
 		719D53801B046D6900DD34CD /* MotivationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719D537F1B046D6900DD34CD /* MotivationCell.swift */; };
 		719D538A1B066E1900DD34CD /* NavigationControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719D53891B066E1900DD34CD /* NavigationControl.swift */; };
 		719D538C1B06743400DD34CD /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719D538B1B06743400DD34CD /* SignUpVC.swift */; };
@@ -185,6 +187,8 @@
 		716B87441B152A1D00B7E955 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
 		716B87451B152A1D00B7E955 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		716B874D1B152E9D00B7E955 /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
+		71865A3E1B3D9B43009EFE19 /* CoverFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoverFlow.swift; sourceTree = "<group>"; };
+		71865A401B3D9BD5009EFE19 /* DiscoverGroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverGroupsViewController.swift; sourceTree = "<group>"; };
 		719D537F1B046D6900DD34CD /* MotivationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotivationCell.swift; sourceTree = "<group>"; };
 		719D53891B066E1900DD34CD /* NavigationControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationControl.swift; path = WorkoutMotivation/NavigationControl.swift; sourceTree = "<group>"; };
 		719D538B1B06743400DD34CD /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpVC.swift; path = WorkoutMotivation/SignUpVC.swift; sourceTree = "<group>"; };
@@ -342,6 +346,8 @@
 				7128F3D71B39DA750092094B /* Comments.swift */,
 				71C553941B281D8500357D8A /* PicUpload.swift */,
 				7109A8EC1B04306900435D3C /* Main.storyboard */,
+				71865A401B3D9BD5009EFE19 /* DiscoverGroupsViewController.swift */,
+				71865A3E1B3D9B43009EFE19 /* CoverFlow.swift */,
 				71691B911B3B05DB005B6C32 /* CommentsVC.swift */,
 				71C553F01B2B464B00357D8A /* NavigationControllerDelegate.swift */,
 				7109A8E81B04306900435D3C /* AppDelegate.swift */,
@@ -682,6 +688,7 @@
 				71EE7A881B349587000EA33E /* FriendController.swift in Sources */,
 				71561D011B1FD6A70052B5F7 /* PostImageViewController.swift in Sources */,
 				71CEE61D1B13089900E85AA2 /* MKButton.swift in Sources */,
+				71865A411B3D9BD5009EFE19 /* DiscoverGroupsViewController.swift in Sources */,
 				71CEE6181B13089200E85AA2 /* MKLabel.swift in Sources */,
 				7128A91E1B087F670035C41E /* ProgrammingVC.swift in Sources */,
 				71691B8C1B3A8208005B6C32 /* GuillotineMenuSegue.swift in Sources */,
@@ -714,6 +721,7 @@
 				71C553E21B2ACBD900357D8A /* FAKIcon.m in Sources */,
 				71C5537D1B2801A500357D8A /* DesignableButton.swift in Sources */,
 				710394F81B22ADC700F01B5B /* CollectionViewCell.swift in Sources */,
+				71865A3F1B3D9B43009EFE19 /* CoverFlow.swift in Sources */,
 				71C553901B2801A500357D8A /* TransitionManager.swift in Sources */,
 				71C553821B2801A500357D8A /* DesignableView.swift in Sources */,
 				719D538A1B066E1900DD34CD /* NavigationControl.swift in Sources */,

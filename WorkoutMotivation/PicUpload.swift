@@ -36,6 +36,11 @@ class PicUpload: UIViewController,UITextFieldDelegate, UINavigationControllerDel
         return true
     }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
     override func viewWillAppear(animated: Bool) {
         originalImage.contentMode = UIViewContentMode.Center
         imageToFilter.contentMode = UIViewContentMode.Center
@@ -45,7 +50,6 @@ class PicUpload: UIViewController,UITextFieldDelegate, UINavigationControllerDel
     }
     
     func unhide() {
-        
         uploadBtn.hidden = false
         textLabel.hidden = false
         //text.hidden = false
@@ -203,25 +207,34 @@ class PicUpload: UIViewController,UITextFieldDelegate, UINavigationControllerDel
         person["startTime"] = CFAbsoluteTimeGetCurrent()
         person["votedBy"] = []
         if let imageData = UIImagePNGRepresentation(imageToPost.image) {
-            
-            let imageFile = PFFile(name: "image.png", data: imageData)
-            
-            person["imageFile"] = imageFile
-            person.saveInBackgroundWithBlock {
-                (success: Bool, error: NSError?) -> Void in
-                self.activityIndicator.stopAnimating()
-                
-                UIApplication.sharedApplication().endIgnoringInteractionEvents()
-                if (success) {
-                    //self.retrieve()
-                    self.performSegueWithIdentifier("picUploaded", sender: self)
-                    println("posted!")
-                    
-                } else {
-                    println("Couldn't post!")
-                    SCLAlertView().showWarning("Error Posting", subTitle: "Check Your Internet Connection.")
+            var imageSize = Float(imageData.length)
+            imageSize = imageSize/(1024*1024) // in Mb
+            println("Image size is \(imageSize)Mb")
+            if imageSize < 9.9 {
+                if let imageFile = PFFile(name: "image.png", data: imageData) as PFFile? {
+                    person["imageFile"] = imageFile
+                    person.saveInBackgroundWithBlock {
+                        (success: Bool, error: NSError?) -> Void in
+                        self.activityIndicator.stopAnimating()
+                        
+                        UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                        if (success) {
+                            //self.retrieve()
+                            self.performSegueWithIdentifier("picUploaded", sender: self)
+                            println("posted!")
+                            
+                        } else {
+                            println("Couldn't post!")
+                            SCLAlertView().showWarning("Error Posting", subTitle: "Check Your Internet Connection.")
+                            self.activityIndicator.stopAnimating()
+                            UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                        }
+                    }
                 }
-                
+            } else {
+                SCLAlertView().showWarning("Error Posting", subTitle: "File Too Big")
+                self.activityIndicator.stopAnimating()
+                UIApplication.sharedApplication().endIgnoringInteractionEvents()
             }
         } else {
             SCLAlertView().showWarning("No Image", subTitle: "Select An Image to Upload.")
