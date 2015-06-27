@@ -50,21 +50,23 @@ class CommentsVC: UIViewController, UITextFieldDelegate {
     
     func createComment() {
         
-        // Create the comment
         if !commentField.text.isEmpty {
             println("fqnewjkf")
             var myComment = PFObject(className:"Comment")
             myComment["content"] = commentField.text 
             commentField.text = ""
             myComment["username"] = PFUser.currentUser()?.username
-            // Add a relation between the Post and Comment
             myComment["parent"] = PFObject(withoutDataWithClassName:"Person", objectId: objectIDPost)
             myComment["fromObjectId"] = objectIDPost
             // This will save both myPost and myComment
             myComment.saveInBackground()
+            //NSNotificationCenter.defaultCenter().postNotificationName("load", object: nil)
+            var viewCollection = self.childViewControllers[0] as? Comments
+            viewCollection!.retrieve()
         } else {
             // empty comment -- alert?
         }
+        // reload collectionview
     }
     
     func keyboardWillHide(notification: NSNotification) {

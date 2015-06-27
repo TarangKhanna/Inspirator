@@ -74,13 +74,10 @@ class Comments: UICollectionViewController, UICollectionViewDelegateFlowLayout, 
     }
     
     func retrieve() {
-        //UIApplication.sharedApplication().beginIgnoringInteractionEvents()
         
         if var query = PFQuery(className: "Comment") as PFQuery? { //querying parse for user data
-            query.orderByDescending("createdAt")
+            query.orderByAscending("createdAt")
             query.whereKey("fromObjectId", equalTo: parsePassedID)
-            println(parsePassedID)
-            println("wfewef")
             query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
                 SwiftSpinner.hide()
                 //UIApplication.sharedApplication().endIgnoringInteractionEvents()
@@ -124,11 +121,10 @@ class Comments: UICollectionViewController, UICollectionViewDelegateFlowLayout, 
         }
         
     }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false
+        //NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadList:", name:"load", object: nil)
         //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "loginBG.png")!)
         //println(name2)
     }
@@ -158,6 +154,14 @@ class Comments: UICollectionViewController, UICollectionViewDelegateFlowLayout, 
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier5, forIndexPath: indexPath) as! CollectionViewCellComments
+        //let cell = collectionView!.cellForItemAtIndexPath(NSIndexPath(forItem: 0,    inSection: 0)) as! CollectionViewCellComments
+        var size:CGSize = getNewSize(cell)
+        
+        UIView.transitionWithView(collectionView, duration: duration, options: .CurveEaseOut | .LayoutSubviews, animations: {
+            cell.frame.size.height = size.height
+            }, completion: nil)
+        
+        collectionView.performBatchUpdates(nil, completion: nil)
         cell.title.sizeToFit()
        // cell.Image.clipsToBounds = true
        // cell.Image.layer.masksToBounds = true
