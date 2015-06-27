@@ -13,7 +13,9 @@ import UIKit
 import MapKit
 import Parse
 import Social
-//import Spring
+// import Spring
+
+// fix lag
 
 class TimelineViewController : UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, floatMenuDelegate {
     
@@ -257,7 +259,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         //UIApplication.sharedApplication().beginIgnoringInteractionEvents()
         if var query = PFQuery(className: "Person") as PFQuery? { //querying parse for user data
             query.orderByDescending("createdAt")
-            query.whereKey("text", notEqualTo: "")
+            //query.whereKey("text", notEqualTo: "")
             query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
                 SwiftSpinner.hide()
                 //UIApplication.sharedApplication().endIgnoringInteractionEvents()

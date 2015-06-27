@@ -20,6 +20,8 @@ let reuseIdentifier5 = "CellComments"
 
 class Comments: UICollectionViewController, UICollectionViewDelegateFlowLayout, UIPopoverPresentationControllerDelegate, UITextViewDelegate {
     
+    
+    var parsePassedID : String = ""
     var name2 : String = "" // passed from parent
     //var profileImageFile = PFFile()
     var downloadedImage2 = UIImage()
@@ -32,6 +34,8 @@ class Comments: UICollectionViewController, UICollectionViewDelegateFlowLayout, 
     private let cellSpacing: CGFloat = 20
     var commentView: UITextView?
     var footerView: UIView?
+    var score = [Int]()
+    var userArray: [String] = []
     
     override func viewWillAppear(animated: Bool) {
         retrieve()
@@ -70,27 +74,57 @@ class Comments: UICollectionViewController, UICollectionViewDelegateFlowLayout, 
     }
     
     func retrieve() {
-        self.imageFiles.removeAll(keepCapacity: false)
-        var queryUser = PFUser.query() as PFQuery?
-        queryUser!.findObjectsInBackgroundWithBlock {
-            (users: [AnyObject]?, error: NSError?) -> Void in
-            //queryUser!.orderByDescending("createdAt")
-            //queryUser!.whereKey("username", equalTo: self.userArray[indexPath.row])
-            if error == nil {
-                //println("Successfully retrieved \(users!.count) users.")
-                // Do something with the found users
-                if let users = users as? [PFObject] {
-                    for user in users {
-                        var user2:PFUser = user as! PFUser
-                        self.imageFiles.append(user2["ProfilePicture"] as! PFFile)
-                        //self.imageFiles.append(user2["ProfilePictue"] as! PFFile)
-                        
-                    }
+        //UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+        
+        if var query = PFQuery(className: "Comment") as PFQuery? { //querying parse for user data
+            query.orderByDescending("createdAt")
+            query.whereKey("fromObjectId", equalTo: parsePassedID)
+            println(parsePassedID)
+            println("wfewef")
+            query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
+                SwiftSpinner.hide()
+                //UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                if error != nil {
+                    println("No Internet")
+                    //self.statusLabel.text = "No Internet. Try refreshing."
                 }
-                self.collectionView?.reloadData()
-            }
+                //self.containsImage.removeAll(keepCapacity: false)
+                //self.imageFiles.removeAll(keepCapacity: false)
+                self.messages.removeAll(keepCapacity: false)
+                self.userArray.removeAll(keepCapacity: false)
+                //self.score.removeAll(keepCapacity: false)
+                self.createdAt.removeAll(keepCapacity: false)
+                //self.voteObject.removeAll(keepCapacity: false)
+                //self.votedArray.removeAll(keepCapacity: false)
+                //self.ParseObjectId.removeAll(keepCapacity: false)
+                if let objects = objects as? [PFObject]  {
+                    for object in objects {
+//                        if let imageFile42 = object["imageFile"] as? PFFile{
+//                            self.imageFiles.append(imageFile42)
+//                            self.containsImage.append(true)
+//                            println(imageFile42)
+//                            println("iuhewbd")
+//                        } else {
+//                            self.imageFiles.append(PFFile())
+//                            self.containsImage.append(false)
+//                            println("jkbdj")
+//                        }
+                        //self.voteObject.append(object)
+                        //self.ParseObjectId.append((object.objectId! as String?)!)
+                        self.messages.append(object["content"] as! String)
+                        self.userArray.append(object["username"] as! String)
+                        //self.score.append(object["score"] as! Int)
+                        //let elapsedTime = CFAbsoluteTimeGetCurrent() - (object["startTime"] as! CFAbsoluteTime)
+                        //self.duration = Int(elapsedTime/60)
+                        //self.createdAt.append(self.duration)
+                    }
+                    self.collectionView!.reloadData()
+                }
+            })
         }
+        
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -114,7 +148,7 @@ class Comments: UICollectionViewController, UICollectionViewDelegateFlowLayout, 
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //#warning Incomplete method implementation -- Return the number of items in the section
-        return 10 //imageFiles.count
+        return messages.count //imageFiles.count
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
@@ -135,8 +169,8 @@ class Comments: UICollectionViewController, UICollectionViewDelegateFlowLayout, 
             //}
         //}
         
-        cell.nameBtn.setTitle("Name Here", forState: UIControlState.Normal) //name[indexPath.row]
-        cell.title.text = "Comments Here" //messages[indexPath.row]
+        cell.nameBtn.setTitle(userArray[indexPath.row], forState: UIControlState.Normal) //name[indexPath.row]
+        cell.title.text = messages[indexPath.row] // comment
         
         return cell
     }

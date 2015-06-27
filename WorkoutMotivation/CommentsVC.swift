@@ -9,11 +9,8 @@
 import UIKit
 
 class CommentsVC: UIViewController, UITextFieldDelegate {
-
+    
     @IBOutlet weak var commentField: UITextField!
-    var activeField: UITextField?
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
     var objectIDPost: String = ""
     
@@ -28,6 +25,7 @@ class CommentsVC: UIViewController, UITextFieldDelegate {
     var kbHeight = CGFloat()
     override func viewDidLoad() {
         super.viewDidLoad()
+        SwiftSpinner.show("Connecting to Matrix...")
         commentField.delegate = self
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
@@ -53,14 +51,20 @@ class CommentsVC: UIViewController, UITextFieldDelegate {
     func createComment() {
         
         // Create the comment
-        var myComment = PFObject(className:"Comment")
-        myComment["content"] = "Let's do Sushirrito." // commentField.text -- add this as a action func
-        
-        // Add a relation between the Post and Comment
-        myComment["parent"] = PFObject(withoutDataWithClassName:"Post", objectId: objectIDPost)
-        
-        // This will save both myPost and myComment
-        myComment.saveInBackground()
+        if !commentField.text.isEmpty {
+            println("fqnewjkf")
+            var myComment = PFObject(className:"Comment")
+            myComment["content"] = commentField.text 
+            commentField.text = ""
+            myComment["username"] = PFUser.currentUser()?.username
+            // Add a relation between the Post and Comment
+            myComment["parent"] = PFObject(withoutDataWithClassName:"Person", objectId: objectIDPost)
+            myComment["fromObjectId"] = objectIDPost
+            // This will save both myPost and myComment
+            myComment.saveInBackground()
+        } else {
+            // empty comment -- alert?
+        }
     }
     
     func keyboardWillHide(notification: NSNotification) {
@@ -73,23 +77,23 @@ class CommentsVC: UIViewController, UITextFieldDelegate {
         }
         animateViewMoving(false, moveValue: kbHeight)
     }
-
+    
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self);
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-//    func textFieldDidBeginEditing(textField: UITextField) {
-//       let frame = (info[UIKeyboardFrameEndUserInfoKey] as NSValue).CGRectValue()
-//        animateViewMoving(true, moveValue: keybo)
-//        println("fwqefew")
-//    }
-//    func textFieldDidEndEditing(textField: UITextField) {
-//        animateViewMoving(false, moveValue: 250)
-//    }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "CommentsFlow") { //pass data to VC
+            var svc = segue.destinationViewController as! Comments
+            svc.parsePassedID = objectIDPost 
+        }
+    }
     
     func animateViewMoving (up:Bool, moveValue :CGFloat){
         var movementDuration:NSTimeInterval = 0.3
@@ -102,11 +106,11 @@ class CommentsVC: UIViewController, UITextFieldDelegate {
     }
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -114,5 +118,5 @@ class CommentsVC: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
         return false
     }
-
+    
 }
