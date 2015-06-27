@@ -14,12 +14,17 @@ class CommentsVC: UIViewController, UITextFieldDelegate {
     var activeField: UITextField?
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    
+    var objectIDPost: String = ""
+    
     @IBAction func editingBegan(sender: UITextField) {
         //activeField = sender
     }
     
-    
-    
+    override func viewWillAppear(animated: Bool) {
+        println("fwefewfwew")
+        println(objectIDPost)
+    }
     var kbHeight = CGFloat()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +48,19 @@ class CommentsVC: UIViewController, UITextFieldDelegate {
             }
         }
         animateViewMoving(true, moveValue: kbHeight)
+    }
+    
+    func createComment() {
+        
+        // Create the comment
+        var myComment = PFObject(className:"Comment")
+        myComment["content"] = "Let's do Sushirrito." // commentField.text -- add this as a action func
+        
+        // Add a relation between the Post and Comment
+        myComment["parent"] = PFObject(withoutDataWithClassName:"Post", objectId: objectIDPost)
+        
+        // This will save both myPost and myComment
+        myComment.saveInBackground()
     }
     
     func keyboardWillHide(notification: NSNotification) {
@@ -92,6 +110,7 @@ class CommentsVC: UIViewController, UITextFieldDelegate {
     }
     */
     func textFieldShouldReturn(textField: UITextField) -> Bool {
+        createComment() // run with GDC
         self.view.endEditing(true)
         return false
     }

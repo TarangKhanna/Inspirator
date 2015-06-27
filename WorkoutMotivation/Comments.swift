@@ -35,8 +35,6 @@ class Comments: UICollectionViewController, UICollectionViewDelegateFlowLayout, 
     
     override func viewWillAppear(animated: Bool) {
         retrieve()
-        println("fwffwefew")
-        
         //        var queryUser = PFUser.query() as PFQuery?
         //        queryUser!.findObjectsInBackgroundWithBlock {
         //            (users: [AnyObject]?, error: NSError?) -> Void in

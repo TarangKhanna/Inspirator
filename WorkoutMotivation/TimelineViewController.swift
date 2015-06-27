@@ -22,6 +22,8 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet var menuItem : UIBarButtonItem!
     @IBOutlet var statusLabel: UILabel!
     
+    var selectedParseObject = String()
+    var ParseObjectId : [String] = [""]
     var containsImage = [Bool]() // for loading images and making sure index is not out of bounds
     var votedArray = [String]()
     var activityIndicator = UIActivityIndicatorView()
@@ -271,6 +273,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                 self.createdAt.removeAll(keepCapacity: false)
                 self.voteObject.removeAll(keepCapacity: false)
                 self.votedArray.removeAll(keepCapacity: false)
+                self.ParseObjectId.removeAll(keepCapacity: false)
                 if let objects = objects as? [PFObject]  {
                     for object in objects {
                         if let imageFile42 = object["imageFile"] as? PFFile{
@@ -284,6 +287,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                             println("jkbdj")
                         }
                         self.voteObject.append(object)
+                        self.ParseObjectId.append((object.objectId! as String?)!)
                         self.messages.append(object["text"] as! String)
                         self.userArray.append(object["username"] as! String)
                         self.score.append(object["score"] as! Int)
@@ -316,29 +320,6 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         super.viewDidAppear(animated)
         //tableView.reloadData()
     }
-    
-    //    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]?  {
-    //
-    //        var shareAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Share" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
-    //
-    //            let shareMenu = UIAlertController(title: nil, message: "Share using", preferredStyle: .ActionSheet)
-    //
-    //            let twitterAction = UIAlertAction(title: "Twitter", style: UIAlertActionStyle.Default, handler: nil)
-    //            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
-    //
-    //            shareMenu.addAction(twitterAction)
-    //            shareMenu.addAction(cancelAction)
-    //
-    //
-    //            self.presentViewController(shareMenu, animated: true, completion: nil)
-    //        })
-    //
-    //        var likeAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Like" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
-    //            // parse like and notification
-    //        })
-    //
-    //        return [shareAction,likeAction]
-    //    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return userArray.count
@@ -555,6 +536,9 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         selectedName = userArray[indexPath.row]
         selectedScore = String(score[indexPath.row])
+        if let myObject = ParseObjectId[indexPath.row] as String? {
+            selectedParseObject = myObject
+        }
         //let destinationVC = profileVC()
         //destinationVC.name = selectedName
         //ce
@@ -569,6 +553,12 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             println(selectedName)
             svc.name = selectedName
             svc.score = selectedScore
+            
+        } else if (segue.identifier == "showComments"){
+            var svc = segue.destinationViewController as! CommentsVC;
+            if let parseID = selectedParseObject as String?{
+                svc.objectIDPost = parseID
+            }
         }
     }
     
@@ -632,6 +622,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                 person["text"] = txt.text
                 person["startTime"] = CFAbsoluteTimeGetCurrent()
                 person["votedBy"] = []
+                
                 person.saveInBackgroundWithBlock {
                     (success: Bool, error: NSError?) -> Void in
                     if (success) {
