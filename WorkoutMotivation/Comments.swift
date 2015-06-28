@@ -120,7 +120,6 @@ class Comments: UICollectionViewController, UICollectionViewDelegateFlowLayout, 
                 }
             })
         }
-        
     }
     
     override func viewDidAppear(animated: Bool) {

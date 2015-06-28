@@ -18,17 +18,13 @@ class CommentsVC: UIViewController, UITextFieldDelegate {
         //activeField = sender
     }
     
-    override func viewWillAppear(animated: Bool) {
-        println("fwefewfwew")
-        println(objectIDPost)
-    }
     var kbHeight = CGFloat()
     override func viewDidLoad() {
         super.viewDidLoad()
         SwiftSpinner.show("Connecting to Matrix...")
         commentField.layer.borderColor = UIColor.clearColor().CGColor
         commentField.placeholder = "Placeholder"
-        commentField.tintColor = UIColor.grayColor()
+        commentField.tintColor = UIColor.MKColor.Red
         commentField.delegate = self
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)

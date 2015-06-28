@@ -808,8 +808,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="106" sectionHeaderHeight="18" sectionFooterHeight="20" translatesAutoresizingMaskIntoConstraints="NO" id="lNp-7M-5Pw" customClass="SBGestureTableView" customModule="WorkoutMotivation" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="377" height="607"/>
+                            <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="106" sectionHeaderHeight="18" sectionFooterHeight="20" translatesAutoresizingMaskIntoConstraints="NO" id="lNp-7M-5Pw" customClass="SBGestureTableView" customModule="WorkoutMotivation" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44" width="377" height="627"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="xP9-5q-Qpy">
                                     <rect key="frame" x="0.0" y="592" width="377" height="44"/>
@@ -1961,8 +1961,7 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="timeline-chat" translatesAutoresizingMaskIntoConstraints="NO" id="DIi-aj-RDv">
                                             <rect key="frame" x="8" y="8" width="32" height="32"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="32" id="TqL-qg-Hf9"/>
-                                                <constraint firstAttribute="height" constant="32" id="g3E-0v-1Ii"/>
+                                                <constraint firstAttribute="width" constant="32" id="Nrc-bG-qkr"/>
                                             </constraints>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tE1-LW-2q9">
@@ -1987,14 +1986,15 @@
                                 </view>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="5rk-Q1-dIH" firstAttribute="top" secondItem="DIi-aj-RDv" secondAttribute="bottom" constant="8" id="0JO-2Q-M76"/>
-                                    <constraint firstItem="DIi-aj-RDv" firstAttribute="top" secondItem="9DW-Bg-nTF" secondAttribute="topMargin" id="1VC-vx-Id5"/>
                                     <constraint firstAttribute="bottomMargin" secondItem="5rk-Q1-dIH" secondAttribute="bottom" constant="7" id="1aH-Se-Vvp"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="tE1-LW-2q9" secondAttribute="trailing" constant="22" id="Dqh-Bo-1Rr"/>
+                                    <constraint firstItem="tE1-LW-2q9" firstAttribute="top" secondItem="DIi-aj-RDv" secondAttribute="top" id="Fup-qg-uyq"/>
+                                    <constraint firstItem="DIi-aj-RDv" firstAttribute="top" secondItem="9DW-Bg-nTF" secondAttribute="topMargin" id="HmN-t2-5Vx"/>
                                     <constraint firstItem="5rk-Q1-dIH" firstAttribute="leading" secondItem="9DW-Bg-nTF" secondAttribute="leadingMargin" id="JnX-Jc-xa7"/>
-                                    <constraint firstItem="tE1-LW-2q9" firstAttribute="leading" secondItem="DIi-aj-RDv" secondAttribute="trailing" constant="15" id="Kf0-Zg-bwr"/>
-                                    <constraint firstItem="DIi-aj-RDv" firstAttribute="leading" secondItem="9DW-Bg-nTF" secondAttribute="leadingMargin" id="ZS1-Lu-QHJ"/>
+                                    <constraint firstItem="tE1-LW-2q9" firstAttribute="leading" secondItem="DIi-aj-RDv" secondAttribute="trailing" constant="15" id="XNq-gk-gOm"/>
                                     <constraint firstItem="5rk-Q1-dIH" firstAttribute="trailing" secondItem="9DW-Bg-nTF" secondAttribute="trailingMargin" id="ajl-f3-b95"/>
+                                    <constraint firstItem="DIi-aj-RDv" firstAttribute="leading" secondItem="5rk-Q1-dIH" secondAttribute="leading" id="iiF-zP-y3Q"/>
+                                    <constraint firstItem="5rk-Q1-dIH" firstAttribute="top" secondItem="DIi-aj-RDv" secondAttribute="bottom" constant="8" symbolic="YES" id="rh6-WZ-hEu"/>
                                     <constraint firstItem="5rk-Q1-dIH" firstAttribute="top" secondItem="tE1-LW-2q9" secondAttribute="bottom" constant="10" id="vX2-8g-SCu"/>
                                 </constraints>
                                 <connections>

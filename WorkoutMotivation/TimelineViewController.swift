@@ -617,7 +617,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         let txt = alert.addTextField(title:"Enter Your Thoughts")
         alert.addButton("Post") {
             println("Text value: \(txt.text)")
-            if txt.text != " " && txt.text != nil && txt.text != ""{
+            if txt.text != " " && txt.text != nil && !txt.text.isEmpty {
                 var person = PFObject(className:"Person")
                 self.containsImage.append(false)
                 self.parseObject = person
@@ -632,6 +632,16 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                     (success: Bool, error: NSError?) -> Void in
                     if (success) {
                         self.retrieve()
+                        let query = PFInstallation.query()
+                        if let query = query { // non intrusive
+                            //query.whereKey("channels", equalTo: "suitcaseOwners")
+                            query.whereKey("deviceType", equalTo: "ios")
+                            let iOSPush = PFPush()
+                            iOSPush.setMessage("General: " + txt.text)
+                            //iOSPush.setChannel("suitcaseOwners")
+                            iOSPush.setQuery(query)
+                            iOSPush.sendPushInBackground()
+                        }
                     } else {
                         println("Couldn't post!")
                         SCLAlertView().showWarning("Error Posting", subTitle: "Check Your Internet Connection.")
