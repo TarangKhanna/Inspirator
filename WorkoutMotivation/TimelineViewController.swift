@@ -401,7 +401,9 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                     cell.typeImageView.image = UIImage(named: "timeline-chat")
                     cell.photoImageView?.image = downloadedImage2
                     //cell.profileImageView.image = UIImage(named: "profile-pic-1")
-                    cell.nameLabel.text = self.userArray[indexPath.row]
+                    var name = self.userArray[indexPath.row]
+                    name.replaceRange(name.startIndex...name.startIndex, with: String(name[name.startIndex]).capitalizedString)
+                    cell.nameLabel.text = name
                     cell.nameLabel.textColor = UIColor.greenColor()
                     cell.postLabel?.text = self.messages[indexPath.row]
                     cell.postLabel?.textColor = UIColor.whiteColor()
@@ -423,8 +425,6 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                     cell.scoreLabel.textColor = UIColor.greenColor()
                     cell.scoreLabel.text = "[" + String(self.score[indexPath.row]) + "]"
                     cell.typeImageView.image = UIImage(named: "timeline-photo")
-                    cell.nameLabel.text = self.userArray[indexPath.row]
-                    cell.nameLabel.textColor = UIColor.greenColor()
                     //                    cell.postLabel?.text = self.messages[indexPath.row]
                     //                    cell.postLabel?.textColor = UIColor.whiteColor()
                 }
@@ -504,7 +504,9 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             //self.tableView.insertRowsAtIndexPaths(0, withRowAnimation: UITableViewRowAnimation.Bottom)
             cell.typeImageView.image = UIImage(named: "timeline-chat")
             //cell.profileImageView.image = UIImage(named: "profile-pic-1")
-            cell.nameLabel.text = self.userArray[indexPath.row]
+            var name = self.userArray[indexPath.row]
+            name.replaceRange(name.startIndex...name.startIndex, with: String(name[name.startIndex]).capitalizedString)
+            cell.nameLabel.text = name
             cell.nameLabel.textColor = UIColor.greenColor()
             cell.postLabel?.text = self.messages[indexPath.row]
             cell.postLabel?.textColor = UIColor.whiteColor()
@@ -557,7 +559,8 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             svc.score = selectedScore
             
         } else if (segue.identifier == "showComments"){
-            var svc = segue.destinationViewController as! CommentsVC;
+            var svc = segue.destinationViewController.topViewController as! CommentsVC // nav controller in between
+            
             if let parseID = selectedParseObject as String?{
                 svc.objectIDPost = parseID
             }

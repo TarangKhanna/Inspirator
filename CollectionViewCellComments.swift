@@ -10,6 +10,8 @@ import UIKit
 
 class CollectionViewCellComments: UICollectionViewCell {
     @IBOutlet weak var title: UILabel!
+    
+    @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var Image: UIImageView!
     @IBOutlet weak var nameBtn: UIButton!
 }

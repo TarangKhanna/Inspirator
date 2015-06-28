@@ -37,6 +37,7 @@ class Comments: UICollectionViewController, UICollectionViewDelegateFlowLayout, 
     var score = [Int]()
     var userArray: [String] = []
     
+    
     override func viewWillAppear(animated: Bool) {
         retrieve()
         //        var queryUser = PFUser.query() as PFQuery?
@@ -121,9 +122,19 @@ class Comments: UICollectionViewController, UICollectionViewDelegateFlowLayout, 
         }
         
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.navigationController?.hidesBarsOnSwipe = true
+        //self.navigationController?.ges
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false
+        // No border, no shadow, floatPlaceHolderDisabled
+        
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadList:", name:"load", object: nil)
         //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "loginBG.png")!)
         //println(name2)
@@ -154,15 +165,8 @@ class Comments: UICollectionViewController, UICollectionViewDelegateFlowLayout, 
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier5, forIndexPath: indexPath) as! CollectionViewCellComments
-        //let cell = collectionView!.cellForItemAtIndexPath(NSIndexPath(forItem: 0,    inSection: 0)) as! CollectionViewCellComments
-        var size:CGSize = getNewSize(cell)
         
-        UIView.transitionWithView(collectionView, duration: duration, options: .CurveEaseOut | .LayoutSubviews, animations: {
-            cell.frame.size.height = size.height
-            }, completion: nil)
-        
-        collectionView.performBatchUpdates(nil, completion: nil)
-        cell.title.sizeToFit()
+        //cell.title.sizeToFit()
        // cell.Image.clipsToBounds = true
        // cell.Image.layer.masksToBounds = true
        // cell.Image.layer.cornerRadius = cell.Image.layer.frame.size.width/2
@@ -174,8 +178,7 @@ class Comments: UICollectionViewController, UICollectionViewDelegateFlowLayout, 
         //}
         
         cell.nameBtn.setTitle(userArray[indexPath.row], forState: UIControlState.Normal) //name[indexPath.row]
-        cell.title.text = messages[indexPath.row] // comment
-        
+        cell.textView.text = messages[indexPath.row] // comment
         return cell
     }
     
@@ -218,14 +221,6 @@ class Comments: UICollectionViewController, UICollectionViewDelegateFlowLayout, 
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: 0, height: 0)
     }
-    
-    
-    
-    func adaptivePresentationStyleForPresentationController(PC: UIPresentationController) -> UIModalPresentationStyle {
-        // This *forces* a popover to be displayed on the iPhone
-        return .None
-    }
-    
    
 
 }
