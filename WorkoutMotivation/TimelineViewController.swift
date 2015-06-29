@@ -26,6 +26,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     
     var selectedParseObject = String()
     var ParseObjectId : [String] = [""]
+    //var selectedObject = PFObject()
     var containsImage = [Bool]() // for loading images and making sure index is not out of bounds
     var votedArray = [String]()
     var activityIndicator = UIActivityIndicatorView()
@@ -532,6 +533,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         var imageIndex = recognizer.view!.tag
         selectedName = userArray[imageIndex]
         selectedScore = String(score[imageIndex])
+        //selectedObject =
         println(imageIndex)
         performSegueWithIdentifier("profileView", sender: self)
     }
@@ -540,6 +542,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         selectedName = userArray[indexPath.row]
         selectedScore = String(score[indexPath.row])
+        //selectedObject =
         if let myObject = ParseObjectId[indexPath.row] as String? {
             selectedParseObject = myObject
         }
@@ -557,7 +560,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             println(selectedName)
             svc.name = selectedName
             svc.score = selectedScore
-            
+            //svc.profileObject =
         } else if (segue.identifier == "showComments"){
             var svc = segue.destinationViewController.topViewController as! CommentsVC // nav controller in between
             

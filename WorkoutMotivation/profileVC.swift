@@ -30,10 +30,16 @@ class profileVC: UIViewController, UIScrollViewDelegate, UIPopoverPresentationCo
     var score: String = ""
     var profileImageFile = PFFile()
     var blurredHeaderImageView:UIImageView?
+    var liked = false
+    //var profileObject = PFObject()
+    
     override func viewWillAppear(animated: Bool) {
+        avatarImage.layer.borderColor = UIColor.redColor().CGColor
         aboutYouLabel.text = ""
         scoreLabel.text = score
-        profileName.text = name
+        var name2 = name
+        name2.replaceRange(name.startIndex...name.startIndex, with: String(name[name.startIndex]).capitalizedString)
+        profileName.text = name2
         var queryUser = PFUser.query() as PFQuery?
         queryUser!.findObjectsInBackgroundWithBlock {
             (users: [AnyObject]?, error: NSError?) -> Void in
@@ -68,10 +74,38 @@ class profileVC: UIViewController, UIScrollViewDelegate, UIPopoverPresentationCo
             }
         }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView.delegate = self
+        let likeProfileGesture = UILongPressGestureRecognizer(target: self, action: "longPressed:")
+        self.view.addGestureRecognizer(likeProfileGesture)
     }
+    
+    
+    func longPressed(sender: UILongPressGestureRecognizer) // liked profile
+    {
+        
+//        var user = PFUser.currentUser()
+//        var relation = user!.relationForKey("likes")
+//        relation.addObject(post)
+//        user.saveInBackgroundWithBlock {
+//            (success: Bool, error: NSError?) -> Void in
+//            if (success) {
+//                // The post has been added to the user's likes relation.
+//            } else {
+//                // There was a problem, check error.description
+//            }
+//        }
+        if !liked { // if currrent user likes the passed name user object?
+            avatarImage.layer.borderColor = UIColor.whiteColor().CGColor
+            liked = true
+        } else {
+            avatarImage.layer.borderColor = UIColor.redColor().CGColor
+            liked = false
+        }
+    }
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "zoomIn") { //pass data to VC
@@ -213,50 +247,50 @@ class profileVC: UIViewController, UIScrollViewDelegate, UIPopoverPresentationCo
     
     // friends feature - >> friendsRelation.addObject(object);
     
-//    @IBAction func addFriend(sender : AnyObject) {
-//        
-//        var currentUser = PFUser.currentUser()
-//        
-//        var alert = UIAlertController(title: "Add Friend", message: "Pleae enter a username.", preferredStyle: UIAlertControllerStyle.Alert)
-//        alert.addTextFieldWithConfigurationHandler({(textField: UITextField!) in
-//            textField.placeholder = "Username"
-//            textField.secureTextEntry = false
-//            
-//            // Add button actions here
-//            var addBtnAction = UIAlertAction(title: "Add", style: UIAlertActionStyle.Default) {
-//                UIAlertAction in
-//                
-//                var text : String = textField.text
-//                
-//                println("I want to add the user: \(text)")
-//                
-//                var query = PFUser.query()
-//                query.whereKey("username", equalTo: text)
-//                query.getFirstObjectInBackgroundWithBlock {
-//                    (object: PFObject!, error: NSError!) -> Void in
-//                    if !object {
-//                        NSLog("The getFirstObject request failed.")
-//                        //add alertView here later
-//                        
-//                    } else {
-//                        // The find succeeded.
-//                        NSLog("Successfully retrieved the object.")
-//                        //This can find username successfully
-//                        
-//                        var friendsRelation : PFRelation = currentUser.relationForKey("friendsRelation")
-//                        var user : PFUser = text  // <<<<---- This is the line that has problem
-//                        // Xcode tells me that I cannot express a String as a PFUser
-//                        // How can I add the user that has the exact same username?
-//                        
-//                    }
-//                }
-//            }
-//            
-//            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
-//            alert.addAction(addBtnAction)
-//            self.presentViewController(alert, animated: true, completion: nil)
-//            
-//        })
-//    }
+    //    @IBAction func addFriend(sender : AnyObject) {
+    //
+    //        var currentUser = PFUser.currentUser()
+    //
+    //        var alert = UIAlertController(title: "Add Friend", message: "Pleae enter a username.", preferredStyle: UIAlertControllerStyle.Alert)
+    //        alert.addTextFieldWithConfigurationHandler({(textField: UITextField!) in
+    //            textField.placeholder = "Username"
+    //            textField.secureTextEntry = false
+    //
+    //            // Add button actions here
+    //            var addBtnAction = UIAlertAction(title: "Add", style: UIAlertActionStyle.Default) {
+    //                UIAlertAction in
+    //
+    //                var text : String = textField.text
+    //
+    //                println("I want to add the user: \(text)")
+    //
+    //                var query = PFUser.query()
+    //                query.whereKey("username", equalTo: text)
+    //                query.getFirstObjectInBackgroundWithBlock {
+    //                    (object: PFObject!, error: NSError!) -> Void in
+    //                    if !object {
+    //                        NSLog("The getFirstObject request failed.")
+    //                        //add alertView here later
+    //
+    //                    } else {
+    //                        // The find succeeded.
+    //                        NSLog("Successfully retrieved the object.")
+    //                        //This can find username successfully
+    //
+    //                        var friendsRelation : PFRelation = currentUser.relationForKey("friendsRelation")
+    //                        var user : PFUser = text
+    //                        // Xcode tells me that I cannot express a String as a PFUser
+    //                        // How can I add the user that has the exact same username?
+    //
+    //                    }
+    //                }
+    //            }
+    //
+    //            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
+    //            alert.addAction(addBtnAction)
+    //            self.presentViewController(alert, animated: true, completion: nil)
+    //
+    //        })
+    //    }
     
 }

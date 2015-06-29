@@ -209,7 +209,7 @@ class Comments: UICollectionViewController, UICollectionViewDelegateFlowLayout, 
     func collectionView(collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-            return CGSizeMake(CGRectGetWidth(collectionView.bounds) - cellSpacing, cellHeight)
+            return CGSizeMake(CGRectGetWidth(collectionView.bounds), cellHeight)
     }
     
     
