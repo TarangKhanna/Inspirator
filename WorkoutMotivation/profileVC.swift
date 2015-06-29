@@ -97,13 +97,20 @@ class profileVC: UIViewController, UIScrollViewDelegate, UIPopoverPresentationCo
 //                // There was a problem, check error.description
 //            }
 //        }
-        if !liked { // if currrent user likes the passed name user object?
-            avatarImage.layer.borderColor = UIColor.whiteColor().CGColor
-            liked = true
-        } else {
-            avatarImage.layer.borderColor = UIColor.redColor().CGColor
-            liked = false
+        if (sender.state == UIGestureRecognizerState.Ended) {
+            //Do Whatever You want on End of Gesture
         }
+        else if (sender.state == UIGestureRecognizerState.Began){
+            //Do Whatever You want on Began of Gesture
+            if !liked { // if currrent user likes the passed name user object?
+                avatarImage.layer.borderColor = UIColor.whiteColor().CGColor
+                liked = true
+            } else {
+                avatarImage.layer.borderColor = UIColor.redColor().CGColor
+                liked = false
+            }
+        }
+       
     }
     
     

@@ -2004,7 +2004,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zbf-v8-gPZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2014" y="-1850"/>
+            <point key="canvasLocation" x="2271.5" y="-1667.5"/>
         </scene>
     </scenes>
     <resources>
@@ -2022,8 +2022,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="nfZ-5d-aso"/>
-        <segue reference="Udb-FK-6c5"/>
         <segue reference="eLD-pB-yh1"/>
         <segue reference="WVb-AW-T6s"/>
+        <segue reference="8cE-Yl-DNe"/>
     </inferredMetricsTieBreakers>
 </document>

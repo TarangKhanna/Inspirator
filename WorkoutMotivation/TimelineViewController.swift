@@ -23,8 +23,8 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet var tableView : SBGestureTableView!
     @IBOutlet var menuItem : UIBarButtonItem!
     @IBOutlet var statusLabel: UILabel!
-    
-    var selectedParseObject = String()
+    var selectedParseObjectId = String()
+    var selectedParseObject:PFObject?
     var ParseObjectId : [String] = [""]
     //var selectedObject = PFObject()
     var containsImage = [Bool]() // for loading images and making sure index is not out of bounds
@@ -533,18 +533,18 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         var imageIndex = recognizer.view!.tag
         selectedName = userArray[imageIndex]
         selectedScore = String(score[imageIndex])
-        //selectedObject =
+        selectedParseObject = voteObject[imageIndex]
+        
         println(imageIndex)
         performSegueWithIdentifier("profileView", sender: self)
     }
-    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         selectedName = userArray[indexPath.row]
         selectedScore = String(score[indexPath.row])
-        //selectedObject =
+        selectedParseObject = voteObject[indexPath.row]
         if let myObject = ParseObjectId[indexPath.row] as String? {
-            selectedParseObject = myObject
+            selectedParseObjectId = myObject
         }
         //let destinationVC = profileVC()
         //destinationVC.name = selectedName
@@ -561,10 +561,43 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             svc.name = selectedName
             svc.score = selectedScore
             //svc.profileObject =
-        } else if (segue.identifier == "showComments"){
+        } else if (segue.identifier == "showComments") { // get notified if you see comment section
+            var currentUserId = PFUser.currentUser()?.objectId
+            if var recipients = selectedParseObject!["recipients"] as? [String] {  //added to receiver array, real notification on comment adding in commentsVC
+                println("fqwgref")
+                println(PFUser.currentUser()?.objectId)
+                recipients.append(currentUserId!)
+                selectedParseObject!["recipients"] = recipients
+                // This will save both myPost and myComment
+                selectedParseObject!.saveInBackgroundWithBlock {
+                    (success: Bool, error: NSError?) -> Void in
+                    if (success) {
+                        
+                        // update cell locally atleast and maybe not call self.retrieve
+                    } else {
+                        println("Couldn't subscribe!")
+                        SCLAlertView().showWarning("Error Commenting", subTitle: "Check Your Internet Connection.")
+                    }
+                }
+            } else {
+                selectedParseObject!["recipients"] = [String]()
+                var recipients2 = selectedParseObject!["recipients"] as? [String]
+                recipients2?.append(currentUserId!)
+                
+                selectedParseObject!["recipients"] = recipients2
+                selectedParseObject!.saveInBackgroundWithBlock {
+                    (success: Bool, error: NSError?) -> Void in
+                    if (success) {
+                    } else {
+                        println("Couldn't Vote!")
+                        SCLAlertView().showWarning("Error Commenting", subTitle: "Check Your Internet Connection.")
+                    }
+                }
+            }
+
             var svc = segue.destinationViewController.topViewController as! CommentsVC // nav controller in between
             
-            if let parseID = selectedParseObject as String?{
+            if let parseID = selectedParseObjectId as String?{
                 svc.objectIDPost = parseID
             }
         }
