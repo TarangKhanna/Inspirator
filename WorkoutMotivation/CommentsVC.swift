@@ -14,9 +14,17 @@ class CommentsVC: UIViewController, UITextFieldDelegate {
     
     var objectIDPost: String = ""
     var currentUserId = PFUser.currentUser()?.objectId
+    var recipients = [String]()
     
     @IBAction func editingBegan(sender: UITextField) {
         //activeField = sender
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.navigationController?.hidesBarsOnSwipe = true
+        //self.navigationController?.ges
     }
     
     var kbHeight = CGFloat()
@@ -60,23 +68,28 @@ class CommentsVC: UIViewController, UITextFieldDelegate {
         if !commentField.text.isEmpty {
             
             var myComment = PFObject(className:"Comment")
-            myComment["content"] = commentField.text 
-            commentField.text = ""
+            myComment["content"] = commentField.text
             var nameTemp =  PFUser.currentUser()?.username
             myComment["username"] = nameTemp
-            println("fqnewjkf")
             myComment["parent"] = PFObject(withoutDataWithClassName:"Person", objectId: objectIDPost)
             myComment["fromObjectId"] = objectIDPost
             myComment.saveInBackgroundWithBlock {
                 (success: Bool, error: NSError?) -> Void in
                 if (success) {
-                    // update cell locally atleast and maybe not call self.retrieve
                     //
                     //self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Fade)
                     let query = PFInstallation.query()
                     if let query = query { // non intrusive
                         //query.whereKey("channels", equalTo: "suitcaseOwners")
                         query.whereKey("deviceType", equalTo: "ios")
+                        var recipientsTemp = self.recipients
+                        recipientsTemp.filter({$0 != PFUser.currentUser()?.objectId})
+                        println("eqfef")
+                        println(recipientsTemp)
+                        query.whereKey("user", containedIn: recipientsTemp)
+                        println("klnwerewr")
+                        println(self.recipients)
+                        
                         let iOSPush = PFPush()
                         iOSPush.setMessage("New Comment: " + self.commentField.text)
                         //iOSPush.setChannel("suitcaseOwners")
@@ -89,8 +102,9 @@ class CommentsVC: UIViewController, UITextFieldDelegate {
                     println("Couldn't Vote!")
                     SCLAlertView().showWarning("Error Commenting", subTitle: "Check Your Internet Connection.")
                 }
+                
             }
-                        //NSNotificationCenter.defaultCenter().postNotificationName("load", object: nil)
+            commentField.text = ""
         } else {
             // empty comment -- alert?
         }
@@ -121,7 +135,7 @@ class CommentsVC: UIViewController, UITextFieldDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "CommentsFlow") { //pass data to VC
             var svc = segue.destinationViewController as! Comments
-            svc.parsePassedID = objectIDPost 
+            svc.parsePassedID = objectIDPost
         }
     }
     

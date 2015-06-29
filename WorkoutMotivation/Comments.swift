@@ -122,12 +122,7 @@ class Comments: UICollectionViewController, UICollectionViewDelegateFlowLayout, 
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        self.navigationController?.hidesBarsOnSwipe = true
-        //self.navigationController?.ges
-    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

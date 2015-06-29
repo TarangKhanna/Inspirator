@@ -555,6 +555,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        var recipients2 = [String]()
         if (segue.identifier == "profileView") { //pass data to VC
             var svc = segue.destinationViewController as! profileVC;
             println(selectedName)
@@ -563,11 +564,15 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             //svc.profileObject =
         } else if (segue.identifier == "showComments") { // get notified if you see comment section
             var currentUserId = PFUser.currentUser()?.objectId
+            
+            
             if var recipients = selectedParseObject!["recipients"] as? [String] {  //added to receiver array, real notification on comment adding in commentsVC
+                if !contains(recipients, currentUserId!) {
                 println("fqwgref")
                 println(PFUser.currentUser()?.objectId)
                 recipients.append(currentUserId!)
                 selectedParseObject!["recipients"] = recipients
+                recipients2 = recipients
                 // This will save both myPost and myComment
                 selectedParseObject!.saveInBackgroundWithBlock {
                     (success: Bool, error: NSError?) -> Void in
@@ -579,15 +584,17 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                         SCLAlertView().showWarning("Error Commenting", subTitle: "Check Your Internet Connection.")
                     }
                 }
+                }
             } else {
                 selectedParseObject!["recipients"] = [String]()
-                var recipients2 = selectedParseObject!["recipients"] as? [String]
-                recipients2?.append(currentUserId!)
-                
+                var recipients3 = selectedParseObject!["recipients"] as? [String]
+                recipients3?.append(currentUserId!)
+                recipients2 = recipients3!
                 selectedParseObject!["recipients"] = recipients2
                 selectedParseObject!.saveInBackgroundWithBlock {
                     (success: Bool, error: NSError?) -> Void in
                     if (success) {
+                        
                     } else {
                         println("Couldn't Vote!")
                         SCLAlertView().showWarning("Error Commenting", subTitle: "Check Your Internet Connection.")
@@ -599,6 +606,9 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             
             if let parseID = selectedParseObjectId as String?{
                 svc.objectIDPost = parseID
+                svc.recipients = recipients2
+                println("herrrwerew")
+                println(recipients2)
             }
         }
     }
