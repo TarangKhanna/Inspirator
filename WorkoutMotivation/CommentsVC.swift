@@ -53,12 +53,16 @@ class CommentsVC: UIViewController, UITextFieldDelegate {
         var collection = self.childViewControllers[0] as! Comments
         var item = collection.collectionView(collection.collectionView!, numberOfItemsInSection: 0) - 1
         var lastItemIndex = NSIndexPath(forItem: item, inSection: 0)
+        if lastItemIndex.row != -1 {
         collection.collectionView?.scrollToItemAtIndexPath(lastItemIndex, atScrollPosition: UICollectionViewScrollPosition.Top, animated: false)
+        }
+        
         if let userInfo = notification.userInfo {
             if let keyboardSize = (userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
                 kbHeight = keyboardSize.height
                 //self.animateTextField(true)
             }
+       // }
         }
         animateViewMoving(true, moveValue: kbHeight)
     }

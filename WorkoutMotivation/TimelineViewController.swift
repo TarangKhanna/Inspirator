@@ -514,12 +514,23 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             var seconds = self.createdAt[indexPath.row]*60
             var temp = seconds
             var timeAgo = (seconds/60) // + " m ago"
-            var ending = " Min"
-            if timeAgo >= 60 {
+            var ending = " min"
+            var setAlready = false
+            if timeAgo >= 60 { // min now
                 timeAgo = (temp / 3600)
-                ending = " H"
+                ending = " hrs"
+                if timeAgo >= 24 {
+                    timeAgo = timeAgo / 24
+                    ending = " days"
+                    if timeAgo == 1 {
+                        setAlready = true
+                        cell.dateLabel.text = "yesterday"
+                    }
+                }
             }
-            cell.dateLabel.text = String(timeAgo) + ending
+            if !setAlready {
+                cell.dateLabel.text = String(timeAgo) + ending
+            }
             cell.dateLabel.textColor = UIColor.whiteColor()
             cell.scoreLabel.textColor = UIColor.greenColor()
             cell.scoreLabel.text = "[" + String(self.score[indexPath.row]) + "]"
