@@ -86,9 +86,9 @@ class PicUpload: UIViewController,UITextFieldDelegate, UINavigationControllerDel
     
     override func viewWillAppear(animated: Bool) {
         
-        originalImage.contentMode = UIViewContentMode.Center
-        
-        imageToFilter.contentMode = UIViewContentMode.Center
+//        originalImage.contentMode = UIViewContentMode.Center
+//        
+//        imageToFilter.contentMode = UIViewContentMode.Center
         
         //uploadBtn.hidden = true
         
@@ -173,6 +173,18 @@ class PicUpload: UIViewController,UITextFieldDelegate, UINavigationControllerDel
     }
     
     
+    
+    @IBAction func camera(sender: AnyObject) {
+        var picker = UIImagePickerController()
+        picker.allowsEditing = false
+        picker.sourceType = UIImagePickerControllerSourceType.Camera
+        picker.delegate = self
+        picker.allowsEditing = false
+        picker.cameraCaptureMode = .Photo
+        
+        presentViewController(picker, animated: true, completion: nil)
+        
+    }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         

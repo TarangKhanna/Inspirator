@@ -21,6 +21,10 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     
     @IBOutlet var postData: MKTextField!
     @IBOutlet var tableView : SBGestureTableView!
+    
+    @IBOutlet weak var menuBarButton: UIBarButtonItem!
+    
+    
     @IBOutlet var menuItem : UIBarButtonItem!
     @IBOutlet var statusLabel: UILabel!
     var selectedParseObjectId = String()
@@ -69,6 +73,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     var currentUserId : String? = nil
     
     override func viewWillAppear(animated: Bool) {
+        self.navigationController!.navigationBar.hidden = false
         currentUser = PFUser.currentUser()!.username
         currentUserId = PFUser.currentUser()?.objectId
         if currentUser == nil{
@@ -182,6 +187,11 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false
+        if self.revealViewController() != nil {
+            menuBarButton.target = self.revealViewController()
+            menuBarButton.action = "revealToggle:"
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
         //        postData.layer.borderColor = UIColor.clearColor().CGColor
         //        postData.placeholder = "Placeholder"
         //        postData.tintColor = UIColor.grayColor()
@@ -549,6 +559,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         println(imageIndex)
         performSegueWithIdentifier("profileView", sender: self)
     }
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         selectedName = userArray[indexPath.row]
@@ -560,7 +571,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         //let destinationVC = profileVC()
         //destinationVC.name = selectedName
         //ce
-        println("selected")
+        
         println(indexPath.row)
         performSegueWithIdentifier("showComments", sender: self)
     }
@@ -579,22 +590,22 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             
             if var recipients = selectedParseObject!["recipients"] as? [String] {  //added to receiver array, real notification on comment adding in commentsVC
                 if !contains(recipients, currentUserId!) {
-                println("fqwgref")
-                println(PFUser.currentUser()?.objectId)
-                recipients.append(currentUserId!)
-                selectedParseObject!["recipients"] = recipients
-                recipients2 = recipients
-                // This will save both myPost and myComment
-                selectedParseObject!.saveInBackgroundWithBlock {
-                    (success: Bool, error: NSError?) -> Void in
-                    if (success) {
-                        
-                        // update cell locally atleast and maybe not call self.retrieve
-                    } else {
-                        println("Couldn't subscribe!")
-                        SCLAlertView().showWarning("Error Commenting", subTitle: "Check Your Internet Connection.")
+                    println("fqwgref")
+                    println(PFUser.currentUser()?.objectId)
+                    recipients.append(currentUserId!)
+                    selectedParseObject!["recipients"] = recipients
+                    recipients2 = recipients
+                    // This will save both myPost and myComment
+                    selectedParseObject!.saveInBackgroundWithBlock {
+                        (success: Bool, error: NSError?) -> Void in
+                        if (success) {
+                            
+                            // update cell locally atleast and maybe not call self.retrieve
+                        } else {
+                            println("Couldn't subscribe!")
+                            SCLAlertView().showWarning("Error Commenting", subTitle: "Check Your Internet Connection.")
+                        }
                     }
-                }
                 }
             } else {
                 selectedParseObject!["recipients"] = [String]()
@@ -612,7 +623,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                     }
                 }
             }
-
+            
             var svc = segue.destinationViewController.topViewController as! CommentsVC // nav controller in between
             
             if let parseID = selectedParseObjectId as String?{
@@ -630,9 +641,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     //self.modalPresentationStyle = UIModalPresentationStyle.Custom
     //toViewController.transitioningDelegate = self.transitionOperator
     //  }
-    override func prefersStatusBarHidden() -> Bool {
-        return true
-    }
+    
     
     func didSelectMenuOptionAtIndex(row : NSInteger) {
         println(row)
@@ -670,58 +679,59 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     }
     
     @IBAction func post(sender: AnyObject) {
-        let alert = SCLAlertView() // input dialog
-        let txt = alert.addTextField(title:"Enter Your Thoughts")
-        alert.addButton("Post") {
-            println("Text value: \(txt.text)")
-            if txt.text != " " && txt.text != nil && !txt.text.isEmpty {
-                var person = PFObject(className:"Person")
-                self.containsImage.append(false)
-                self.parseObject = person
-                person["score"] = 0
-                person["username"] = PFUser.currentUser()?.username
-                person["admin"] = true
-                person["text"] = txt.text
-                person["startTime"] = CFAbsoluteTimeGetCurrent()
-                person["votedBy"] = []
-                
-                person.saveInBackgroundWithBlock {
-                    (success: Bool, error: NSError?) -> Void in
-                    if (success) {
-                        self.retrieve()
-                        let query = PFInstallation.query()
-                        if let query = query { // non intrusive
-                            //query.whereKey("channels", equalTo: "suitcaseOwners")
-                            query.whereKey("deviceType", equalTo: "ios")
-                            let iOSPush = PFPush()
-                            iOSPush.setMessage("General: " + txt.text)
-                            //iOSPush.setChannel("suitcaseOwners")
-                            iOSPush.setQuery(query)
-                            iOSPush.sendPushInBackground()
-                        }
-                    } else {
-                        println("Couldn't post!")
-                        SCLAlertView().showWarning("Error Posting", subTitle: "Check Your Internet Connection.")
-                    }
-                }
-            } else {
-                // empty post
-                SCLAlertView().showWarning("Error Posting", subTitle: "You need to write something in your post.")
-                //SCLAlertView().showWarning("Error Posting", subTitle: "You need to write something in your post.", closeButtonTitle: "Cancel")
-                //self.post(self)
-            }
-            // parse
-            //self.retrieve()
-        }
-        alert.showEdit("Post", subTitle:"Type Something Inspirational:", closeButtonTitle: "Cancel")
+        //let alert = SCLAlertView() // input dialog
+        //let txt = alert.addTextField(title:"Enter Your Thoughts")
+        //alert.addButton("Post") {
         
+//        println("Text value: \(txt.text)")
+//        if txt.text != " " && txt.text != nil && !txt.text.isEmpty {
+//            var person = PFObject(className:"Person")
+//            self.containsImage.append(false)
+//            self.parseObject = person
+//            person["score"] = 0
+//            person["username"] = PFUser.currentUser()?.username
+//            person["admin"] = true
+//            person["text"] = txt.text
+//            person["startTime"] = CFAbsoluteTimeGetCurrent()
+//            person["votedBy"] = []
+//            
+//            person.saveInBackgroundWithBlock {
+//                (success: Bool, error: NSError?) -> Void in
+//                if (success) {
+//                    self.retrieve()
+//                    let query = PFInstallation.query()
+//                    if let query = query { // non intrusive
+//                        //query.whereKey("channels", equalTo: "suitcaseOwners")
+//                        query.whereKey("deviceType", equalTo: "ios")
+//                        let iOSPush = PFPush()
+//                        iOSPush.setMessage("General: " + txt.text)
+//                        //iOSPush.setChannel("suitcaseOwners")
+//                        iOSPush.setQuery(query)
+//                        iOSPush.sendPushInBackground()
+//                    }
+//                } else {
+//                    println("Couldn't post!")
+//                    SCLAlertView().showWarning("Error Posting", subTitle: "Check Your Internet Connection.")
+//                }
+//            }
+//        } else {
+//            // empty post
+//            SCLAlertView().showWarning("Error Posting", subTitle: "You need to write something in your post.")
+//            //SCLAlertView().showWarning("Error Posting", subTitle: "You need to write something in your post.", closeButtonTitle: "Cancel")
+//            //self.post(self)
+//        }
+        // parse
+        //self.retrieve()
+        //}
+        //alert.showEdit("Post", subTitle:"Type Something Inspirational:", closeButtonTitle: "Cancel")
+        
+        //}
+        
+        
+        //func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        //  var ns = self.messages[indexPath.row] as NSString
+        // ns.sizeWithAttributes(ns)
+        //}
     }
-    
-    
-    //func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-    //  var ns = self.messages[indexPath.row] as NSString
-    // ns.sizeWithAttributes(ns)
-    //}
-    
 }
 

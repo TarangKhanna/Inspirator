@@ -11,9 +11,9 @@ import Parse
 
 class MenuController: UITableViewController {
     
-    @IBOutlet weak var sectionView: UIView!
     @IBOutlet weak var userPhoto: AvatarImageView!
     @IBOutlet weak var usernameLabel: UILabel!
+    
     
     override func viewWillAppear(animated: Bool) {
         var currentUser = PFUser.currentUser()
@@ -43,6 +43,10 @@ class MenuController: UITableViewController {
 //        }
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.MKColor.Red
@@ -53,12 +57,7 @@ class MenuController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-    
-    func handleTap(sender: AnyObject
-        ) {
-            sectionView.backgroundColor = UIColor.MKColor.Green
-            println("wefw")
-    }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

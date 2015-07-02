@@ -54,6 +54,7 @@
 		718AAE0F1B453D8F0028697D /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718AAE0E1B453D8F0028697D /* MenuController.swift */; };
 		718AAE161B454B900028697D /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 718AAE151B454B900028697D /* SWRevealViewController.m */; };
 		718AAE191B454C980028697D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 718AAE181B454C980028697D /* MapKit.framework */; };
+		718AAE231B45946D0028697D /* postingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718AAE221B45946D0028697D /* postingViewController.swift */; };
 		719D53801B046D6900DD34CD /* MotivationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719D537F1B046D6900DD34CD /* MotivationCell.swift */; };
 		719D538A1B066E1900DD34CD /* NavigationControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719D53891B066E1900DD34CD /* NavigationControl.swift */; };
 		719D538C1B06743400DD34CD /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719D538B1B06743400DD34CD /* SignUpVC.swift */; };
@@ -196,6 +197,7 @@
 		718AAE141B454B900028697D /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		718AAE151B454B900028697D /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		718AAE181B454C980028697D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		718AAE221B45946D0028697D /* postingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = postingViewController.swift; sourceTree = "<group>"; };
 		719D537F1B046D6900DD34CD /* MotivationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotivationCell.swift; sourceTree = "<group>"; };
 		719D53891B066E1900DD34CD /* NavigationControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationControl.swift; path = WorkoutMotivation/NavigationControl.swift; sourceTree = "<group>"; };
 		719D538B1B06743400DD34CD /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpVC.swift; path = WorkoutMotivation/SignUpVC.swift; sourceTree = "<group>"; };
@@ -345,6 +347,7 @@
 			isa = PBXGroup;
 			children = (
 				716B874D1B152E9D00B7E955 /* TimelineViewController.swift */,
+				718AAE221B45946D0028697D /* postingViewController.swift */,
 				718AAE0E1B453D8F0028697D /* MenuController.swift */,
 				7109A8EA1B04306900435D3C /* MotivateVC.swift */,
 				71691B911B3B05DB005B6C32 /* CommentsVC.swift */,
@@ -716,6 +719,7 @@
 				719D538E1B068FC100DD34CD /* Motivate.swift in Sources */,
 				71C553781B2801A500357D8A /* AsyncImageView.swift in Sources */,
 				71C5538E1B2801A500357D8A /* SpringTextView.swift in Sources */,
+				718AAE231B45946D0028697D /* postingViewController.swift in Sources */,
 				71AF79CD1B17D272007953CD /* TWTButton.swift in Sources */,
 				71CEE61A1B13089200E85AA2 /* MKLayer.swift in Sources */,
 				71C553771B2801A500357D8A /* AsyncButton.swift in Sources */,
