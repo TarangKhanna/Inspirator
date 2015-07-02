@@ -33,7 +33,8 @@ class CommentsVC: UIViewController, UITextFieldDelegate {
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "loginBG.png")!)
         SwiftSpinner.show("Connecting to Matrix...")
         commentField.layer.borderColor = UIColor.clearColor().CGColor
-        commentField.placeholder = "Placeholder"
+        commentField.attributedPlaceholder = NSAttributedString(string:"Type here...",
+            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
         commentField.tintColor = UIColor.MKColor.Red
         commentField.delegate = self
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)

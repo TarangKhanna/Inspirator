@@ -58,7 +58,6 @@ class PicUpload: UIViewController,UITextFieldDelegate, UINavigationControllerDel
     
     
     
-    @IBOutlet var textLabel: UILabel!
     
     @IBOutlet weak var filtersScrollView: UIScrollView!
     
@@ -92,8 +91,6 @@ class PicUpload: UIViewController,UITextFieldDelegate, UINavigationControllerDel
         
         //uploadBtn.hidden = true
         
-        textLabel.hidden = true
-        
         text.hidden = true
         
     }
@@ -104,11 +101,10 @@ class PicUpload: UIViewController,UITextFieldDelegate, UINavigationControllerDel
         
         uploadBtn.hidden = false
         
-        textLabel.hidden = false
         
         //text.hidden = false
         
-        textLabel.bringSubviewToFront(view)
+        //textLabel.bringSubviewToFront(view)
         
         UIView.animateWithDuration(1, animations: {self.text.hidden = false})
         
