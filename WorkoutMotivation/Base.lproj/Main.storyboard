@@ -1919,7 +1919,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CEh-r8-7Ud" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="584.5" y="1148.5"/>
+            <point key="canvasLocation" x="564.5" y="1344.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="21y-vC-9Ai">
@@ -2205,7 +2205,7 @@
                                                     <rect key="frame" x="0.0" y="40" width="600" height="213"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile-pic-1" translatesAutoresizingMaskIntoConstraints="NO" id="8Hp-wK-4CD" customClass="AvatarImageView" customModule="WorkoutMotivation" customModuleProvider="target">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Hp-wK-4CD" customClass="AvatarImageView" customModule="WorkoutMotivation" customModuleProvider="target">
                                                     <rect key="frame" x="18" y="4" width="35" height="35"/>
                                                 </imageView>
                                             </subviews>
@@ -2223,6 +2223,10 @@
                         </connections>
                     </tableView>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="userPhoto" destination="8Hp-wK-4CD" id="Wy4-sA-hk2"/>
+                        <outlet property="usernameLabel" destination="GHU-ng-xVN" id="BBk-Dq-IQh"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Arc-Ny-J3n" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="4Mp-tl-kZf">
@@ -2253,7 +2257,7 @@
         <image name="up" width="30" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Vsi-KR-OSE"/>
+        <segue reference="I2L-5u-1XG"/>
         <segue reference="nfZ-5d-aso"/>
         <segue reference="Udb-FK-6c5"/>
         <segue reference="WVb-AW-T6s"/>

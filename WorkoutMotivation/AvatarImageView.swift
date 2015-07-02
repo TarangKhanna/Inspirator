@@ -6,6 +6,6 @@ class AvatarImageView: UIImageView {
         self.clipsToBounds = true
         self.layer.cornerRadius = self.layer.frame.size.width / 2 //10.0
         self.layer.borderColor = UIColor.whiteColor().CGColor
-        self.layer.borderWidth = 3.0
+        self.layer.borderWidth = 1.0
     }
 }

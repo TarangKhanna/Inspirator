@@ -136,6 +136,7 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UITextFieldDe
             //                // other fields can be set just like with PFObject
             //                user["phone"] = "415-392-0202"
             //
+            //var collection = self.childViewControllers[0] as! Comments
             user.signUpInBackgroundWithBlock {
                 (succeeded: Bool, error: NSError?) -> Void in
                 if let error = error {
@@ -258,9 +259,12 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UITextFieldDe
         
         post["username"] = PFUser.currentUser()?.username
         
-        let imageData = UIImagePNGRepresentation(imageToPost.image)
         
-        let imageFile = PFFile(name: "image.png", data: imageData)
+        let imageData = imageToPost.image!.mediumQualityJPEGNSData as NSData?
+            
+        //let imageData = UIImagePNGRepresentation(imageToPost.image)
+        
+        let imageFile = PFFile(name: "image.png", data: imageData!)
         
         post["imageFile"] = imageFile
         
@@ -287,3 +291,5 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UITextFieldDe
         
     }
 }
+
+

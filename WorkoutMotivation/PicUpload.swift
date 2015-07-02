@@ -422,7 +422,7 @@ class PicUpload: UIViewController,UITextFieldDelegate, UINavigationControllerDel
             
             println("Image size is \(imageSize)Mb")
             
-            if imageSize < 9.9 {
+            if imageSize < 5 {
                 
                 if let imageFile = PFFile(name: "image.png", data: imageData) as PFFile? {
                     
