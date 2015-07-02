@@ -23,13 +23,14 @@ class CommentsVC: UIViewController, UITextFieldDelegate {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.navigationController?.hidesBarsOnSwipe = true
+        //self.navigationController?.hidesBarsOnSwipe = true
         //self.navigationController?.ges
     }
     
     var kbHeight = CGFloat()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "loginBG.png")!)
         SwiftSpinner.show("Connecting to Matrix...")
         commentField.layer.borderColor = UIColor.clearColor().CGColor
         commentField.placeholder = "Placeholder"

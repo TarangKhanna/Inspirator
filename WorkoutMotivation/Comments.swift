@@ -173,6 +173,7 @@ class Comments: UICollectionViewController, UICollectionViewDelegateFlowLayout, 
         
         cell.nameBtn.setTitle(userArray[indexPath.row], forState: UIControlState.Normal) //name[indexPath.row]
         cell.textView.text = messages[indexPath.row] // comment
+        //cell.textView.text
         return cell
     }
     
