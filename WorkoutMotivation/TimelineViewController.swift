@@ -349,6 +349,9 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             
             indexPathStore = indexPath
             let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCellPhoto") as! SBGestureTableViewCell
+            if cell == nil {
+                cell = SBGestureTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "TimelineCellPhoto")
+            }
             let size = CGSizeMake(30, 30)
             
             // get profile pic
