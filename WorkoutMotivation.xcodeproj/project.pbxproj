@@ -51,6 +51,11 @@
 		716B874F1B152E9D00B7E955 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B874D1B152E9D00B7E955 /* TimelineViewController.swift */; };
 		71865A3F1B3D9B43009EFE19 /* CoverFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71865A3E1B3D9B43009EFE19 /* CoverFlow.swift */; };
 		71865A411B3D9BD5009EFE19 /* DiscoverGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71865A401B3D9BD5009EFE19 /* DiscoverGroupsViewController.swift */; };
+		718AAE0F1B453D8F0028697D /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718AAE0E1B453D8F0028697D /* MenuController.swift */; };
+		718AAE121B454A840028697D /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718AAE101B454A840028697D /* NewsTableViewController.swift */; };
+		718AAE131B454A840028697D /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718AAE111B454A840028697D /* NewsTableViewCell.swift */; };
+		718AAE161B454B900028697D /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 718AAE151B454B900028697D /* SWRevealViewController.m */; };
+		718AAE191B454C980028697D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 718AAE181B454C980028697D /* MapKit.framework */; };
 		719D53801B046D6900DD34CD /* MotivationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719D537F1B046D6900DD34CD /* MotivationCell.swift */; };
 		719D538A1B066E1900DD34CD /* NavigationControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719D53891B066E1900DD34CD /* NavigationControl.swift */; };
 		719D538C1B06743400DD34CD /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719D538B1B06743400DD34CD /* SignUpVC.swift */; };
@@ -147,7 +152,7 @@
 		7109A8E31B04306900435D3C /* WorkoutMotivation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkoutMotivation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7109A8E71B04306900435D3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7109A8E81B04306900435D3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7109A8EA1B04306900435D3C /* MotivateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MotivateVC.swift; path = WorkoutMotivation/MotivateVC.swift; sourceTree = "<group>"; };
+		7109A8EA1B04306900435D3C /* MotivateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotivateVC.swift; sourceTree = "<group>"; };
 		7109A8ED1B04306900435D3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7109A8EF1B04306900435D3C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7109A8F21B04306900435D3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -189,6 +194,12 @@
 		716B874D1B152E9D00B7E955 /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		71865A3E1B3D9B43009EFE19 /* CoverFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoverFlow.swift; sourceTree = "<group>"; };
 		71865A401B3D9BD5009EFE19 /* DiscoverGroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverGroupsViewController.swift; sourceTree = "<group>"; };
+		718AAE0E1B453D8F0028697D /* MenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
+		718AAE101B454A840028697D /* NewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
+		718AAE111B454A840028697D /* NewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		718AAE141B454B900028697D /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		718AAE151B454B900028697D /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		718AAE181B454C980028697D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		719D537F1B046D6900DD34CD /* MotivationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotivationCell.swift; sourceTree = "<group>"; };
 		719D53891B066E1900DD34CD /* NavigationControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationControl.swift; path = WorkoutMotivation/NavigationControl.swift; sourceTree = "<group>"; };
 		719D538B1B06743400DD34CD /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpVC.swift; path = WorkoutMotivation/SignUpVC.swift; sourceTree = "<group>"; };
@@ -251,7 +262,7 @@
 		71C553DD1B2ACBD900357D8A /* foundation-icons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "foundation-icons.ttf"; sourceTree = "<group>"; };
 		71C553DE1B2ACBD900357D8A /* ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ionicons.ttf; sourceTree = "<group>"; };
 		71C553DF1B2ACBD900357D8A /* zocial-regular-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "zocial-regular-webfont.ttf"; sourceTree = "<group>"; };
-		71C553EC1B2B3DC400357D8A /* AnimateTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimateTransition.swift; sourceTree = "<group>"; };
+		71C553EC1B2B3DC400357D8A /* AnimateTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnimateTransition.swift; path = WorkoutMotivation/AnimateTransition.swift; sourceTree = "<group>"; };
 		71C553F01B2B464B00357D8A /* NavigationControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerDelegate.swift; sourceTree = "<group>"; };
 		71CEE5F21B1283F000E85AA2 /* CardioVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardioVC.swift; path = WorkoutMotivation/CardioVC.swift; sourceTree = "<group>"; };
 		71CEE5F51B12BB8100E85AA2 /* StudyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyVC.swift; sourceTree = "<group>"; };
@@ -283,6 +294,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				718AAE191B454C980028697D /* MapKit.framework in Frameworks */,
 				716B873F1B15292700B7E955 /* libsqlite3.dylib in Frameworks */,
 				716B873D1B15291F00B7E955 /* libz.dylib in Frameworks */,
 				716B873B1B15291300B7E955 /* SystemConfiguration.framework in Frameworks */,
@@ -337,20 +349,23 @@
 			isa = PBXGroup;
 			children = (
 				716B874D1B152E9D00B7E955 /* TimelineViewController.swift */,
+				7109A8EA1B04306900435D3C /* MotivateVC.swift */,
 				71691B911B3B05DB005B6C32 /* CommentsVC.swift */,
 				7128F3D71B39DA750092094B /* Comments.swift */,
 				71561D001B1FD6A70052B5F7 /* PostImageViewController.swift */,
 				71AF79C51B17D1F1007953CD /* profileVC.swift */,
 				7109A8EC1B04306900435D3C /* Main.storyboard */,
+				718AAE101B454A840028697D /* NewsTableViewController.swift */,
+				718AAE111B454A840028697D /* NewsTableViewCell.swift */,
 				710394F51B22ADB800F01B5B /* LayoutController.swift */,
 				71EE7A871B349587000EA33E /* FriendController.swift */,
-				71C553EC1B2B3DC400357D8A /* AnimateTransition.swift */,
 				71C553941B281D8500357D8A /* PicUpload.swift */,
 				71865A401B3D9BD5009EFE19 /* DiscoverGroupsViewController.swift */,
 				71865A3E1B3D9B43009EFE19 /* CoverFlow.swift */,
 				71C553F01B2B464B00357D8A /* NavigationControllerDelegate.swift */,
 				7109A8E81B04306900435D3C /* AppDelegate.swift */,
 				710394F91B22BB6300F01B5B /* layoutPost.swift */,
+				718AAE0E1B453D8F0028697D /* MenuController.swift */,
 				71CEE5F41B12BA7E00E85AA2 /* VC's */,
 				7109A8EF1B04306900435D3C /* Images.xcassets */,
 				7128A9891B0B17590035C41E /* Button.xcassets */,
@@ -363,6 +378,7 @@
 		7109A8E61B04306900435D3C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				718AAE171B454B930028697D /* SWRevealViewController */,
 				71D8762C1B2DFD1B0095A1B4 /* SwiftSpinner.swift */,
 				71CEE60B1B12CBEA00E85AA2 /* VCFloatingButton */,
 				71C553D01B2ACB1E00357D8A /* SBGestureTableView */,
@@ -410,6 +426,7 @@
 		716B87401B1529B300B7E955 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				718AAE181B454C980028697D /* MapKit.framework */,
 				716B87411B152A1D00B7E955 /* ParseCrashReporting.framework */,
 				716B87421B152A1D00B7E955 /* Parse.framework */,
 				716B87431B152A1D00B7E955 /* ParseFacebookUtils.framework */,
@@ -445,6 +462,15 @@
 				71CEE6101B13087900E85AA2 /* MKTextField.swift */,
 			);
 			name = MaterialKit;
+			sourceTree = "<group>";
+		};
+		718AAE171B454B930028697D /* SWRevealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				718AAE141B454B900028697D /* SWRevealViewController.h */,
+				718AAE151B454B900028697D /* SWRevealViewController.m */,
+			);
+			name = SWRevealViewController;
 			sourceTree = "<group>";
 		};
 		71AF79F71B192F9F007953CD /* Pull to refresh */ = {
@@ -533,11 +559,11 @@
 				7135F2C01B0800FD002ACD53 /* WeightsVC.swift */,
 				71691B851B39DC8D005B6C32 /* CollectionViewCellComments.swift */,
 				7128A91D1B087F670035C41E /* ProgrammingVC.swift */,
+				71C553EC1B2B3DC400357D8A /* AnimateTransition.swift */,
 				71CEE5F51B12BB8100E85AA2 /* StudyVC.swift */,
 				7128A9531B0A93C30035C41E /* PureVC.swift */,
 				71D803F71B0E8B3D0072541D /* loginVC.swift */,
 				719D538B1B06743400DD34CD /* SignUpVC.swift */,
-				7109A8EA1B04306900435D3C /* MotivateVC.swift */,
 				710394F71B22ADC700F01B5B /* CollectionViewCell.swift */,
 				71EE7A891B3496AA000EA33E /* CollectionViewCell2.swift */,
 				7128A91F1B087FF70035C41E /* ProgrammingQuotes.swift */,
@@ -713,9 +739,11 @@
 				71C553E31B2ACBD900357D8A /* FAKIonIcons.m in Sources */,
 				71C553951B281D8500357D8A /* PicUpload.swift in Sources */,
 				71C553CF1B2ACB1800357D8A /* SBGestureTableViewCellSideView.swift in Sources */,
+				718AAE131B454A840028697D /* NewsTableViewCell.swift in Sources */,
 				71C553831B2801A500357D8A /* DesignableTabBarController.swift in Sources */,
 				7128F3D81B39DA750092094B /* Comments.swift in Sources */,
 				71C553CC1B2ACB1800357D8A /* SBGestureTableView.swift in Sources */,
+				718AAE0F1B453D8F0028697D /* MenuController.swift in Sources */,
 				71C553ED1B2B3DC400357D8A /* AnimateTransition.swift in Sources */,
 				71C553CD1B2ACB1800357D8A /* SBGestureTableViewCell.swift in Sources */,
 				71C553E21B2ACBD900357D8A /* FAKIcon.m in Sources */,
@@ -752,11 +780,13 @@
 				71C553921B2801A500357D8A /* UnwindSegue.swift in Sources */,
 				710394F61B22ADB800F01B5B /* LayoutController.swift in Sources */,
 				71142A761B0DCE0900AB3600 /* SocialVC.swift in Sources */,
+				718AAE161B454B900028697D /* SWRevealViewController.m in Sources */,
 				71C5537E1B2801A500357D8A /* DesignableImageView.swift in Sources */,
 				71CEE5F31B1283F000E85AA2 /* CardioVC.swift in Sources */,
 				71C5537A1B2801A500357D8A /* LoadingView.swift in Sources */,
 				71AF79C61B17D1F1007953CD /* profileVC.swift in Sources */,
 				71AF79CB1B17D272007953CD /* AvatarImageView.swift in Sources */,
+				718AAE121B454A840028697D /* NewsTableViewController.swift in Sources */,
 				71C553851B2801A500357D8A /* KeyboardLayoutConstraint.swift in Sources */,
 				71C553911B2801A500357D8A /* TransitionZoom.swift in Sources */,
 				71CEE60F1B13085700E85AA2 /* TextFieldViewController.swift in Sources */,
@@ -846,7 +876,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -886,7 +916,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -907,7 +937,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = WorkoutMotivation/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "520cbc1b-5121-456b-b0ad-0d16e18c51b9";
@@ -929,7 +959,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = WorkoutMotivation/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "520cbc1b-5121-456b-b0ad-0d16e18c51b9";

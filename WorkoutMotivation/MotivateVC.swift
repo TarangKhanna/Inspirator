@@ -25,13 +25,36 @@ class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var filterBtn: UIButton!
+    
+    @IBOutlet weak var menuButton: UIBarButtonItem!
+    
+    
     let manager = DataSource()
     var motivate = []
     let userDefaults = NSUserDefaults.standardUserDefaults()
     
+    var currentUser : String? = nil
+    var currentUserId : String? = nil
+    
+    override func viewWillAppear(animated: Bool) {
+        currentUser = PFUser.currentUser()!.username
+        currentUserId = PFUser.currentUser()?.objectId
+        if currentUser == nil{
+            //signin vc
+            performSegueWithIdentifier("signIn", sender: self)
+        } else {
+            //println(PFUser.currentUser()?.username)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.motivate = manager.getMotivated()
+        if self.revealViewController() != nil {
+            menuButton.target = self.revealViewController()
+            menuButton.action = "revealToggle:"
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
         //self.navigationController?.navigationBar.hidden = false
         //let navBar = self.navigationController!.navigationBar
         //navBar.barTintColor = UIColor(red: 65.0 / 255.0, green: 62.0 / 255.0, blue: 79.0 / 255.0, alpha: 1)
