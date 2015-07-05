@@ -37,13 +37,10 @@ class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     var currentUserId : String? = nil
     
     override func viewWillAppear(animated: Bool) {
-        currentUser = PFUser.currentUser()!.username
-        currentUserId = PFUser.currentUser()?.objectId
-        if currentUser == nil{
-            //signin vc
-            performSegueWithIdentifier("signIn", sender: self)
+        if let currentUser = PFUser.currentUser()?.username {
+            currentUserId = PFUser.currentUser()?.objectId
         } else {
-            //println(PFUser.currentUser()?.username)
+            performSegueWithIdentifier("signIn96", sender: self)
         }
     }
     
@@ -147,7 +144,9 @@ class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         if(indexPath.row == 0) {
             //WeightsVC.view.backgroundColor = UIColor.greenColor()
-            performSegueWithIdentifier("Cardio", sender: self)
+            //performSegueWithIdentifier("Cardio", sender: self)
+            SCLAlertView().showInfo("In Test", subTitle: "This feature is uncertain, provide feedback by testing the Weight section!")
+        } else if(indexPath.row == 1) {
             println(userDefaults.valueForKey("shown")!)
             var shown2: Bool = userDefaults.valueForKey("shown")!.boolValue
             if shown2 {
@@ -155,24 +154,23 @@ class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             } else {
                 println("FALSE!!")
                 // do something here when a highscore exists
-                SCLAlertView().showInfo(kInfoTitle, subTitle: kSubtitle)
+                //SCLAlertView().showInfo(kInfoTitle, subTitle: kSubtitle)
                 //shown = true
                 userDefaults.setValue(true, forKey: "shown")
                 userDefaults.synchronize()
             }
-        } else if(indexPath.row == 1) {
             //WeightsVC.view.backgroundColor = UIColor.greenColor()
             performSegueWithIdentifier("Weights", sender: self)
-            if(!shown) {
-              SCLAlertView().showInfo(kInfoTitle, subTitle: kSubtitle)
-              shown = true
-            }
+            
         } else if(indexPath.row == 2) {
-            performSegueWithIdentifier("Programming", sender: self)
+            //performSegueWithIdentifier("Programming", sender: self)
+            SCLAlertView().showInfo("In Test", subTitle: "This feature is uncertain, provide feedback by testing the Weight section!")
         } else if(indexPath.row == 3) {
-            performSegueWithIdentifier("Study", sender: self)
+            //performSegueWithIdentifier("Study", sender: self)
+            SCLAlertView().showInfo("In Test", subTitle: "This feature is uncertain, provide feedback by testing the Weight section!")
         } else if(indexPath.row == 4) {
-            performSegueWithIdentifier("Pure", sender: self)
+            //performSegueWithIdentifier("Pure", sender: self)
+            SCLAlertView().showInfo("In Test", subTitle: "This feature is uncertain, provide feedback by testing the Weight section!")
         }
     }
     

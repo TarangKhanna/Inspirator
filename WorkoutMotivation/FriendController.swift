@@ -113,17 +113,17 @@ class FriendController: UICollectionViewController, UICollectionViewDelegateFlow
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier3, forIndexPath: indexPath) as! CollectionViewCell2
-        //cell.title.sizeToFit()
-        cell.Image.clipsToBounds = true
-        cell.Image.layer.masksToBounds = true
-        cell.Image.layer.cornerRadius = cell.Image.layer.frame.size.width/2
-        let image42 = self.imageFiles[indexPath.row]
-        image42.getDataInBackgroundWithBlock { (data, error) -> Void in
-            if let downloadedImage2 = UIImage(data: data!) {
-                cell.Image.image = downloadedImage2
-            }
-        }
-        //cell.title.text = messages[indexPath.row]
+//        //cell.title.sizeToFit()
+//        cell.Image.clipsToBounds = true
+//        cell.Image.layer.masksToBounds = true
+//        cell.Image.layer.cornerRadius = cell.Image.layer.frame.size.width/2
+//        let image42 = self.imageFiles[indexPath.row]
+//        image42.getDataInBackgroundWithBlock { (data, error) -> Void in
+//            if let downloadedImage2 = UIImage(data: data!) {
+//                cell.Image.image = downloadedImage2
+//            }
+//        }
+//        //cell.title.text = messages[indexPath.row]
         return cell
     }
     

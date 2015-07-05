@@ -74,13 +74,10 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     
     override func viewWillAppear(animated: Bool) {
         self.navigationController!.navigationBar.hidden = false
-        currentUser = PFUser.currentUser()!.username
+        if let currentUser = PFUser.currentUser()!.username {
         currentUserId = PFUser.currentUser()?.objectId
-        if currentUser == nil{
-            //signin vc
-            performSegueWithIdentifier("signIn", sender: self)
         } else {
-            //println(PFUser.currentUser()?.username)
+            performSegueWithIdentifier("signIn", sender: self)
         }
     }
     
@@ -219,8 +216,34 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         let floatFrame:CGRect = (CGRectMake(UIScreen.mainScreen().bounds.size.width - 44 - 20, UIScreen.mainScreen().bounds.size.height - 44 - 20, 44, 44))
         let actionButton : VCFloatingActionButton = VCFloatingActionButton(frame: floatFrame, normalImage: UIImage(named: "plus.png"), andPressedImage: UIImage(named: "cross.png"), withScrollview: tableView)
         //actionButton.normalImage = UIImage(named: "plus.png")!
+        var currentUser = PFUser.currentUser()?.username
+        // set this image at time of signup / signin
+        var userPhoto = UIImage()
+        var queryUser = PFUser.query() as PFQuery?
+        queryUser!.findObjectsInBackgroundWithBlock {
+            (users: [AnyObject]?, error: NSError?) -> Void in
+            if error == nil {
+                if let users = users as? [PFObject] {
+                    for user in users {
+                        var user2:PFUser = user as! PFUser
+                        if user2.username == self.currentUser
+                        {
+                            var userPhotoFile = user2["ProfilePicture"] as! PFFile
+                            userPhotoFile.getDataInBackgroundWithBlock { (data, error) -> Void in
+                                
+                                if let downloadedImage = UIImage(data: data!) {
+                                    userPhoto  = downloadedImage
+                                    actionButton.imageArray = ["fb-icon.png","twitter-icon.png","google-icon.png","downloadedImage"]
+                                }
+                                
+                            }
+                        }
+                    }
+                }
+            }
+        }
         self.view.addSubview(actionButton)
-        actionButton.imageArray = ["fb-icon.png","twitter-icon.png","google-icon.png","linkedin-icon.png"]
+        
         actionButton.labelArray = ["Facebook","Twitter","Google Plus","Log Out"]
         actionButton.delegate = self
         actionButton.hideWhileScrolling = true

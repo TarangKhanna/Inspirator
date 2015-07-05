@@ -18,7 +18,7 @@ import UIKit
 
 import CoreImage
 import MobileCoreServices
-
+var imagePicker: UIImagePickerController!
 
 
 var CIFilterNames = [
@@ -91,7 +91,6 @@ class PicUpload: UIViewController,UITextFieldDelegate, UINavigationControllerDel
 //        imageToFilter.contentMode = UIViewContentMode.Center
         
         //uploadBtn.hidden = true
-        
         text.hidden = true
         
     }
@@ -172,24 +171,39 @@ class PicUpload: UIViewController,UITextFieldDelegate, UINavigationControllerDel
     
     
     @IBAction func camera(sender: AnyObject) {
-        var picker = UIImagePickerController()
-        picker.allowsEditing = false
-        picker.sourceType = UIImagePickerControllerSourceType.Camera
-        picker.delegate = self
-        picker.allowsEditing = false
-        picker.cameraCaptureMode = .Photo
-        picker.mediaTypes = [kUTTypeImage as String]
-        presentViewController(picker, animated: true, completion: nil)
+//        var picker = UIImagePickerController()
+//        picker.allowsEditing = false
+//        picker.sourceType = UIImagePickerControllerSourceType.Camera
+//        picker.delegate = self
+//        picker.allowsEditing = false
+//        picker.cameraCaptureMode = .Photo
+//        picker.mediaTypes = [kUTTypeImage as String]
+//        presentViewController(picker, animated: true, completion: nil)
+        
+        imagePicker =  UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .Camera
+        
+        presentViewController(imagePicker, animated: true, completion: nil)
         
     }
     
+//    
+//    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+//        imagePicker.dismissViewControllerAnimated(true, completion: nil)
+//        imageToPost.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+//    }
+    
+    
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         
+        println(image)
+        
         imageToFilter.hidden = true
+        var counter = 1
+        
         
         self.dismissViewControllerAnimated(true, completion:nil)
-        
-        
         
         imageToPost.image = image
         
@@ -266,8 +280,12 @@ class PicUpload: UIViewController,UITextFieldDelegate, UINavigationControllerDel
             // Add Buttons in the Scroll View
             
             xCoord +=  buttonWidth + gapBetweenButtons
-            
+            if counter >= 6 {
+                break
+            } else {
             filtersScrollView.addSubview(filterButton)
+            }
+            counter++
             
         } // END LOOP ==========================================================
         

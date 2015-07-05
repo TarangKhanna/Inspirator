@@ -112,8 +112,8 @@ class LayoutController: UICollectionViewController, UICollectionViewDelegateFlow
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        currentMessage = messages[indexPath.row]
-        addCategory()
+        //currentMessage = messages[indexPath.row]
+        //addCategory()
     }
 
     func addCategory() {
