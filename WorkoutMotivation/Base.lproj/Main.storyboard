@@ -940,7 +940,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1190.5" y="-608.5"/>
+            <point key="canvasLocation" x="1256.5" y="-616.5"/>
         </scene>
         <!--Posting View Controller-->
         <scene sceneID="FIG-a3-Cf0">
@@ -980,6 +980,9 @@
                                 <state key="normal" title="Post">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="post:" destination="iFb-aH-r4G" eventType="touchUpInside" id="yR2-dp-SdI"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p2E-CI-9nT">
                                 <rect key="frame" x="16" y="33" width="25" height="25"/>
@@ -996,11 +999,12 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="commentTxtView" destination="GKd-rT-IsN" id="EkH-Gl-UQ8"/>
+                        <segue destination="KBP-Cf-XLc" kind="show" identifier="backToTimeline" id="2sP-qI-fLO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ksN-sv-S4g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2170.5" y="-608.5"/>
+            <point key="canvasLocation" x="2200.5" y="-608.5"/>
         </scene>
         <!--ProfileVC-->
         <scene sceneID="wj0-dc-yr4">
@@ -1156,7 +1160,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gc4-5v-qMb" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1149.5" y="-1554.5"/>
+            <point key="canvasLocation" x="1163.5" y="-1538.5"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="8jX-Un-nY0">
@@ -1520,7 +1524,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NiO-uk-NHJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="617.5" y="-1427.5"/>
+            <point key="canvasLocation" x="609.5" y="-1314.5"/>
         </scene>
         <!--CommentsVC-->
         <scene sceneID="2YX-A9-Kyd">
@@ -1718,39 +1722,6 @@
             </objects>
             <point key="canvasLocation" x="1694.5" y="-608.5"/>
         </scene>
-        <!--Discover Groups View Controller-->
-        <scene sceneID="Ll7-nS-mFg">
-            <objects>
-                <viewController id="cSr-zP-p9C" customClass="DiscoverGroupsViewController" customModule="WorkoutMotivation" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="DNA-Sv-1o3"/>
-                        <viewControllerLayoutGuide type="bottom" id="YEv-bb-24q"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="jmT-sg-O2Q">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xNs-fa-b3L">
-                                <rect key="frame" x="0.0" y="64" width="375" height="187"/>
-                                <connections>
-                                    <segue destination="orA-GD-NUs" kind="embed" id="UI8-Il-nzl"/>
-                                </connections>
-                            </containerView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="YEv-bb-24q" firstAttribute="top" secondItem="xNs-fa-b3L" secondAttribute="bottom" constant="416" id="8xA-hh-cST"/>
-                            <constraint firstAttribute="trailing" secondItem="xNs-fa-b3L" secondAttribute="trailing" id="D9L-Pz-wPa"/>
-                            <constraint firstItem="xNs-fa-b3L" firstAttribute="leading" secondItem="jmT-sg-O2Q" secondAttribute="leading" id="V1W-5M-Xjd"/>
-                            <constraint firstItem="xNs-fa-b3L" firstAttribute="top" secondItem="DNA-Sv-1o3" secondAttribute="bottom" id="o02-3z-Dff"/>
-                        </constraints>
-                    </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lyt-2L-Shu" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="429.5" y="1156.5"/>
-        </scene>
         <!--Comments-->
         <scene sceneID="3HK-oD-vGi">
             <objects>
@@ -1831,56 +1802,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JN4-UE-neK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2715" y="-1554"/>
-        </scene>
-        <!--Cover Flow-->
-        <scene sceneID="yor-nS-4b3">
-            <objects>
-                <collectionViewController id="orA-GD-NUs" customClass="CoverFlow" customModule="WorkoutMotivation" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="g07-IS-T20">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ayG-d3-H8U">
-                            <size key="itemSize" width="180" height="157"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CoverFlow" id="oQE-oR-ULm" customClass="CollectionViewCell2" customModule="WorkoutMotivation" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="180" height="157"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LXT-T5-H1c">
-                                            <rect key="frame" x="-6" y="-6" width="196" height="169"/>
-                                        </imageView>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                                <constraints>
-                                    <constraint firstAttribute="bottomMargin" secondItem="LXT-T5-H1c" secondAttribute="bottom" constant="-14" id="4WU-7t-h8h"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="LXT-T5-H1c" secondAttribute="trailing" constant="-18" id="FJW-FS-Dfn"/>
-                                    <constraint firstItem="LXT-T5-H1c" firstAttribute="top" secondItem="oQE-oR-ULm" secondAttribute="topMargin" constant="-14" id="Mtq-qC-5LQ"/>
-                                    <constraint firstItem="LXT-T5-H1c" firstAttribute="leading" secondItem="oQE-oR-ULm" secondAttribute="leadingMargin" constant="-14" id="ONu-vc-KMs"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="Image" destination="LXT-T5-H1c" id="3Eu-Fm-HAx"/>
-                                </connections>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="orA-GD-NUs" id="S9M-Xq-pg4"/>
-                            <outlet property="delegate" destination="orA-GD-NUs" id="6sg-Nh-Alr"/>
-                        </connections>
-                    </collectionView>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CEh-r8-7Ud" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="854.5" y="1156.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="21y-vC-9Ai">
@@ -2266,7 +2187,7 @@
         <image name="up" width="30" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="JZd-M8-AoU"/>
+        <segue reference="2sP-qI-fLO"/>
         <segue reference="8cE-Yl-DNe"/>
         <segue reference="I2L-5u-1XG"/>
         <segue reference="lxT-7J-e4f"/>

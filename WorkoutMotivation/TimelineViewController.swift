@@ -186,6 +186,8 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //var secondViewController = (segue.destinationViewController.visibleViewController as postingViewController)
+        //secondViewController.delegate = self
         self.automaticallyAdjustsScrollViewInsets = false
         if self.revealViewController() != nil {
             menuBarButton.target = self.revealViewController()
@@ -267,10 +269,12 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     }
     
     func retrieve() {
+        
+        
+        var currentProfileUser = ""
         //UIApplication.sharedApplication().beginIgnoringInteractionEvents()
         if var query = PFQuery(className: "Person") as PFQuery? { //querying parse for user data
             query.orderByDescending("createdAt")
-            //query.whereKey("text", notEqualTo: "")
             query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
                 SwiftSpinner.hide()
                 //UIApplication.sharedApplication().endIgnoringInteractionEvents()
@@ -302,16 +306,20 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                         self.voteObject.append(object)
                         self.ParseObjectId.append((object.objectId! as String?)!)
                         self.messages.append(object["text"] as! String)
-                        self.userArray.append(object["username"] as! String)
+                        currentProfileUser = object["username"] as! String
+                        self.userArray.append(currentProfileUser)
                         self.score.append(object["score"] as! Int)
                         let elapsedTime = CFAbsoluteTimeGetCurrent() - (object["startTime"] as! CFAbsoluteTime)
                         self.duration = Int(elapsedTime/60)
                         self.createdAt.append(self.duration)
                     }
                     self.tableView.reloadData()
+
                 }
             })
         }
+        
+        
         
     }
     
@@ -348,56 +356,64 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             println("PIC")
             
             indexPathStore = indexPath
-            let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCellPhoto") as! SBGestureTableViewCell
+            var cell = tableView.dequeueReusableCellWithIdentifier("TimelineCellPhoto") as? SBGestureTableViewCell
             if cell == nil {
                 cell = SBGestureTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "TimelineCellPhoto")
             }
             let size = CGSizeMake(30, 30)
             
             // get profile pic
-            var queryUser = PFUser.query() as PFQuery?
-            queryUser!.findObjectsInBackgroundWithBlock {
-                (users: [AnyObject]?, error: NSError?) -> Void in
-                //queryUser!.orderByDescending("createdAt")
-                //queryUser!.whereKey("username", equalTo: self.userArray[indexPath.row])
-                if error == nil {
-                    //println("Successfully retrieved \(users!.count) users.")
-                    // Do something with the found users
-                    if let users = users as? [PFObject] {
-                        for user in users {
-                            var user2:PFUser = user as! PFUser
-                            if user2.username == self.userArray[indexPath.row] {
-                                self.profileImageFile = user2["ProfilePicture"] as! PFFile
-                                self.profileImageFile.getDataInBackgroundWithBlock { (data, error) -> Void in
-                                    
-                                    if let downloadedImage = UIImage(data: data!) {
-                                        
-                                        cell.profileImageView.image = downloadedImage
-                                        self.backupImage = downloadedImage
+//            
+//            let profileImage42 = self.profileImageFilesArray[indexPath.row]
+//            profileImage42.getDataInBackgroundWithBlock { (data, error) -> Void in
+//                if let downloadedImage42 = UIImage(data: data!) {
+//                    cell!.profileImageView.image = downloadedImage42
+//                }
+//            }
+            
+                        var queryUser = PFUser.query() as PFQuery?
+                        queryUser!.findObjectsInBackgroundWithBlock {
+                            (users: [AnyObject]?, error: NSError?) -> Void in
+                            //queryUser!.orderByDescending("createdAt")
+                            //queryUser!.whereKey("username", equalTo: self.userArray[indexPath.row])
+                            if error == nil {
+                                //println("Successfully retrieved \(users!.count) users.")
+                                // Do something with the found users
+                                if let users = users as? [PFObject] {
+                                    for user in users {
+                                        var user2:PFUser = user as! PFUser
+                                        if user2.username == self.userArray[indexPath.row] {
+                                            self.profileImageFile = user2["ProfilePicture"] as! PFFile
+                                            self.profileImageFile.getDataInBackgroundWithBlock { (data, error) -> Void in
+            
+                                                if let downloadedImage = UIImage(data: data!) {
+            
+                                                    cell!.profileImageView.image = downloadedImage
+                                                    self.backupImage = downloadedImage
+                                                }
+            
+                                            }
+                                            //self.imageFiles.append(user2["ProfilePictue"] as! PFFile)
+            
+                                        }
                                     }
-                                    
                                 }
-                                //self.imageFiles.append(user2["ProfilePictue"] as! PFFile)
-                                
+                            } else {
+                                println("Error: \(error!) \(error!.userInfo!)")
                             }
                         }
-                    }
-                } else {
-                    println("Error: \(error!) \(error!.userInfo!)")
-                }
-            }
             // got profile pic
             // Profile Tap
-            cell.profileImageView.tag = indexPath.row
+            cell!.profileImageView.tag = indexPath.row
             var tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("profileImageTapped:"))
-            cell.profileImageView.userInteractionEnabled = true
-            cell.profileImageView.addGestureRecognizer(tapGestureRecognizer)
-            cell.firstLeftAction = SBGestureTableViewCellAction(icon: checkIcon.imageWithSize(size), color: greenColor, fraction: 0.3, didTriggerBlock: removeCellBlock)
+            cell!.profileImageView.userInteractionEnabled = true
+            cell!.profileImageView.addGestureRecognizer(tapGestureRecognizer)
+            cell!.firstLeftAction = SBGestureTableViewCellAction(icon: checkIcon.imageWithSize(size), color: greenColor, fraction: 0.3, didTriggerBlock: removeCellBlock)
             //cell.secondLeftAction = SBGestureTableViewCellAction(icon: closeIcon.imageWithSize(size), color: greenColor, fraction: 0.6, didTriggerBlock: removeCellBlock)
-            cell.firstRightAction = SBGestureTableViewCellAction(icon: composeIcon.imageWithSize(size), color: redColor, fraction: 0.3, didTriggerBlock: removeCellBlock)
+            cell!.firstRightAction = SBGestureTableViewCellAction(icon: composeIcon.imageWithSize(size), color: redColor, fraction: 0.3, didTriggerBlock: removeCellBlock)
             //cell.secondRightAction = SBGestureTableViewCellAction(icon: clockIcon.imageWithSize(size), color: redColor, fraction: 0.6, didTriggerBlock: removeCellBlock)
             
-            cell.backgroundColor = UIColor.clearColor()
+            cell!.backgroundColor = UIColor.clearColor()
             //            cell.downVoteBtn.tag = indexPath.row
             //
             //            cell.downVoteBtn.addTarget(self, action: "downVote:", forControlEvents: UIControlEvents.TouchUpInside)
@@ -405,22 +421,22 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             //
             //            cell.upVoteBtn.addTarget(self, action: "upVote:", forControlEvents: UIControlEvents.TouchUpInside)
             let index = indexPath.row % circleColors.count
-            cell.rippleLayerColor = circleColors[index]
+            cell!.rippleLayerColor = circleColors[index]
             let image42 = self.imageFiles[indexPath.row]
             image42.getDataInBackgroundWithBlock { (data, error) -> Void in
                 if let downloadedImage2 = UIImage(data: data!) {
                     //cell.profileImageView.image = downloadedImage
                     //self.backupImage = downloadedImage
                     //self.tableView.insertRowsAtIndexPaths(0, withRowAnimation: UITableViewRowAnimation.Bottom)
-                    cell.typeImageView.image = UIImage(named: "timeline-chat")
-                    cell.photoImageView?.image = downloadedImage2
+                    cell!.typeImageView.image = UIImage(named: "timeline-chat")
+                    cell!.photoImageView?.image = downloadedImage2
                     //cell.profileImageView.image = UIImage(named: "profile-pic-1")
                     var name = self.userArray[indexPath.row]
                     name.replaceRange(name.startIndex...name.startIndex, with: String(name[name.startIndex]).capitalizedString)
-                    cell.nameLabel.text = name
-                    cell.nameLabel.textColor = UIColor.greenColor()
-                    cell.postLabel?.text = self.messages[indexPath.row]
-                    cell.postLabel?.textColor = UIColor.whiteColor()
+                    cell!.nameLabel.text = name
+                    cell!.nameLabel.textColor = UIColor.greenColor()
+                    cell!.postLabel?.text = self.messages[indexPath.row]
+                    cell!.postLabel?.textColor = UIColor.whiteColor()
                     
                     var seconds = self.createdAt[indexPath.row]*60
                     var temp = seconds
@@ -434,80 +450,83 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                             //timeAgo =
                         }
                     }
-                    cell.dateLabel.text = String(timeAgo) + ending
-                    cell.dateLabel.textColor = UIColor.whiteColor()
-                    cell.scoreLabel.textColor = UIColor.greenColor()
-                    cell.scoreLabel.text = "[" + String(self.score[indexPath.row]) + "]"
-                    cell.typeImageView.image = UIImage(named: "timeline-photo")
+                    cell!.dateLabel.text = String(timeAgo) + ending
+                    cell!.dateLabel.textColor = UIColor.whiteColor()
+                    cell!.scoreLabel.textColor = UIColor.greenColor()
+                    cell!.scoreLabel.text = "[" + String(self.score[indexPath.row]) + "]"
+                    cell!.typeImageView.image = UIImage(named: "timeline-photo")
                     //                    cell.postLabel?.text = self.messages[indexPath.row]
                     //                    cell.postLabel?.textColor = UIColor.whiteColor()
                 }
             }
             
             UIView.animateWithDuration(0.5, delay: 0.5, options: UIViewAnimationOptions.CurveEaseOut, animations: {
-                cell.photoImageView!.alpha = 1.0;
+                cell!.photoImageView!.alpha = 1.0;
                 },completion: nil)
-            return cell
+            return cell!
         } else {
             
             println("TEXT")
             
             indexPathStore = indexPath
-            let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCell") as! SBGestureTableViewCell
+            var cell = tableView.dequeueReusableCellWithIdentifier("TimelineCell") as? SBGestureTableViewCell
+            if cell == nil {
+                cell = SBGestureTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "TimelineCell")
+            }
             let size = CGSizeMake(30, 30)
             
             // get profile pic
             
-            var queryUser = PFUser.query() as PFQuery?
-            queryUser!.findObjectsInBackgroundWithBlock {
-                (users: [AnyObject]?, error: NSError?) -> Void in
-                //queryUser!.orderByDescending("createdAt")
-                //queryUser!.whereKey("username", equalTo: self.userArray[indexPath.row])
-                if error == nil {
-                    //println("Successfully retrieved \(users!.count) users.")
-                    // Do something with the found users
-                    if let users = users as? [PFObject] {
-                        for user in users {
-                            var user2:PFUser = user as! PFUser
-                            if user2.username == self.userArray[indexPath.row] {
-                                self.profileImageFile = user2["ProfilePicture"] as! PFFile
-                                self.profileImageFile.getDataInBackgroundWithBlock { (data, error) -> Void in
-                                    
-                                    if let downloadedImage = UIImage(data: data!) {
-                                        
-                                        cell.profileImageView.image = downloadedImage
-                                        self.backupImage = downloadedImage
+                        var queryUser = PFUser.query() as PFQuery?
+                        queryUser!.findObjectsInBackgroundWithBlock {
+                            (users: [AnyObject]?, error: NSError?) -> Void in
+                            //queryUser!.orderByDescending("createdAt")
+                            //queryUser!.whereKey("username", equalTo: self.userArray[indexPath.row])
+                            if error == nil {
+                                //println("Successfully retrieved \(users!.count) users.")
+                                // Do something with the found users
+                                if let users = users as? [PFObject] {
+                                    for user in users {
+                                        var user2:PFUser = user as! PFUser
+                                        if user2.username == self.userArray[indexPath.row] {
+                                            self.profileImageFile = user2["ProfilePicture"] as! PFFile
+                                            self.profileImageFile.getDataInBackgroundWithBlock { (data, error) -> Void in
+            
+                                                if let downloadedImage = UIImage(data: data!) {
+            
+                                                    cell!.profileImageView.image = downloadedImage
+                                                    self.backupImage = downloadedImage
+                                                }
+            
+                                            }
+                                            //self.imageFiles.append(user2["ProfilePictue"] as! PFFile)
+            
+                                        }
                                     }
-                                    
                                 }
-                                //self.imageFiles.append(user2["ProfilePictue"] as! PFFile)
-                                
+                            } else {
+                                println("Error: \(error!) \(error!.userInfo!)")
                             }
                         }
-                    }
-                } else {
-                    println("Error: \(error!) \(error!.userInfo!)")
-                }
-            }
             //got profile pic
-            cell.profileImageView.tag = indexPath.row
+            cell!.profileImageView.tag = indexPath.row
             var tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("profileImageTapped:"))
-            cell.profileImageView.userInteractionEnabled = true
-            cell.profileImageView.addGestureRecognizer(tapGestureRecognizer)
-            cell.firstLeftAction = SBGestureTableViewCellAction(icon: checkIcon.imageWithSize(size), color: greenColor, fraction: 0.3, didTriggerBlock: removeCellBlock)
-            cell.secondLeftAction = SBGestureTableViewCellAction(icon: closeIcon.imageWithSize(size), color: greenColor, fraction: 0.6, didTriggerBlock: removeCellBlock)
-            cell.firstRightAction = SBGestureTableViewCellAction(icon: composeIcon.imageWithSize(size), color: redColor, fraction: 0.3, didTriggerBlock: removeCellBlock)
-            cell.secondRightAction = SBGestureTableViewCellAction(icon: clockIcon.imageWithSize(size), color: redColor, fraction: 0.6, didTriggerBlock: removeCellBlock)
+            cell!.profileImageView.userInteractionEnabled = true
+            cell!.profileImageView.addGestureRecognizer(tapGestureRecognizer)
+            cell!.firstLeftAction = SBGestureTableViewCellAction(icon: checkIcon.imageWithSize(size), color: greenColor, fraction: 0.3, didTriggerBlock: removeCellBlock)
+            cell!.secondLeftAction = SBGestureTableViewCellAction(icon: closeIcon.imageWithSize(size), color: greenColor, fraction: 0.6, didTriggerBlock: removeCellBlock)
+            cell!.firstRightAction = SBGestureTableViewCellAction(icon: composeIcon.imageWithSize(size), color: redColor, fraction: 0.3, didTriggerBlock: removeCellBlock)
+            cell!.secondRightAction = SBGestureTableViewCellAction(icon: clockIcon.imageWithSize(size), color: redColor, fraction: 0.6, didTriggerBlock: removeCellBlock)
             
-            cell.backgroundColor = UIColor.clearColor()
-            cell.downVoteBtn.tag = indexPath.row
+            cell!.backgroundColor = UIColor.clearColor()
+            cell!.downVoteBtn.tag = indexPath.row
             
-            cell.downVoteBtn.addTarget(self, action: "downVote:", forControlEvents: UIControlEvents.TouchUpInside)
-            cell.upVoteBtn.tag = indexPath.row
+            cell!.downVoteBtn.addTarget(self, action: "downVote:", forControlEvents: UIControlEvents.TouchUpInside)
+            cell!.upVoteBtn.tag = indexPath.row
             
-            cell.upVoteBtn.addTarget(self, action: "upVote:", forControlEvents: UIControlEvents.TouchUpInside)
+            cell!.upVoteBtn.addTarget(self, action: "upVote:", forControlEvents: UIControlEvents.TouchUpInside)
             let index = indexPath.row % circleColors.count
-            cell.rippleLayerColor = circleColors[index]
+            cell!.rippleLayerColor = circleColors[index]
             //            if  indexPath.row % 2 == 0 {
             //                cell.backgroundColor = UIColor.redColor()
             //            } else {
@@ -516,14 +535,14 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             //get profile pic
             
             //self.tableView.insertRowsAtIndexPaths(0, withRowAnimation: UITableViewRowAnimation.Bottom)
-            cell.typeImageView.image = UIImage(named: "timeline-chat")
+            cell!.typeImageView.image = UIImage(named: "timeline-chat")
             //cell.profileImageView.image = UIImage(named: "profile-pic-1")
             var name = self.userArray[indexPath.row]
             name.replaceRange(name.startIndex...name.startIndex, with: String(name[name.startIndex]).capitalizedString)
-            cell.nameLabel.text = name
-            cell.nameLabel.textColor = UIColor.greenColor()
-            cell.postLabel?.text = self.messages[indexPath.row]
-            cell.postLabel?.textColor = UIColor.whiteColor()
+            cell!.nameLabel.text = name
+            cell!.nameLabel.textColor = UIColor.greenColor()
+            cell!.postLabel?.text = self.messages[indexPath.row]
+            cell!.postLabel?.textColor = UIColor.whiteColor()
             var seconds = self.createdAt[indexPath.row]*60
             var temp = seconds
             var timeAgo = (seconds/60) // + " m ago"
@@ -537,17 +556,17 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                     ending = " days"
                     if timeAgo == 1 {
                         setAlready = true
-                        cell.dateLabel.text = "yesterday"
+                        cell!.dateLabel.text = "yesterday"
                     }
                 }
             }
             if !setAlready {
-                cell.dateLabel.text = String(timeAgo) + ending
+                cell!.dateLabel.text = String(timeAgo) + ending
             }
-            cell.dateLabel.textColor = UIColor.whiteColor()
-            cell.scoreLabel.textColor = UIColor.greenColor()
-            cell.scoreLabel.text = "[" + String(self.score[indexPath.row]) + "]"
-            return cell
+            cell!.dateLabel.textColor = UIColor.whiteColor()
+            cell!.scoreLabel.textColor = UIColor.greenColor()
+            cell!.scoreLabel.text = "[" + String(self.score[indexPath.row]) + "]"
+            return cell!
         }
         
     }
@@ -686,43 +705,43 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         //let txt = alert.addTextField(title:"Enter Your Thoughts")
         //alert.addButton("Post") {
         
-//        println("Text value: \(txt.text)")
-//        if txt.text != " " && txt.text != nil && !txt.text.isEmpty {
-//            var person = PFObject(className:"Person")
-//            self.containsImage.append(false)
-//            self.parseObject = person
-//            person["score"] = 0
-//            person["username"] = PFUser.currentUser()?.username
-//            person["admin"] = true
-//            person["text"] = txt.text
-//            person["startTime"] = CFAbsoluteTimeGetCurrent()
-//            person["votedBy"] = []
-//            
-//            person.saveInBackgroundWithBlock {
-//                (success: Bool, error: NSError?) -> Void in
-//                if (success) {
-//                    self.retrieve()
-//                    let query = PFInstallation.query()
-//                    if let query = query { // non intrusive
-//                        //query.whereKey("channels", equalTo: "suitcaseOwners")
-//                        query.whereKey("deviceType", equalTo: "ios")
-//                        let iOSPush = PFPush()
-//                        iOSPush.setMessage("General: " + txt.text)
-//                        //iOSPush.setChannel("suitcaseOwners")
-//                        iOSPush.setQuery(query)
-//                        iOSPush.sendPushInBackground()
-//                    }
-//                } else {
-//                    println("Couldn't post!")
-//                    SCLAlertView().showWarning("Error Posting", subTitle: "Check Your Internet Connection.")
-//                }
-//            }
-//        } else {
-//            // empty post
-//            SCLAlertView().showWarning("Error Posting", subTitle: "You need to write something in your post.")
-//            //SCLAlertView().showWarning("Error Posting", subTitle: "You need to write something in your post.", closeButtonTitle: "Cancel")
-//            //self.post(self)
-//        }
+        //        println("Text value: \(txt.text)")
+        //        if txt.text != " " && txt.text != nil && !txt.text.isEmpty {
+        //            var person = PFObject(className:"Person")
+        //            self.containsImage.append(false)
+        //            self.parseObject = person
+        //            person["score"] = 0
+        //            person["username"] = PFUser.currentUser()?.username
+        //            person["admin"] = true
+        //            person["text"] = txt.text
+        //            person["startTime"] = CFAbsoluteTimeGetCurrent()
+        //            person["votedBy"] = []
+        //
+        //            person.saveInBackgroundWithBlock {
+        //                (success: Bool, error: NSError?) -> Void in
+        //                if (success) {
+        //                    self.retrieve()
+        //                    let query = PFInstallation.query()
+        //                    if let query = query { // non intrusive
+        //                        //query.whereKey("channels", equalTo: "suitcaseOwners")
+        //                        query.whereKey("deviceType", equalTo: "ios")
+        //                        let iOSPush = PFPush()
+        //                        iOSPush.setMessage("General: " + txt.text)
+        //                        //iOSPush.setChannel("suitcaseOwners")
+        //                        iOSPush.setQuery(query)
+        //                        iOSPush.sendPushInBackground()
+        //                    }
+        //                } else {
+        //                    println("Couldn't post!")
+        //                    SCLAlertView().showWarning("Error Posting", subTitle: "Check Your Internet Connection.")
+        //                }
+        //            }
+        //        } else {
+        //            // empty post
+        //            SCLAlertView().showWarning("Error Posting", subTitle: "You need to write something in your post.")
+        //            //SCLAlertView().showWarning("Error Posting", subTitle: "You need to write something in your post.", closeButtonTitle: "Cancel")
+        //            //self.post(self)
+        //        }
         // parse
         //self.retrieve()
         //}

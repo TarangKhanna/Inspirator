@@ -16,7 +16,6 @@
 		7109A8F01B04306900435D3C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7109A8EF1B04306900435D3C /* Images.xcassets */; };
 		7109A8F31B04306900435D3C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7109A8F11B04306900435D3C /* LaunchScreen.xib */; };
 		7109A8FF1B04306900435D3C /* WorkoutMotivationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7109A8FE1B04306900435D3C /* WorkoutMotivationTests.swift */; };
-		710B1FA81B45E73C006A9EC0 /* TimelineViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710B1FA71B45E73C006A9EC0 /* TimelineViewCell.swift */; };
 		71142A761B0DCE0900AB3600 /* SocialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71142A751B0DCE0900AB3600 /* SocialVC.swift */; };
 		7128A91E1B087F670035C41E /* ProgrammingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7128A91D1B087F670035C41E /* ProgrammingVC.swift */; };
 		7128A9201B087FF70035C41E /* ProgrammingQuotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7128A91F1B087FF70035C41E /* ProgrammingQuotes.swift */; };
@@ -149,7 +148,6 @@
 		7109A8F81B04306900435D3C /* WorkoutMotivationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WorkoutMotivationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7109A8FD1B04306900435D3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7109A8FE1B04306900435D3C /* WorkoutMotivationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutMotivationTests.swift; sourceTree = "<group>"; };
-		710B1FA71B45E73C006A9EC0 /* TimelineViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewCell.swift; sourceTree = "<group>"; };
 		71142A751B0DCE0900AB3600 /* SocialVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocialVC.swift; path = WorkoutMotivation/SocialVC.swift; sourceTree = "<group>"; };
 		7128A91D1B087F670035C41E /* ProgrammingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgrammingVC.swift; path = WorkoutMotivation/ProgrammingVC.swift; sourceTree = "<group>"; };
 		7128A91F1B087FF70035C41E /* ProgrammingQuotes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgrammingQuotes.swift; path = WorkoutMotivation/ProgrammingQuotes.swift; sourceTree = "<group>"; };
@@ -327,7 +325,6 @@
 			children = (
 				716B874D1B152E9D00B7E955 /* TimelineViewController.swift */,
 				718AAE221B45946D0028697D /* postingViewController.swift */,
-				710B1FA71B45E73C006A9EC0 /* TimelineViewCell.swift */,
 				718AAE0E1B453D8F0028697D /* MenuController.swift */,
 				7109A8EA1B04306900435D3C /* MotivateVC.swift */,
 				71691B911B3B05DB005B6C32 /* CommentsVC.swift */,
@@ -713,7 +710,6 @@
 				71AF79F61B192F98007953CD /* PullToRefreshOption.swift in Sources */,
 				71CEE6171B13089200E85AA2 /* MKTableViewCell.swift in Sources */,
 				71CEE5F61B12BB8100E85AA2 /* StudyVC.swift in Sources */,
-				710B1FA81B45E73C006A9EC0 /* TimelineViewCell.swift in Sources */,
 				71D803F81B0E8B3D0072541D /* loginVC.swift in Sources */,
 				719D53901B06934500DD34CD /* DataSource.swift in Sources */,
 				716B874F1B152E9D00B7E955 /* TimelineViewController.swift in Sources */,

@@ -12,7 +12,7 @@ import UIKit
 class postingViewController: UIViewController, UITextViewDelegate {
     
     @IBOutlet weak var commentTxtView: UITextView!
-    var text = "Whats Up?"
+    var text = "What's Up?"
     
     override func viewWillAppear(animated: Bool) {
         self.navigationController!.navigationBar.hidden = true
@@ -28,6 +28,46 @@ class postingViewController: UIViewController, UITextViewDelegate {
         commentTxtView.text = ""
         commentTxtView.textColor = UIColor.blackColor()
     }
+    
+    
+    @IBAction func post(sender: AnyObject) {
+        // send text to timeline controller 
+        println(self.childViewControllers)
+        if commentTxtView.text != " " && commentTxtView.text != nil && !commentTxtView.text.isEmpty {
+            var person = PFObject(className:"Person")
+            //self.containsImage.append(false)
+            //self.parseObject = person
+            person["score"] = 0
+            person["username"] = PFUser.currentUser()?.username
+            person["admin"] = true
+            person["text"] = commentTxtView.text
+            person["startTime"] = CFAbsoluteTimeGetCurrent()
+            person["votedBy"] = []
+            
+            person.saveInBackgroundWithBlock {
+                (success: Bool, error: NSError?) -> Void in
+                if (success) {
+                    //self.retrieve()
+                    self.performSegueWithIdentifier("backToTimeline", sender: self)
+                    let query = PFInstallation.query()
+                    if let query = query { // non intrusive
+                        //query.whereKey("channels", equalTo: "suitcaseOwners")
+                        query.whereKey("deviceType", equalTo: "ios")
+                        let iOSPush = PFPush()
+                        iOSPush.setMessage("General: " + self.commentTxtView.text)
+                        //iOSPush.setChannel("suitcaseOwners")
+                        iOSPush.setQuery(query)
+                        iOSPush.sendPushInBackground()
+                        
+                    }
+                } else {
+                    println("Couldn't post!")
+                    SCLAlertView().showWarning("Error Posting", subTitle: "Check Your Internet Connection.")
+                }
+            }
+        }
+
+}
     
     func textViewDidChange(textView: UITextView) {
         
