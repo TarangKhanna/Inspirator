@@ -14,19 +14,26 @@ class postingViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var commentTxtView: UITextView!
     var text = "What's Up?"
     
+    @IBOutlet var postBtn: UIButton!
     override func viewWillAppear(animated: Bool) {
         self.navigationController!.navigationBar.hidden = true
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        postBtn.enabled = false
         commentTxtView.text = text
         commentTxtView.textColor = UIColor.lightGrayColor()
         commentTxtView.delegate = self;
+        
     }
     
     func textViewDidBeginEditing(textView: UITextView) {
         commentTxtView.text = ""
+        
         commentTxtView.textColor = UIColor.blackColor()
+        
+        
     }
     
     
@@ -65,13 +72,17 @@ class postingViewController: UIViewController, UITextViewDelegate {
                     SCLAlertView().showWarning("Error Posting", subTitle: "Check Your Internet Connection.")
                 }
             }
-        }
+        } 
 
 }
     
     func textViewDidChange(textView: UITextView) {
         
-        if(commentTxtView.text.length == 0){
+        if commentTxtView.text.length != 0 {
+            postBtn.enabled = true
+        }
+        else if commentTxtView.text.length == 0 {
+            postBtn.enabled = false
             commentTxtView.textColor = UIColor.lightGrayColor()
             commentTxtView.text = text
             commentTxtView.resignFirstResponder()

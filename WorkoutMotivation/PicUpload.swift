@@ -17,6 +17,7 @@
 import UIKit
 
 import CoreImage
+import MobileCoreServices
 
 
 
@@ -177,7 +178,7 @@ class PicUpload: UIViewController,UITextFieldDelegate, UINavigationControllerDel
         picker.delegate = self
         picker.allowsEditing = false
         picker.cameraCaptureMode = .Photo
-        
+        picker.mediaTypes = [kUTTypeImage as String]
         presentViewController(picker, animated: true, completion: nil)
         
     }

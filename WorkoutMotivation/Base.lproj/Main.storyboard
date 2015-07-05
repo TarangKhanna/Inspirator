@@ -999,6 +999,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="commentTxtView" destination="GKd-rT-IsN" id="EkH-Gl-UQ8"/>
+                        <outlet property="postBtn" destination="cgp-Y5-cVs" id="1eE-0c-1I4"/>
                         <segue destination="KBP-Cf-XLc" kind="show" identifier="backToTimeline" id="2sP-qI-fLO"/>
                     </connections>
                 </viewController>
