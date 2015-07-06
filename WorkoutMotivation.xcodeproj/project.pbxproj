@@ -120,6 +120,10 @@
 		71CEE61D1B13089900E85AA2 /* MKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CEE61C1B13089900E85AA2 /* MKButton.swift */; };
 		71D803F81B0E8B3D0072541D /* loginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D803F71B0E8B3D0072541D /* loginVC.swift */; };
 		71D8762D1B2DFD1B0095A1B4 /* SwiftSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D8762C1B2DFD1B0095A1B4 /* SwiftSpinner.swift */; };
+		71E6266A1B4AB5E500472EFB /* BWWalkthroughPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E626681B4AB5E500472EFB /* BWWalkthroughPageViewController.swift */; };
+		71E6266B1B4AB5E500472EFB /* BWWalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E626691B4AB5E500472EFB /* BWWalkthroughViewController.swift */; };
+		71E626701B4AD0F900472EFB /* CustomPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E6266F1B4AD0F900472EFB /* CustomPageViewController.swift */; };
+		71E626741B4AD4C900472EFB /* Walkthrough.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71E626731B4AD4C900472EFB /* Walkthrough.storyboard */; };
 		71EE7A881B349587000EA33E /* FriendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EE7A871B349587000EA33E /* FriendController.swift */; };
 		71EE7A8A1B3496AA000EA33E /* CollectionViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EE7A891B3496AA000EA33E /* CollectionViewCell2.swift */; };
 /* End PBXBuildFile section */
@@ -263,6 +267,10 @@
 		71CEE61C1B13089900E85AA2 /* MKButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKButton.swift; sourceTree = "<group>"; };
 		71D803F71B0E8B3D0072541D /* loginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = loginVC.swift; path = WorkoutMotivation/loginVC.swift; sourceTree = "<group>"; };
 		71D8762C1B2DFD1B0095A1B4 /* SwiftSpinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftSpinner.swift; path = SwiftSpinner/SwiftSpinner.swift; sourceTree = "<group>"; };
+		71E626681B4AB5E500472EFB /* BWWalkthroughPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BWWalkthroughPageViewController.swift; sourceTree = "<group>"; };
+		71E626691B4AB5E500472EFB /* BWWalkthroughViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BWWalkthroughViewController.swift; sourceTree = "<group>"; };
+		71E6266F1B4AD0F900472EFB /* CustomPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPageViewController.swift; sourceTree = "<group>"; };
+		71E626731B4AD4C900472EFB /* Walkthrough.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Walkthrough.storyboard; sourceTree = "<group>"; };
 		71EE7A871B349587000EA33E /* FriendController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendController.swift; sourceTree = "<group>"; };
 		71EE7A891B3496AA000EA33E /* CollectionViewCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -323,10 +331,13 @@
 		7109A8E51B04306900435D3C /* WorkoutMotivation */ = {
 			isa = PBXGroup;
 			children = (
+				71E6266C1B4AB5E900472EFB /* BWWalkthrough */,
 				716B874D1B152E9D00B7E955 /* TimelineViewController.swift */,
+				71E6266F1B4AD0F900472EFB /* CustomPageViewController.swift */,
 				718AAE221B45946D0028697D /* postingViewController.swift */,
 				7109A8EC1B04306900435D3C /* Main.storyboard */,
 				718AAE0E1B453D8F0028697D /* MenuController.swift */,
+				71E626731B4AD4C900472EFB /* Walkthrough.storyboard */,
 				7109A8EA1B04306900435D3C /* MotivateVC.swift */,
 				71691B911B3B05DB005B6C32 /* CommentsVC.swift */,
 				7128F3D71B39DA750092094B /* Comments.swift */,
@@ -550,6 +561,15 @@
 			name = VCFloatingButton;
 			sourceTree = "<group>";
 		};
+		71E6266C1B4AB5E900472EFB /* BWWalkthrough */ = {
+			isa = PBXGroup;
+			children = (
+				71E626681B4AB5E500472EFB /* BWWalkthroughPageViewController.swift */,
+				71E626691B4AB5E500472EFB /* BWWalkthroughViewController.swift */,
+			);
+			name = BWWalkthrough;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -640,6 +660,7 @@
 				71C553E61B2ACBD900357D8A /* foundation-icons.ttf in Resources */,
 				71C5537B1B2801A500357D8A /* LoadingView.xib in Resources */,
 				71CEE6091B12CBDE00E85AA2 /* floatTableViewCell.xib in Resources */,
+				71E626741B4AD4C900472EFB /* Walkthrough.storyboard in Resources */,
 				71C553E51B2ACBD900357D8A /* FontAwesome.otf in Resources */,
 				7128A98A1B0B17590035C41E /* Button.xcassets in Resources */,
 			);
@@ -667,6 +688,7 @@
 				71AF79CC1B17D272007953CD /* FXBlurView.m in Sources */,
 				719D538C1B06743400DD34CD /* SignUpVC.swift in Sources */,
 				7135F2C31B080711002ACD53 /* WeigthsQuotes.swift in Sources */,
+				71E626701B4AD0F900472EFB /* CustomPageViewController.swift in Sources */,
 				71EE7A881B349587000EA33E /* FriendController.swift in Sources */,
 				71561D011B1FD6A70052B5F7 /* PostImageViewController.swift in Sources */,
 				71CEE61D1B13089900E85AA2 /* MKButton.swift in Sources */,
@@ -720,6 +742,7 @@
 				71C553CE1B2ACB1800357D8A /* SBGestureTableViewCellAction.swift in Sources */,
 				71C5538C1B2801A500357D8A /* SpringLabel.swift in Sources */,
 				71AF79F31B192F68007953CD /* PullToRefreshView.swift in Sources */,
+				71E6266A1B4AB5E500472EFB /* BWWalkthroughPageViewController.swift in Sources */,
 				71C553791B2801A500357D8A /* AutoTextView.swift in Sources */,
 				71C553E41B2ACBD900357D8A /* FAKZocial.m in Sources */,
 				71691B921B3B05DB005B6C32 /* CommentsVC.swift in Sources */,
@@ -738,6 +761,7 @@
 				71C553851B2801A500357D8A /* KeyboardLayoutConstraint.swift in Sources */,
 				71C553911B2801A500357D8A /* TransitionZoom.swift in Sources */,
 				71CEE60F1B13085700E85AA2 /* TextFieldViewController.swift in Sources */,
+				71E6266B1B4AB5E500472EFB /* BWWalkthroughViewController.swift in Sources */,
 				71C5537C1B2801A500357D8A /* BlurView.swift in Sources */,
 				71C553E01B2ACBD900357D8A /* FAKFontAwesome.m in Sources */,
 				71CEE6081B12CBDE00E85AA2 /* floatTableViewCell.m in Sources */,
