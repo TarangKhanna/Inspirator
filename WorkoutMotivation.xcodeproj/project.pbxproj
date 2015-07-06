@@ -103,8 +103,6 @@
 		71C553E61B2ACBD900357D8A /* foundation-icons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 71C553DD1B2ACBD900357D8A /* foundation-icons.ttf */; };
 		71C553E71B2ACBD900357D8A /* ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 71C553DE1B2ACBD900357D8A /* ionicons.ttf */; };
 		71C553E81B2ACBD900357D8A /* zocial-regular-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 71C553DF1B2ACBD900357D8A /* zocial-regular-webfont.ttf */; };
-		71CEE5F31B1283F000E85AA2 /* CardioVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CEE5F21B1283F000E85AA2 /* CardioVC.swift */; };
-		71CEE5F61B12BB8100E85AA2 /* StudyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CEE5F51B12BB8100E85AA2 /* StudyVC.swift */; };
 		71CEE6001B12C46B00E85AA2 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71CEE5FF1B12C46B00E85AA2 /* Bolts.framework */; };
 		71CEE6081B12CBDE00E85AA2 /* floatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 71CEE6041B12CBDE00E85AA2 /* floatTableViewCell.m */; };
 		71CEE6091B12CBDE00E85AA2 /* floatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71CEE6051B12CBDE00E85AA2 /* floatTableViewCell.xib */; };
@@ -247,8 +245,6 @@
 		71C553DD1B2ACBD900357D8A /* foundation-icons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "foundation-icons.ttf"; sourceTree = "<group>"; };
 		71C553DE1B2ACBD900357D8A /* ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ionicons.ttf; sourceTree = "<group>"; };
 		71C553DF1B2ACBD900357D8A /* zocial-regular-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "zocial-regular-webfont.ttf"; sourceTree = "<group>"; };
-		71CEE5F21B1283F000E85AA2 /* CardioVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardioVC.swift; path = WorkoutMotivation/CardioVC.swift; sourceTree = "<group>"; };
-		71CEE5F51B12BB8100E85AA2 /* StudyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyVC.swift; sourceTree = "<group>"; };
 		71CEE5F71B12C00D00E85AA2 /* WorkoutMotivation-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WorkoutMotivation-Bridging-Header.h"; sourceTree = "<group>"; };
 		71CEE5FF1B12C46B00E85AA2 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		71CEE6031B12CBDE00E85AA2 /* floatTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = floatTableViewCell.h; sourceTree = "<group>"; };
@@ -331,7 +327,6 @@
 		7109A8E51B04306900435D3C /* WorkoutMotivation */ = {
 			isa = PBXGroup;
 			children = (
-				71E6266C1B4AB5E900472EFB /* BWWalkthrough */,
 				716B874D1B152E9D00B7E955 /* TimelineViewController.swift */,
 				71E6266F1B4AD0F900472EFB /* CustomPageViewController.swift */,
 				718AAE221B45946D0028697D /* postingViewController.swift */,
@@ -362,6 +357,7 @@
 		7109A8E61B04306900435D3C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				71E6266C1B4AB5E900472EFB /* BWWalkthrough */,
 				718AAE171B454B930028697D /* SWRevealViewController */,
 				71D8762C1B2DFD1B0095A1B4 /* SwiftSpinner.swift */,
 				71CEE60B1B12CBEA00E85AA2 /* VCFloatingButton */,
@@ -524,11 +520,9 @@
 		71CEE5F41B12BA7E00E85AA2 /* VC's */ = {
 			isa = PBXGroup;
 			children = (
-				71CEE5F21B1283F000E85AA2 /* CardioVC.swift */,
 				7135F2C01B0800FD002ACD53 /* WeightsVC.swift */,
 				71691B851B39DC8D005B6C32 /* CollectionViewCellComments.swift */,
 				7128A91D1B087F670035C41E /* ProgrammingVC.swift */,
-				71CEE5F51B12BB8100E85AA2 /* StudyVC.swift */,
 				71D803F71B0E8B3D0072541D /* loginVC.swift */,
 				719D538B1B06743400DD34CD /* SignUpVC.swift */,
 				710394F71B22ADC700F01B5B /* CollectionViewCell.swift */,
@@ -731,7 +725,6 @@
 				7109A8E91B04306900435D3C /* AppDelegate.swift in Sources */,
 				71AF79F61B192F98007953CD /* PullToRefreshOption.swift in Sources */,
 				71CEE6171B13089200E85AA2 /* MKTableViewCell.swift in Sources */,
-				71CEE5F61B12BB8100E85AA2 /* StudyVC.swift in Sources */,
 				71D803F81B0E8B3D0072541D /* loginVC.swift in Sources */,
 				719D53901B06934500DD34CD /* DataSource.swift in Sources */,
 				716B874F1B152E9D00B7E955 /* TimelineViewController.swift in Sources */,
@@ -754,7 +747,6 @@
 				71142A761B0DCE0900AB3600 /* SocialVC.swift in Sources */,
 				718AAE161B454B900028697D /* SWRevealViewController.m in Sources */,
 				71C5537E1B2801A500357D8A /* DesignableImageView.swift in Sources */,
-				71CEE5F31B1283F000E85AA2 /* CardioVC.swift in Sources */,
 				71C5537A1B2801A500357D8A /* LoadingView.swift in Sources */,
 				71AF79C61B17D1F1007953CD /* profileVC.swift in Sources */,
 				71AF79CB1B17D272007953CD /* AvatarImageView.swift in Sources */,

@@ -309,32 +309,32 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         var currentUser = PFUser.currentUser()?.username
         // set this image at time of signup / signin
         var userPhoto = UIImage()
-        var queryUser = PFUser.query() as PFQuery?
-        queryUser!.findObjectsInBackgroundWithBlock {
-            (users: [AnyObject]?, error: NSError?) -> Void in
-            if error == nil {
-                if let users = users as? [PFObject] {
-                    for user in users {
-                        var user2:PFUser = user as! PFUser
-                        if user2.username == self.currentUser
-                        {
-                            var userPhotoFile = user2["ProfilePicture"] as! PFFile
-                            userPhotoFile.getDataInBackgroundWithBlock { (data, error) -> Void in
-                                
-                                if let downloadedImage = UIImage(data: data!) {
-                                    userPhoto  = downloadedImage
-                                    actionButton.imageArray = ["fb-icon.png","twitter-icon.png","google-icon.png","downloadedImage"]
-                                }
-                                
-                            }
-                        }
-                    }
-                }
-            }
-        }
+//        var queryUser = PFUser.query() as PFQuery?
+//        queryUser!.findObjectsInBackgroundWithBlock {
+//            (users: [AnyObject]?, error: NSError?) -> Void in
+//            if error == nil {
+//                if let users = users as? [PFObject] {
+//                    for user in users {
+//                        var user2:PFUser = user as! PFUser
+//                        if user2.username == self.currentUser
+//                        {
+//                            var userPhotoFile = user2["ProfilePicture"] as! PFFile
+//                            userPhotoFile.getDataInBackgroundWithBlock { (data, error) -> Void in
+//                                
+//                                if let downloadedImage = UIImage(data: data!) {
+//                                    userPhoto  = downloadedImage
+//                                    actionButton.imageArray = ["fb-icon.png","twitter-icon.png","google-icon.png","downloadedImage"]
+//                                }
+//                                
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        }
         self.view.addSubview(actionButton)
         
-        actionButton.labelArray = ["Facebook","Twitter","Google Plus","Log Out"]
+        actionButton.labelArray = ["Log Out"]
         actionButton.delegate = self
         actionButton.hideWhileScrolling = true
         
@@ -446,20 +446,20 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         
         
     }
+//    
+//    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+//        locationManager.stopUpdatingLocation()
+//        if(locations.count > 0){
+//            let location = locations[0] as! CLLocation
+//            currLocation = location.coordinate
+//        } else {
+//            println("error")
+//        }
+//    }
     
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        locationManager.stopUpdatingLocation()
-        if(locations.count > 0){
-            let location = locations[0] as! CLLocation
-            currLocation = location.coordinate
-        } else {
-            println("error")
-        }
-    }
-    
-    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
-        println(error)
-    }
+//    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
+//        println(error)
+//    }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)

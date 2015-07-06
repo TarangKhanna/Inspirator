@@ -31,7 +31,7 @@
                                     <action selector="close:" destination="txJ-gV-nlq" eventType="touchUpInside" id="lTD-i1-A4i"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ad-hv-8C6" userLabel="Prev">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ad-hv-8C6" userLabel="Prev">
                                 <rect key="frame" x="0.0" y="530" width="50" height="50"/>
                                 <state key="normal" image="leftarrow.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -270,8 +270,8 @@
                                     <constraint firstAttribute="width" constant="163" id="ral-Ot-2YY"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The social features of this site can be accessed by clicking the M. Future release will contain subgroups." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDt-ZO-IbC">
-                                <rect key="frame" x="95" y="264" width="411" height="125"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The social features of this site can be accessed by clicking the M You can swipe to like posts!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDt-ZO-IbC">
+                                <rect key="frame" x="95" y="259" width="411" height="131"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -283,11 +283,11 @@
                             <constraint firstItem="bS2-IJ-fx7" firstAttribute="centerX" secondItem="9My-yD-6bv" secondAttribute="centerX" id="3qk-8Q-eul"/>
                             <constraint firstItem="dDt-ZO-IbC" firstAttribute="leading" secondItem="9My-yD-6bv" secondAttribute="leadingMargin" constant="79" id="6ZW-Jr-HbR"/>
                             <constraint firstItem="bS2-IJ-fx7" firstAttribute="bottom" secondItem="Deg-VZ-J6w" secondAttribute="top" constant="6" id="6ye-yx-Yut"/>
-                            <constraint firstItem="dDt-ZO-IbC" firstAttribute="top" secondItem="P0S-X1-bG6" secondAttribute="bottom" constant="244" id="9gy-rM-tNA"/>
+                            <constraint firstItem="dDt-ZO-IbC" firstAttribute="top" secondItem="P0S-X1-bG6" secondAttribute="bottom" constant="239" id="9gy-rM-tNA"/>
                             <constraint firstItem="KGW-Jb-IhM" firstAttribute="top" secondItem="P0S-X1-bG6" secondAttribute="bottom" constant="155" id="CO9-4Z-WKA"/>
-                            <constraint firstItem="bS2-IJ-fx7" firstAttribute="top" secondItem="dDt-ZO-IbC" secondAttribute="bottom" constant="21" id="Pv0-Sl-kuv"/>
+                            <constraint firstItem="bS2-IJ-fx7" firstAttribute="top" secondItem="dDt-ZO-IbC" secondAttribute="bottom" constant="20" id="Pv0-Sl-kuv"/>
                             <constraint firstItem="KGW-Jb-IhM" firstAttribute="centerX" secondItem="dDt-ZO-IbC" secondAttribute="centerX" id="b3S-sR-czQ"/>
-                            <constraint firstItem="dDt-ZO-IbC" firstAttribute="top" secondItem="KGW-Jb-IhM" secondAttribute="bottom" constant="65" id="xEJ-AY-2uf"/>
+                            <constraint firstItem="dDt-ZO-IbC" firstAttribute="top" secondItem="KGW-Jb-IhM" secondAttribute="bottom" constant="60" id="xEJ-AY-2uf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="dDt-ZO-IbC" secondAttribute="trailing" constant="78" id="yhA-yf-pyi"/>
                             <constraint firstItem="dDt-ZO-IbC" firstAttribute="centerX" secondItem="bS2-IJ-fx7" secondAttribute="centerX" id="zgN-dS-Aqc"/>
                         </constraints>
@@ -364,7 +364,7 @@
         <image name="cloud3.png" width="64" height="35"/>
         <image name="iPhoneScreen.png" width="163" height="196"/>
         <image name="img3" width="47" height="47"/>
-        <image name="leftarrow.png" width="50" height="50"/>
+        <image name="leftarrow.png" width="22" height="22"/>
         <image name="rightarrow.png" width="50" height="50"/>
         <image name="socialFeature" width="750" height="1334"/>
     </resources>

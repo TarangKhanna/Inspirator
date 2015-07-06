@@ -308,15 +308,6 @@
                                     <action selector="signUp:" destination="cXI-kJ-w0P" eventType="touchUpInside" id="n1s-tR-CpC"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0hK-7I-ede">
-                                <rect key="frame" x="16" y="629" width="48" height="30"/>
-                                <state key="normal" title="Sign In">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="idO-jR-V2Q" kind="show" id="Qex-8r-3gQ"/>
-                                </connections>
-                            </button>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="profile-pic-1" translatesAutoresizingMaskIntoConstraints="NO" id="Y2l-4B-8xX" userLabel="AvatarImage" customClass="AvatarImageView" customModule="WorkoutMotivation" customModuleProvider="target">
                                 <rect key="frame" x="153" y="109" width="69" height="69"/>
                                 <constraints>
@@ -336,7 +327,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="uDd-qL-mB5" firstAttribute="top" secondItem="0hK-7I-ede" secondAttribute="bottom" constant="8" symbolic="YES" id="1s4-64-kup"/>
                             <constraint firstAttribute="trailing" secondItem="cUG-ft-1cz" secondAttribute="trailing" id="3gd-k8-Gfg"/>
                             <constraint firstItem="Kxs-wL-hR2" firstAttribute="centerX" secondItem="Y2l-4B-8xX" secondAttribute="centerX" id="9xw-gU-xjQ"/>
                             <constraint firstItem="Y2l-4B-8xX" firstAttribute="top" secondItem="URQ-cY-93c" secondAttribute="bottom" constant="45" id="AEn-ny-x4m"/>
@@ -346,7 +336,6 @@
                             <constraint firstItem="cUG-ft-1cz" firstAttribute="trailing" secondItem="fSd-6z-mQT" secondAttribute="trailing" id="ZTP-Zf-xzp"/>
                             <constraint firstItem="fSd-6z-mQT" firstAttribute="leading" secondItem="IEP-yx-bqJ" secondAttribute="leading" id="c4l-tL-D3y"/>
                             <constraint firstItem="Kxs-wL-hR2" firstAttribute="top" secondItem="Y2l-4B-8xX" secondAttribute="bottom" constant="8" symbolic="YES" id="j5s-oc-phT"/>
-                            <constraint firstItem="0hK-7I-ede" firstAttribute="leading" secondItem="KXH-lC-Sga" secondAttribute="leadingMargin" id="jVh-im-Jvy"/>
                             <constraint firstItem="IEP-yx-bqJ" firstAttribute="top" secondItem="Kxs-wL-hR2" secondAttribute="bottom" constant="27" id="ltY-ZH-TEQ"/>
                             <constraint firstItem="fSd-6z-mQT" firstAttribute="top" secondItem="IEP-yx-bqJ" secondAttribute="bottom" constant="36" id="qKd-YF-Vhl"/>
                             <constraint firstItem="fSd-6z-mQT" firstAttribute="leading" secondItem="KXH-lC-Sga" secondAttribute="leading" id="r20-wc-GpL"/>
@@ -1013,9 +1002,9 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading...." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QU1-R6-Wqn">
-                                        <rect key="frame" x="8" y="178" width="132" height="35"/>
+                                        <rect key="frame" x="8" y="178" width="359" height="35"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="132" id="TC9-d8-XmF"/>
+                                            <constraint firstAttribute="width" constant="359" id="TC9-d8-XmF"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="18"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1460,7 +1449,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z56-nU-wOm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-963.5" y="660.5"/>
+            <point key="canvasLocation" x="-689.5" y="326.5"/>
         </scene>
         <!--Menu Controller-->
         <scene sceneID="Apy-Mk-QxO">
@@ -1742,21 +1731,41 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="a6l-ya-g0o" id="iXw-xb-Aoj">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GHU-ng-xVN">
-                                                    <rect key="frame" x="61" y="6" width="82" height="31"/>
+                                                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OTp-JF-O3w">
+                                                    <rect key="frame" x="0.0" y="40" width="600" height="213"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Hp-wK-4CD" customClass="AvatarImageView" customModule="WorkoutMotivation" customModuleProvider="target">
+                                                    <rect key="frame" x="8" y="4" width="35" height="35"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="35" id="qcr-Rh-IdW"/>
+                                                        <constraint firstAttribute="width" constant="35" id="xpl-4w-8o4"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GHU-ng-xVN">
+                                                    <rect key="frame" x="51" y="6" width="306" height="31"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="306" id="4ug-cW-hfR"/>
+                                                        <constraint firstAttribute="height" constant="31" id="n1U-zJ-lCv"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="22"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OTp-JF-O3w">
-                                                    <rect key="frame" x="0.0" y="40" width="600" height="213"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                </view>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Hp-wK-4CD" customClass="AvatarImageView" customModule="WorkoutMotivation" customModuleProvider="target">
-                                                    <rect key="frame" x="18" y="4" width="35" height="35"/>
-                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="OTp-JF-O3w" firstAttribute="leading" secondItem="iXw-xb-Aoj" secondAttribute="leading" id="0Tg-dZ-9uT"/>
+                                                <constraint firstItem="GHU-ng-xVN" firstAttribute="top" secondItem="iXw-xb-Aoj" secondAttribute="topMargin" constant="-2" id="0us-lO-5hr"/>
+                                                <constraint firstItem="GHU-ng-xVN" firstAttribute="leading" secondItem="8Hp-wK-4CD" secondAttribute="trailing" constant="8" id="aoY-L4-LHl"/>
+                                                <constraint firstItem="8Hp-wK-4CD" firstAttribute="leading" secondItem="iXw-xb-Aoj" secondAttribute="leadingMargin" id="emE-NH-aCd"/>
+                                                <constraint firstItem="OTp-JF-O3w" firstAttribute="top" secondItem="8Hp-wK-4CD" secondAttribute="bottom" constant="1" id="gfm-EP-PaA"/>
+                                                <constraint firstItem="8Hp-wK-4CD" firstAttribute="top" secondItem="iXw-xb-Aoj" secondAttribute="topMargin" constant="-4" id="hqz-GS-znr"/>
+                                                <constraint firstAttribute="bottom" secondItem="OTp-JF-O3w" secondAttribute="bottom" constant="-209" id="ivY-fm-zSs"/>
+                                                <constraint firstItem="OTp-JF-O3w" firstAttribute="top" secondItem="GHU-ng-xVN" secondAttribute="bottom" constant="3" id="lgQ-yP-nMq"/>
+                                                <constraint firstAttribute="trailing" secondItem="OTp-JF-O3w" secondAttribute="trailing" constant="-225" id="o6D-Vh-dlX"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="GHU-ng-xVN" secondAttribute="trailing" constant="10" id="sVw-Ue-L1a"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -1803,8 +1812,8 @@
         <image name="up" width="30" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nfZ-5d-aso"/>
-        <segue reference="I2L-5u-1XG"/>
+        <segue reference="HaJ-eE-7kj"/>
         <segue reference="Udb-FK-6c5"/>
+        <segue reference="I2L-5u-1XG"/>
     </inferredMetricsTieBreakers>
 </document>

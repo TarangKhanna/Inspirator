@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         Parse.setApplicationId("8HWVCwLAEWaLHmXBQ9hKl77YhmfHKPAoiZFJM4Ds", clientKey:"LbugyjO6Pr2GPM5m4JexSCahNMG5e4qjFBq85Yec")
-        let userNotificationTypes = (UIUserNotificationType.Alert |  UIUserNotificationType.Badge |  UIUserNotificationType.Sound);
+        let userNotificationTypes = (UIUserNotificationType.Alert |  UIUserNotificationType.Badge |  UIUserNotificationType.Sound)
         let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
         application.registerUserNotificationSettings(settings)
         application.registerForRemoteNotifications()

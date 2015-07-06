@@ -161,13 +161,15 @@ class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                 //self.presentViewController(alert, animated: true, completion: nil)
             }
         } else if(row == 2) {
-            performSegueWithIdentifier("About", sender: self)
+            //performSegueWithIdentifier("About", sender: self)
             //google+
+
         } else if(row == 3) {
             //LinkedIn
         } else if(row == 4){
-            performSegueWithIdentifier("About", sender: self)
+            //performSegueWithIdentifier("About", sender: self)
             //new
+             SCLAlertView().showInfo("About", subTitle: "An app that I am perfecting this summer. Will be adding many more features with your feedback.")
         }
     }
     
