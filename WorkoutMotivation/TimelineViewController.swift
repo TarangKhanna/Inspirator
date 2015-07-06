@@ -24,6 +24,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     
     @IBOutlet weak var menuBarButton: UIBarButtonItem!
     
+    var newIndexPathRow: Int? = nil
     
     @IBOutlet var menuItem : UIBarButtonItem!
     @IBOutlet var statusLabel: UILabel!
@@ -83,13 +84,12 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     
     @IBAction func upVote(sender: AnyObject) {
         //let buttonRow = sender.tag
-        if let buttonRow = sender.tag {
+        if let buttonRow = sender.tag { // or from removeBlock
             var votedBy = voteObject[buttonRow]["votedBy"] as! [String]
             if !contains(votedBy, currentUserId!) {
                 var scoreParse = voteObject[buttonRow]["score"]! as? Int
                 scoreParse = scoreParse! + 1
                 voteObject[buttonRow].setObject(NSNumber(integer: scoreParse!), forKey: "score")
-                println("fqwgref")
                 println(currentUserId)
                 votedBy.append(currentUserId!)
                 voteObject[buttonRow]["upVote"] = true
@@ -133,6 +133,55 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                 println("Already Voted")
                 //             self.tableView.reloadRowsAtIndexPaths([indexPathStore], withRowAnimation: UITableViewRowAnimation.Top)
             }
+        } else {
+            var votedBy = voteObject[newIndexPathRow!]["votedBy"] as! [String]
+            if !contains(votedBy, currentUserId!) {
+                var scoreParse = voteObject[newIndexPathRow!]["score"]! as? Int
+                scoreParse = scoreParse! + 1
+                voteObject[newIndexPathRow!].setObject(NSNumber(integer: scoreParse!), forKey: "score")
+                println(currentUserId)
+                votedBy.append(currentUserId!)
+                voteObject[newIndexPathRow!]["upVote"] = true
+                voteObject[newIndexPathRow!]["votedBy"] = votedBy
+                voteObject[newIndexPathRow!].saveInBackgroundWithBlock {
+                    (success: Bool, error: NSError?) -> Void in
+                    if (success) {
+                        // update cell locally atleast and maybe not call self.retrieve
+                        //
+                        //self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Fade)
+                        self.retrieve()
+                    } else {
+                        println("Couldn't Vote!")
+                        SCLAlertView().showWarning("Error Voting", subTitle: "Check Your Internet Connection.")
+                    }
+                }
+                
+            } else { // already voted -- add to retrieve also
+                //               var indexPath = NSIndexPath(forRow: buttonRow, inSection: 0)
+                
+                var upVoted : Bool = (voteObject[newIndexPathRow!]["upVote"]! as? Bool)!
+                if !upVoted { // if prev was downvote
+                    // then upvote by +2
+                    var scoreParse = voteObject[newIndexPathRow!]["score"]! as? Int
+                    scoreParse = scoreParse! + 2
+                    voteObject[newIndexPathRow!].setObject(NSNumber(integer: scoreParse!), forKey: "score")
+                    //votedBy.append(currentUserId!)
+                    voteObject[newIndexPathRow!]["upVote"] = true
+                    //voteObject[buttonRow]["votedBy"] = votedBy
+                    voteObject[newIndexPathRow!].saveInBackgroundWithBlock {
+                        (success: Bool, error: NSError?) -> Void in
+                        if (success) {
+                            self.retrieve()
+                        } else {
+                            println("Couldn't Vote!")
+                            SCLAlertView().showWarning("Error Voting", subTitle: "Check Your Internet Connection.")
+                        }
+                    }
+                }
+                println("Already Voted")
+                //             self.tableView.reloadRowsAtIndexPaths([indexPathStore], withRowAnimation: UITableViewRowAnimation.Top)
+            }
+            
         }
     }
     
@@ -177,7 +226,48 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                 }
                 println("Already Voted")
             }
+        } else {
+            var votedBy = voteObject[newIndexPathRow!]["votedBy"] as! [String]
+            if !contains(votedBy, currentUserId!) {
+                var scoreParse = voteObject[newIndexPathRow!]["score"]! as? Int
+                scoreParse = scoreParse! - 1
+                voteObject[newIndexPathRow!].setObject(NSNumber(integer: scoreParse!), forKey: "score")
+                votedBy.append(currentUserId!)
+                voteObject[newIndexPathRow!]["upVote"] = false
+                voteObject[newIndexPathRow!]["votedBy"] = votedBy
+                voteObject[newIndexPathRow!].saveInBackgroundWithBlock {
+                    (success: Bool, error: NSError?) -> Void in
+                    if (success) {
+                        self.retrieve()
+                    } else {
+                        println("Couldn't Vote!")
+                        SCLAlertView().showWarning("Error Voting", subTitle: "Check Your Internet Connection.")
+                    }
+                }
+            } else { // already voted -- add to retrieve also
+                var upVoted : Bool = (voteObject[newIndexPathRow!]["upVote"]! as? Bool)!
+                if upVoted {
+                    // then downvote by -2
+                    var scoreParse = voteObject[newIndexPathRow!]["score"]! as? Int
+                    scoreParse = scoreParse! - 2
+                    voteObject[newIndexPathRow!].setObject(NSNumber(integer: scoreParse!), forKey: "score")
+                    //votedBy.append(currentUserId!)
+                    voteObject[newIndexPathRow!]["upVote"] = false
+                    //voteObject[buttonRow]["votedBy"] = votedBy
+                    voteObject[newIndexPathRow!].saveInBackgroundWithBlock {
+                        (success: Bool, error: NSError?) -> Void in
+                        if (success) {
+                            self.retrieve()
+                        } else {
+                            println("Couldn't Vote!")
+                            SCLAlertView().showWarning("Error Voting", subTitle: "Check Your Internet Connection.")
+                        }
+                    }
+                }
+                println("Already Voted")
+            }
         }
+
     }
     
     
@@ -265,6 +355,17 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         }
         removeCellBlock = {(tableView: SBGestureTableView, cell: SBGestureTableViewCell) -> Void in
             let indexPath = tableView.indexPathForCell(cell)
+            println(Int(cell.center.x))
+            if Int(cell.center.x) > 0 { // upvote
+                println(indexPath?.row)
+                self.newIndexPathRow = indexPath?.row
+                self.upVote(self)
+            } else if Int(cell.center.x) < 0 {
+                println(indexPath?.row)
+                println("fjb    ejkbf")
+                self.newIndexPathRow = indexPath?.row
+                self.downVote(self)
+            }
             UIView.animateWithDuration(0.2 * cell.percentageOffsetFromCenter(), animations: { () -> Void in
                 //cell.center = CGPointMake(cell.frame.size.width/2 + (cell.frame.origin.x > 0 ? -bounce : bounce), cell.center.y)
                 cell.leftSideView.iconImageView.alpha = 0
@@ -279,7 +380,9 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                     })
             })
             println("rqwqwrw")
-            self.upVote(self)
+            println(cell.leftSideView)
+            
+            
         }
         
     }
@@ -292,8 +395,6 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     }
     
     func retrieve() {
-        
-        
         var currentProfileUser = ""
         //UIApplication.sharedApplication().beginIgnoringInteractionEvents()
         if var query = PFQuery(className: "Person") as PFQuery? { //querying parse for user data
@@ -464,14 +565,22 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                     var seconds = self.createdAt[indexPath.row]*60
                     var temp = seconds
                     var timeAgo = (seconds/60) // + " m ago"
-                    var ending = " Min Ago"
-                    if timeAgo >= 60 {
+                    var ending = " min"
+                    var setAlready = false
+                    if timeAgo >= 60 { // min now
                         timeAgo = (temp / 3600)
-                        var temp2 = timeAgo
-                        ending = " H"
+                        ending = " hrs"
                         if timeAgo >= 24 {
-                            //timeAgo =
+                            timeAgo = timeAgo / 24
+                            ending = " days"
+                            if timeAgo == 1 {
+                                setAlready = true
+                                cell!.dateLabel.text = "yesterday"
+                            }
                         }
+                    }
+                    if !setAlready {
+                        cell!.dateLabel.text = String(timeAgo) + ending
                     }
                     cell!.dateLabel.text = String(timeAgo) + ending
                     cell!.dateLabel.textColor = UIColor.whiteColor()
@@ -595,13 +704,10 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     }
     
     func profileImageTapped(recognizer: UITapGestureRecognizer) {
-        println("HEREwef")
         var imageIndex = recognizer.view!.tag
         selectedName = userArray[imageIndex]
         selectedScore = String(score[imageIndex])
         selectedParseObject = voteObject[imageIndex]
-        
-        println(imageIndex)
         performSegueWithIdentifier("profileView", sender: self)
     }
     
@@ -615,9 +721,6 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         }
         //let destinationVC = profileVC()
         //destinationVC.name = selectedName
-        //ce
-        
-        println(indexPath.row)
         performSegueWithIdentifier("showComments", sender: self)
     }
     
@@ -635,7 +738,6 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             
             if var recipients = selectedParseObject!["recipients"] as? [String] {  //added to receiver array, real notification on comment adding in commentsVC
                 if !contains(recipients, currentUserId!) {
-                    println("fqwgref")
                     println(PFUser.currentUser()?.objectId)
                     recipients.append(currentUserId!)
                     selectedParseObject!["recipients"] = recipients
@@ -674,7 +776,6 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             if let parseID = selectedParseObjectId as String?{
                 svc.objectIDPost = parseID
                 svc.recipients = recipients2
-                println("herrrwerew")
                 println(recipients2)
             }
         }
@@ -689,7 +790,6 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     
     
     func didSelectMenuOptionAtIndex(row : NSInteger) {
-        println(row)
         if(row == 0) {
             //fb
             if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook){
