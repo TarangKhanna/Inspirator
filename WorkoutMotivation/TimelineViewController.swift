@@ -333,7 +333,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
 //            }
 //        }
         self.view.addSubview(actionButton)
-        
+        actionButton.imageArray = ["log-out.png"]
         actionButton.labelArray = ["Log Out"]
         actionButton.delegate = self
         actionButton.hideWhileScrolling = true
@@ -486,15 +486,6 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             }
             let size = CGSizeMake(30, 30)
             
-            // get profile pic
-//            
-//            let profileImage42 = self.profileImageFilesArray[indexPath.row]
-//            profileImage42.getDataInBackgroundWithBlock { (data, error) -> Void in
-//                if let downloadedImage42 = UIImage(data: data!) {
-//                    cell!.profileImageView.image = downloadedImage42
-//                }
-//            }
-            
                         var queryUser = PFUser.query() as PFQuery?
                         queryUser!.findObjectsInBackgroundWithBlock {
                             (users: [AnyObject]?, error: NSError?) -> Void in
@@ -587,8 +578,6 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                     cell!.scoreLabel.textColor = UIColor.greenColor()
                     cell!.scoreLabel.text = "[" + String(self.score[indexPath.row]) + "]"
                     cell!.typeImageView.image = UIImage(named: "timeline-photo")
-                    //                    cell.postLabel?.text = self.messages[indexPath.row]
-                    //                    cell.postLabel?.textColor = UIColor.whiteColor()
                 }
             }
             
@@ -659,12 +648,6 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             cell!.upVoteBtn.addTarget(self, action: "upVote:", forControlEvents: UIControlEvents.TouchUpInside)
             let index = indexPath.row % circleColors.count
             cell!.rippleLayerColor = circleColors[index]
-            //            if  indexPath.row % 2 == 0 {
-            //                cell.backgroundColor = UIColor.redColor()
-            //            } else {
-            //                cell.backgroundColor = UIColor.purpleColor()
-            //            }
-            //get profile pic
             
             //self.tableView.insertRowsAtIndexPaths(0, withRowAnimation: UITableViewRowAnimation.Bottom)
             cell!.typeImageView.image = UIImage(named: "timeline-chat")
@@ -781,102 +764,14 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
-    //    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    
-    //let toViewController = segue.destinationViewController as! UIViewController
-    //self.modalPresentationStyle = UIModalPresentationStyle.Custom
-    //toViewController.transitioningDelegate = self.transitionOperator
-    //  }
-    
     
     func didSelectMenuOptionAtIndex(row : NSInteger) {
         if(row == 0) {
-            //fb
-            if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook){
-                var facebookSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
-                facebookSheet.setInitialText("#GetMotivated")
-                self.presentViewController(facebookSheet, animated: true, completion: nil)
-            } else {
-                //var alert = UIAlertController(title: "Accounts", message: "Please login to a Facebook account from the iOS app to share.", preferredStyle: UIAlertControllerStyle.Alert)
-                SCLAlertView().showWarning("Accounts", subTitle: "Please login to a Facebook account from the iOS app to share.")
-                //alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                //self.presentViewController(alert, animated: true, completion: nil)
-            }
-        } else if(row == 1) {
-            //twitter
-            if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter){
-                var twitterSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-                twitterSheet.setInitialText("#GetMotivated")
-                self.presentViewController(twitterSheet, animated: true, completion: nil)
-            } else {
-                SCLAlertView().showWarning("Accounts", subTitle: "Please login to a Twitter account from the iOS app to share.")
-                //self.presentViewController(alert, animated: true, completion: nil)
-            }
-        } else if(row == 2) {
-            //google+
-        } else if(row == 3) {
-            //LinkedIn//to logout
             PFUser.logOut()
             performSegueWithIdentifier("signIn", sender: self)
-        } else if(row == 4) {
-            //new
         }
     }
     
-    @IBAction func post(sender: AnyObject) {
-        //let alert = SCLAlertView() // input dialog
-        //let txt = alert.addTextField(title:"Enter Your Thoughts")
-        //alert.addButton("Post") {
-        
-        //        println("Text value: \(txt.text)")
-        //        if txt.text != " " && txt.text != nil && !txt.text.isEmpty {
-        //            var person = PFObject(className:"Person")
-        //            self.containsImage.append(false)
-        //            self.parseObject = person
-        //            person["score"] = 0
-        //            person["username"] = PFUser.currentUser()?.username
-        //            person["admin"] = true
-        //            person["text"] = txt.text
-        //            person["startTime"] = CFAbsoluteTimeGetCurrent()
-        //            person["votedBy"] = []
-        //
-        //            person.saveInBackgroundWithBlock {
-        //                (success: Bool, error: NSError?) -> Void in
-        //                if (success) {
-        //                    self.retrieve()
-        //                    let query = PFInstallation.query()
-        //                    if let query = query { // non intrusive
-        //                        //query.whereKey("channels", equalTo: "suitcaseOwners")
-        //                        query.whereKey("deviceType", equalTo: "ios")
-        //                        let iOSPush = PFPush()
-        //                        iOSPush.setMessage("General: " + txt.text)
-        //                        //iOSPush.setChannel("suitcaseOwners")
-        //                        iOSPush.setQuery(query)
-        //                        iOSPush.sendPushInBackground()
-        //                    }
-        //                } else {
-        //                    println("Couldn't post!")
-        //                    SCLAlertView().showWarning("Error Posting", subTitle: "Check Your Internet Connection.")
-        //                }
-        //            }
-        //        } else {
-        //            // empty post
-        //            SCLAlertView().showWarning("Error Posting", subTitle: "You need to write something in your post.")
-        //            //SCLAlertView().showWarning("Error Posting", subTitle: "You need to write something in your post.", closeButtonTitle: "Cancel")
-        //            //self.post(self)
-        //        }
-        // parse
-        //self.retrieve()
-        //}
-        //alert.showEdit("Post", subTitle:"Type Something Inspirational:", closeButtonTitle: "Cancel")
-        
-        //}
-        
-        
-        //func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        //  var ns = self.messages[indexPath.row] as NSString
-        // ns.sizeWithAttributes(ns)
-        //}
-    }
+    
 }
 

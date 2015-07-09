@@ -265,8 +265,8 @@
 		71D8762C1B2DFD1B0095A1B4 /* SwiftSpinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftSpinner.swift; path = SwiftSpinner/SwiftSpinner.swift; sourceTree = "<group>"; };
 		71E626681B4AB5E500472EFB /* BWWalkthroughPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BWWalkthroughPageViewController.swift; sourceTree = "<group>"; };
 		71E626691B4AB5E500472EFB /* BWWalkthroughViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BWWalkthroughViewController.swift; sourceTree = "<group>"; };
-		71E6266F1B4AD0F900472EFB /* CustomPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPageViewController.swift; sourceTree = "<group>"; };
-		71E626731B4AD4C900472EFB /* Walkthrough.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Walkthrough.storyboard; sourceTree = "<group>"; };
+		71E6266F1B4AD0F900472EFB /* CustomPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomPageViewController.swift; path = WorkoutMotivation/CustomPageViewController.swift; sourceTree = "<group>"; };
+		71E626731B4AD4C900472EFB /* Walkthrough.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Walkthrough.storyboard; path = WorkoutMotivation/Walkthrough.storyboard; sourceTree = "<group>"; };
 		71EE7A871B349587000EA33E /* FriendController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendController.swift; sourceTree = "<group>"; };
 		71EE7A891B3496AA000EA33E /* CollectionViewCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -328,11 +328,9 @@
 			isa = PBXGroup;
 			children = (
 				716B874D1B152E9D00B7E955 /* TimelineViewController.swift */,
-				71E6266F1B4AD0F900472EFB /* CustomPageViewController.swift */,
 				718AAE221B45946D0028697D /* postingViewController.swift */,
 				7109A8EC1B04306900435D3C /* Main.storyboard */,
 				718AAE0E1B453D8F0028697D /* MenuController.swift */,
-				71E626731B4AD4C900472EFB /* Walkthrough.storyboard */,
 				7109A8EA1B04306900435D3C /* MotivateVC.swift */,
 				71691B911B3B05DB005B6C32 /* CommentsVC.swift */,
 				7128F3D71B39DA750092094B /* Comments.swift */,
@@ -520,6 +518,8 @@
 		71CEE5F41B12BA7E00E85AA2 /* VC's */ = {
 			isa = PBXGroup;
 			children = (
+				71E626731B4AD4C900472EFB /* Walkthrough.storyboard */,
+				71E6266F1B4AD0F900472EFB /* CustomPageViewController.swift */,
 				7135F2C01B0800FD002ACD53 /* WeightsVC.swift */,
 				71691B851B39DC8D005B6C32 /* CollectionViewCellComments.swift */,
 				7128A91D1B087F670035C41E /* ProgrammingVC.swift */,
@@ -608,6 +608,7 @@
 		7109A8DB1B04306900435D3C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Tarang khanna";
 				TargetAttributes = {
@@ -843,6 +844,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -882,6 +884,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -893,7 +896,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: tarang khanna (R8K4C5BT9T)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: tarang khanna (R8K4C5BT9T)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -904,7 +907,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "520cbc1b-5121-456b-b0ad-0d16e18c51b9";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "WorkoutMotivation/WorkoutMotivation-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -915,7 +918,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: tarang khanna (R8K4C5BT9T)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: tarang khanna (R8K4C5BT9T)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -926,7 +929,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "520cbc1b-5121-456b-b0ad-0d16e18c51b9";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "WorkoutMotivation/WorkoutMotivation-Bridging-Header.h";
 			};
 			name = Release;
@@ -946,6 +949,7 @@
 				INFOPLIST_FILE = WorkoutMotivationTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WorkoutMotivation.app/WorkoutMotivation";
 			};
 			name = Debug;
@@ -961,6 +965,7 @@
 				INFOPLIST_FILE = WorkoutMotivationTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WorkoutMotivation.app/WorkoutMotivation";
 			};
 			name = Release;

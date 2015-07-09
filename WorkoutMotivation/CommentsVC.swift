@@ -84,24 +84,24 @@ class CommentsVC: UIViewController, UITextFieldDelegate {
                 if (success) {
                     //
                     //self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Fade)
-                    let query = PFInstallation.query()
-                    if let query = query { // non intrusive
-                        //query.whereKey("channels", equalTo: "suitcaseOwners")
-                        query.whereKey("deviceType", equalTo: "ios")
-                        var recipientsTemp = self.recipients
-                        recipientsTemp.filter({$0 != PFUser.currentUser()?.objectId})
-                        println("eqfef")
-                        println(recipientsTemp)
-                        query.whereKey("user", containedIn: recipientsTemp)
-                        println("klnwerewr")
-                        println(self.recipients)
-                        
-                        let iOSPush = PFPush()
-                        iOSPush.setMessage("New Comment: " + self.commentField.text)
-                        //iOSPush.setChannel("suitcaseOwners")
-                        iOSPush.setQuery(query)
-                        iOSPush.sendPushInBackground()
-                    }
+//                    let query = PFInstallation.query()
+//                    if let query = query { // non intrusive
+//                        //query.whereKey("channels", equalTo: "suitcaseOwners")
+//                        query.whereKey("deviceType", equalTo: "ios")
+//                        var recipientsTemp = self.recipients
+//                        recipientsTemp.filter({$0 != PFUser.currentUser()?.objectId})
+//                        println("eqfef")
+//                        println(recipientsTemp)
+//                        query.whereKey("user", containedIn: recipientsTemp)
+//                        println("klnwerewr")
+//                        println(self.recipients)
+//                        
+//                        let iOSPush = PFPush()
+//                        iOSPush.setMessage("New Comment: " + self.commentField.text)
+//                        //iOSPush.setChannel("suitcaseOwners")
+//                        iOSPush.setQuery(query)
+//                        iOSPush.sendPushInBackground()
+//                    }
                     var viewCollection = self.childViewControllers[0] as? Comments
                     viewCollection!.retrieve()
                 } else {

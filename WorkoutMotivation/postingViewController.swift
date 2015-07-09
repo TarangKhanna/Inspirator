@@ -56,17 +56,18 @@ class postingViewController: UIViewController, UITextViewDelegate {
                 if (success) {
                     //self.retrieve()
                     self.performSegueWithIdentifier("backToTimeline", sender: self)
-                    let query = PFInstallation.query()
-                    if let query = query { // non intrusive
-                        //query.whereKey("channels", equalTo: "suitcaseOwners")
-                        query.whereKey("deviceType", equalTo: "ios")
-                        let iOSPush = PFPush()
-                        iOSPush.setMessage("General: " + self.commentTxtView.text)
-                        //iOSPush.setChannel("suitcaseOwners")
-                        iOSPush.setQuery(query)
-                        iOSPush.sendPushInBackground()
-                        
-                    }
+//                    let query = PFInstallation.query()
+//                    if let query = query { // non intrusive
+//                        //query.whereKey("channels", equalTo: "suitcaseOwners")
+//                        query.whereKey("deviceType", equalTo: "ios")
+//                        query.whereKey("")
+//                        let iOSPush = PFPush()
+//                        iOSPush.setMessage("General: " + self.commentTxtView.text)
+//                        //iOSPush.setChannel("suitcaseOwners")
+//                        iOSPush.setQuery(query)
+//                        iOSPush.sendPushInBackground()
+//                        
+//                    }
                 } else {
                     println("Couldn't post!")
                     SCLAlertView().showWarning("Error Posting", subTitle: "Check Your Internet Connection.")
