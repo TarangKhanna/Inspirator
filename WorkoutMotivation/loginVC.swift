@@ -17,6 +17,125 @@ class loginVC: UIViewController, floatMenuDelegate, UITextFieldDelegate  {
     @IBOutlet var password: MKTextField!
     
     @IBOutlet var signUpBtn: MKButton!
+    
+    
+    
+    override func viewWillAppear(animated: Bool) {
+        if (FBSDKAccessToken.currentAccessToken() != nil || PFUser.currentUser() != nil)
+        {
+            // User is already logged in, do work such as go to next view controller.
+            self.performSegueWithIdentifier("loggedIn2", sender: self)
+        }
+    }
+    
+    // Facebook Delegate Methods
+    
+    @IBAction func FBlogIn(sender: AnyObject) {
+        //handle login/logout via the Parse SDK
+        var permissions = [ "public_profile", "email", "user_friends" ]
+        if PFUser.currentUser() != nil {
+            PFUser.logOutInBackgroundWithBlock({ (_) -> Void in
+                println("logged out")//the button will now refresh although I noticed a small delay 1/2 seconds
+            })
+        }
+        else {
+            PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions,  block: {  (user: PFUser?, error: NSError?) -> Void in
+                if let user = user {
+                    if user.isNew {
+                        println("User signed up and logged in through Facebook!")
+                        self.returnUserData()
+                        self.performSegueWithIdentifier("loggedIn2", sender: self)
+                    } else {
+                        println("User logged in through Facebook!")
+                        self.returnUserData()
+                        self.performSegueWithIdentifier("loggedIn2", sender: self)
+                    }
+                } else {
+                    println("Uh oh. The user cancelled the Facebook login.")
+                }
+            })
+        }
+    }
+    
+    
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        println("User Logged In")
+        
+        if ((error) != nil)
+        {
+            // Process error
+        }
+        else if result.isCancelled {
+            // Handle cancellations
+        }
+        else {
+            self.performSegueWithIdentifier("loggedIn2", sender: self)
+            
+            // If you ask for multiple permissions at once, you
+            // should check if specific permissions missing
+            if result.grantedPermissions.contains("email")
+            {
+                // Do work
+            }
+        }
+    }
+    
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        println("User Logged Out")
+    }
+    
+    func returnUserData()
+    {
+        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
+        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+            
+            if ((error) != nil)
+            {
+                // Process error
+                println("Error: \(error)")
+            }
+            else
+            {
+                println("fetched user: \(result)")
+                let userName : NSString = result.valueForKey("name") as! NSString
+                
+                let userEmail : NSString = result.valueForKey("email") as! NSString
+                println("User Email is: \(userEmail)")
+                if let dict = result as? Dictionary<String, AnyObject>{
+                    var name:String = dict["name"] as AnyObject? as! String
+                    var saferName = name.lowercaseString
+                    println("User Name is: \(name)")
+                    let facebookID:String = dict["id"] as AnyObject? as! String
+                    let email:String = dict["email"] as AnyObject? as! String
+                    let aboutYou:String = ""
+                    println(dict)
+                    println("jhvwev")
+                    let pictureURL = "https://graph.facebook.com/\(facebookID)/picture?type=large&return_ssl_resources=1"
+                    
+                    var URLRequest = NSURL(string: pictureURL)
+                    var URLRequestNeeded = NSURLRequest(URL: URLRequest!)
+                    
+                    
+                    NSURLConnection.sendAsynchronousRequest(URLRequestNeeded, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse!,data: NSData!, error: NSError!) -> Void in
+                        if error == nil {
+                            var picture = PFFile(data: data)
+                            PFUser.currentUser()!.setObject(picture, forKey: "ProfilePicture")
+                            PFUser.currentUser()!.saveInBackground()
+                        }
+                        else {
+                            println("Error: \(error.localizedDescription)")
+                        }
+                    })
+                    
+                    PFUser.currentUser()!.setValue(saferName, forKey: "username")
+                    PFUser.currentUser()!.setValue(email, forKey: "email")
+                    PFUser.currentUser()!.setValue(aboutYou, forKey: "AboutYou")
+                    PFUser.currentUser()!.saveInBackground()
+                }
+            }
+        })
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         signInBtn.maskEnabled = false
@@ -65,6 +184,9 @@ class loginVC: UIViewController, floatMenuDelegate, UITextFieldDelegate  {
         password.attributedPlaceholder = NSAttributedString(string:"Password..",
             attributes:[NSForegroundColorAttributeName: UIColor.orangeColor()])
         password.delegate = self
+        
+        
+        
     }
     
     override func didReceiveMemoryWarning() {

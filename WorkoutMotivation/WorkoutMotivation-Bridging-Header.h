@@ -10,7 +10,14 @@
 #import "FXBlurView.h"
 #import <Bolts/BFTask.h>
 #import <UIKit/UIKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <ParseFacebookUtilsV4/PFFacebookUtils.h>
+#ifndef FacebookTutorial_Bridging_Header_h
+#define FacebookTutorial_Bridging_Header_h
 
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+
+#endif
 
 //! Project version number for Spring.
 FOUNDATION_EXPORT double SpringVersionNumber;

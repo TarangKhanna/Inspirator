@@ -236,60 +236,6 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UITextFieldDe
         
     }
     
-    
-    @IBAction func postImage(sender: AnyObject) {
-        
-        // profile pic
-        
-        activityIndicator = UIActivityIndicatorView(frame: self.view.frame)
-        activityIndicator.backgroundColor = UIColor(white: 1.0, alpha: 0.5)
-        activityIndicator.center = self.view.center
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
-        view.addSubview(activityIndicator)
-        activityIndicator.startAnimating()
-        
-        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
-        
-        var post = PFObject(className: "Post")
-        
-        //post["message"] = message.text
-        
-        post["userId"] = PFUser.currentUser()!.objectId!
-        
-        post["username"] = PFUser.currentUser()?.username
-        
-        
-        let imageData = imageToPost.image!.mediumQualityJPEGNSData as NSData?
-            
-        //let imageData = UIImagePNGRepresentation(imageToPost.image)
-        
-        let imageFile = PFFile(name: "image.png", data: imageData!)
-        
-        post["imageFile"] = imageFile
-        
-        post.saveInBackgroundWithBlock{(success, error) -> Void in
-            
-            self.activityIndicator.stopAnimating()
-            
-            UIApplication.sharedApplication().endIgnoringInteractionEvents()
-            
-            if error == nil {
-                
-                self.displayAlert("Image Posted!", message: "Your image has been posted successfully")
-                
-                self.imageToPost.image = UIImage(named: "315px-Blank_woman_placeholder.svg.png")
-                
-                
-            } else {
-                
-                self.displayAlert("Could not post image", message: "Please try again later")
-                
-            }
-            
-        }
-        
-    }
 }
 
 

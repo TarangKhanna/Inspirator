@@ -21,15 +21,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
 //        application.registerUserNotificationSettings(settings)
 //        application.registerForRemoteNotifications()
+         PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
         
-        return true
-        //FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
-    
     func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
         UIApplication.sharedApplication().registerForRemoteNotifications()
     }
 
+    
+    func application(application: UIApplication,
+        openURL url: NSURL,
+        sourceApplication: String?,
+        annotation: AnyObject?) -> Bool {
+            return FBSDKApplicationDelegate.sharedInstance().application(application,
+                openURL: url,
+                sourceApplication: sourceApplication,
+                annotation: annotation)
+    }
+    
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         // Store the deviceToken in the current Installation and save it to Parse
         let installation = PFInstallation.currentInstallation()
@@ -73,7 +83,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        FBSDKAppEvents.activateApp()
     }
+    
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }

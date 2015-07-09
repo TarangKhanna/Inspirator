@@ -59,6 +59,17 @@ class MenuController: UITableViewController {
     }
 
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        var recipients2 = [String]()
+        if (segue.identifier == "profileView2") { //pass data to VC
+            var svc = segue.destinationViewController.topViewController as! profileVC
+            let selectedUser = PFUser.currentUser()
+            svc.name = selectedUser?.username! as String!
+            svc.score = "0" //selectedUser["score"] as! String
+            //svc.profileObject =
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
