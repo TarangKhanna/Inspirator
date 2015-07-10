@@ -13,7 +13,7 @@ import UIKit
 import MapKit
 import Parse
 import Social
-// import Spring
+//import Spring
 
 // fix lag
 
@@ -84,6 +84,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     
     
     @IBAction func upVote(sender: AnyObject) {
+        println("fewfefw")
         //let buttonRow = sender.tag
         if let buttonRow = sender.tag { // or from removeBlock
             var votedBy = voteObject[buttonRow]["votedBy"] as! [String]
@@ -187,7 +188,10 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     }
     
     @IBAction func downVote(sender: AnyObject) {
+        
         if let buttonRow = sender.tag {
+            
+            
             var votedBy = voteObject[buttonRow]["votedBy"] as! [String]
             if !contains(votedBy, currentUserId!) {
                 var scoreParse = voteObject[buttonRow]["score"]! as? Int
@@ -641,12 +645,12 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             cell!.secondRightAction = SBGestureTableViewCellAction(icon: clockIcon.imageWithSize(size), color: redColor, fraction: 0.6, didTriggerBlock: removeCellBlock)
             
             cell!.backgroundColor = UIColor.clearColor()
-            cell!.downVoteBtn.tag = indexPath.row
+            cell!.downVoteButton.tag = indexPath.row
             
-            cell!.downVoteBtn.addTarget(self, action: "downVote:", forControlEvents: UIControlEvents.TouchUpInside)
-            cell!.upVoteBtn.tag = indexPath.row
+            cell!.downVoteButton.addTarget(self, action: "downVote:", forControlEvents: UIControlEvents.TouchUpInside)
+            cell!.upvoteButton.tag = indexPath.row
             
-            cell!.upVoteBtn.addTarget(self, action: "upVote:", forControlEvents: UIControlEvents.TouchUpInside)
+            cell!.upvoteButton.addTarget(self, action: "upVote:", forControlEvents: UIControlEvents.TouchUpInside)
             let index = indexPath.row % circleColors.count
             cell!.rippleLayerColor = circleColors[index]
             

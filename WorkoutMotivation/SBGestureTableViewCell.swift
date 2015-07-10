@@ -234,12 +234,31 @@ class SBGestureTableViewCell: MKTableViewCell, UIGestureRecognizerDelegate {
     @IBOutlet var dateLabel : UILabel!
     
     @IBOutlet var scoreLabel: UILabel!
+
     
-    @IBOutlet var upVoteBtn: UIButton!
-    @IBOutlet var downVoteBtn: UIButton!
+    @IBOutlet weak var badgeImageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var avatarImageView: UIImageView!
+    @IBOutlet weak var authorLabel: UILabel!
+    @IBOutlet weak var upvoteButton: SpringButton!
+    @IBOutlet weak var downVoteButton: SpringButton!
     
-    @IBAction func upVoteCell(sender: AnyObject) {
-        
+    @IBOutlet weak var commentButton: SpringButton!
+    weak var delegate: SBGestureTableViewCellDelegate?
+    
+    @IBAction func upvoteButtonDidTouch(sender: AnyObject) {
+        upvoteButton.animation = "pop"
+        upvoteButton.force = 3
+        upvoteButton.animate()
+        delegate?.storyTableViewCellDidTouchUpvote(self, sender: sender)
+    }
+    
+    @IBAction func downvoteButtonDidTouch(sender: AnyObject) {
+        downVoteButton.animation = "pop"
+        downVoteButton.force = 3
+        downVoteButton.animate()
+        delegate?.storyTableViewCellDidTouchUpvote(self, sender: sender)
     }
     
     override func awakeFromNib() {
@@ -278,4 +297,9 @@ class SBGestureTableViewCell: MKTableViewCell, UIGestureRecognizerDelegate {
         }
     }
     
+}
+
+protocol SBGestureTableViewCellDelegate: class {
+    func storyTableViewCellDidTouchUpvote(cell: SBGestureTableViewCell, sender: AnyObject)
+    func storyTableViewCellDidTouchComment(cell: SBGestureTableViewCell, sender: AnyObject)
 }

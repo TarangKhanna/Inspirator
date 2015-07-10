@@ -730,7 +730,7 @@
                                                         </mask>
                                                     </variation>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zkh-wL-Ykj" customClass="MKButton" customModule="WorkoutMotivation" customModuleProvider="target">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zkh-wL-Ykj" customClass="SpringButton" customModule="WorkoutMotivation" customModuleProvider="target">
                                                     <rect key="frame" x="309" y="17" width="65" height="47"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="65" id="Pcc-co-rSj"/>
@@ -739,7 +739,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="upVoteCell:" destination="huQ-Ow-EL0" eventType="touchUpInside" id="zLz-yK-BEG"/>
+                                                        <action selector="upvoteButtonDidTouch:" destination="huQ-Ow-EL0" eventType="touchUpInside" id="23p-M8-NsG"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i7C-yI-aT5">
@@ -751,7 +751,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CTZ-Mk-MGQ" customClass="MKButton" customModule="WorkoutMotivation" customModuleProvider="target">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CTZ-Mk-MGQ" customClass="SpringButton" customModule="WorkoutMotivation" customModuleProvider="target">
                                                     <rect key="frame" x="312" y="82" width="59" height="49"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="59" id="eqh-Tv-SFU"/>
@@ -761,6 +761,7 @@
                                                     </state>
                                                     <connections>
                                                         <action selector="downVote:" destination="KBP-Cf-XLc" eventType="touchUpInside" id="haj-xv-ipO"/>
+                                                        <action selector="downvoteButtonDidTouch:" destination="huQ-Ow-EL0" eventType="touchUpInside" id="5C3-8k-ei5"/>
                                                     </connections>
                                                 </button>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Label" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AE5-u0-Wpw">
@@ -839,13 +840,13 @@
                                         <connections>
                                             <outlet property="dateImageView" destination="8oQ-8C-j8R" id="VxM-TH-RkR"/>
                                             <outlet property="dateLabel" destination="7jN-n0-nBp" id="pcs-z5-hlW"/>
-                                            <outlet property="downVoteBtn" destination="CTZ-Mk-MGQ" id="S1x-PX-vGD"/>
+                                            <outlet property="downVoteButton" destination="CTZ-Mk-MGQ" id="vJX-u1-J5N"/>
                                             <outlet property="nameLabel" destination="SZ5-DN-WpO" id="v4g-sF-p9l"/>
                                             <outlet property="postLabel" destination="AE5-u0-Wpw" id="0dh-qh-soC"/>
                                             <outlet property="profileImageView" destination="1VD-lv-ylW" id="cOJ-RZ-jLz"/>
                                             <outlet property="scoreLabel" destination="i7C-yI-aT5" id="mgL-HA-0FO"/>
                                             <outlet property="typeImageView" destination="89m-Ea-two" id="UfI-49-Cvp"/>
-                                            <outlet property="upVoteBtn" destination="zkh-wL-Ykj" id="bg0-33-j8M"/>
+                                            <outlet property="upvoteButton" destination="zkh-wL-Ykj" id="Cpb-u7-1Sm"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TimelineCellPhoto" rowHeight="374" id="0hg-We-hAK" customClass="SBGestureTableViewCell" customModule="WorkoutMotivation" customModuleProvider="target">
