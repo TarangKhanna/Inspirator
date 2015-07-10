@@ -66,6 +66,8 @@ class MenuController: UITableViewController {
             let selectedUser = PFUser.currentUser()
             svc.name = selectedUser?.username! as String!
             svc.score = "0" //selectedUser["score"] as! String
+            svc.show = true
+            
             //svc.profileObject =
         }
     }

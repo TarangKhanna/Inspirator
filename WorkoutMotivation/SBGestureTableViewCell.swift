@@ -229,7 +229,8 @@ class SBGestureTableViewCell: MKTableViewCell, UIGestureRecognizerDelegate {
     @IBOutlet var photoImageView : UIImageView?
     
     @IBOutlet var nameLabel : UILabel!
-    @IBOutlet var postLabel : UILabel?
+    
+    @IBOutlet var postLabel: UITextView!
     @IBOutlet var dateLabel : UILabel!
     
     @IBOutlet var scoreLabel: UILabel!
@@ -265,8 +266,8 @@ class SBGestureTableViewCell: MKTableViewCell, UIGestureRecognizerDelegate {
         super.layoutSubviews()
         
         if postLabel != nil {
-            let label = postLabel!
-            label.preferredMaxLayoutWidth = CGRectGetWidth(label.frame)
+            //let label = postLabel!
+            //label.preferredMaxLayoutWidth = CGRectGetWidth(label.frame)
         }
         
         if scoreLabel != nil {

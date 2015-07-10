@@ -111,16 +111,31 @@ class loginVC: UIViewController, floatMenuDelegate, UITextFieldDelegate  {
                     println(dict)
                     println("jhvwev")
                     let pictureURL = "https://graph.facebook.com/\(facebookID)/picture?type=large&return_ssl_resources=1"
-                    
+                    let bioURL = "https://graph.facebook.com/\(facebookID)/fields=bio"
                     var URLRequest = NSURL(string: pictureURL)
                     var URLRequestNeeded = NSURLRequest(URL: URLRequest!)
-                    
+                    var URLRequest2 = NSURL(string: bioURL)
+                    var URLRequestNeeded2 = NSURLRequest(URL: URLRequest2!)
                     
                     NSURLConnection.sendAsynchronousRequest(URLRequestNeeded, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse!,data: NSData!, error: NSError!) -> Void in
                         if error == nil {
                             var picture = PFFile(data: data)
                             PFUser.currentUser()!.setObject(picture, forKey: "ProfilePicture")
                             PFUser.currentUser()!.saveInBackground()
+                        }
+                        else {
+                            println("Error: \(error.localizedDescription)")
+                        }
+                    })
+                    
+                    NSURLConnection.sendAsynchronousRequest(URLRequestNeeded2, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse!,data: NSData!, error: NSError!) -> Void in
+                        if error == nil {
+                            //var aboutYou = PFUser.currentUser(data: data)
+                            //PFUser.currentUser()!.setObject(aboutYou, forKey: "username")
+                            //PFUser.currentUser()!.saveInBackground()
+                            println("ergg")
+                            println(data)
+                            println(response)
                         }
                         else {
                             println("Error: \(error.localizedDescription)")

@@ -32,9 +32,25 @@ class profileVC: UIViewController, UIScrollViewDelegate, UIPopoverPresentationCo
     var blurredHeaderImageView:UIImageView?
     var liked = false
     //var profileObject = PFObject()
+    @IBOutlet weak var menuBarButton: UIBarButtonItem!
+    
+    var show = false
     
     override func viewWillAppear(animated: Bool) {
-        avatarImage.layer.borderColor = UIColor.redColor().CGColor
+        var show2 = show
+        if show2 {
+        if self.revealViewController() != nil {
+            menuBarButton.target = self.revealViewController()
+            menuBarButton.action = "revealToggle:"
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
+        } else {
+          menuBarButton = nil
+        }
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.translucent = true
+        navigationController?.navigationBar.layer.borderColor = UIColor.redColor().CGColor
         aboutYouLabel.text = ""
         scoreLabel.text = score
         var name2 = name

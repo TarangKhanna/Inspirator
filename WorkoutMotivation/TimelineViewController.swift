@@ -710,10 +710,11 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         var recipients2 = [String]()
         if (segue.identifier == "profileView") { //pass data to VC
-            var svc = segue.destinationViewController as! profileVC;
+             var svc = segue.destinationViewController.topViewController as! profileVC
             println(selectedName)
             svc.name = selectedName
             svc.score = selectedScore
+            svc.show = true
             //svc.profileObject =
         } else if (segue.identifier == "showComments") { // get notified if you see comment section
             var currentUserId = PFUser.currentUser()?.objectId
