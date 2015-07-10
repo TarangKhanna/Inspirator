@@ -16,6 +16,19 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UITextFieldDe
     @IBOutlet var aboutYou: MKTextField!
     @IBOutlet var SignUpBtn: MKButton!
     
+    
+    @IBOutlet weak var dialogView: DesignableView!
+    
+    @IBAction func closeButtonDidTouch(sender: AnyObject) {
+        println("worked")
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    
+    
+    
+    
+    
     override func viewWillAppear(animated: Bool) {
         SignUpBtn.center.x  -= view.bounds.width
         username.center.x -= view.bounds.width
@@ -29,91 +42,58 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UITextFieldDe
         password.center.x -= view.bounds.width
         aboutYou.center.x -= view.bounds.width
     }
+    
+    
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.view.backgroundColor = UIColor(red: 65.0 / 255.0, green: 62.0 / 255.0, blue: 79.0 / 255.0, alpha: 1)
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "loginBG.png")!)
+        //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "loginBG.png")!)
        // self.view.backgroundColor = UIColor(patternImage: UIImage(named: "signUpBG")!)
-        let floatFrame:CGRect = (CGRectMake(UIScreen.mainScreen().bounds.size.width - 44 - 20, UIScreen.mainScreen().bounds.size.height - 44 - 20, 44, 44))
-        // Do any additional setup after loading the view, typically from a nib.
-        // self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0.6, alpha: 0.5)
-        //self.view.backgroundColor = UIColor.MKColor.Lime
-        let actionButton : VCFloatingActionButton = VCFloatingActionButton(frame: floatFrame, normalImage: UIImage(named: "plus.png"), andPressedImage: UIImage(named: "cross.png"), withScrollview: nil)
-        //actionButton.normalImage = UIImage(named: "plus.png")!
-        self.view.addSubview(actionButton)
-        //actionButton.frame = floatFrame
-        //actionButton.center = self.view.center
-        actionButton.imageArray = ["fb-icon.png","twitter-icon.png","google-icon.png","linkedin-icon.png"]
-        actionButton.labelArray = ["Facebook","Twitter","Google Plus","Linked in"]
-        actionButton.delegate = self
         // No border, no shadow, floatingPlaceholderEnabled
         username.layer.borderColor = UIColor.clearColor().CGColor
         username.floatingPlaceholderEnabled = true
-        username.placeholder = "Username.."
+        username.placeholder = "Username"
         username.tintColor = UIColor.MKColor.Blue
         username.rippleLocation = .Right
         username.cornerRadius = 0
         username.bottomBorderEnabled = true
-        username.attributedPlaceholder = NSAttributedString(string:"Username..",
+        username.attributedPlaceholder = NSAttributedString(string:"Username",
             attributes:[NSForegroundColorAttributeName: UIColor.orangeColor()])
         username.delegate = self
         
         password.layer.borderColor = UIColor.clearColor().CGColor
         password.floatingPlaceholderEnabled = true
-        password.placeholder = "Password.."
+        password.placeholder = "Password"
         password.tintColor = UIColor.MKColor.Blue
         password.rippleLocation = .Right
         password.cornerRadius = 0
         password.bottomBorderEnabled = true
-        password.attributedPlaceholder = NSAttributedString(string:"Password..",
+        password.attributedPlaceholder = NSAttributedString(string:"Password",
             attributes:[NSForegroundColorAttributeName: UIColor.orangeColor()])
         password.delegate = self
         
         aboutYou.layer.borderColor = UIColor.clearColor().CGColor
         aboutYou.floatingPlaceholderEnabled = true
-        aboutYou.placeholder = "Describe Yourself In A Few Words.."
+        aboutYou.placeholder = "Few words about you"
         aboutYou.tintColor = UIColor.MKColor.Blue
         aboutYou.rippleLocation = .Right
         aboutYou.cornerRadius = 0
         aboutYou.bottomBorderEnabled = true
-        aboutYou.attributedPlaceholder = NSAttributedString(string:"Describe Yourself In A Few Words..",
+        aboutYou.attributedPlaceholder = NSAttributedString(string:"Few words about you",
             attributes:[NSForegroundColorAttributeName: UIColor.orangeColor()])
         aboutYou.delegate = self
     }
     
     override func viewDidAppear(animated: Bool) {
         
-        if PFUser.currentUser() != nil {
-            
-            // self.performSegueWithIdentifier("showUsers", sender: self)
-            
-        }
-        println("wfijbw")
-        
     }
     
-    func setBGColor() {
-        let choose = arc4random_uniform(6)
-        
-        switch choose {
-        case 0:
-            self.view.backgroundColor = UIColor.blueColor()
-        case 1:
-            self.view.backgroundColor = UIColor.yellowColor()
-        case 2:
-            self.view.backgroundColor = UIColor.greenColor()
-        case 3:
-            self.view.backgroundColor = UIColor.blackColor()
-        case 4:
-            self.view.backgroundColor = UIColor.redColor()
-        case 5:
-            self.view.backgroundColor = UIColor.orangeColor()
-        default:
-            self.view.backgroundColor = UIColor.clearColor()
-        }
-     }
-    
     @IBAction func signUp(sender: AnyObject) {
+        dialogView.animation = "shake"
+        dialogView.animate()
         signUp2()
     }
     
