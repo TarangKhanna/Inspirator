@@ -252,7 +252,8 @@ class SBGestureTableViewCell: MKTableViewCell, UIGestureRecognizerDelegate {
         
         postLabel?.font = UIFont(name: "Avenir-Book", size: 14)
         postLabel?.textColor = UIColor(white: 0.6, alpha: 1.0)
-        
+        //postLabel.text = nil
+        //postLabel.text = ""
         dateLabel.font = UIFont(name: "Avenir-Book", size: 14)
         dateLabel.textColor = UIColor(white: 0.6, alpha: 1.0)
         
@@ -267,6 +268,7 @@ class SBGestureTableViewCell: MKTableViewCell, UIGestureRecognizerDelegate {
         
         if postLabel != nil {
             //let label = postLabel!
+            
             //label.preferredMaxLayoutWidth = CGRectGetWidth(label.frame)
         }
         

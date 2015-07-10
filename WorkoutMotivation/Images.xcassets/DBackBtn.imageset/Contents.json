@@ -3,11 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "custom-segue-featured-1024.jpg"
+      "filename" : "DBackBtn.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "DBackBtn@2x.png"
     },
     {
       "idiom" : "universal",

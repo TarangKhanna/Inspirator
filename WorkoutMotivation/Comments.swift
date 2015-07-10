@@ -20,7 +20,7 @@ let reuseIdentifier5 = "CellComments"
 
 class Comments: UICollectionViewController, UICollectionViewDelegateFlowLayout, UIPopoverPresentationControllerDelegate, UITextViewDelegate {
     
-    
+    var firstPostComment = String()
     var parsePassedID : String = ""
     var name2 : String = "" // passed from parent
     //var profileImageFile = PFFile()
@@ -91,6 +91,8 @@ class Comments: UICollectionViewController, UICollectionViewDelegateFlowLayout, 
                 self.messages.removeAll(keepCapacity: false)
                 self.userArray.removeAll(keepCapacity: false)
                 //self.score.removeAll(keepCapacity: false)
+                self.messages.append(self.firstPostComment)
+                self.userArray.append("Test")
                 self.createdAt.removeAll(keepCapacity: false)
                 //self.voteObject.removeAll(keepCapacity: false)
                 //self.votedArray.removeAll(keepCapacity: false)
@@ -127,6 +129,7 @@ class Comments: UICollectionViewController, UICollectionViewDelegateFlowLayout, 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false
+        
         // No border, no shadow, floatPlaceHolderDisabled
         
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadList:", name:"load", object: nil)

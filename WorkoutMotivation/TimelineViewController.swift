@@ -58,7 +58,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     var circleColors = [UIColor.MKColor.LightBlue, UIColor.MKColor.Grey, UIColor.MKColor.LightGreen, UIColor.MKColor.Amber, UIColor.MKColor.DeepOrange]
     var voteObject = [PFObject]()
     //var potentialVoteCounter : Int? = object["count"]
-    
+    var selectedFirstPost = String()
     // gesture tableview configs
     let checkIcon = FAKIonIcons.ios7ArrowUpIconWithSize(30)
     let closeIcon = FAKIonIcons.ios7ArrowUpIconWithSize(30) // downvote swipe left
@@ -81,6 +81,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             performSegueWithIdentifier("signIn", sender: self)
         }
     }
+    
     
     @IBAction func upVote(sender: AnyObject) {
         //let buttonRow = sender.tag
@@ -550,7 +551,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                     name.replaceRange(name.startIndex...name.startIndex, with: String(name[name.startIndex]).capitalizedString)
                     cell!.nameLabel.text = name
                     cell!.nameLabel.textColor = UIColor.greenColor()
-                    cell!.postLabel?.text = self.messages[indexPath.row]
+                    cell!.postLabel?.text = "​\u{200B}\(self.messages[indexPath.row])"
                     cell!.postLabel?.textColor = UIColor.whiteColor()
                     
                     var seconds = self.createdAt[indexPath.row]*60
@@ -699,6 +700,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         selectedName = userArray[indexPath.row]
         selectedScore = String(score[indexPath.row])
         selectedParseObject = voteObject[indexPath.row]
+        selectedFirstPost = messages[indexPath.row]
         if let myObject = ParseObjectId[indexPath.row] as String? {
             selectedParseObjectId = myObject
         }
@@ -758,6 +760,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             var svc = segue.destinationViewController.topViewController as! CommentsVC // nav controller in between
             
             if let parseID = selectedParseObjectId as String?{
+                svc.firstPost = selectedFirstPost
                 svc.objectIDPost = parseID
                 svc.recipients = recipients2
                 println(recipients2)

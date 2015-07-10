@@ -347,11 +347,11 @@
 		7109A8E51B04306900435D3C /* WorkoutMotivation */ = {
 			isa = PBXGroup;
 			children = (
-				716B874D1B152E9D00B7E955 /* TimelineViewController.swift */,
 				718AAE221B45946D0028697D /* postingViewController.swift */,
 				7109A8EC1B04306900435D3C /* Main.storyboard */,
 				718AAE0E1B453D8F0028697D /* MenuController.swift */,
 				7109A8EA1B04306900435D3C /* MotivateVC.swift */,
+				716B874D1B152E9D00B7E955 /* TimelineViewController.swift */,
 				71691B911B3B05DB005B6C32 /* CommentsVC.swift */,
 				7128F3D71B39DA750092094B /* Comments.swift */,
 				71561D001B1FD6A70052B5F7 /* PostImageViewController.swift */,

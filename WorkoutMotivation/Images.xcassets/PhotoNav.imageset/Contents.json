@@ -2,12 +2,13 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "PhotoNav.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "love@2x.png"
+      "filename" : "PhotoNav@2x.png"
     },
     {
       "idiom" : "universal",
