@@ -263,7 +263,7 @@ class SBGestureTableViewCell: MKTableViewCell, UIGestureRecognizerDelegate {
     
     override func awakeFromNib() {
         
-        dateImageView.image = UIImage(named: "clock")
+        //dateImageView.image = UIImage(named: "clock")
         profileImageView.layer.cornerRadius = 30
         
         nameLabel.font = UIFont(name: "Avenir-Book", size: 16)

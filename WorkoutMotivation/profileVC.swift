@@ -13,7 +13,7 @@ let offset_HeaderStop:CGFloat = 40.0 // At this offset the Header stops its tran
 let offset_B_LabelHeader:CGFloat = 95.0 // At this offset the Black label reaches the Header
 let distance_W_LabelHeader:CGFloat = 35.0 // The distance between the bottom of the Header and the top of the White Label
 
-class profileVC: UIViewController, UIScrollViewDelegate, UIPopoverPresentationControllerDelegate {
+class profileVC: UIViewController, UIScrollViewDelegate, UIPopoverPresentationControllerDelegate,  UIImagePickerControllerDelegate,  UINavigationControllerDelegate {
     
     @IBOutlet var profileName: UILabel!
     @IBOutlet var scrollView:UIScrollView!
@@ -35,17 +35,18 @@ class profileVC: UIViewController, UIScrollViewDelegate, UIPopoverPresentationCo
     @IBOutlet weak var menuBarButton: UIBarButtonItem!
     
     var show = false
+    var canChange = false
     
     override func viewWillAppear(animated: Bool) {
         var show2 = show
         if show2 {
-        if self.revealViewController() != nil {
-            menuBarButton.target = self.revealViewController()
-            menuBarButton.action = "revealToggle:"
-            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        }
+            if self.revealViewController() != nil {
+                menuBarButton.target = self.revealViewController()
+                menuBarButton.action = "revealToggle:"
+                self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+            }
         } else {
-          menuBarButton = nil
+            menuBarButton = nil
         }
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -94,25 +95,101 @@ class profileVC: UIViewController, UIScrollViewDelegate, UIPopoverPresentationCo
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView.delegate = self
-        let likeProfileGesture = UILongPressGestureRecognizer(target: self, action: "longPressed:")
-        self.view.addGestureRecognizer(likeProfileGesture)
+        let changeProfilePicGesture =
+        UITapGestureRecognizer(target: self, action: "changePic:")
+        self.view.addGestureRecognizer(changeProfilePicGesture)
+        if PFUser.currentUser()?.username == name {
+            let likeProfileGesture = UILongPressGestureRecognizer(target: self, action: "longPressed:")
+            self.view.addGestureRecognizer(likeProfileGesture)
+        }
     }
+    
+    
+    func changePic(sender: UILongPressGestureRecognizer) // liked profile
+    {
+        
+        //        var user = PFUser.currentUser()
+        //        var relation = user!.relationForKey("likes")
+        //        relation.addObject(post)
+        //        user.saveInBackgroundWithBlock {
+        //            (success: Bool, error: NSError?) -> Void in
+        //            if (success) {
+        //                // The post has been added to the user's likes relation.
+        //            } else {
+        //                // There was a problem, check error.description
+        //            }
+        //        }
+        if (sender.state == UIGestureRecognizerState.Ended) {
+            //Do Whatever You want on End of Gesture
+            // change profile pic
+            println(name)
+            
+            
+            let alert = SCLAlertView()
+            alert.addButton("Choose From Gallery") {
+                var image = UIImagePickerController()
+                image.delegate = self
+                image.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+                image.allowsEditing = false
+                self.presentViewController(image, animated: true, completion: nil)
+            }
+            alert.addButton("Take Photo") {
+                imagePicker =  UIImagePickerController()
+                imagePicker.delegate = self
+                imagePicker.sourceType = .Camera
+                self.presentViewController(imagePicker, animated: true, completion: nil)
+            }
+            
+            alert.showEdit("Change", subTitle:"Change Profile Picture:", closeButtonTitle: "Cancel")
+            
+        }
+        else if (sender.state == UIGestureRecognizerState.Began){
+            //Do Whatever You want on Began of Gesture
+            
+        }
+        
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+        let currentUser = PFUser.currentUser()
+        self.dismissViewControllerAnimated(true, completion:nil)
+        
+        if let imageData = image!.mediumQualityJPEGNSData as NSData? { // choose low to reduce by 1/8
+            
+            var imageSize = Float(imageData.length)
+            
+            imageSize = imageSize/(1024*1024) // in Mb
+            
+            println("Image size is \(imageSize)Mb")
+            
+            if imageSize < 5 {
+                
+                if let imageFile = PFFile(name: "image.png", data: imageData) as PFFile? {
+                    currentUser!.setObject(imageFile, forKey: "ProfilePicture")
+                    currentUser?.saveInBackground()
+                }
+            }
+        }
+    }
+    
+    
+    
     
     
     func longPressed(sender: UILongPressGestureRecognizer) // liked profile
     {
         
-//        var user = PFUser.currentUser()
-//        var relation = user!.relationForKey("likes")
-//        relation.addObject(post)
-//        user.saveInBackgroundWithBlock {
-//            (success: Bool, error: NSError?) -> Void in
-//            if (success) {
-//                // The post has been added to the user's likes relation.
-//            } else {
-//                // There was a problem, check error.description
-//            }
-//        }
+        //        var user = PFUser.currentUser()
+        //        var relation = user!.relationForKey("likes")
+        //        relation.addObject(post)
+        //        user.saveInBackgroundWithBlock {
+        //            (success: Bool, error: NSError?) -> Void in
+        //            if (success) {
+        //                // The post has been added to the user's likes relation.
+        //            } else {
+        //                // There was a problem, check error.description
+        //            }
+        //        }
         if (sender.state == UIGestureRecognizerState.Ended) {
             //Do Whatever You want on End of Gesture
         }
@@ -126,8 +203,10 @@ class profileVC: UIViewController, UIScrollViewDelegate, UIPopoverPresentationCo
                 liked = false
             }
         }
-       
+        
     }
+    
+    
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
@@ -203,63 +282,63 @@ class profileVC: UIViewController, UIScrollViewDelegate, UIPopoverPresentationCo
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         
-//        var offset = scrollView.contentOffset.y
-//        var avatarTransform = CATransform3DIdentity
-//        var headerTransform = CATransform3DIdentity
-//        
-//        // PULL DOWN -----------------
-//        
-//        if offset < 0 {
-//            
-//            let headerScaleFactor:CGFloat = -(offset) / header.bounds.height
-//            let headerSizevariation = ((header.bounds.height * (1.0 + headerScaleFactor)) - header.bounds.height)/2.0
-//            headerTransform = CATransform3DTranslate(headerTransform, 0, headerSizevariation, 0)
-//            headerTransform = CATransform3DScale(headerTransform, 1.0 + headerScaleFactor, 1.0 + headerScaleFactor, 0)
-//            
-//            header.layer.transform = headerTransform
-//        }
-//            
-//            // SCROLL UP/DOWN ------------
-//            
-//        else {
-//            
-//            // Header -----------
-//            
-//            headerTransform = CATransform3DTranslate(headerTransform, 0, max(-offset_HeaderStop, -offset), 0)
-//            
-//            //  ------------ Label
-//            
-//            let labelTransform = CATransform3DMakeTranslation(0, max(-distance_W_LabelHeader, offset_B_LabelHeader - offset), 0)
-//            headerLabel.layer.transform = labelTransform
-//            
-//            //  ------------ Blur
-//            
-//            headerBlurImageView?.alpha = min (1.0, (offset - offset_B_LabelHeader)/distance_W_LabelHeader)
-//            
-//            // Avatar -----------
-//            
-//            let avatarScaleFactor = (min(offset_HeaderStop, offset)) / avatarImage.bounds.height / 1.4 // Slow down the animation
-//            let avatarSizeVariation = ((avatarImage.bounds.height * (1.0 + avatarScaleFactor)) - avatarImage.bounds.height) / 2.0
-//            avatarTransform = CATransform3DTranslate(avatarTransform, 0, avatarSizeVariation, 0)
-//            avatarTransform = CATransform3DScale(avatarTransform, 1.0 - avatarScaleFactor, 1.0 - avatarScaleFactor, 0)
-//            
-//            if offset <= offset_HeaderStop {
-//                
-//                if avatarImage.layer.zPosition < header.layer.zPosition{
-//                    header.layer.zPosition = 0
-//                }
-//                
-//            }else {
-//                if avatarImage.layer.zPosition >= header.layer.zPosition{
-//                    header.layer.zPosition = 2
-//                }
-//            }
-//        }
-//        
-//        // Apply Transformations
-//        
-//        header.layer.transform = headerTransform
-//        avatarImage.layer.transform = avatarTransform
+        //        var offset = scrollView.contentOffset.y
+        //        var avatarTransform = CATransform3DIdentity
+        //        var headerTransform = CATransform3DIdentity
+        //
+        //        // PULL DOWN -----------------
+        //
+        //        if offset < 0 {
+        //
+        //            let headerScaleFactor:CGFloat = -(offset) / header.bounds.height
+        //            let headerSizevariation = ((header.bounds.height * (1.0 + headerScaleFactor)) - header.bounds.height)/2.0
+        //            headerTransform = CATransform3DTranslate(headerTransform, 0, headerSizevariation, 0)
+        //            headerTransform = CATransform3DScale(headerTransform, 1.0 + headerScaleFactor, 1.0 + headerScaleFactor, 0)
+        //
+        //            header.layer.transform = headerTransform
+        //        }
+        //
+        //            // SCROLL UP/DOWN ------------
+        //
+        //        else {
+        //
+        //            // Header -----------
+        //
+        //            headerTransform = CATransform3DTranslate(headerTransform, 0, max(-offset_HeaderStop, -offset), 0)
+        //
+        //            //  ------------ Label
+        //
+        //            let labelTransform = CATransform3DMakeTranslation(0, max(-distance_W_LabelHeader, offset_B_LabelHeader - offset), 0)
+        //            headerLabel.layer.transform = labelTransform
+        //
+        //            //  ------------ Blur
+        //
+        //            headerBlurImageView?.alpha = min (1.0, (offset - offset_B_LabelHeader)/distance_W_LabelHeader)
+        //
+        //            // Avatar -----------
+        //
+        //            let avatarScaleFactor = (min(offset_HeaderStop, offset)) / avatarImage.bounds.height / 1.4 // Slow down the animation
+        //            let avatarSizeVariation = ((avatarImage.bounds.height * (1.0 + avatarScaleFactor)) - avatarImage.bounds.height) / 2.0
+        //            avatarTransform = CATransform3DTranslate(avatarTransform, 0, avatarSizeVariation, 0)
+        //            avatarTransform = CATransform3DScale(avatarTransform, 1.0 - avatarScaleFactor, 1.0 - avatarScaleFactor, 0)
+        //
+        //            if offset <= offset_HeaderStop {
+        //
+        //                if avatarImage.layer.zPosition < header.layer.zPosition{
+        //                    header.layer.zPosition = 0
+        //                }
+        //
+        //            }else {
+        //                if avatarImage.layer.zPosition >= header.layer.zPosition{
+        //                    header.layer.zPosition = 2
+        //                }
+        //            }
+        //        }
+        //
+        //        // Apply Transformations
+        //
+        //        header.layer.transform = headerTransform
+        //        avatarImage.layer.transform = avatarTransform
     }
     
     func adaptivePresentationStyleForPresentationController(PC: UIPresentationController) -> UIModalPresentationStyle {

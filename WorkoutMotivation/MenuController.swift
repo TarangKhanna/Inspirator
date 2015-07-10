@@ -67,7 +67,7 @@ class MenuController: UITableViewController {
             svc.name = selectedUser?.username! as String!
             svc.score = "0" //selectedUser["score"] as! String
             svc.show = true
-            
+            svc.canChange = true
             //svc.profileObject =
         }
     }

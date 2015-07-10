@@ -27,6 +27,7 @@ class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     @IBOutlet weak var filterBtn: UIButton!
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
+    @IBOutlet weak var timeView: UITextView!
     
     
     let manager = DataSource()
@@ -37,6 +38,13 @@ class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     var currentUserId : String? = nil
     
     override func viewWillAppear(animated: Bool) {
+        let date = NSDate()
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components(.CalendarUnitHour | .CalendarUnitMinute, fromDate: date)
+        let hour = components.hour
+        let minutes = components.minute
+        timeView.text = String(minutes)
+        
         if let currentUser = PFUser.currentUser()?.username {
             currentUserId = PFUser.currentUser()?.objectId
         } else {

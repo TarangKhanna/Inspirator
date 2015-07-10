@@ -579,7 +579,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                         cell!.dateLabel.text = String(timeAgo) + ending
                     }
                     cell!.dateLabel.text = String(timeAgo) + ending
-                    cell!.dateLabel.textColor = UIColor.whiteColor()
+                    cell!.dateLabel.textColor = UIColor.MKColor.Grey
                     cell!.scoreLabel.textColor = UIColor.greenColor()
                     cell!.scoreLabel.text = "[" + String(self.score[indexPath.row]) + "]"
                     cell!.typeImageView.image = UIImage(named: "timeline-photo")
@@ -719,6 +719,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
              var svc = segue.destinationViewController.topViewController as! profileVC
             println(selectedName)
             svc.name = selectedName
+            svc.canChange = false
             svc.score = selectedScore
             svc.show = true
             //svc.profileObject =
