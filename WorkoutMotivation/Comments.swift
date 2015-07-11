@@ -92,7 +92,7 @@ class Comments: UICollectionViewController, UICollectionViewDelegateFlowLayout, 
                 self.userArray.removeAll(keepCapacity: false)
                 //self.score.removeAll(keepCapacity: false)
                 self.messages.append(self.firstPostComment)
-                self.userArray.append("Test")
+                self.userArray.append(self.name2)
                 self.createdAt.removeAll(keepCapacity: false)
                 //self.voteObject.removeAll(keepCapacity: false)
                 //self.votedArray.removeAll(keepCapacity: false)
@@ -173,8 +173,9 @@ class Comments: UICollectionViewController, UICollectionViewDelegateFlowLayout, 
                 //cell.Image.image = downloadedImage2
             //}
         //}
-        
-        cell.nameBtn.setTitle(userArray[indexPath.row], forState: UIControlState.Normal) //name[indexPath.row]
+        var name = userArray[indexPath.row]
+        name.replaceRange(name.startIndex...name.startIndex, with: String(name[name.startIndex]).capitalizedString)
+        cell.nameBtn.setTitle(name, forState: UIControlState.Normal) //name[indexPath.row]
         cell.textView.text = messages[indexPath.row] // comment
         //cell.textView.text
         return cell

@@ -97,10 +97,10 @@ class profileVC: UIViewController, UIScrollViewDelegate, UIPopoverPresentationCo
         scrollView.delegate = self
         let changeProfilePicGesture =
         UITapGestureRecognizer(target: self, action: "changePic:")
-        self.view.addGestureRecognizer(changeProfilePicGesture)
+        self.avatarImage.addGestureRecognizer(changeProfilePicGesture)
         if PFUser.currentUser()?.username == name {
             let likeProfileGesture = UILongPressGestureRecognizer(target: self, action: "longPressed:")
-            self.view.addGestureRecognizer(likeProfileGesture)
+            self.avatarImage.addGestureRecognizer(likeProfileGesture)
         }
     }
     

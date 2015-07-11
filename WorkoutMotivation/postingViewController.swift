@@ -17,10 +17,12 @@ class postingViewController: UIViewController, UITextViewDelegate {
     @IBOutlet var postBtn: UIButton!
     override func viewWillAppear(animated: Bool) {
         self.navigationController!.navigationBar.hidden = true
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController!.navigationBar.hidden = true
         postBtn.enabled = false
         commentTxtView.text = text
         commentTxtView.textColor = UIColor.lightGrayColor()

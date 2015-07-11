@@ -16,6 +16,7 @@ class CommentsVC: UIViewController, UITextFieldDelegate {
     var currentUserId = PFUser.currentUser()?.objectId
     var recipients = [String]()
     var firstPost = String()
+    var name = String()
     
     @IBAction func editingBegan(sender: UITextField) {
         //activeField = sender
@@ -144,6 +145,7 @@ class CommentsVC: UIViewController, UITextFieldDelegate {
             var svc = segue.destinationViewController as! Comments
             svc.parsePassedID = objectIDPost
             svc.firstPostComment = firstPost
+            svc.name2 = name
         }
     }
     

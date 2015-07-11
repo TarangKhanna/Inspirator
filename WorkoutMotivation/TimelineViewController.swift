@@ -75,6 +75,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     
     override func viewWillAppear(animated: Bool) {
         self.navigationController!.navigationBar.hidden = false
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         if let currentUser = PFUser.currentUser()!.username {
             currentUserId = PFUser.currentUser()?.objectId
         } else {
@@ -84,7 +85,6 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     
     
     @IBAction func upVote(sender: AnyObject) {
-        println("fewfefw")
         //let buttonRow = sender.tag
         if let buttonRow = sender.tag { // or from removeBlock
             var votedBy = voteObject[buttonRow]["votedBy"] as! [String]
@@ -291,7 +291,11 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         //        postData.tintColor = UIColor.grayColor()
         //self.navigationController?.navigationBar.barStyle = UIBarStyle.BlackTranslucent
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "loginBG.png")!)
-        //self.view.backgroundColor = UIColor(red: 90/255.0, green: 187/255.0, blue: 181/255.0, alpha: 1.0) //teal
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "loginBG.png"), forBarMetrics: UIBarMetrics.Compact)
+        self.navigationController?.navigationBar.tintColor = UIColor.redColor()
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.redColor()]
+                //self.view.backgroundColor = UIColor(red: 90/255.0, green: 187/255.0, blue: 181/255.0, alpha: 1.0) //teal
         //self.navigationController?.hidesBarsOnSwipe = true
         //self.navigationController?.navigationBar.backgroundColor = UIColor(red: 90/255.0, green: 187/255.0, blue: 181/255.0, alpha: 1.0) //teal
         tableView.backgroundColor = UIColor.clearColor()
@@ -663,7 +667,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             cell!.nameLabel.textColor = UIColor.greenColor()
             cell!.postLabel?.text = self.messages[indexPath.row]
             cell!.postLabel?.textColor = UIColor.whiteColor()
-            var seconds = self.createdAt[indexPath.row]*60
+            var seconds = Double(self.createdAt[indexPath.row]*60)
             var temp = seconds
             var timeAgo = (seconds/60) // + " m ago"
             var ending = " min"
@@ -671,17 +675,21 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             if timeAgo >= 60 { // min now
                 timeAgo = (temp / 3600)
                 ending = " hrs"
-                if timeAgo >= 24 {
+                println("fewfe")
+                println(timeAgo)
+                if timeAgo >= 24.0 {
                     timeAgo = timeAgo / 24
                     ending = " days"
-                    if timeAgo == 1 {
+                    if timeAgo > 1.3 {
                         setAlready = true
                         cell!.dateLabel.text = "yesterday"
+                    } else {
+                        
                     }
                 }
             }
             if !setAlready {
-                cell!.dateLabel.text = String(timeAgo) + ending
+                cell!.dateLabel.text = String(stringInterpolationSegment: Int(timeAgo)) + ending
             }
             cell!.dateLabel.textColor = UIColor.whiteColor()
             cell!.scoreLabel.textColor = UIColor.greenColor()
@@ -765,6 +773,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             var svc = segue.destinationViewController.topViewController as! CommentsVC // nav controller in between
             
             if let parseID = selectedParseObjectId as String?{
+                svc.name = selectedName
                 svc.firstPost = selectedFirstPost
                 svc.objectIDPost = parseID
                 svc.recipients = recipients2

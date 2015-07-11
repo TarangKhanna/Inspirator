@@ -27,7 +27,6 @@ class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     @IBOutlet weak var filterBtn: UIButton!
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
-    @IBOutlet weak var timeView: UITextView!
     
     
     let manager = DataSource()
@@ -43,7 +42,7 @@ class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         let components = calendar.components(.CalendarUnitHour | .CalendarUnitMinute, fromDate: date)
         let hour = components.hour
         let minutes = components.minute
-        timeView.text = String(minutes)
+        //timeView.text = String(minutes)
         
         if let currentUser = PFUser.currentUser()?.username {
             currentUserId = PFUser.currentUser()?.objectId
