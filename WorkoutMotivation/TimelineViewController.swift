@@ -53,7 +53,6 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     var elapsedTime: NSDate!
     var duration : Int = 0
     var profileImageFile = PFFile()
-    var backupImage = UIImage()
     var previousUser = String()
     var circleColors = [UIColor.MKColor.LightBlue, UIColor.MKColor.Grey, UIColor.MKColor.LightGreen, UIColor.MKColor.Amber, UIColor.MKColor.DeepOrange]
     var voteObject = [PFObject]()
@@ -69,7 +68,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     let yellowColor = UIColor(red: 236.0/255, green: 223.0/255, blue: 60.0/255, alpha: 1)
     let brownColor = UIColor(red: 182.0/255, green: 127.0/255, blue: 78.0/255, alpha: 1)
     var removeCellBlock: ((SBGestureTableView, SBGestureTableViewCell) -> Void)!
-    
+    var groupToQuery : String? = "general"
     var currentUser : String? = nil
     var currentUserId : String? = nil
     
@@ -295,7 +294,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "loginBG.png"), forBarMetrics: UIBarMetrics.Compact)
         self.navigationController?.navigationBar.tintColor = UIColor.redColor()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.redColor()]
-                //self.view.backgroundColor = UIColor(red: 90/255.0, green: 187/255.0, blue: 181/255.0, alpha: 1.0) //teal
+        //self.view.backgroundColor = UIColor(red: 90/255.0, green: 187/255.0, blue: 181/255.0, alpha: 1.0) //teal
         //self.navigationController?.hidesBarsOnSwipe = true
         //self.navigationController?.navigationBar.backgroundColor = UIColor(red: 90/255.0, green: 187/255.0, blue: 181/255.0, alpha: 1.0) //teal
         tableView.backgroundColor = UIColor.clearColor()
@@ -408,6 +407,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         //UIApplication.sharedApplication().beginIgnoringInteractionEvents()
         if var query = PFQuery(className: "Person") as PFQuery? { //querying parse for user data
             query.orderByDescending("createdAt")
+            
             query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
                 SwiftSpinner.hide()
                 //UIApplication.sharedApplication().endIgnoringInteractionEvents()
@@ -426,28 +426,30 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                 self.ParseObjectId.removeAll(keepCapacity: false)
                 if let objects = objects as? [PFObject]  {
                     for object in objects {
-                        if let imageFile42 = object["imageFile"] as? PFFile{
-                            self.imageFiles.append(imageFile42)
-                            self.containsImage.append(true)
-                            println(imageFile42)
-                            println("iuhewbd")
-                        } else {
-                            self.imageFiles.append(PFFile())
-                            self.containsImage.append(false)
-                            println("jkbdj")
+                        if self.groupToQuery! == object["group"] as? String || self.groupToQuery == "general" { // here we set the group
+                            if let imageFile42 = object["imageFile"] as? PFFile{
+                                self.imageFiles.append(imageFile42)
+                                self.containsImage.append(true)
+                                println(imageFile42)
+                                println("iuhewbd")
+                            } else {
+                                self.imageFiles.append(PFFile())
+                                self.containsImage.append(false)
+                                println("jkbdj")
+                            }
+                            // append profile pics here and optimise
+                            self.voteObject.append(object)
+                            self.ParseObjectId.append((object.objectId! as String?)!)
+                            self.messages.append(object["text"] as! String)
+                            currentProfileUser = object["username"] as! String
+                            self.userArray.append(currentProfileUser)
+                            self.score.append(object["score"] as! Int)
+                            let elapsedTime = CFAbsoluteTimeGetCurrent() - (object["startTime"] as! CFAbsoluteTime)
+                            self.duration = Int(elapsedTime/60)
+                            self.createdAt.append(self.duration)
                         }
-                        self.voteObject.append(object)
-                        self.ParseObjectId.append((object.objectId! as String?)!)
-                        self.messages.append(object["text"] as! String)
-                        currentProfileUser = object["username"] as! String
-                        self.userArray.append(currentProfileUser)
-                        self.score.append(object["score"] as! Int)
-                        let elapsedTime = CFAbsoluteTimeGetCurrent() - (object["startTime"] as! CFAbsoluteTime)
-                        self.duration = Int(elapsedTime/60)
-                        self.createdAt.append(self.duration)
+                        self.tableView.reloadData()
                     }
-                    self.tableView.reloadData()
-                    
                 }
             })
         }
@@ -495,6 +497,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             }
             let size = CGSizeMake(30, 30)
             
+            
             var queryUser = PFUser.query() as PFQuery?
             queryUser!.findObjectsInBackgroundWithBlock {
                 (users: [AnyObject]?, error: NSError?) -> Void in
@@ -509,13 +512,18 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                             if user2.username == self.userArray[indexPath.row] {
                                 self.profileImageFile = user2["ProfilePicture"] as! PFFile
                                 self.profileImageFile.getDataInBackgroundWithBlock { (data, error) -> Void in
-                                    
-                                    if let downloadedImage = UIImage(data: data!) {
+                                    if !(error != nil) {
                                         
-                                        cell!.profileImageView.image = downloadedImage
-                                        self.backupImage = downloadedImage
+                                        if let downloadedImage = UIImage(data: data!) {
+                                            
+                                            cell!.profileImageView.image = downloadedImage
+                                            //self.backupImage = downloadedImage
+                                        }  else {
+                                            // Default image or nil
+                                            cell!.profileImageView.image = UIImage(named: "bg")
+                                        }
+                                        
                                     }
-                                    
                                 }
                                 //self.imageFiles.append(user2["ProfilePictue"] as! PFFile)
                                 
@@ -544,49 +552,47 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             //            cell.upVoteBtn.tag = indexPath.row
             //
             //            cell.upVoteBtn.addTarget(self, action: "upVote:", forControlEvents: UIControlEvents.TouchUpInside)
+            var name = self.userArray[indexPath.row]
+            name.replaceRange(name.startIndex...name.startIndex, with: String(name[name.startIndex]).capitalizedString)
+            cell!.nameLabel.text = name
+            cell!.nameLabel.textColor = UIColor.greenColor()
+            cell!.postLabel?.text = "​\u{200B}\(self.messages[indexPath.row])"
+            cell!.postLabel?.textColor = UIColor.whiteColor()
+            cell!.typeImageView.image = UIImage(named: "timeline-photo")
             let index = indexPath.row % circleColors.count
             cell!.rippleLayerColor = circleColors[index]
+            var seconds = self.createdAt[indexPath.row]*60
+            var temp = seconds
+            var timeAgo = (seconds/60) // + " m ago"
+            var ending = " min"
+            var setAlready = false
+            if timeAgo >= 60 { // min now
+                timeAgo = (temp / 3600)
+                ending = " hrs"
+                if timeAgo >= 24 {
+                    timeAgo = timeAgo / 24
+                    ending = " days"
+                    if timeAgo == 1 {
+                        setAlready = true
+                        cell!.dateLabel.text = "yesterday"
+                    }
+                }
+            }
+            if !setAlready {
+                cell!.dateLabel.text = String(timeAgo) + ending
+            }
+            cell!.dateLabel.text = String(timeAgo) + ending
+            cell!.dateLabel.textColor = UIColor.MKColor.Grey
+            cell!.scoreLabel.textColor = UIColor.greenColor()
+            cell!.scoreLabel.text = "[" + String(self.score[indexPath.row]) + "]"
+            
             let image42 = self.imageFiles[indexPath.row]
             image42.getDataInBackgroundWithBlock { (data, error) -> Void in
-                if let downloadedImage2 = UIImage(data: data!) {
-                    //cell.profileImageView.image = downloadedImage
-                    //self.backupImage = downloadedImage
-                    //self.tableView.insertRowsAtIndexPaths(0, withRowAnimation: UITableViewRowAnimation.Bottom)
-                    cell!.typeImageView.image = UIImage(named: "timeline-chat")
-                    cell!.photoImageView?.image = downloadedImage2
-                    //cell.profileImageView.image = UIImage(named: "profile-pic-1")
-                    var name = self.userArray[indexPath.row]
-                    name.replaceRange(name.startIndex...name.startIndex, with: String(name[name.startIndex]).capitalizedString)
-                    cell!.nameLabel.text = name
-                    cell!.nameLabel.textColor = UIColor.greenColor()
-                    cell!.postLabel?.text = "​\u{200B}\(self.messages[indexPath.row])"
-                    cell!.postLabel?.textColor = UIColor.whiteColor()
-                    
-                    var seconds = self.createdAt[indexPath.row]*60
-                    var temp = seconds
-                    var timeAgo = (seconds/60) // + " m ago"
-                    var ending = " min"
-                    var setAlready = false
-                    if timeAgo >= 60 { // min now
-                        timeAgo = (temp / 3600)
-                        ending = " hrs"
-                        if timeAgo >= 24 {
-                            timeAgo = timeAgo / 24
-                            ending = " days"
-                            if timeAgo == 1 {
-                                setAlready = true
-                                cell!.dateLabel.text = "yesterday"
-                            }
-                        }
+                if !(error != nil) {
+                    if let downloadedImage2 = UIImage(data: data!) {
+                        //self.tableView.insertRowsAtIndexPaths(0, withRowAnimation: UITableViewRowAnimation.Bottom)
+                        cell!.photoImageView?.image = downloadedImage2
                     }
-                    if !setAlready {
-                        cell!.dateLabel.text = String(timeAgo) + ending
-                    }
-                    cell!.dateLabel.text = String(timeAgo) + ending
-                    cell!.dateLabel.textColor = UIColor.MKColor.Grey
-                    cell!.scoreLabel.textColor = UIColor.greenColor()
-                    cell!.scoreLabel.text = "[" + String(self.score[indexPath.row]) + "]"
-                    cell!.typeImageView.image = UIImage(named: "timeline-photo")
                 }
             }
             
@@ -625,7 +631,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                                     if let downloadedImage = UIImage(data: data!) {
                                         
                                         cell!.profileImageView.image = downloadedImage
-                                        self.backupImage = downloadedImage
+                                        //self.backupImage = downloadedImage
                                     }
                                     
                                 }
@@ -724,13 +730,16 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         var recipients2 = [String]()
         if (segue.identifier == "profileView") { //pass data to VC
-             var svc = segue.destinationViewController.topViewController as! profileVC
+            var svc = segue.destinationViewController.topViewController as! profileVC
             println(selectedName)
             svc.name = selectedName
             svc.canChange = false
             svc.score = selectedScore
             svc.show = true
             //svc.profileObject =
+        } else if (segue.identifier == "posting") {
+            var svc = segue.destinationViewController.topViewController as! postingViewController
+            svc.passedGroup = groupToQuery!
         } else if (segue.identifier == "showComments") { // get notified if you see comment section
             var currentUserId = PFUser.currentUser()?.objectId
             

@@ -69,7 +69,14 @@ class MenuController: UITableViewController {
             svc.show = true
             svc.canChange = true
             //svc.profileObject =
+        } else if (segue.identifier == "fit") {
+            var svc = segue.destinationViewController.topViewController as! TimelineViewController
+            svc.groupToQuery = "fit" // first group 
+        } else if (segue.identifier == "technical") {
+            var svc = segue.destinationViewController.topViewController as! TimelineViewController
+            svc.groupToQuery = "technical" // first group
         }
+        
     }
     
     override func didReceiveMemoryWarning() {

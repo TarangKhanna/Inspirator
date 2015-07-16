@@ -19,6 +19,7 @@ class postingViewController: UIViewController, UITextViewDelegate {
         self.navigationController!.navigationBar.hidden = true
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
+    var passedGroup = "general"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +41,7 @@ class postingViewController: UIViewController, UITextViewDelegate {
     
     
     @IBAction func post(sender: AnyObject) {
-        // send text to timeline controller 
+        // send text to timeline controller
         println(self.childViewControllers)
         if commentTxtView.text != " " && commentTxtView.text != nil && !commentTxtView.text.isEmpty {
             var person = PFObject(className:"Person")
@@ -52,32 +53,43 @@ class postingViewController: UIViewController, UITextViewDelegate {
             person["text"] = commentTxtView.text
             person["startTime"] = CFAbsoluteTimeGetCurrent()
             person["votedBy"] = []
-            
+            person["group"] = passedGroup
             person.saveInBackgroundWithBlock {
                 (success: Bool, error: NSError?) -> Void in
                 if (success) {
                     //self.retrieve()
                     self.performSegueWithIdentifier("backToTimeline", sender: self)
-//                    let query = PFInstallation.query()
-//                    if let query = query { // non intrusive
-//                        //query.whereKey("channels", equalTo: "suitcaseOwners")
-//                        query.whereKey("deviceType", equalTo: "ios")
-//                        query.whereKey("")
-//                        let iOSPush = PFPush()
-//                        iOSPush.setMessage("General: " + self.commentTxtView.text)
-//                        //iOSPush.setChannel("suitcaseOwners")
-//                        iOSPush.setQuery(query)
-//                        iOSPush.sendPushInBackground()
-//                        
-//                    }
+                    //                    let query = PFInstallation.query()
+                    //                    if let query = query { // non intrusive
+                    //                        //query.whereKey("channels", equalTo: "suitcaseOwners")
+                    //                        query.whereKey("deviceType", equalTo: "ios")
+                    //                        query.whereKey("")
+                    //                        let iOSPush = PFPush()
+                    //                        iOSPush.setMessage("General: " + self.commentTxtView.text)
+                    //                        //iOSPush.setChannel("suitcaseOwners")
+                    //                        iOSPush.setQuery(query)
+                    //                        iOSPush.sendPushInBackground()
+                    //
+                    //                    }
                 } else {
                     println("Couldn't post!")
                     SCLAlertView().showWarning("Error Posting", subTitle: "Check Your Internet Connection.")
                 }
             }
-        } 
-
-}
+        }
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        var recipients2 = [String]()
+        if (segue.identifier == "backToTimeline") { //pass data to VC
+            var svc = segue.destinationViewController as! TimelineViewController
+            svc.groupToQuery = passedGroup
+        } else if (segue.identifier == "backToTimeline2") { //pass data to VC
+            var svc = segue.destinationViewController as! TimelineViewController
+            svc.groupToQuery = passedGroup
+        }
+    }
     
     func textViewDidChange(textView: UITextView) {
         
