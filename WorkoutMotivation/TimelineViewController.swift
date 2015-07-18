@@ -53,6 +53,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     var elapsedTime: NSDate!
     var duration : Int = 0
     var profileImageFile = PFFile()
+    var profileImageFiles = [PFFile]()
     var previousUser = String()
     var circleColors = [UIColor.MKColor.LightBlue, UIColor.MKColor.Grey, UIColor.MKColor.LightGreen, UIColor.MKColor.Amber, UIColor.MKColor.DeepOrange]
     var voteObject = [PFObject]()
@@ -352,6 +353,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         
         self.tableView.addPullToRefresh({ [weak self] in
             // refresh code
+            SwiftSpinner.show("Refreshing")
             self!.retrieve()
             //self?.retrieve()
             //self?.tableView.reloadData()
@@ -407,17 +409,20 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         //UIApplication.sharedApplication().beginIgnoringInteractionEvents()
         if var query = PFQuery(className: "Person") as PFQuery? { //querying parse for user data
             query.orderByDescending("createdAt")
+            query.limit = 25
             
             query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
-                SwiftSpinner.hide()
+                // SwiftSpinner.hide()
                 //UIApplication.sharedApplication().endIgnoringInteractionEvents()
                 if error != nil {
                     //println("No Internet")
                     self.statusLabel.text = "No Internet. Try refreshing."
                 }
+                //SwiftSpinner.hide()
                 self.containsImage.removeAll(keepCapacity: false)
                 self.imageFiles.removeAll(keepCapacity: false)
                 self.messages.removeAll(keepCapacity: false)
+                self.profileImageFiles.removeAll(keepCapacity: false)
                 self.userArray.removeAll(keepCapacity: false)
                 self.score.removeAll(keepCapacity: false)
                 self.createdAt.removeAll(keepCapacity: false)
@@ -427,36 +432,93 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                 if let objects = objects as? [PFObject]  {
                     for object in objects {
                         if self.groupToQuery! == object["group"] as? String || self.groupToQuery == "general" { // here we set the group
-                            if let imageFile42 = object["imageFile"] as? PFFile{
+                            if let imageFile42 = object["imageFile"] as? PFFile {
                                 self.imageFiles.append(imageFile42)
                                 self.containsImage.append(true)
                                 println(imageFile42)
-                                println("iuhewbd")
                             } else {
                                 self.imageFiles.append(PFFile())
                                 self.containsImage.append(false)
-                                println("jkbdj")
                             }
+                            currentProfileUser = object["username"] as! String
                             // append profile pics here and optimise
                             self.voteObject.append(object)
                             self.ParseObjectId.append((object.objectId! as String?)!)
                             self.messages.append(object["text"] as! String)
-                            currentProfileUser = object["username"] as! String
+                            
                             self.userArray.append(currentProfileUser)
                             self.score.append(object["score"] as! Int)
                             let elapsedTime = CFAbsoluteTimeGetCurrent() - (object["startTime"] as! CFAbsoluteTime)
                             self.duration = Int(elapsedTime/60)
                             self.createdAt.append(self.duration)
+                            
+                            
                         }
-                        self.tableView.reloadData()
                     }
                 }
+                
+                //dispatch_async(dispatch_get_main_queue()) {
+                self.delay(0.4) {
+                    println("ewrerwewr")
+                    //self.profileImageFiles.removeAll(keepCapacity: false)
+                    var queryUser2 = PFUser.query() as PFQuery?
+                    queryUser2!.findObjectsInBackgroundWithBlock {
+                        (users: [AnyObject]?, error: NSError?) -> Void in
+                        //self.profileImageFiles.removeAll(keepCapacity: false)
+                        println("tarangISME")
+                        if error == nil {
+                            for user42 in self.userArray {
+                                // Do something with the found users
+                                if let users = users as? [PFObject] {
+                                    for user in users {
+                                        var user2:PFUser = user as! PFUser
+                                        println(user42)
+                                        if user2.username == user42 {
+                                            self.profileImageFiles.append(user2["ProfilePicture"] as! PFFile)
+                                        }
+                                        
+                                    }
+                                }
+                            }
+                        } else {
+                            println("Error: \(error!) \(error!.userInfo!)")
+                        }
+                    }
+                    //}
+                }
+                self.delay(3) {
+                    println(self.profileImageFiles.count)
+                    println("3io4h3jnk4jkn")
+                    println(self.userArray.count)
+                    // dispatch_async(dispatch_get_main_queue()) {
+                    if self.profileImageFiles.count > 0 {
+                        SwiftSpinner.hide()
+                        
+                    }
+                    self.tableView.reloadData()
+                }
+                
             })
+            //if profileImageFiles.count == userArray.count {
+            
+                
+                // }
+            //}
         }
-        
-        
-        
+        //dispatch_async(dispatch_get_main_queue()) {
+        //self.loadProfileImages()
+        //}
     }
+    
+    func delay(delay:Double, closure:()->()) {
+        dispatch_after(
+            dispatch_time(
+                DISPATCH_TIME_NOW,
+                Int64(delay * Double(NSEC_PER_SEC))
+            ),
+            dispatch_get_main_queue(), closure)
+    }
+    
     //
     //    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
     //        locationManager.stopUpdatingLocation()
@@ -498,42 +560,52 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             let size = CGSizeMake(30, 30)
             
             
-            var queryUser = PFUser.query() as PFQuery?
-            queryUser!.findObjectsInBackgroundWithBlock {
-                (users: [AnyObject]?, error: NSError?) -> Void in
-                //queryUser!.orderByDescending("createdAt")
-                //queryUser!.whereKey("username", equalTo: self.userArray[indexPath.row])
-                if error == nil {
-                    //println("Successfully retrieved \(users!.count) users.")
-                    // Do something with the found users
-                    if let users = users as? [PFObject] {
-                        for user in users {
-                            var user2:PFUser = user as! PFUser
-                            if user2.username == self.userArray[indexPath.row] {
-                                self.profileImageFile = user2["ProfilePicture"] as! PFFile
-                                self.profileImageFile.getDataInBackgroundWithBlock { (data, error) -> Void in
-                                    if !(error != nil) {
-                                        
-                                        if let downloadedImage = UIImage(data: data!) {
-                                            
-                                            cell!.profileImageView.image = downloadedImage
-                                            //self.backupImage = downloadedImage
-                                        }  else {
-                                            // Default image or nil
-                                            cell!.profileImageView.image = UIImage(named: "bg")
-                                        }
-                                        
-                                    }
-                                }
-                                //self.imageFiles.append(user2["ProfilePictue"] as! PFFile)
-                                
-                            }
-                        }
+            //            var queryUser = PFUser.query() as PFQuery?
+            //            queryUser!.findObjectsInBackgroundWithBlock {
+            //                (users: [AnyObject]?, error: NSError?) -> Void in
+            //                //queryUser!.orderByDescending("createdAt")
+            //                //queryUser!.whereKey("username", equalTo: self.userArray[indexPath.row])
+            //                if error == nil {
+            //                    //println("Successfully retrieved \(users!.count) users.")
+            //                    // Do something with the found users
+            //                    if let users = users as? [PFObject] {
+            //                        for user in users {
+            //                            var user2:PFUser = user as! PFUser
+            //                            if user2.username == self.userArray[indexPath.row] {
+            //                                self.profileImageFile = user2["ProfilePicture"] as! PFFile
+            //                                self.profileImageFile.getDataInBackgroundWithBlock { (data, error) -> Void in
+            //                                    if !(error != nil) {
+            //
+            //                                        if let downloadedImage = UIImage(data: data!) {
+            //
+            //                                            cell!.profileImageView.image = downloadedImage
+            //                                            //self.backupImage = downloadedImage
+            //                                        }  else {
+            //                                            // Default image or nil
+            //                                            cell!.profileImageView.image = UIImage(named: "bg")
+            //                                        }
+            //
+            //                                    }
+            //                                }
+            //                                //self.imageFiles.append(user2["ProfilePictue"] as! PFFile)
+            //
+            //                            }
+            //                        }
+            //                    }
+            //                } else {
+            //                    println("Error: \(error!) \(error!.userInfo!)")
+            //                }
+            //            }
+            
+            let profileImage42 = self.profileImageFiles[indexPath.row]
+            profileImage42.getDataInBackgroundWithBlock { (data, error) -> Void in
+                if !(error != nil) {
+                    if let downloadedImage = UIImage(data: data!) {
+                        cell!.profileImageView?.image = downloadedImage
                     }
-                } else {
-                    println("Error: \(error!) \(error!.userInfo!)")
                 }
             }
+            
             // got profile pic
             // Profile Tap
             cell!.profileImageView.tag = indexPath.row
@@ -613,38 +685,49 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             
             // get profile pic
             
-            var queryUser = PFUser.query() as PFQuery?
-            queryUser!.findObjectsInBackgroundWithBlock {
-                (users: [AnyObject]?, error: NSError?) -> Void in
-                //queryUser!.orderByDescending("createdAt")
-                //queryUser!.whereKey("username", equalTo: self.userArray[indexPath.row])
-                if error == nil {
-                    //println("Successfully retrieved \(users!.count) users.")
-                    // Do something with the found users
-                    if let users = users as? [PFObject] {
-                        for user in users {
-                            var user2:PFUser = user as! PFUser
-                            if user2.username == self.userArray[indexPath.row] {
-                                self.profileImageFile = user2["ProfilePicture"] as! PFFile
-                                self.profileImageFile.getDataInBackgroundWithBlock { (data, error) -> Void in
-                                    
-                                    if let downloadedImage = UIImage(data: data!) {
-                                        
-                                        cell!.profileImageView.image = downloadedImage
-                                        //self.backupImage = downloadedImage
-                                    }
-                                    
-                                }
-                                //self.imageFiles.append(user2["ProfilePictue"] as! PFFile)
-                                
-                            }
-                        }
+            //            var queryUser = PFUser.query() as PFQuery?
+            //            queryUser!.findObjectsInBackgroundWithBlock {
+            //                (users: [AnyObject]?, error: NSError?) -> Void in
+            //                //queryUser!.orderByDescending("createdAt")
+            //                //queryUser!.whereKey("username", equalTo: self.userArray[indexPath.row])
+            //                if error == nil {
+            //                    //println("Successfully retrieved \(users!.count) users.")
+            //                    // Do something with the found users
+            //                    if let users = users as? [PFObject] {
+            //                        for user in users {
+            //                            var user2:PFUser = user as! PFUser
+            //                            if user2.username == self.userArray[indexPath.row] {
+            //                                self.profileImageFile = user2["ProfilePicture"] as! PFFile
+            //                                self.profileImageFile.getDataInBackgroundWithBlock { (data, error) -> Void in
+            //
+            //                                    if let downloadedImage = UIImage(data: data!) {
+            //
+            //                                        cell!.profileImageView.image = downloadedImage
+            //                                        //self.backupImage = downloadedImage
+            //                                    }
+            //
+            //                                }
+            //                                //self.imageFiles.append(user2["ProfilePictue"] as! PFFile)
+            //
+            //                            }
+            //                        }
+            //                    }
+            //                } else {
+            //                    println("Error: \(error!) \(error!.userInfo!)")
+            //                }
+            //            }
+            //got profile pic
+            println("fn edwed")
+            println(profileImageFiles.count)
+            let profileImage42 = self.profileImageFiles[indexPath.row]
+            profileImage42.getDataInBackgroundWithBlock { (data, error) -> Void in
+                if (error == nil) {
+                    if let downloadedImage = UIImage(data: data!) {
+                        cell!.profileImageView?.image = downloadedImage
                     }
-                } else {
-                    println("Error: \(error!) \(error!.userInfo!)")
                 }
             }
-            //got profile pic
+            
             cell!.profileImageView.tag = indexPath.row
             var tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("profileImageTapped:"))
             cell!.profileImageView.userInteractionEnabled = true
@@ -704,6 +787,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         }
         
     }
+    
     
     func profileImageTapped(recognizer: UITapGestureRecognizer) {
         var imageIndex = recognizer.view!.tag
@@ -797,6 +881,13 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             PFUser.logOut()
             performSegueWithIdentifier("signIn", sender: self)
         }
+    }
+    
+    func textView(textView: UITextView!, shouldInteractWithURL URL: NSURL!, inRange characterRange: NSRange) -> Bool {
+        
+        println("Link Selected!")
+        return true
+        
     }
     
     

@@ -10,7 +10,8 @@ import UIKit
 import Social
 import Parse
 
-class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UITextFieldDelegate, UINavigationControllerDelegate,  floatMenuDelegate  {
+class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UITextFieldDelegate, UINavigationControllerDelegate    {
+    
     @IBOutlet var username: MKTextField!
     @IBOutlet var password: MKTextField!
     @IBOutlet var aboutYou: MKTextField!
@@ -20,33 +21,8 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UITextFieldDe
     @IBOutlet weak var dialogView: DesignableView!
     
     @IBAction func closeButtonDidTouch(sender: AnyObject) {
-        println("worked")
         dismissViewControllerAnimated(true, completion: nil)
     }
-    
-    
-    
-    
-    
-    
-    override func viewWillAppear(animated: Bool) {
-        SignUpBtn.center.x  -= view.bounds.width
-        username.center.x -= view.bounds.width
-        password.center.x -= view.bounds.width
-        aboutYou.center.x -= view.bounds.width
-    }
-    
-    func viewWillAppear() {
-        SignUpBtn.center.x  -= view.bounds.width
-        username.center.x -= view.bounds.width
-        password.center.x -= view.bounds.width
-        aboutYou.center.x -= view.bounds.width
-    }
-    
-    
-    
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,10 +61,6 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UITextFieldDe
         aboutYou.attributedPlaceholder = NSAttributedString(string:"Few words about you",
             attributes:[NSForegroundColorAttributeName: UIColor.orangeColor()])
         aboutYou.delegate = self
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        
     }
     
     @IBAction func signUp(sender: AnyObject) {
@@ -195,7 +167,8 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UITextFieldDe
     
     var activityIndicator = UIActivityIndicatorView()
     
-    @IBOutlet var imageToPost: UIImageView!
+    @IBOutlet weak var imageToPost: AvatarImageView!
+    
     
     @IBAction func chooseImage(sender: AnyObject) {
         
@@ -209,9 +182,8 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UITextFieldDe
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
-        
-        self.dismissViewControllerAnimated(true, completion:nil)
-        
+        dismissViewControllerAnimated(true, completion:nil)
+        println(image)
         imageToPost.image = image
         
     }

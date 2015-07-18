@@ -212,7 +212,6 @@ class Comments: UICollectionViewController, UICollectionViewDelegateFlowLayout, 
             return CGSizeMake(CGRectGetWidth(collectionView.bounds), cellHeight)
     }
     
-    
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
         return UIEdgeInsetsMake(10, 5, 10, 5)
     }

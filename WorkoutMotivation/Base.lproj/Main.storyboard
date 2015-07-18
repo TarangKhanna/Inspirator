@@ -428,6 +428,7 @@
                         <outlet property="SignUpBtn" destination="4Ba-5Q-Xrd" id="UzD-Va-a7M"/>
                         <outlet property="aboutYou" destination="jz3-7s-XnH" id="Vo1-Ml-lWk"/>
                         <outlet property="dialogView" destination="Jpo-OI-lkY" id="YF7-gu-2AN"/>
+                        <outlet property="imageToPost" destination="V6k-ho-oU5" id="hWx-kD-Gok"/>
                         <outlet property="password" destination="v0F-k2-S7I" id="g4H-fK-VcR"/>
                         <outlet property="username" destination="eND-WQ-bbP" id="83s-lU-meJ"/>
                         <segue destination="hYR-9Y-1zH" kind="show" identifier="signedUp2" id="HaJ-eE-7kj"/>
@@ -435,7 +436,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zL7-O0-S3y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="64.5" y="-970.5"/>
+            <point key="canvasLocation" x="-123.5" y="-1014.5"/>
         </scene>
         <!--Login-->
         <scene sceneID="ud3-9I-XU4">
@@ -569,7 +570,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XwJ-Ad-Yi1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="554.5" y="-948.5"/>
+            <point key="canvasLocation" x="804.5" y="-1128.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4pk-jg-ouh">
@@ -715,6 +716,7 @@
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                                 </textView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7jN-n0-nBp">
                                                     <rect key="frame" x="21" y="112" width="60" height="23"/>
@@ -1473,6 +1475,7 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                         </textView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -2021,7 +2024,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vX3-5p-hbr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1162.5" y="-1473.5"/>
+            <point key="canvasLocation" x="1272.5" y="-1209.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="6wa-NQ-Mut">
@@ -2058,7 +2061,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yzc-TS-LMY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="651" y="-338"/>
+            <point key="canvasLocation" x="590.5" y="-436.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kB4-nE-pnW">
@@ -2100,10 +2103,10 @@
         <image name="up" width="30" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Jao-1B-KkO"/>
-        <segue reference="Udb-FK-6c5"/>
         <segue reference="I2L-5u-1XG"/>
         <segue reference="DQs-Ke-oZZ"/>
-        <segue reference="qnF-RO-ygz"/>
+        <segue reference="dxp-6N-n2B"/>
+        <segue reference="8cE-Yl-DNe"/>
+        <segue reference="Q3P-c1-Axe"/>
     </inferredMetricsTieBreakers>
 </document>

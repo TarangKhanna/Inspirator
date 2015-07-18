@@ -75,6 +75,9 @@ class MenuController: UITableViewController {
         } else if (segue.identifier == "technical") {
             var svc = segue.destinationViewController.topViewController as! TimelineViewController
             svc.groupToQuery = "technical" // first group
+        } else if (segue.identifier == "goals") {
+            var svc = segue.destinationViewController.topViewController as! TimelineViewController
+            svc.groupToQuery = "goals" // first group
         }
         
     }

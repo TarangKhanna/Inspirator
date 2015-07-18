@@ -2,14 +2,14 @@
 //  SBGestureTableViewCell.swift
 //  SBGestureTableView-Swift
 //
-//  Created by Ben Nichols on 10/3/14.
+//  Created by Ben Nichols on 10/3/14 and modified by Tarang Khanna
 //  Copyright (c) 2014 Stickbuilt. All rights reserved.
 //
 
 import UIKit
 
 
-class SBGestureTableViewCell: MKTableViewCell, UIGestureRecognizerDelegate {
+class SBGestureTableViewCell: MKTableViewCell, UIGestureRecognizerDelegate, UITextViewDelegate {
 
     var actionIconsFollowSliding = true
     var actionIconsMargin: CGFloat = 20.0
@@ -271,8 +271,7 @@ class SBGestureTableViewCell: MKTableViewCell, UIGestureRecognizerDelegate {
         
         postLabel?.font = UIFont(name: "Avenir-Book", size: 14)
         postLabel?.textColor = UIColor(white: 0.6, alpha: 1.0)
-        //postLabel.text = nil
-        //postLabel.text = ""
+        
         dateLabel.font = UIFont(name: "Avenir-Book", size: 14)
         dateLabel.textColor = UIColor(white: 0.6, alpha: 1.0)
         
@@ -281,6 +280,9 @@ class SBGestureTableViewCell: MKTableViewCell, UIGestureRecognizerDelegate {
     }
     
     
+    func textViewDidChange(textView: UITextView) { //Handle the text changes here
+        print(textView.text); //the textView parameter is the textView where text was changed
+    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -296,6 +298,12 @@ class SBGestureTableViewCell: MKTableViewCell, UIGestureRecognizerDelegate {
             label.preferredMaxLayoutWidth = CGRectGetWidth(label.frame)
         }
     }
+    
+}
+
+func textView(textView: UITextView!, shouldInteractWithURL URL: NSURL!, inRange characterRange: NSRange) -> Bool {
+    
+    return true
     
 }
 
