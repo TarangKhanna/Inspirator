@@ -278,8 +278,6 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //var secondViewController = (segue.destinationViewController.visibleViewController as postingViewController)
-        //secondViewController.delegate = self
         self.automaticallyAdjustsScrollViewInsets = false
         if self.revealViewController() != nil {
             menuBarButton.target = self.revealViewController()
@@ -304,17 +302,6 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         tableView.estimatedRowHeight = 100.0;
         tableView.rowHeight = UITableViewAutomaticDimension;
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
-        
-        //menuItem.image = UIImage(named: "menu")
-        //toolbar.tintColor = UIColor.blackColor()
-        //        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        //        locationManager.delegate = self
-        //        locationManager.requestWhenInUseAuthorization()
-        //        locationManager.startUpdatingLocation()
-        
-        let floatFrame:CGRect = (CGRectMake(UIScreen.mainScreen().bounds.size.width - 44 - 20, UIScreen.mainScreen().bounds.size.height - 44 - 20, 44, 44))
-        let actionButton : VCFloatingActionButton = VCFloatingActionButton(frame: floatFrame, normalImage: UIImage(named: "plus.png"), andPressedImage: UIImage(named: "cross.png"), withScrollview: tableView)
-        //actionButton.normalImage = UIImage(named: "plus.png")!
         var currentUser = PFUser.currentUser()?.username
         // set this image at time of signup / signin
         var userPhoto = UIImage()
@@ -341,11 +328,6 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         //                }
         //            }
         //        }
-        self.view.addSubview(actionButton)
-        actionButton.imageArray = ["log-out.png"]
-        actionButton.labelArray = ["Log Out"]
-        actionButton.delegate = self
-        actionButton.hideWhileScrolling = true
         
         SwiftSpinner.show("Connecting to Matrix...")
         
@@ -389,7 +371,6 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                             //completion?()
                     })
             })
-            println("rqwqwrw")
             println(cell.leftSideView)
             
             
@@ -406,19 +387,14 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     
     func retrieve() {
         var currentProfileUser = ""
-        //UIApplication.sharedApplication().beginIgnoringInteractionEvents()
         if var query = PFQuery(className: "Person") as PFQuery? { //querying parse for user data
             query.orderByDescending("createdAt")
             query.limit = 25
             
             query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
-                // SwiftSpinner.hide()
-                //UIApplication.sharedApplication().endIgnoringInteractionEvents()
                 if error != nil {
-                    //println("No Internet")
                     self.statusLabel.text = "No Internet. Try refreshing."
                 }
-                //SwiftSpinner.hide()
                 self.containsImage.removeAll(keepCapacity: false)
                 self.imageFiles.removeAll(keepCapacity: false)
                 self.messages.removeAll(keepCapacity: false)
@@ -435,7 +411,6 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                             if let imageFile42 = object["imageFile"] as? PFFile {
                                 self.imageFiles.append(imageFile42)
                                 self.containsImage.append(true)
-                                println(imageFile42)
                             } else {
                                 self.imageFiles.append(PFFile())
                                 self.containsImage.append(false)
@@ -452,27 +427,22 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                             self.duration = Int(elapsedTime/60)
                             self.createdAt.append(self.duration)
                             
-                            
                         }
                     }
                 }
                 
                 //dispatch_async(dispatch_get_main_queue()) {
-                self.delay(0.4) {
-                    println("ewrerwewr")
-                    //self.profileImageFiles.removeAll(keepCapacity: false)
+                self.delay(0.3) {
                     var queryUser2 = PFUser.query() as PFQuery?
                     queryUser2!.findObjectsInBackgroundWithBlock {
                         (users: [AnyObject]?, error: NSError?) -> Void in
-                        //self.profileImageFiles.removeAll(keepCapacity: false)
-                        println("tarangISME")
                         if error == nil {
                             for user42 in self.userArray {
                                 // Do something with the found users
                                 if let users = users as? [PFObject] {
                                     for user in users {
                                         var user2:PFUser = user as! PFUser
-                                        println(user42)
+                                        //println(user42)
                                         if user2.username == user42 {
                                             self.profileImageFiles.append(user2["ProfilePicture"] as! PFFile)
                                         }
@@ -486,16 +456,16 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                     }
                     //}
                 }
-                self.delay(3) {
+                self.delay(5) {
                     println(self.profileImageFiles.count)
                     println("3io4h3jnk4jkn")
                     println(self.userArray.count)
                     // dispatch_async(dispatch_get_main_queue()) {
-                    if self.profileImageFiles.count > 0 {
+                    if self.profileImageFiles.count == self.userArray.count {
                         SwiftSpinner.hide()
-                        
+                        self.tableView.reloadData()
                     }
-                    self.tableView.reloadData()
+                   
                 }
                 
             })
@@ -558,44 +528,6 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                 cell = SBGestureTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "TimelineCellPhoto")
             }
             let size = CGSizeMake(30, 30)
-            
-            
-            //            var queryUser = PFUser.query() as PFQuery?
-            //            queryUser!.findObjectsInBackgroundWithBlock {
-            //                (users: [AnyObject]?, error: NSError?) -> Void in
-            //                //queryUser!.orderByDescending("createdAt")
-            //                //queryUser!.whereKey("username", equalTo: self.userArray[indexPath.row])
-            //                if error == nil {
-            //                    //println("Successfully retrieved \(users!.count) users.")
-            //                    // Do something with the found users
-            //                    if let users = users as? [PFObject] {
-            //                        for user in users {
-            //                            var user2:PFUser = user as! PFUser
-            //                            if user2.username == self.userArray[indexPath.row] {
-            //                                self.profileImageFile = user2["ProfilePicture"] as! PFFile
-            //                                self.profileImageFile.getDataInBackgroundWithBlock { (data, error) -> Void in
-            //                                    if !(error != nil) {
-            //
-            //                                        if let downloadedImage = UIImage(data: data!) {
-            //
-            //                                            cell!.profileImageView.image = downloadedImage
-            //                                            //self.backupImage = downloadedImage
-            //                                        }  else {
-            //                                            // Default image or nil
-            //                                            cell!.profileImageView.image = UIImage(named: "bg")
-            //                                        }
-            //
-            //                                    }
-            //                                }
-            //                                //self.imageFiles.append(user2["ProfilePictue"] as! PFFile)
-            //
-            //                            }
-            //                        }
-            //                    }
-            //                } else {
-            //                    println("Error: \(error!) \(error!.userInfo!)")
-            //                }
-            //            }
             
             let profileImage42 = self.profileImageFiles[indexPath.row]
             profileImage42.getDataInBackgroundWithBlock { (data, error) -> Void in
@@ -682,42 +614,6 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                 cell = SBGestureTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "TimelineCell")
             }
             let size = CGSizeMake(30, 30)
-            
-            // get profile pic
-            
-            //            var queryUser = PFUser.query() as PFQuery?
-            //            queryUser!.findObjectsInBackgroundWithBlock {
-            //                (users: [AnyObject]?, error: NSError?) -> Void in
-            //                //queryUser!.orderByDescending("createdAt")
-            //                //queryUser!.whereKey("username", equalTo: self.userArray[indexPath.row])
-            //                if error == nil {
-            //                    //println("Successfully retrieved \(users!.count) users.")
-            //                    // Do something with the found users
-            //                    if let users = users as? [PFObject] {
-            //                        for user in users {
-            //                            var user2:PFUser = user as! PFUser
-            //                            if user2.username == self.userArray[indexPath.row] {
-            //                                self.profileImageFile = user2["ProfilePicture"] as! PFFile
-            //                                self.profileImageFile.getDataInBackgroundWithBlock { (data, error) -> Void in
-            //
-            //                                    if let downloadedImage = UIImage(data: data!) {
-            //
-            //                                        cell!.profileImageView.image = downloadedImage
-            //                                        //self.backupImage = downloadedImage
-            //                                    }
-            //
-            //                                }
-            //                                //self.imageFiles.append(user2["ProfilePictue"] as! PFFile)
-            //
-            //                            }
-            //                        }
-            //                    }
-            //                } else {
-            //                    println("Error: \(error!) \(error!.userInfo!)")
-            //                }
-            //            }
-            //got profile pic
-            println("fn edwed")
             println(profileImageFiles.count)
             let profileImage42 = self.profileImageFiles[indexPath.row]
             profileImage42.getDataInBackgroundWithBlock { (data, error) -> Void in
@@ -764,8 +660,6 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             if timeAgo >= 60 { // min now
                 timeAgo = (temp / 3600)
                 ending = " hrs"
-                println("fewfe")
-                println(timeAgo)
                 if timeAgo >= 24.0 {
                     timeAgo = timeAgo / 24
                     ending = " days"
@@ -872,14 +766,6 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                 svc.recipients = recipients2
                 println(recipients2)
             }
-        }
-    }
-    
-    
-    func didSelectMenuOptionAtIndex(row : NSInteger) {
-        if(row == 0) {
-            PFUser.logOut()
-            performSegueWithIdentifier("signIn", sender: self)
         }
     }
     

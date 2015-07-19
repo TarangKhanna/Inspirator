@@ -14,6 +14,9 @@ class MenuController: UITableViewController {
     @IBOutlet weak var userPhoto: AvatarImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     
+    @IBOutlet weak var designableView: DesignableView!
+    
+    @IBOutlet weak var logOutBtn: UIButton!
     
     override func viewWillAppear(animated: Bool) {
         var currentUser = PFUser.currentUser()
@@ -42,6 +45,9 @@ class MenuController: UITableViewController {
             }
         }
     }
+    
+    
+    
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -80,6 +86,19 @@ class MenuController: UITableViewController {
             svc.groupToQuery = "goals" // first group
         }
         
+    }
+    
+    
+    @IBAction func logOut(sender: AnyObject) {
+        println("LOG OUT")
+        UIView.animateWithDuration(1, animations: { () -> Void in
+               self.logOutBtn.backgroundColor = UIColor.MKColor.Grey
+            }) { (success) -> Void in
+                self.logOutBtn.backgroundColor = UIColor.clearColor()
+        }
+        
+        PFUser.logOut()
+        performSegueWithIdentifier("singInAgain", sender: self)
     }
     
     override func didReceiveMemoryWarning() {
