@@ -390,7 +390,6 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         if var query = PFQuery(className: "Person") as PFQuery? { //querying parse for user data
             query.orderByDescending("createdAt")
             query.limit = 25
-            
             query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
                 if error != nil {
                     self.statusLabel.text = "No Internet. Try refreshing."
@@ -456,14 +455,16 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                     }
                     //}
                 }
-                self.delay(5) {
+                self.delay(6) {
                     println(self.profileImageFiles.count)
                     println("3io4h3jnk4jkn")
                     println(self.userArray.count)
                     // dispatch_async(dispatch_get_main_queue()) {
-                    if self.profileImageFiles.count == self.userArray.count {
+                    if self.profileImageFiles.count == self.userArray.count{
                         SwiftSpinner.hide()
                         self.tableView.reloadData()
+                    } else {
+                        self.retrieve()
                     }
                    
                 }
@@ -599,10 +600,6 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                     }
                 }
             }
-            
-            UIView.animateWithDuration(0.5, delay: 0.5, options: UIViewAnimationOptions.CurveEaseOut, animations: {
-                cell!.photoImageView!.alpha = 1.0;
-                },completion: nil)
             return cell!
         } else {
             

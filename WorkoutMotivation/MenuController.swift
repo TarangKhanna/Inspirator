@@ -19,8 +19,11 @@ class MenuController: UITableViewController {
     @IBOutlet weak var logOutBtn: UIButton!
     
     override func viewWillAppear(animated: Bool) {
+        //logOutBtn.set
         var currentUser = PFUser.currentUser()
-        usernameLabel.text = currentUser?.username
+        var tempName = (currentUser?.username)!
+        tempName.replaceRange(tempName.startIndex...tempName.startIndex, with: String(tempName[tempName.startIndex]).capitalizedString)
+        usernameLabel.text = tempName
         // set this image at time of signup / signin 
         var queryUser = PFUser.query() as PFQuery?
         queryUser!.findObjectsInBackgroundWithBlock {
@@ -29,7 +32,7 @@ class MenuController: UITableViewController {
                 if let users = users as? [PFObject] {
                     for user in users {
                         var user2:PFUser = user as! PFUser
-                        if user2.username == self.usernameLabel.text
+                        if user2.username == currentUser?.username
                         {
                             var userPhotoFile = user2["ProfilePicture"] as! PFFile
                             userPhotoFile.getDataInBackgroundWithBlock { (data, error) -> Void in
@@ -77,13 +80,16 @@ class MenuController: UITableViewController {
             //svc.profileObject =
         } else if (segue.identifier == "fit") {
             var svc = segue.destinationViewController.topViewController as! TimelineViewController
-            svc.groupToQuery = "fit" // first group 
+            svc.groupToQuery = "fit" 
         } else if (segue.identifier == "technical") {
             var svc = segue.destinationViewController.topViewController as! TimelineViewController
-            svc.groupToQuery = "technical" // first group
+            svc.groupToQuery = "technical"
         } else if (segue.identifier == "goals") {
             var svc = segue.destinationViewController.topViewController as! TimelineViewController
-            svc.groupToQuery = "goals" // first group
+            svc.groupToQuery = "goals"
+        } else if (segue.identifier == "quotes") {
+            var svc = segue.destinationViewController.topViewController as! TimelineViewController
+            svc.groupToQuery = "quotes"
         }
         
     }
@@ -91,6 +97,7 @@ class MenuController: UITableViewController {
     
     @IBAction func logOut(sender: AnyObject) {
         println("LOG OUT")
+        self.logOutBtn.backgroundColor = UIColor.MKColor.Grey
         UIView.animateWithDuration(1, animations: { () -> Void in
                self.logOutBtn.backgroundColor = UIColor.MKColor.Grey
             }) { (success) -> Void in

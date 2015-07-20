@@ -88,6 +88,9 @@ class postingViewController: UIViewController, UITextViewDelegate {
         } else if (segue.identifier == "backToTimeline2") { //pass data to VC
             var svc = segue.destinationViewController as! TimelineViewController
             svc.groupToQuery = passedGroup
+        } else if (segue.identifier == "picUpload") { //pass data to VC
+            var svc = segue.destinationViewController.topViewController as! PicUpload
+            svc.passedGroupPic = passedGroup
         }
     }
     

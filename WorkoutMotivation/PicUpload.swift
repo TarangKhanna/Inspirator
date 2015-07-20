@@ -66,6 +66,8 @@ class PicUpload: UIViewController,UITextFieldDelegate, UINavigationControllerDel
     
     @IBOutlet var text: MKTextField!
     
+    var passedGroupPic = "general"
+    
     override func prefersStatusBarHidden() -> Bool {
         
         return true
@@ -425,7 +427,9 @@ class PicUpload: UIViewController,UITextFieldDelegate, UINavigationControllerDel
         
         person["username"] = PFUser.currentUser()?.username
         
-        person["admin"] = true
+        //person["admin"] = true
+        
+        person["group"] = passedGroupPic
         
         if text.text == nil {
             
