@@ -142,7 +142,7 @@ class LayoutController: UICollectionViewController, UICollectionViewDelegateFlow
     
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSizeMake(self.view.frame.size.width, (self.view.frame.size.height - 100))
+        return CGSizeMake(self.view.frame.size.width, (self.view.frame.size.height/3))
     }
 
     

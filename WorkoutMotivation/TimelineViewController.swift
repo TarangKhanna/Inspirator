@@ -13,11 +13,12 @@ import UIKit
 import MapKit
 import Parse
 import Social
+import MessageUI
 //import Spring
 
 // fix lag
 
-class TimelineViewController : UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, floatMenuDelegate {
+class TimelineViewController : UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, floatMenuDelegate, MFMailComposeViewControllerDelegate {
     
     @IBOutlet var postData: MKTextField!
     @IBOutlet var tableView : SBGestureTableView!
@@ -47,6 +48,8 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     var imageFiles = [PFFile]()
     var selectedName: String = "default"
     var selectedScore: String = "default"
+    var selectedToReportMessage: String = "default"
+    var selectedToReportObject:PFObject?
     var selectedAbout: String = "default"
     var startTime: CFAbsoluteTime!
     var timeAtPress: NSDate!
@@ -329,7 +332,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         //            }
         //        }
         
-        SwiftSpinner.show("Connecting to Matrix...")
+        SwiftSpinner.show("Connecting to Group...")
         
         retrieve()
         
@@ -621,6 +624,9 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                 }
             }
             
+            var longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: Selector("longPressOptions:"))
+            cell?.userInteractionEnabled = true
+            cell?.addGestureRecognizer(longPressGestureRecognizer)
             cell!.profileImageView.tag = indexPath.row
             var tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("profileImageTapped:"))
             cell!.profileImageView.userInteractionEnabled = true
@@ -679,6 +685,60 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         
     }
     
+    func longPressOptions(recognizer: UILongPressGestureRecognizer) {
+        
+        if (recognizer.state == UIGestureRecognizerState.Ended) {
+            var cellIndex = recognizer.view!.tag
+            selectedToReportObject = voteObject[cellIndex]
+            selectedToReportMessage = messages[cellIndex]
+            
+            let alert = SCLAlertView()
+            alert.addButton("Report") {
+                
+                let mailComposeViewController = self.configuredMailComposeViewController()
+                if MFMailComposeViewController.canSendMail() {
+                    
+                    self.presentViewController(mailComposeViewController, animated: true, completion: nil)
+                } else {
+                    self.showSendMailErrorAlert()
+                }
+            }
+            alert.addButton("Delete") {
+                
+            }
+            
+            alert.showEdit("Yes?", subTitle:"Choose:", closeButtonTitle: "Cancel")
+        }
+
+        else if (recognizer.state == UIGestureRecognizerState.Began) {
+            //Do Whatever You want on Began of Gesture
+            
+        }
+    }
+    
+    // MAIL
+    
+    func configuredMailComposeViewController() -> MFMailComposeViewController {
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate = self
+        
+        mailComposerVC.setToRecipients(["tarangalbert@gmail.com"])
+        mailComposerVC.setSubject("Reporting for Inspirator")
+        var body = String(stringInterpolationSegment: selectedToReportObject) + "\r\n" + "Problem:"
+        mailComposerVC.setMessageBody(body, isHTML: false)
+        return mailComposerVC
+    }
+    
+    func showSendMailErrorAlert() {
+        let sendMailErrorAlert = UIAlertView(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", delegate: self, cancelButtonTitle: "OK")
+        sendMailErrorAlert.show()
+    }
+    
+    func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
+        controller.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    // FINISH MAIL
     
     func profileImageTapped(recognizer: UITapGestureRecognizer) {
         var imageIndex = recognizer.view!.tag

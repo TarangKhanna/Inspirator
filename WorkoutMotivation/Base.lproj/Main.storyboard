@@ -1195,32 +1195,33 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-pic-1" translatesAutoresizingMaskIntoConstraints="NO" id="YRR-wi-jfW">
-                                            <rect key="frame" x="8" y="8" width="37" height="61"/>
+                                            <rect key="frame" x="8" y="-7" width="37" height="61"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="37" id="Dk0-Ii-lAZ"/>
-                                                <constraint firstAttribute="height" constant="61" id="H7V-LU-t2W"/>
+                                                <constraint firstAttribute="width" constant="37" id="SeG-AO-6rg"/>
                                             </constraints>
                                         </imageView>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="d" translatesAutoresizingMaskIntoConstraints="NO" id="pik-fc-jyO">
-                                            <rect key="frame" x="8" y="77" width="164" height="80"/>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pik-fc-jyO">
+                                            <rect key="frame" x="8" y="46" width="164" height="111"/>
                                             <color key="backgroundColor" red="0.99215686270000003" green="0.99215686270000003" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <accessibility key="accessibilityConfiguration">
                                                 <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
                                             </accessibility>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                         </textView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <color key="backgroundColor" red="0.99215686270000003" green="0.99215686270000003" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="pik-fc-jyO" secondAttribute="bottom" id="M60-SV-kXS"/>
-                                    <constraint firstItem="pik-fc-jyO" firstAttribute="top" secondItem="YRR-wi-jfW" secondAttribute="bottom" constant="8" symbolic="YES" id="SE3-Of-jXA"/>
-                                    <constraint firstItem="pik-fc-jyO" firstAttribute="leading" secondItem="Hcd-a5-OLj" secondAttribute="leadingMargin" id="XoK-Le-oOi"/>
-                                    <constraint firstItem="YRR-wi-jfW" firstAttribute="top" secondItem="Hcd-a5-OLj" secondAttribute="topMargin" id="gDT-vd-ymv"/>
-                                    <constraint firstItem="pik-fc-jyO" firstAttribute="trailing" secondItem="Hcd-a5-OLj" secondAttribute="trailingMargin" id="goE-gq-URN"/>
-                                    <constraint firstItem="YRR-wi-jfW" firstAttribute="leading" secondItem="pik-fc-jyO" secondAttribute="leading" id="ngF-Jt-qg9"/>
+                                    <constraint firstItem="pik-fc-jyO" firstAttribute="leading" secondItem="YRR-wi-jfW" secondAttribute="leading" id="0lt-my-FqF"/>
+                                    <constraint firstItem="pik-fc-jyO" firstAttribute="top" secondItem="Hcd-a5-OLj" secondAttribute="topMargin" constant="38" id="T8K-ca-Avc"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="pik-fc-jyO" secondAttribute="bottom" constant="-8" id="fbe-X0-jex"/>
+                                    <constraint firstItem="YRR-wi-jfW" firstAttribute="top" secondItem="Hcd-a5-OLj" secondAttribute="topMargin" constant="-15" id="g8P-uT-V6Q"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="YRR-wi-jfW" secondAttribute="bottom" constant="95" id="iQ5-mC-FJd"/>
+                                    <constraint firstItem="pik-fc-jyO" firstAttribute="leading" secondItem="Hcd-a5-OLj" secondAttribute="leadingMargin" id="ibH-qQ-WVk"/>
+                                    <constraint firstItem="pik-fc-jyO" firstAttribute="trailing" secondItem="Hcd-a5-OLj" secondAttribute="trailingMargin" id="kWw-Tj-zY2"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="Image" destination="YRR-wi-jfW" id="4Ej-ox-80R"/>
@@ -1561,8 +1562,8 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="dQf-1m-6G6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.94085192679999996" green="0.94903725390000004" blue="0.95307987930000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="sectionIndexBackgroundColor" red="0.44705882349999998" green="0.67450980390000004" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexBackgroundColor" red="0.98823535439999999" green="0.10588236149999999" blue="0.10588236149999999" alpha="1" colorSpace="deviceRGB"/>
                         <sections>
                             <tableViewSection id="FG7-yx-cOq">
                                 <cells>
@@ -2025,7 +2026,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vX3-5p-hbr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1914.5" y="-197.5"/>
+            <point key="canvasLocation" x="1840.5" y="-325.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="6wa-NQ-Mut">
