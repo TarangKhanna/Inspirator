@@ -563,7 +563,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             var name = self.userArray[indexPath.row]
             name.replaceRange(name.startIndex...name.startIndex, with: String(name[name.startIndex]).capitalizedString)
             cell!.nameLabel.text = name
-            cell!.nameLabel.textColor = UIColor.greenColor()
+            cell!.nameLabel.textColor = UIColor.whiteColor()
             cell!.postLabel?.text = "​\u{200B}\(self.messages[indexPath.row])"
             cell!.postLabel?.textColor = UIColor.whiteColor()
             cell!.typeImageView.image = UIImage(named: "timeline-photo")
@@ -591,7 +591,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             }
             cell!.dateLabel.text = String(timeAgo) + ending
             cell!.dateLabel.textColor = UIColor.MKColor.Grey
-            cell!.scoreLabel.textColor = UIColor.greenColor()
+            cell!.scoreLabel.textColor = UIColor.whiteColor()
             cell!.scoreLabel.text = "[" + String(self.score[indexPath.row]) + "]"
             
             let image42 = self.imageFiles[indexPath.row]
@@ -652,7 +652,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             var name = self.userArray[indexPath.row]
             name.replaceRange(name.startIndex...name.startIndex, with: String(name[name.startIndex]).capitalizedString)
             cell!.nameLabel.text = name
-            cell!.nameLabel.textColor = UIColor.greenColor()
+            cell!.nameLabel.textColor = UIColor.whiteColor()
             cell!.postLabel?.text = self.messages[indexPath.row]
             cell!.postLabel?.textColor = UIColor.whiteColor()
             var seconds = Double(self.createdAt[indexPath.row]*60)
@@ -678,7 +678,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                 cell!.dateLabel.text = String(stringInterpolationSegment: Int(timeAgo)) + ending
             }
             cell!.dateLabel.textColor = UIColor.whiteColor()
-            cell!.scoreLabel.textColor = UIColor.greenColor()
+            cell!.scoreLabel.textColor = UIColor.whiteColor()
             cell!.scoreLabel.text = "[" + String(self.score[indexPath.row]) + "]"
             return cell!
         }

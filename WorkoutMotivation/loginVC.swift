@@ -9,7 +9,7 @@
 import UIKit
 import Social
 
-class loginVC: UIViewController, floatMenuDelegate, UITextFieldDelegate  {
+class loginVC: UIViewController, UITextFieldDelegate  {
     
     @IBOutlet var username: MKTextField!
     
@@ -153,28 +153,17 @@ class loginVC: UIViewController, floatMenuDelegate, UITextFieldDelegate  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        signInBtn.maskEnabled = false
-        signInBtn.ripplePercent = 0.5
-        signInBtn.backgroundAniEnabled = false
-        signInBtn.rippleLocation = .Center
-        
-        signUpBtn.maskEnabled = false
-        signUpBtn.ripplePercent = 0.5
-        signUpBtn.backgroundAniEnabled = false
-        signUpBtn.rippleLocation = .Center
+//        signInBtn.maskEnabled = false
+//        signInBtn.ripplePercent = 0.5
+//        signInBtn.backgroundAniEnabled = false
+//        signInBtn.rippleLocation = .Center
+//        
+//        signUpBtn.maskEnabled = false
+//        signUpBtn.ripplePercent = 0.5
+//        signUpBtn.backgroundAniEnabled = false
+//        signUpBtn.rippleLocation = .Center
         //self.view.backgroundColor = UIColor(red: 65.0 / 255.0, green: 62.0 / 255.0, blue: 79.0 / 255.0, alpha: 1)
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "loginBG2.png")!)
-        let floatFrame:CGRect = (CGRectMake(UIScreen.mainScreen().bounds.size.width - 44 - 20, UIScreen.mainScreen().bounds.size.height - 44 - 20, 44, 44))
-        // Do any additional setup after loading the view, typically from a nib.
-        //self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0.6, alpha: 0.5)
-        let actionButton : VCFloatingActionButton = VCFloatingActionButton(frame: floatFrame, normalImage: UIImage(named: "plus.png"), andPressedImage: UIImage(named: "cross.png"), withScrollview: nil)
-        //actionButton.normalImage = UIImage(named: "plus.png")!
-        self.view.addSubview(actionButton)
-        //actionButton.frame = floatFrame
-        //actionButton.center = self.view.center
-        actionButton.imageArray = ["fb-icon.png","twitter-icon.png","google-icon.png","linkedin-icon.png"]
-        actionButton.labelArray = ["Facebook","Twitter","Google Plus","Linked in"]
-        actionButton.delegate = self
         
         // No border, no shadow, floatingPlaceholderEnabled
         username.layer.borderColor = UIColor.clearColor().CGColor

@@ -64,8 +64,7 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UITextFieldDe
     }
     
     @IBAction func signUp(sender: AnyObject) {
-        dialogView.animation = "shake"
-        dialogView.animate()
+        self.view.showLoading()
         signUp2()
     }
     
@@ -73,9 +72,12 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UITextFieldDe
         var user = PFUser()
         if username.text == "" || password.text == "" {
             SCLAlertView().showWarning("Sign Up Info", subTitle: "Please include your username and password")
+            self.view.hideLoading()
         } else if self.aboutYou.text == ""{
             SCLAlertView().showWarning("Sign Up Info", subTitle: "Please include Something About You")
+            self.view.hideLoading()
         } else {
+            
             user.username = self.username.text.lowercaseString
             user.password = self.password.text.lowercaseString
             user["AboutYou"] = self.aboutYou.text
@@ -95,7 +97,11 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UITextFieldDe
                     let errorString = error.userInfo?["error"] as? NSString
                     // Show the errorString somewhere and let the user try again.
                     SCLAlertView().showWarning("SignUp Error", subTitle: errorString! as String)
+                    self.view.hideLoading()
+                    self.dialogView.animation = "shake"
+                    self.dialogView.animate()
                 } else {
+                    self.view.hideLoading()
                     println("Signed Up!!")
                     self.performSegueWithIdentifier("signedUp2", sender: self)
                     SCLAlertView().showInfo("Signed Up", subTitle: "Let's Get Going!", closeButtonTitle: "Ok", duration: 2)
