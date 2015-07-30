@@ -149,7 +149,7 @@ class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             //fb
             if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook){
                 var facebookSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
-                facebookSheet.setInitialText("#GetMotivated")
+                //facebookSheet.setInitialText("#GetMotivated")
                 self.presentViewController(facebookSheet, animated: true, completion: nil)
             } else {
                 //var alert = UIAlertController(title: "Accounts", message: "Please login to a Facebook account from the iOS app to share.", preferredStyle: UIAlertControllerStyle.Alert)
@@ -176,7 +176,7 @@ class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         } else if(row == 4){
             //performSegueWithIdentifier("About", sender: self)
             //new
-             SCLAlertView().showInfo("About", subTitle: "An app that I am perfecting this summer. Will be adding many more features with your feedback.")
+             SCLAlertView().showInfo("About-Terms", subTitle: "http://tarangkhanna.github.io/InspiratorAppPage/terms.html")
         }
     }
     

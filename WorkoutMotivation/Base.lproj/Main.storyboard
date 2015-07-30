@@ -518,7 +518,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="Av2-f3-uT5"/>
                                 </constraints>
-                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Sign Up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -554,7 +554,7 @@
                             <constraint firstItem="Ah7-GB-hCh" firstAttribute="leading" secondItem="BmT-bu-BI4" secondAttribute="leading" id="E3g-md-D8t"/>
                             <constraint firstItem="UCc-7J-9m2" firstAttribute="top" secondItem="WCy-E0-MFu" secondAttribute="bottom" constant="46" id="FrY-Hc-7Mb"/>
                             <constraint firstItem="WCy-E0-MFu" firstAttribute="top" secondItem="cKw-wa-qBk" secondAttribute="bottom" constant="32" id="LLH-pq-uHI"/>
-                            <constraint firstItem="oa2-oU-Sg1" firstAttribute="top" secondItem="FOe-8F-W2m" secondAttribute="bottom" constant="82" id="ME9-sb-0cc"/>
+                            <constraint firstItem="oa2-oU-Sg1" firstAttribute="top" secondItem="FOe-8F-W2m" secondAttribute="bottom" constant="126" id="ME9-sb-0cc"/>
                             <constraint firstItem="oa2-oU-Sg1" firstAttribute="centerX" secondItem="cKw-wa-qBk" secondAttribute="centerX" id="Si4-jE-oXB"/>
                             <constraint firstItem="BmT-bu-BI4" firstAttribute="centerX" secondItem="aJc-mb-KTj" secondAttribute="centerX" id="Yj5-9N-c2v"/>
                             <constraint firstItem="WCy-E0-MFu" firstAttribute="trailing" secondItem="UCc-7J-9m2" secondAttribute="trailing" id="ZAa-QH-Zme"/>
@@ -950,7 +950,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="lNp-7M-5Pw" firstAttribute="top" secondItem="MZu-n5-CTc" secondAttribute="bottom" id="Fca-VT-8Bz"/>
+                            <constraint firstItem="lNp-7M-5Pw" firstAttribute="top" secondItem="MZu-n5-CTc" secondAttribute="bottom" constant="44" id="Fca-VT-8Bz"/>
                             <constraint firstAttribute="bottomMargin" secondItem="lNp-7M-5Pw" secondAttribute="bottom" constant="-24" id="exS-h2-wBv"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lNp-7M-5Pw" secondAttribute="trailing" constant="-18" id="lLs-zn-1hu"/>
                             <constraint firstItem="lNp-7M-5Pw" firstAttribute="leading" secondItem="wYT-dr-d0t" secondAttribute="leading" id="zNi-Um-8JQ"/>
@@ -1329,20 +1329,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hCb-AD-pBH" userLabel="originalImage">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hCb-AD-pBH" userLabel="originalImage">
                                 <rect key="frame" x="0.0" y="128" width="375" height="404"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xpp-zS-idi" userLabel="imageToFilter">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xpp-zS-idi" userLabel="imageToFilter">
                                 <rect key="frame" x="0.0" y="128" width="375" height="404"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="404" id="vAe-vZ-FgY"/>
                                 </constraints>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qrv-Jl-T2C" userLabel="filtersScrollView">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qrv-Jl-T2C" userLabel="filtersScrollView">
                                 <rect key="frame" x="0.0" y="579" width="375" height="80"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </scrollView>
-                            <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9C9-4v-H99" customClass="MKButton" customModule="WorkoutMotivation" customModuleProvider="target">
+                            <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9C9-4v-H99" customClass="MKButton" customModule="WorkoutMotivation" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="8" width="375" height="38"/>
                                 <color key="backgroundColor" red="0.98823535439999999" green="0.10588236149999999" blue="0.10588236149999999" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
@@ -1367,7 +1367,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="McP-Q0-mu1" userLabel="savePicButton" customClass="MKButton" customModule="WorkoutMotivation" customModuleProvider="target">
+                            <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="McP-Q0-mu1" userLabel="savePicButton" customClass="MKButton" customModule="WorkoutMotivation" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="540" width="375" height="38"/>
                                 <color key="backgroundColor" red="0.98823535439999999" green="0.10588236149999999" blue="0.10588236149999999" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
@@ -1379,7 +1379,7 @@
                                     <action selector="uploadImage:" destination="I4d-FR-BNv" eventType="touchUpInside" id="rtT-VA-fxs"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" alpha="0.60000002384185791" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgB-UI-Z9d" customClass="MKButton" customModule="WorkoutMotivation" customModuleProvider="target">
+                            <button opaque="NO" alpha="0.60000002384185791" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgB-UI-Z9d" customClass="MKButton" customModule="WorkoutMotivation" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="54" width="375" height="38"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
