@@ -950,7 +950,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="lNp-7M-5Pw" firstAttribute="top" secondItem="MZu-n5-CTc" secondAttribute="bottom" constant="44" id="Fca-VT-8Bz"/>
+                            <constraint firstItem="lNp-7M-5Pw" firstAttribute="top" secondItem="MZu-n5-CTc" secondAttribute="bottom" id="Fca-VT-8Bz"/>
                             <constraint firstAttribute="bottomMargin" secondItem="lNp-7M-5Pw" secondAttribute="bottom" constant="-24" id="exS-h2-wBv"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lNp-7M-5Pw" secondAttribute="trailing" constant="-18" id="lLs-zn-1hu"/>
                             <constraint firstItem="lNp-7M-5Pw" firstAttribute="leading" secondItem="wYT-dr-d0t" secondAttribute="leading" id="zNi-Um-8JQ"/>
@@ -2155,10 +2155,10 @@
         <image name="up" width="30" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="I2L-5u-1XG"/>
         <segue reference="dxp-6N-n2B"/>
         <segue reference="RbL-F9-heb"/>
         <segue reference="8cE-Yl-DNe"/>
         <segue reference="Q3P-c1-Axe"/>
-        <segue reference="I2L-5u-1XG"/>
     </inferredMetricsTieBreakers>
 </document>
