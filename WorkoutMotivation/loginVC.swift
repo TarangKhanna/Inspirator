@@ -9,7 +9,7 @@
 import UIKit
 import Social
 
-class loginVC: UIViewController, UITextFieldDelegate  {
+class loginVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var username: MKTextField!
     
@@ -27,7 +27,6 @@ class loginVC: UIViewController, UITextFieldDelegate  {
             self.performSegueWithIdentifier("loggedIn2", sender: self)
         }
     }
-    
     // Facebook Delegate Methods
     
     @IBAction func FBlogIn(sender: AnyObject) {

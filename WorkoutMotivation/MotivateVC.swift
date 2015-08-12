@@ -47,6 +47,15 @@ class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         if let currentUser = PFUser.currentUser()?.username {
             currentUserId = PFUser.currentUser()?.objectId
         } else {
+            let userDefaults = NSUserDefaults.standardUserDefaults()
+            
+            if !userDefaults.boolForKey("walkthroughPresented") {
+                
+                showWalkthrough()
+                
+                userDefaults.setBool(true, forKey: "walkthroughPresented")
+                userDefaults.synchronize()
+            }
             performSegueWithIdentifier("signIn96", sender: self)
         }
     }
