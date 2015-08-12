@@ -452,9 +452,6 @@
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WCy-E0-MFu" customClass="MKTextField" customModule="WorkoutMotivation" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="270" width="375" height="38"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="38" id="QhQ-Fz-QSV"/>
-                                </constraints>
                                 <color key="textColor" red="1" green="0.55039779259999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -468,9 +465,6 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ah7-GB-hCh" customClass="DesignableButton" customModule="WorkoutMotivation" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="430" width="375" height="32"/>
                                 <color key="backgroundColor" red="1" green="0.55039779259999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="3V0-fa-Aac"/>
-                                </constraints>
                                 <state key="normal" title="Sign In">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -487,9 +481,6 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oa2-oU-Sg1" customClass="DesignableButton" customModule="WorkoutMotivation" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="146" width="375" height="32"/>
                                 <color key="backgroundColor" red="0.22627157044283086" green="0.35655380296601169" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="anT-jW-0aB"/>
-                                </constraints>
                                 <state key="normal" title="Login/Sign Up With Facebook">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -505,19 +496,13 @@
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cKw-wa-qBk">
                                 <rect key="frame" x="175" y="217" width="25" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="csD-sy-6T0"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.55039779259999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BmT-bu-BI4" customClass="DesignableButton" customModule="WorkoutMotivation" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BmT-bu-BI4" customClass="DesignableButton" customModule="WorkoutMotivation" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="546" width="375" height="32"/>
                                 <color key="backgroundColor" red="0.93110795454545459" green="0.40070218369036642" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="Av2-f3-uT5"/>
-                                </constraints>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Sign Up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -534,11 +519,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New User?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJc-mb-KTj">
-                                <rect key="frame" x="145" y="496" width="85" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="2ms-v3-j3K"/>
-                                    <constraint firstAttribute="width" constant="85" id="EGe-Lw-htH"/>
-                                </constraints>
+                                <rect key="frame" x="145" y="496" width="140" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="1" green="0.55039779259999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -546,26 +527,48 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="BmT-bu-BI4" firstAttribute="top" secondItem="aJc-mb-KTj" secondAttribute="bottom" constant="29" id="2lh-LY-Nes"/>
-                            <constraint firstItem="Ah7-GB-hCh" firstAttribute="top" secondItem="UCc-7J-9m2" secondAttribute="bottom" constant="38" id="5qF-GG-5a5"/>
-                            <constraint firstItem="cKw-wa-qBk" firstAttribute="top" secondItem="oa2-oU-Sg1" secondAttribute="bottom" constant="39" id="8OZ-uZ-gbf"/>
-                            <constraint firstItem="Ah7-GB-hCh" firstAttribute="leading" secondItem="UCc-7J-9m2" secondAttribute="leading" id="ACs-FT-thh"/>
-                            <constraint firstItem="BmT-bu-BI4" firstAttribute="trailing" secondItem="Ah7-GB-hCh" secondAttribute="trailing" id="CAk-SD-EUs"/>
-                            <constraint firstItem="Ah7-GB-hCh" firstAttribute="leading" secondItem="BmT-bu-BI4" secondAttribute="leading" id="E3g-md-D8t"/>
-                            <constraint firstItem="UCc-7J-9m2" firstAttribute="top" secondItem="WCy-E0-MFu" secondAttribute="bottom" constant="46" id="FrY-Hc-7Mb"/>
-                            <constraint firstItem="WCy-E0-MFu" firstAttribute="top" secondItem="cKw-wa-qBk" secondAttribute="bottom" constant="32" id="LLH-pq-uHI"/>
-                            <constraint firstItem="oa2-oU-Sg1" firstAttribute="top" secondItem="FOe-8F-W2m" secondAttribute="bottom" constant="126" id="ME9-sb-0cc"/>
-                            <constraint firstItem="oa2-oU-Sg1" firstAttribute="centerX" secondItem="cKw-wa-qBk" secondAttribute="centerX" id="Si4-jE-oXB"/>
-                            <constraint firstItem="BmT-bu-BI4" firstAttribute="centerX" secondItem="aJc-mb-KTj" secondAttribute="centerX" id="Yj5-9N-c2v"/>
-                            <constraint firstItem="WCy-E0-MFu" firstAttribute="trailing" secondItem="UCc-7J-9m2" secondAttribute="trailing" id="ZAa-QH-Zme"/>
-                            <constraint firstItem="epD-HR-pzJ" firstAttribute="top" secondItem="BmT-bu-BI4" secondAttribute="bottom" constant="89" id="dt1-Nd-oKJ"/>
-                            <constraint firstItem="WCy-E0-MFu" firstAttribute="trailing" secondItem="oa2-oU-Sg1" secondAttribute="trailing" id="fO2-7d-dTv"/>
-                            <constraint firstItem="UCc-7J-9m2" firstAttribute="trailing" secondItem="Ah7-GB-hCh" secondAttribute="trailing" id="hUW-EA-Udt"/>
-                            <constraint firstItem="WCy-E0-MFu" firstAttribute="leading" secondItem="oa2-oU-Sg1" secondAttribute="leading" id="i1b-Mg-IlT"/>
-                            <constraint firstAttribute="trailing" secondItem="oa2-oU-Sg1" secondAttribute="trailing" id="m4X-ng-9c1"/>
-                            <constraint firstItem="aJc-mb-KTj" firstAttribute="top" secondItem="Ah7-GB-hCh" secondAttribute="bottom" constant="34" id="sJJ-fW-75V"/>
-                            <constraint firstItem="UCc-7J-9m2" firstAttribute="leading" secondItem="WCy-E0-MFu" secondAttribute="leading" id="whJ-KJ-Txv"/>
-                            <constraint firstItem="BmT-bu-BI4" firstAttribute="leading" secondItem="cg8-1C-nZM" secondAttribute="leading" id="yQM-2p-hdL"/>
+                            <constraint firstItem="BmT-bu-BI4" firstAttribute="top" secondItem="WCy-E0-MFu" secondAttribute="bottom" constant="238" id="0OL-rk-rGw"/>
+                            <constraint firstItem="UCc-7J-9m2" firstAttribute="trailing" secondItem="Ah7-GB-hCh" secondAttribute="trailing" id="2IF-HY-LBM"/>
+                            <constraint firstItem="aJc-mb-KTj" firstAttribute="top" secondItem="oa2-oU-Sg1" secondAttribute="bottom" constant="318" id="4AL-tg-Qpe"/>
+                            <constraint firstItem="Ah7-GB-hCh" firstAttribute="top" secondItem="UCc-7J-9m2" secondAttribute="bottom" constant="38" id="4gt-gb-QCU"/>
+                            <constraint firstItem="UCc-7J-9m2" firstAttribute="leading" secondItem="WCy-E0-MFu" secondAttribute="leading" id="6Zl-fA-uDE"/>
+                            <constraint firstItem="UCc-7J-9m2" firstAttribute="centerX" secondItem="aJc-mb-KTj" secondAttribute="centerX" constant="-27.5" id="Aiv-B3-vFj"/>
+                            <constraint firstItem="epD-HR-pzJ" firstAttribute="top" secondItem="Ah7-GB-hCh" secondAttribute="bottom" constant="205" id="BTZ-U8-UF3"/>
+                            <constraint firstItem="Ah7-GB-hCh" firstAttribute="top" secondItem="WCy-E0-MFu" secondAttribute="bottom" constant="122" id="E5l-za-8GU"/>
+                            <constraint firstItem="Ah7-GB-hCh" firstAttribute="top" secondItem="cKw-wa-qBk" secondAttribute="bottom" constant="192" id="GtN-eD-Eqx"/>
+                            <constraint firstItem="cKw-wa-qBk" firstAttribute="top" secondItem="oa2-oU-Sg1" secondAttribute="bottom" constant="39" id="IwJ-t5-Y3L"/>
+                            <constraint firstItem="oa2-oU-Sg1" firstAttribute="top" secondItem="FOe-8F-W2m" secondAttribute="bottom" constant="82" id="JNH-uA-anP"/>
+                            <constraint firstAttribute="centerX" secondItem="BmT-bu-BI4" secondAttribute="centerX" id="LH0-aO-xAS"/>
+                            <constraint firstItem="BmT-bu-BI4" firstAttribute="top" secondItem="Ah7-GB-hCh" secondAttribute="bottom" constant="84" id="Lrl-G7-0Si"/>
+                            <constraint firstItem="oa2-oU-Sg1" firstAttribute="leading" secondItem="cg8-1C-nZM" secondAttribute="leadingMargin" constant="-16" id="Mvk-Wl-OfD"/>
+                            <constraint firstItem="UCc-7J-9m2" firstAttribute="leading" secondItem="Ah7-GB-hCh" secondAttribute="leading" id="Tec-aQ-pP5"/>
+                            <constraint firstItem="BmT-bu-BI4" firstAttribute="top" secondItem="aJc-mb-KTj" secondAttribute="bottom" constant="29" id="Uvg-Ik-B3d"/>
+                            <constraint firstItem="BmT-bu-BI4" firstAttribute="top" secondItem="cKw-wa-qBk" secondAttribute="bottom" constant="308" id="VeO-sH-E4D"/>
+                            <constraint firstItem="UCc-7J-9m2" firstAttribute="top" secondItem="WCy-E0-MFu" secondAttribute="bottom" constant="46" id="WSi-89-LP9"/>
+                            <constraint firstItem="aJc-mb-KTj" firstAttribute="top" secondItem="Ah7-GB-hCh" secondAttribute="bottom" constant="34" id="XMW-Q3-PU3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="oa2-oU-Sg1" secondAttribute="trailing" constant="-16" id="ZNy-rS-zOl"/>
+                            <constraint firstItem="BmT-bu-BI4" firstAttribute="top" secondItem="FOe-8F-W2m" secondAttribute="bottom" constant="482" id="byB-pp-GaQ"/>
+                            <constraint firstItem="WCy-E0-MFu" firstAttribute="top" secondItem="cKw-wa-qBk" secondAttribute="bottom" constant="32" id="cjV-jx-lrE"/>
+                            <constraint firstItem="aJc-mb-KTj" firstAttribute="top" secondItem="FOe-8F-W2m" secondAttribute="bottom" constant="432" id="dSS-b3-1CJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="aJc-mb-KTj" secondAttribute="trailing" constant="74" id="eSy-7X-aJA"/>
+                            <constraint firstItem="aJc-mb-KTj" firstAttribute="leading" secondItem="cg8-1C-nZM" secondAttribute="leadingMargin" constant="129" id="eVC-cG-yMY"/>
+                            <constraint firstItem="WCy-E0-MFu" firstAttribute="top" secondItem="FOe-8F-W2m" secondAttribute="bottom" constant="206" id="ehC-AI-uzV"/>
+                            <constraint firstAttribute="width" secondItem="WCy-E0-MFu" secondAttribute="width" id="fBb-1K-y1N"/>
+                            <constraint firstItem="Ah7-GB-hCh" firstAttribute="top" secondItem="oa2-oU-Sg1" secondAttribute="bottom" constant="252" id="fsY-dR-39S"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cKw-wa-qBk" secondAttribute="trailing" constant="159" id="gY1-ro-HNb"/>
+                            <constraint firstItem="epD-HR-pzJ" firstAttribute="top" secondItem="oa2-oU-Sg1" secondAttribute="bottom" constant="489" id="iOr-hO-yi5"/>
+                            <constraint firstItem="epD-HR-pzJ" firstAttribute="top" secondItem="aJc-mb-KTj" secondAttribute="bottom" constant="150" id="iYP-wp-TMy"/>
+                            <constraint firstItem="WCy-E0-MFu" firstAttribute="top" secondItem="oa2-oU-Sg1" secondAttribute="bottom" constant="92" id="ivn-of-DSU"/>
+                            <constraint firstAttribute="width" secondItem="Ah7-GB-hCh" secondAttribute="width" id="jQE-qE-I3Q"/>
+                            <constraint firstItem="aJc-mb-KTj" firstAttribute="top" secondItem="WCy-E0-MFu" secondAttribute="bottom" constant="188" id="mi9-yG-CJw"/>
+                            <constraint firstItem="BmT-bu-BI4" firstAttribute="top" secondItem="oa2-oU-Sg1" secondAttribute="bottom" constant="368" id="nLz-Ic-nfF"/>
+                            <constraint firstItem="cKw-wa-qBk" firstAttribute="leading" secondItem="cg8-1C-nZM" secondAttribute="leadingMargin" constant="159" id="pzN-ij-6oM"/>
+                            <constraint firstItem="Ah7-GB-hCh" firstAttribute="top" secondItem="FOe-8F-W2m" secondAttribute="bottom" constant="366" id="qac-tq-f3w"/>
+                            <constraint firstItem="epD-HR-pzJ" firstAttribute="top" secondItem="WCy-E0-MFu" secondAttribute="bottom" constant="359" id="r8O-La-G5w"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="WCy-E0-MFu" secondAttribute="trailing" constant="-16" id="tjU-WS-dfP"/>
+                            <constraint firstItem="BmT-bu-BI4" firstAttribute="width" secondItem="cg8-1C-nZM" secondAttribute="width" id="vU2-G0-3H4"/>
+                            <constraint firstItem="BmT-bu-BI4" firstAttribute="top" secondItem="UCc-7J-9m2" secondAttribute="bottom" constant="154" id="zYd-GF-Ub0"/>
+                            <constraint firstItem="aJc-mb-KTj" firstAttribute="top" secondItem="cKw-wa-qBk" secondAttribute="bottom" constant="258" id="zpu-uV-TiB"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Sign In" id="f8D-wZ-dtR"/>
@@ -613,7 +616,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="106" sectionHeaderHeight="18" sectionFooterHeight="20" translatesAutoresizingMaskIntoConstraints="NO" id="lNp-7M-5Pw" customClass="SBGestureTableView" customModule="WorkoutMotivation" customModuleProvider="target">
+                            <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="106" sectionHeaderHeight="18" sectionFooterHeight="20" translatesAutoresizingMaskIntoConstraints="NO" id="lNp-7M-5Pw" customClass="SBGestureTableView" customModule="WorkoutMotivation" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="377" height="627"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="xP9-5q-Qpy">
@@ -1329,20 +1332,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hCb-AD-pBH" userLabel="originalImage">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hCb-AD-pBH" userLabel="originalImage">
                                 <rect key="frame" x="0.0" y="128" width="375" height="404"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xpp-zS-idi" userLabel="imageToFilter">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xpp-zS-idi" userLabel="imageToFilter">
                                 <rect key="frame" x="0.0" y="128" width="375" height="404"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="404" id="vAe-vZ-FgY"/>
                                 </constraints>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qrv-Jl-T2C" userLabel="filtersScrollView">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qrv-Jl-T2C" userLabel="filtersScrollView">
                                 <rect key="frame" x="0.0" y="579" width="375" height="80"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </scrollView>
-                            <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9C9-4v-H99" customClass="MKButton" customModule="WorkoutMotivation" customModuleProvider="target">
+                            <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9C9-4v-H99" customClass="MKButton" customModule="WorkoutMotivation" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="8" width="375" height="38"/>
                                 <color key="backgroundColor" red="0.98823535439999999" green="0.10588236149999999" blue="0.10588236149999999" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
@@ -1367,7 +1370,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="McP-Q0-mu1" userLabel="savePicButton" customClass="MKButton" customModule="WorkoutMotivation" customModuleProvider="target">
+                            <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="McP-Q0-mu1" userLabel="savePicButton" customClass="MKButton" customModule="WorkoutMotivation" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="540" width="375" height="38"/>
                                 <color key="backgroundColor" red="0.98823535439999999" green="0.10588236149999999" blue="0.10588236149999999" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
@@ -1379,7 +1382,7 @@
                                     <action selector="uploadImage:" destination="I4d-FR-BNv" eventType="touchUpInside" id="rtT-VA-fxs"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" alpha="0.60000002384185791" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgB-UI-Z9d" customClass="MKButton" customModule="WorkoutMotivation" customModuleProvider="target">
+                            <button opaque="NO" alpha="0.60000002384185791" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgB-UI-Z9d" customClass="MKButton" customModule="WorkoutMotivation" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="54" width="375" height="38"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -2054,7 +2057,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vX3-5p-hbr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1840.5" y="-325.5"/>
+            <point key="canvasLocation" x="1834.5" y="-327.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="6wa-NQ-Mut">
@@ -2155,10 +2158,10 @@
         <image name="up" width="30" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="I2L-5u-1XG"/>
+        <segue reference="Q3P-c1-Axe"/>
         <segue reference="dxp-6N-n2B"/>
         <segue reference="RbL-F9-heb"/>
         <segue reference="8cE-Yl-DNe"/>
-        <segue reference="Q3P-c1-Axe"/>
+        <segue reference="I2L-5u-1XG"/>
     </inferredMetricsTieBreakers>
 </document>
