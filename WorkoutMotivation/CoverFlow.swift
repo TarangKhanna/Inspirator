@@ -61,7 +61,7 @@ class CoverFlow: UICollectionViewController, UICollectionViewDelegateFlowLayout,
     
     func retrieve() {
         self.imageFiles.removeAll(keepCapacity: false)
-        var queryUser = PFUser.query() as PFQuery?
+        let queryUser = PFUser.query() as PFQuery?
         queryUser!.findObjectsInBackgroundWithBlock {
             (users: [AnyObject]?, error: NSError?) -> Void in
             //queryUser!.orderByDescending("createdAt")
@@ -71,7 +71,7 @@ class CoverFlow: UICollectionViewController, UICollectionViewDelegateFlowLayout,
                 // Do something with the found users
                 if let users = users as? [PFObject] {
                     for user in users {
-                        var user2:PFUser = user as! PFUser
+                        let user2:PFUser = user as! PFUser
                         self.imageFiles.append(user2["ProfilePicture"] as! PFFile)
                         //self.imageFiles.append(user2["ProfilePictue"] as! PFFile)
                         

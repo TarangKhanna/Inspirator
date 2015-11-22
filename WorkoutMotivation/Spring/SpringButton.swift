@@ -22,7 +22,7 @@
 
 import UIKit
 
-public class SpringTextView: UITextView, Springable {
+public class SpringButton: UIButton, Springable {
     @IBInspectable public var autostart: Bool = false
     @IBInspectable public var autohide: Bool = false
     @IBInspectable public var animation: String = ""
@@ -48,9 +48,9 @@ public class SpringTextView: UITextView, Springable {
         self.spring.customAwakeFromNib()
     }
 
-    override public func didMoveToWindow() {
-        super.didMoveToWindow()
-        self.spring.customDidMoveToWindow()
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        spring.customLayoutSubviews()
     }
 
     public func animate() {
@@ -68,5 +68,4 @@ public class SpringTextView: UITextView, Springable {
     public func animateToNext(completion: () -> ()) {
         self.spring.animateToNext(completion)
     }
-
 }

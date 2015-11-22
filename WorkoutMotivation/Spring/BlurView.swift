@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 //
-// Copyright (c) 2015 James Tang (j@jamztang.com)
+// Copyright (c) 2015 Meng To (meng@designcode.io)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -21,42 +21,13 @@
 // SOFTWARE.
 
 import UIKit
-import AudioToolbox
 
-public class SoundPlayer: NSObject {
-
-    @IBInspectable var filename : String?
-    @IBInspectable var enabled : Bool = true
-
-    private struct Internal {
-        static var cache = [NSURL:SystemSoundID]()
-    }
-
-    public func playSound(soundFile:String) {
-
-        if !enabled {
-            return
-        }
-
-        if let url = NSBundle.mainBundle().URLForResource(soundFile, withExtension: nil) {
-
-            var soundID : SystemSoundID = Internal.cache[url] ?? 0
-
-            if soundID == 0 {
-                AudioServicesCreateSystemSoundID(url, &soundID)
-                Internal.cache[url] = soundID
-            }
-
-            AudioServicesPlaySystemSound(soundID)
-
-        } else {
-            print("Could not find sound file name `\(soundFile)`")
-        }
-    }
-
-    @IBAction public func play(sender: AnyObject?) {
-        if let filename = filename {
-            self.playSound(filename)
-        }
-    }
+public func insertBlurView (view: UIView, style: UIBlurEffectStyle) -> UIVisualEffectView {
+    view.backgroundColor = UIColor.clearColor()
+    
+    let blurEffect = UIBlurEffect(style: style)
+    let blurEffectView = UIVisualEffectView(effect: blurEffect)
+    blurEffectView.frame = view.bounds
+    view.insertSubview(blurEffectView, atIndex: 0)
+    return blurEffectView
 }

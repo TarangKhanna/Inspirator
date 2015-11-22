@@ -51,9 +51,9 @@ class SocialVC: UIViewController, UIWebViewDelegate {
     func webView(_webView: UIWebView,
         shouldStartLoadWithRequest request: NSURLRequest,
         navigationType: UIWebViewNavigationType) -> Bool {
-            var host = request.URL!.absoluteString
+            let host = request.URL!.absoluteString
             print(request.URL!)
-            if host.rangeOfString("websta.me") != nil || host!.rangeOfString("twitter.com") != nil {
+            if host.rangeOfString("websta.me") != nil || host.rangeOfString("twitter.com") != nil {
                 print("exists")
                 return true
             }

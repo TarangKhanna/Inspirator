@@ -765,7 +765,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         var recipients2 = [String]()
         if (segue.identifier == "profileView") { //pass data to VC
-            var svc = (segue.destinationViewController as! UINavigationController).topViewController as! profileVC
+            let svc = (segue.destinationViewController as! UINavigationController).topViewController as! profileVC
             print(selectedName)
             svc.name = selectedName
             svc.canChange = false
@@ -773,10 +773,10 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             svc.show = true
             //svc.profileObject =
         } else if (segue.identifier == "posting") {
-            var svc = (segue.destinationViewController as! UINavigationController).topViewController as! postingViewController
+            let svc = (segue.destinationViewController as! UINavigationController).topViewController as! postingViewController
             svc.passedGroup = groupToQuery!
         } else if (segue.identifier == "showComments") { // get notified if you see comment section
-            var currentUserId = PFUser.currentUser()?.objectId
+            let currentUserId = PFUser.currentUser()?.objectId
             
             
             if var recipients = selectedParseObject!["recipients"] as? [String] {  //added to receiver array, real notification on comment adding in commentsVC

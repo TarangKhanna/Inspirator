@@ -22,7 +22,7 @@
 
 import UIKit
 
-public class SpringButton: UIButton, Springable {
+public class SpringImageView: UIImageView, Springable {
     @IBInspectable public var autostart: Bool = false
     @IBInspectable public var autohide: Bool = false
     @IBInspectable public var animation: String = ""
@@ -48,9 +48,9 @@ public class SpringButton: UIButton, Springable {
         self.spring.customAwakeFromNib()
     }
 
-    override public func didMoveToWindow() {
-        super.didMoveToWindow()
-        self.spring.customDidMoveToWindow()
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        spring.customLayoutSubviews()
     }
 
     public func animate() {
@@ -68,4 +68,5 @@ public class SpringButton: UIButton, Springable {
     public func animateToNext(completion: () -> ()) {
         self.spring.animateToNext(completion)
     }
+
 }

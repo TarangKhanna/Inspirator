@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 //
-// Copyright (c) 2015 Meng To (meng@designcode.io)
+// Copyright (c) 2015 James Tang (j@jamztang.com)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -22,22 +22,30 @@
 
 import UIKit
 
-@IBDesignable public class DesignableLabel: SpringLabel {
+public class AsyncImageView: UIImageView {
 
-    @IBInspectable public var lineHeight: CGFloat = 1.5 {
+    public var placeholderImage : UIImage?
+
+    public var url : NSURL? {
         didSet {
-            var font = UIFont(name: self.font.fontName, size: self.font.pointSize)
-            var text = self.text
-            
-            var paragraphStyle = NSMutableParagraphStyle()
-            paragraphStyle.lineSpacing = lineHeight
-            
-            var attributedString = NSMutableAttributedString(string: text!)
-            attributedString.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
-            attributedString.addAttribute(NSFontAttributeName, value: font!, range: NSMakeRange(0, attributedString.length))
-            
-            self.attributedText = attributedString
+            self.image = placeholderImage
+            if let urlString = url?.absoluteString {
+                ImageLoader.sharedLoader.imageForUrl(urlString) { [weak self] image, url in
+                    if let strongSelf = self {
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            if strongSelf.url?.absoluteString == url {
+                                strongSelf.image = image ?? strongSelf.placeholderImage
+                            }
+                        })
+                    }
+                }
+            }
         }
+    }
+
+    public func setURL(url: NSURL?, placeholderImage: UIImage?) {
+        self.placeholderImage = placeholderImage
+        self.url = url
     }
 
 }
