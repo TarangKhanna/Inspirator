@@ -66,7 +66,7 @@ class RAMPaperSwitch: UISwitch {
     
     
     override func awakeFromNib() {
-        var shapeColor:UIColor = (onTintColor != nil) ? onTintColor! : UIColor.greenColor()
+        let shapeColor:UIColor = (onTintColor != nil) ? onTintColor! : UIColor.greenColor()
         
         layer.borderWidth = 0.5
         layer.borderColor = UIColor.whiteColor().CGColor;
