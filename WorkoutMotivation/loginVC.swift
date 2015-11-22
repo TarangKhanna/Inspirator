@@ -125,30 +125,30 @@ class loginVC: UIViewController, UITextFieldDelegate {
                     }
                     
                     
-                    NSURLConnection.sendAsynchronousRequest(URLRequestNeeded, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse!,data: NSData!, error: NSError!) -> Void in
-                        if error == nil {
-                            var picture = PFFile(data: data)
-                            PFUser.currentUser()!.setObject(picture, forKey: "ProfilePicture")
-                            PFUser.currentUser()!.saveInBackground()
-                        }
-                        else {
-                            print("Error: \(error.localizedDescription)")
-                        }
-                    })
-                    
-                    NSURLConnection.sendAsynchronousRequest(URLRequestNeeded2, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse!,data: NSData!, error: NSError!) -> Void in
-                        if error == nil {
-                            //var aboutYou = PFUser.currentUser(data: data)
-                            //PFUser.currentUser()!.setObject(aboutYou, forKey: "username")
-                            //PFUser.currentUser()!.saveInBackground()
-                            print("ergg")
-                            print(data)
-                            print(response)
-                        }
-                        else {
-                            print("Error: \(error.localizedDescription)")
-                        }
-                    })
+//                    NSURLConnection.sendAsynchronousRequest(URLRequestNeeded, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse!,data: NSData!, error: NSError!) -> Void in
+//                        if error == nil {
+//                            var picture = PFFile(data: data)
+//                            PFUser.currentUser()!.setObject(picture, forKey: "ProfilePicture")
+//                            PFUser.currentUser()!.saveInBackground()
+//                        }
+//                        else {
+//                            print("Error: \(error.localizedDescription)")
+//                        }
+//                    })
+//                    
+//                    NSURLConnection.sendAsynchronousRequest(URLRequestNeeded2, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse!,data: NSData!, error: NSError!) -> Void in
+//                        if error == nil {
+//                            //var aboutYou = PFUser.currentUser(data: data)
+//                            //PFUser.currentUser()!.setObject(aboutYou, forKey: "username")
+//                            //PFUser.currentUser()!.saveInBackground()
+//                            print("ergg")
+//                            print(data)
+//                            print(response)
+//                        }
+//                        else {
+//                            print("Error: \(error.localizedDescription)")
+//                        }
+//                    })
                     
                     PFUser.currentUser()!.setValue(saferName, forKey: "username")
                     PFUser.currentUser()!.setValue(email, forKey: "email")

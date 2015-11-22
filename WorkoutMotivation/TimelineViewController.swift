@@ -79,7 +79,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     override func viewWillAppear(animated: Bool) {
         self.navigationController!.navigationBar.hidden = false
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        if let _ = PFUser.currentUser()!.username {
+        if let currentUser = PFUser.currentUser()!.username {
             currentUserId = PFUser.currentUser()?.objectId
         } else {
             performSegueWithIdentifier("signIn", sender: self)
@@ -424,7 +424,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                             self.messages.append(object["text"] as! String)
                             
                             self.userArray.append(currentProfileUser)
-                            self.score.append(object["score"] as! Int)
+                            //self.score.append(object["score"] as! Int)
                             let elapsedTime = CFAbsoluteTimeGetCurrent() - (object["startTime"] as! CFAbsoluteTime)
                             self.duration = Int(elapsedTime/60)
                             self.createdAt.append(self.duration)
