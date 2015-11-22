@@ -61,8 +61,8 @@ class LayoutController: UICollectionViewController, UICollectionViewDelegateFlow
     func retrieve() {
         
         
-        if var query = PFQuery(className: "Person") as PFQuery? { //querying parse for user data
-            var usr = PFUser.currentUser()!.username
+        if let query = PFQuery(className: "Person") as PFQuery? { //querying parse for user data
+            _ = PFUser.currentUser()!.username
             
             //query.whereKey("username", EqualTo: usr!)
             
@@ -90,7 +90,7 @@ class LayoutController: UICollectionViewController, UICollectionViewDelegateFlow
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        println(name2)
+        print(name2)
     }
 
     override func didReceiveMemoryWarning() {
@@ -118,12 +118,12 @@ class LayoutController: UICollectionViewController, UICollectionViewDelegateFlow
 
     func addCategory() {
         
-        var popoverContent = self.storyboard?.instantiateViewControllerWithIdentifier("PopUp") as! layoutPost
+        let popoverContent = self.storyboard?.instantiateViewControllerWithIdentifier("PopUp") as! layoutPost
         popoverContent.message = currentMessage
-        var nav = UINavigationController(rootViewController: popoverContent)
+        let nav = UINavigationController(rootViewController: popoverContent)
         nav.modalPresentationStyle = UIModalPresentationStyle.Popover
         //nav.popoverPresentationController!.delegate = implOfUIAPCDelegate
-        var popover = nav.popoverPresentationController
+        let popover = nav.popoverPresentationController
         //popover.mess
         popoverContent.preferredContentSize = CGSizeMake(600,700)
         popover!.delegate = self

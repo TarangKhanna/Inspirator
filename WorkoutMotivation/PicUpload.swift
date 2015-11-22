@@ -118,7 +118,7 @@ class PicUpload: UIViewController,UITextFieldDelegate, UINavigationControllerDel
         
         
         
-        var alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         
         alert.addAction((UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
             
@@ -154,7 +154,7 @@ class PicUpload: UIViewController,UITextFieldDelegate, UINavigationControllerDel
         
         
         
-        var image = UIImagePickerController()
+        let image = UIImagePickerController()
         
         image.delegate = self
         
@@ -199,7 +199,7 @@ class PicUpload: UIViewController,UITextFieldDelegate, UINavigationControllerDel
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         
-        println(image)
+        print(image)
         
         imageToFilter.hidden = true
         var counter = 1
@@ -213,13 +213,13 @@ class PicUpload: UIViewController,UITextFieldDelegate, UINavigationControllerDel
         
         var xCoord: CGFloat = 5
         
-        var yCoord: CGFloat = 5
+        let yCoord: CGFloat = 5
         
-        var buttonWidth:CGFloat = 70
+        let buttonWidth:CGFloat = 70
         
-        var buttonHeight: CGFloat = 70
+        let buttonHeight: CGFloat = 70
         
-        var gapBetweenButtons: CGFloat = 5
+        let gapBetweenButtons: CGFloat = 5
         
         
         
@@ -233,7 +233,7 @@ class PicUpload: UIViewController,UITextFieldDelegate, UINavigationControllerDel
             
             // Button properties
             
-            filterButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+            filterButton = UIButton(type:UIButtonType.Custom)
             
             filterButton.frame = CGRectMake(xCoord, yCoord, buttonWidth, buttonHeight)
             
@@ -255,19 +255,19 @@ class PicUpload: UIViewController,UITextFieldDelegate, UINavigationControllerDel
             
             let ciContext = CIContext(options: nil)
             
-            let coreImage = CIImage(image: originalImage.image)
+            let coreImage = CIImage(image: originalImage.image!)
             
             let filter = CIFilter(name: "\(CIFilterNames[itemCount])" )
             
-            filter.setDefaults()
+            filter!.setDefaults()
             
-            filter.setValue(coreImage, forKey: kCIInputImageKey)
+            filter!.setValue(coreImage, forKey: kCIInputImageKey)
             
-            let filteredImageData = filter.valueForKey(kCIOutputImageKey) as! CIImage
+            let filteredImageData = filter!.valueForKey(kCIOutputImageKey) as! CIImage
             
-            let filteredImageRef = ciContext.createCGImage(filteredImageData, fromRect: filteredImageData.extent())
+            let filteredImageRef = ciContext.createCGImage(filteredImageData, fromRect: filteredImageData.extent)
             
-            var imageForButton = UIImage(CGImage: filteredImageRef);
+            let imageForButton = UIImage(CGImage: filteredImageRef);
             
             
             
@@ -345,7 +345,7 @@ class PicUpload: UIViewController,UITextFieldDelegate, UINavigationControllerDel
     
     func filterButtonTapped(sender: UIButton) {
         
-        var button = sender as UIButton
+        let button = sender as UIButton
         
         imageToFilter.hidden = false
         
@@ -361,11 +361,11 @@ class PicUpload: UIViewController,UITextFieldDelegate, UINavigationControllerDel
         
         // Save the image into camera roll
         
-        UIImageWriteToSavedPhotosAlbum(imageToFilter.image, nil, nil, nil)
+        UIImageWriteToSavedPhotosAlbum(imageToFilter.image!, nil, nil, nil)
         
         
         
-        var alert = UIAlertView(title: "Filters",
+        let alert = UIAlertView(title: "Filters",
             
             message: "Your image has been saved to Photo Library",
             
@@ -421,7 +421,7 @@ class PicUpload: UIViewController,UITextFieldDelegate, UINavigationControllerDel
         
         
         
-        var person = PFObject(className:"Person")
+        let person = PFObject(className:"Person")
         
         person["score"] = 0
         
@@ -451,7 +451,7 @@ class PicUpload: UIViewController,UITextFieldDelegate, UINavigationControllerDel
             
             imageSize = imageSize/(1024*1024) // in Mb
             
-            println("Image size is \(imageSize)Mb")
+            print("Image size is \(imageSize)Mb")
             
             if imageSize < 5 {
                 
@@ -475,13 +475,13 @@ class PicUpload: UIViewController,UITextFieldDelegate, UINavigationControllerDel
                             
                             self.performSegueWithIdentifier("picUploaded", sender: self)
                             
-                            println("posted!")
+                            print("posted!")
                             
                             self.text.text = "" // empty it
                             
                         } else {
                             
-                            println("Couldn't post!")
+                            print("Couldn't post!")
                             
                             SCLAlertView().showWarning("Error Posting", subTitle: "Check Your Internet Connection.")
                             
@@ -631,13 +631,13 @@ class PicUpload: UIViewController,UITextFieldDelegate, UINavigationControllerDel
 
 extension UIImage {
     
-    var highestQualityJPEGNSData:NSData { return UIImageJPEGRepresentation(self, 1.0) }
-    var highQualityJPEGNSData:NSData    { return UIImageJPEGRepresentation(self, 0.75)}
-    var mediumQualityJPEGNSData:NSData  { return UIImageJPEGRepresentation(self, 0.5) }
+    var highestQualityJPEGNSData:NSData { return UIImageJPEGRepresentation(self, 1.0)! }
+    var highQualityJPEGNSData:NSData    { return UIImageJPEGRepresentation(self, 0.75)!}
+    var mediumQualityJPEGNSData:NSData  { return UIImageJPEGRepresentation(self, 0.5)! }
     
-    var lowQualityJPEGNSData:NSData     { return UIImageJPEGRepresentation(self, 0.25)}
+    var lowQualityJPEGNSData:NSData     { return UIImageJPEGRepresentation(self, 0.25)!}
     
-    var lowestQualityJPEGNSData:NSData  { return UIImageJPEGRepresentation(self, 0.0) }
+    var lowestQualityJPEGNSData:NSData  { return UIImageJPEGRepresentation(self, 0.0)! }
     
 }
 

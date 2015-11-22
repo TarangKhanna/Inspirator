@@ -32,13 +32,13 @@ class RAMPaperSwitch: UISwitch {
     private var shape: CAShapeLayer! = CAShapeLayer()
     private var radius: CGFloat = 0.0
     private var oldState = false
-  
+    
     override var on: Bool {
         didSet(oldValue) {
             oldState = on
         }
     }
-  
+    
     override func setOn(on: Bool, animated: Bool) {
         let changed:Bool = on != self.on
         
@@ -63,10 +63,10 @@ class RAMPaperSwitch: UISwitch {
         shape.anchorPoint = CGPointMake(0.5, 0.5);
         shape.path = UIBezierPath(ovalInRect: CGRectMake(0, 0, radius * 2, radius * 2)).CGPath
     }
-
-
-    override func awakeFromNib() {        
-        var shapeColor:UIColor = (onTintColor != nil) ? onTintColor : UIColor.greenColor()
+    
+    
+    override func awakeFromNib() {
+        var shapeColor:UIColor = (onTintColor != nil) ? onTintColor! : UIColor.greenColor()
         
         layer.borderWidth = 0.5
         layer.borderColor = UIColor.whiteColor().CGColor;
@@ -81,28 +81,28 @@ class RAMPaperSwitch: UISwitch {
         showShapeIfNeed()
         
         addTarget(self, action: "switchChanged", forControlEvents: UIControlEvents.ValueChanged)
-      
+        
         super.awakeFromNib()
     }
-  
+    
     
     private func showShapeIfNeed() {
         shape.transform = on ? CATransform3DMakeScale(1.0, 1.0, 1.0) : CATransform3DMakeScale(0.0001, 0.0001, 0.0001)
     }
-
-
+    
+    
     internal func switchChanged() {
         if on == oldState {
             return;
         }
         oldState = on
-      
+        
         if on {
             CATransaction.begin()
             
             shape.removeAnimationForKey("scaleDown")
             
-            var scaleAnimation:CABasicAnimation  = animateKeyPath("transform",
+            let scaleAnimation:CABasicAnimation  = animateKeyPath("transform",
                 fromValue: NSValue(CATransform3D: CATransform3DMakeScale(0.0001, 0.0001, 0.0001)),
                 toValue:NSValue(CATransform3D: CATransform3DMakeScale(1.0, 1.0, 1.0)),
                 timing:kCAMediaTimingFunctionEaseIn);
@@ -115,11 +115,11 @@ class RAMPaperSwitch: UISwitch {
             CATransaction.begin()
             shape.removeAnimationForKey("scaleUp")
             
-            var scaleAnimation:CABasicAnimation  = animateKeyPath("transform",
+            let scaleAnimation:CABasicAnimation  = animateKeyPath("transform",
                 fromValue: NSValue(CATransform3D: CATransform3DMakeScale(1.0, 1.0, 1.0)),
                 toValue:NSValue(CATransform3D: CATransform3DMakeScale(0.0001, 0.0001, 0.0001)),
                 timing:kCAMediaTimingFunctionEaseOut);
-                
+            
             shape.addAnimation(scaleAnimation, forKey: "scaleDown")
             
             CATransaction.commit();
@@ -128,7 +128,7 @@ class RAMPaperSwitch: UISwitch {
     
     
     private func animateKeyPath(keyPath: String, fromValue from: AnyObject, toValue to: AnyObject, timing timingFunction: String) -> CABasicAnimation {
-    
+        
         let animation:CABasicAnimation = CABasicAnimation(keyPath: keyPath)
         
         animation.fromValue = from
@@ -147,12 +147,12 @@ class RAMPaperSwitch: UISwitch {
     //CAAnimation delegate
     
     
-    override func animationDidStart(anim: CAAnimation!){
+    override func animationDidStart(anim: CAAnimation){
         animationDidStartClosure(on)
     }
     
     
-    override func animationDidStop(anim: CAAnimation!, finished flag: Bool){
+    override func animationDidStop(anim: CAAnimation, finished flag: Bool){
         animationDidStopClosure(on, flag)
     }
 }

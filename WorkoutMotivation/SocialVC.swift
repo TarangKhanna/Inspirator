@@ -52,9 +52,9 @@ class SocialVC: UIViewController, UIWebViewDelegate {
         shouldStartLoadWithRequest request: NSURLRequest,
         navigationType: UIWebViewNavigationType) -> Bool {
             var host = request.URL!.absoluteString
-            println(request.URL!)
-            if host!.rangeOfString("websta.me") != nil || host!.rangeOfString("twitter.com") != nil {
-                println("exists")
+            print(request.URL!)
+            if host.rangeOfString("websta.me") != nil || host!.rangeOfString("twitter.com") != nil {
+                print("exists")
                 return true
             }
             

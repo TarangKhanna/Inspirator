@@ -68,7 +68,6 @@
 		71AF79F31B192F68007953CD /* PullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AF79F11B192F68007953CD /* PullToRefreshView.swift */; };
 		71AF79F41B192F68007953CD /* UIScrollViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AF79F21B192F68007953CD /* UIScrollViewExtension.swift */; };
 		71AF79F61B192F98007953CD /* PullToRefreshOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AF79F51B192F98007953CD /* PullToRefreshOption.swift */; };
-		71C49F261B6C165300B92EC5 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71C49F251B6C165300B92EC5 /* Entitlements.plist */; };
 		71C553771B2801A500357D8A /* AsyncButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C5535B1B2801A500357D8A /* AsyncButton.swift */; };
 		71C553781B2801A500357D8A /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C5535C1B2801A500357D8A /* AsyncImageView.swift */; };
 		71C553791B2801A500357D8A /* AutoTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C5535D1B2801A500357D8A /* AutoTextView.swift */; };
@@ -212,7 +211,6 @@
 		71AF79F11B192F68007953CD /* PullToRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefreshView.swift; sourceTree = "<group>"; };
 		71AF79F21B192F68007953CD /* UIScrollViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewExtension.swift; sourceTree = "<group>"; };
 		71AF79F51B192F98007953CD /* PullToRefreshOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefreshOption.swift; sourceTree = "<group>"; };
-		71C49F251B6C165300B92EC5 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		71C5535B1B2801A500357D8A /* AsyncButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncButton.swift; sourceTree = "<group>"; };
 		71C5535C1B2801A500357D8A /* AsyncImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
 		71C5535D1B2801A500357D8A /* AutoTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoTextView.swift; sourceTree = "<group>"; };
@@ -330,7 +328,6 @@
 		7109A8DA1B04306900435D3C = {
 			isa = PBXGroup;
 			children = (
-				71C49F251B6C165300B92EC5 /* Entitlements.plist */,
 				716B87401B1529B300B7E955 /* Frameworks */,
 				7109A8E51B04306900435D3C /* WorkoutMotivation */,
 				7109A8FB1B04306900435D3C /* WorkoutMotivationTests */,
@@ -680,7 +677,6 @@
 				71AF79F01B192F52007953CD /* pulltorefresharrow.png in Resources */,
 				7109A8F31B04306900435D3C /* LaunchScreen.xib in Resources */,
 				71C553E71B2ACBD900357D8A /* ionicons.ttf in Resources */,
-				71C49F261B6C165300B92EC5 /* Entitlements.plist in Resources */,
 				7109A8F01B04306900435D3C /* Images.xcassets in Resources */,
 				71C553E81B2ACBD900357D8A /* zocial-regular-webfont.ttf in Resources */,
 				71C553E61B2ACBD900357D8A /* foundation-icons.ttf in Resources */,
@@ -940,7 +936,7 @@
 					"/Users/THacked96/Downloads/parse-library-1-3",
 				);
 				INFOPLIST_FILE = WorkoutMotivation/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -965,7 +961,7 @@
 					"/Users/THacked96/Downloads/parse-library-1-3",
 				);
 				INFOPLIST_FILE = WorkoutMotivation/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

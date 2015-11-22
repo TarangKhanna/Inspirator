@@ -20,21 +20,21 @@ class MenuController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         //logOutBtn.set
-        var currentUser = PFUser.currentUser()
+        let currentUser = PFUser.currentUser()
         var tempName = (currentUser?.username)!
         tempName.replaceRange(tempName.startIndex...tempName.startIndex, with: String(tempName[tempName.startIndex]).capitalizedString)
         usernameLabel.text = tempName
         // set this image at time of signup / signin 
-        var queryUser = PFUser.query() as PFQuery?
+        let queryUser = PFUser.query() as PFQuery?
         queryUser!.findObjectsInBackgroundWithBlock {
             (users: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {
                 if let users = users as? [PFObject] {
                     for user in users {
-                        var user2:PFUser = user as! PFUser
+                        let user2:PFUser = user as! PFUser
                         if user2.username == currentUser?.username
                         {
-                            var userPhotoFile = user2["ProfilePicture"] as! PFFile
+                            let userPhotoFile = user2["ProfilePicture"] as! PFFile
                             userPhotoFile.getDataInBackgroundWithBlock { (data, error) -> Void in
                                 
                                 if let downloadedImage = UIImage(data: data!) {
@@ -69,9 +69,9 @@ class MenuController: UITableViewController {
 
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        var recipients2 = [String]()
+        _ = [String]()
         if (segue.identifier == "profileView2") { //pass data to VC
-            var svc = segue.destinationViewController.topViewController as! profileVC
+            let svc = (segue.destinationViewController as! UINavigationController).topViewController as! profileVC
             let selectedUser = PFUser.currentUser()
             svc.name = selectedUser?.username! as String!
             svc.score = "0" //selectedUser["score"] as! String
@@ -79,16 +79,16 @@ class MenuController: UITableViewController {
             svc.canChange = true
             //svc.profileObject =
         } else if (segue.identifier == "fit") {
-            var svc = segue.destinationViewController.topViewController as! TimelineViewController
+            let svc = (segue.destinationViewController as! UINavigationController).topViewController  as! TimelineViewController
             svc.groupToQuery = "fit" 
         } else if (segue.identifier == "technical") {
-            var svc = segue.destinationViewController.topViewController as! TimelineViewController
+            let svc = (segue.destinationViewController as! UINavigationController).topViewController as! TimelineViewController
             svc.groupToQuery = "technical"
         } else if (segue.identifier == "goals") {
-            var svc = segue.destinationViewController.topViewController as! TimelineViewController
+            let svc = (segue.destinationViewController as! UINavigationController).topViewController  as! TimelineViewController
             svc.groupToQuery = "goals"
         } else if (segue.identifier == "quotes") {
-            var svc = segue.destinationViewController.topViewController as! TimelineViewController
+            let svc = (segue.destinationViewController as! UINavigationController).topViewController  as! TimelineViewController
             svc.groupToQuery = "quotes"
         }
         
@@ -96,7 +96,7 @@ class MenuController: UITableViewController {
     
     
     @IBAction func logOut(sender: AnyObject) {
-        println("LOG OUT")
+        print("LOG OUT")
         self.logOutBtn.backgroundColor = UIColor.MKColor.Grey
         UIView.animateWithDuration(1, animations: { () -> Void in
                self.logOutBtn.backgroundColor = UIColor.MKColor.Grey

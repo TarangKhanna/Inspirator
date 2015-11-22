@@ -31,26 +31,26 @@ class loginVC: UIViewController, UITextFieldDelegate {
     
     @IBAction func FBlogIn(sender: AnyObject) {
         //handle login/logout via the Parse SDK
-        var permissions = [ "public_profile", "email", "user_friends" ]
+        let permissions = [ "public_profile", "email", "user_friends" ]
         if PFUser.currentUser() != nil {
             PFUser.logOutInBackgroundWithBlock({ (_) -> Void in
-                println("logged out")//the button will now refresh although I noticed a small delay 1/2 seconds
+                print("logged out")//the button will now refresh although I noticed a small delay 1/2 seconds
             })
         }
         else {
             PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions,  block: {  (user: PFUser?, error: NSError?) -> Void in
                 if let user = user {
                     if user.isNew {
-                        println("User signed up and logged in through Facebook!")
+                        print("User signed up and logged in through Facebook!")
                         self.returnUserData()
                         self.performSegueWithIdentifier("loggedIn2", sender: self)
                     } else {
-                        println("User logged in through Facebook!")
+                        print("User logged in through Facebook!")
                         self.returnUserData()
                         self.performSegueWithIdentifier("loggedIn2", sender: self)
                     }
                 } else {
-                    println("Uh oh. The user cancelled the Facebook login.")
+                    print("Uh oh. The user cancelled the Facebook login.")
                 }
             })
         }
@@ -58,7 +58,7 @@ class loginVC: UIViewController, UITextFieldDelegate {
     
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        println("User Logged In")
+        print("User Logged In")
         
         if ((error) != nil)
         {
@@ -80,7 +80,7 @@ class loginVC: UIViewController, UITextFieldDelegate {
     }
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        println("User Logged Out")
+        print("User Logged Out")
     }
     
     func returnUserData()
@@ -91,30 +91,39 @@ class loginVC: UIViewController, UITextFieldDelegate {
             if ((error) != nil)
             {
                 // Process error
-                println("Error: \(error)")
+                print("Error: \(error)")
             }
             else
             {
-                println("fetched user: \(result)")
+                print("fetched user: \(result)")
                 let userName : NSString = result.valueForKey("name") as! NSString
                 
                 let userEmail : NSString = result.valueForKey("email") as! NSString
-                println("User Email is: \(userEmail)")
+                print("User Email is: \(userEmail)")
                 if let dict = result as? Dictionary<String, AnyObject>{
                     var name:String = dict["name"] as AnyObject? as! String
                     var saferName = name.lowercaseString
-                    println("User Name is: \(name)")
+                    print("User Name is: \(name)")
                     let facebookID:String = dict["id"] as AnyObject? as! String
                     let email:String = dict["email"] as AnyObject? as! String
                     let aboutYou:String = ""
-                    println(dict)
-                    println("jhvwev")
+                    print(dict)
+                    print("jhvwev")
                     let pictureURL = "https://graph.facebook.com/\(facebookID)/picture?type=large&return_ssl_resources=1"
                     let bioURL = "https://graph.facebook.com/\(facebookID)/fields=bio"
                     var URLRequest = NSURL(string: pictureURL)
                     var URLRequestNeeded = NSURLRequest(URL: URLRequest!)
                     var URLRequest2 = NSURL(string: bioURL)
                     var URLRequestNeeded2 = NSURLRequest(URL: URLRequest2!)
+                    
+                    let session = NSURLSession.sharedSession()
+                    let urlString = "https://api.yoursecureapiservergoeshere.com/1/whatever"
+                    let url = NSURL(string: urlString)
+                    let request = NSURLRequest(URL: url!)
+                    let dataTask = session.dataTaskWithRequest(request) { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
+                        print("done, error: \(error)")
+                    }
+                    
                     
                     NSURLConnection.sendAsynchronousRequest(URLRequestNeeded, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse!,data: NSData!, error: NSError!) -> Void in
                         if error == nil {
@@ -123,7 +132,7 @@ class loginVC: UIViewController, UITextFieldDelegate {
                             PFUser.currentUser()!.saveInBackground()
                         }
                         else {
-                            println("Error: \(error.localizedDescription)")
+                            print("Error: \(error.localizedDescription)")
                         }
                     })
                     
@@ -132,12 +141,12 @@ class loginVC: UIViewController, UITextFieldDelegate {
                             //var aboutYou = PFUser.currentUser(data: data)
                             //PFUser.currentUser()!.setObject(aboutYou, forKey: "username")
                             //PFUser.currentUser()!.saveInBackground()
-                            println("ergg")
-                            println(data)
-                            println(response)
+                            print("ergg")
+                            print(data)
+                            print(response)
                         }
                         else {
-                            println("Error: \(error.localizedDescription)")
+                            print("Error: \(error.localizedDescription)")
                         }
                     })
                     
@@ -202,10 +211,10 @@ class loginVC: UIViewController, UITextFieldDelegate {
             if username.text == "" || password.text == "" {
                 SCLAlertView().showWarning("SignIn Info", subTitle: "Please include your username and password")
             } else {
-                PFUser.logInWithUsernameInBackground(username.text.lowercaseString, password: password.text.lowercaseString) {
+                PFUser.logInWithUsernameInBackground(username.text!.lowercaseString, password: password.text!.lowercaseString) {
                     (user: PFUser?, error: NSError?) -> Void in
                     if user != nil{
-                        println("logged in")
+                        print("logged in")
                         self.performSegueWithIdentifier("loggedIn2", sender: self)
                         SCLAlertView().showInfo("Signed In", subTitle: "Let's Get Going!", closeButtonTitle: "Ok", duration: 2)
                     } else {
@@ -222,16 +231,16 @@ class loginVC: UIViewController, UITextFieldDelegate {
         return false
     }
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
     }
     
     func didSelectMenuOptionAtIndex(row : NSInteger) {
-        println(row)
+        print(row)
         if(row == 0) {
             //fb
             if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook){
-                var facebookSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+                let facebookSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
                 facebookSheet.setInitialText("#GetMotivated")
                 self.presentViewController(facebookSheet, animated: true, completion: nil)
             } else {
@@ -243,7 +252,7 @@ class loginVC: UIViewController, UITextFieldDelegate {
         } else if(row == 1) {
             //twitter
             if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter){
-                var twitterSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+                let twitterSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
                 twitterSheet.setInitialText("#GetMotivated")
                 self.presentViewController(twitterSheet, animated: true, completion: nil)
             } else {

@@ -49,7 +49,7 @@ class layoutPost: UICollectionViewController, UICollectionViewDelegateFlowLayout
     
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        println(self.view.frame.size)
+        print(self.view.frame.size)
         return CGSizeMake(self.view.frame.size.width, (self.view.frame.size.height - 10))
     }
     

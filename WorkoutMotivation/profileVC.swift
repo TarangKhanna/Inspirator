@@ -38,7 +38,7 @@ class profileVC: UIViewController, UIScrollViewDelegate, UIPopoverPresentationCo
     var canChange = false
     
     override func viewWillAppear(animated: Bool) {
-        var show2 = show
+        let show2 = show
         if show2 {
             if self.revealViewController() != nil {
                 menuBarButton.target = self.revealViewController()
@@ -57,7 +57,7 @@ class profileVC: UIViewController, UIScrollViewDelegate, UIPopoverPresentationCo
         var name2 = name
         name2.replaceRange(name.startIndex...name.startIndex, with: String(name[name.startIndex]).capitalizedString)
         profileName.text = name2
-        var queryUser = PFUser.query() as PFQuery?
+        let queryUser = PFUser.query() as PFQuery?
         queryUser!.findObjectsInBackgroundWithBlock {
             (users: [AnyObject]?, error: NSError?) -> Void in
             //queryUser!.orderByDescending("createdAt")
@@ -67,11 +67,11 @@ class profileVC: UIViewController, UIScrollViewDelegate, UIPopoverPresentationCo
                 // Do something with the found users
                 if let users = users as? [PFObject] {
                     for user in users {
-                        var user2:PFUser = user as! PFUser
+                        let user2:PFUser = user as! PFUser
                         if user2.username == self.name {
                             self.aboutYouLabel.text = user2["AboutYou"] as? String
-                            println("wfkjbf")
-                            println((user2["AboutYou"] as? String)!)
+                            print("wfkjbf")
+                            print((user2["AboutYou"] as? String)!)
                             self.profileImageFile = user2["ProfilePicture"] as! PFFile
                             self.profileImageFile.getDataInBackgroundWithBlock { (data, error) -> Void in
                                 
@@ -87,7 +87,7 @@ class profileVC: UIViewController, UIScrollViewDelegate, UIPopoverPresentationCo
                 }
             } else {
                 // Log details of the failure
-                println("Error: \(error!) \(error!.userInfo!)")
+                print("Error: \(error!) \(error!.userInfo)")
             }
         }
     }
@@ -122,12 +122,12 @@ class profileVC: UIViewController, UIScrollViewDelegate, UIPopoverPresentationCo
         if (sender.state == UIGestureRecognizerState.Ended) {
             //Do Whatever You want on End of Gesture
             // change profile pic
-            println(name)
+            print(name)
             
             
             let alert = SCLAlertView()
             alert.addButton("Choose From Gallery") {
-                var image = UIImagePickerController()
+                let image = UIImagePickerController()
                 image.delegate = self
                 image.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
                 image.allowsEditing = false
@@ -160,7 +160,7 @@ class profileVC: UIViewController, UIScrollViewDelegate, UIPopoverPresentationCo
             
             imageSize = imageSize/(1024*1024) // in Mb
             
-            println("Image size is \(imageSize)Mb")
+            print("Image size is \(imageSize)Mb")
             
             if imageSize < 5 {
                 
@@ -211,12 +211,12 @@ class profileVC: UIViewController, UIScrollViewDelegate, UIPopoverPresentationCo
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "zoomIn") { //pass data to VC
-            var svc = segue.destinationViewController as! LayoutController;
+            let svc = segue.destinationViewController as! LayoutController;
             svc.name2 = name
             //NSThread.sleepForTimeInterval(10)
             
             //get profile pic
-            var queryUser = PFUser.query() as PFQuery?
+            let queryUser = PFUser.query() as PFQuery?
             queryUser!.findObjectsInBackgroundWithBlock {
                 (users: [AnyObject]?, error: NSError?) -> Void in
                 queryUser!.orderByDescending("createdAt")
@@ -226,7 +226,7 @@ class profileVC: UIViewController, UIScrollViewDelegate, UIPopoverPresentationCo
                     // Do something with the found users
                     if let users = users as? [PFObject] {
                         for user in users {
-                            var user2:PFUser = user as! PFUser
+                            let user2:PFUser = user as! PFUser
                             if user2.username == self.name {
                                 self.profileImageFile = user2["ProfilePicture"] as! PFFile
                                 self.profileImageFile.getDataInBackgroundWithBlock { (data, error) -> Void in
@@ -247,7 +247,7 @@ class profileVC: UIViewController, UIScrollViewDelegate, UIPopoverPresentationCo
                     
                 } else {
                     // Log details of the failure
-                    println("Error: \(error!) \(error!.userInfo!)")
+                    print("Error: \(error!) \(error!.userInfo)")
                 }
             }
         }

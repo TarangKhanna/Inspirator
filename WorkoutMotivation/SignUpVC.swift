@@ -69,7 +69,7 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UITextFieldDe
     }
     
     func signUp2() {
-        var user = PFUser()
+        let user = PFUser()
         if username.text == "" || password.text == "" {
             SCLAlertView().showWarning("Sign Up Info", subTitle: "Please include your username and password")
             self.view.hideLoading()
@@ -78,12 +78,12 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UITextFieldDe
             self.view.hideLoading()
         } else {
             
-            user.username = self.username.text.lowercaseString
-            user.password = self.password.text.lowercaseString
+            user.username = self.username.text!.lowercaseString
+            user.password = self.password.text!.lowercaseString
             user["AboutYou"] = self.aboutYou.text
-            let imageData = UIImagePNGRepresentation(imageToPost.image)
+            let imageData = UIImagePNGRepresentation(imageToPost.image!)
             
-            let imageFile = PFFile(name: "image.png", data: imageData)
+            let imageFile = PFFile(name: "image.png", data: imageData!)
             
             user["ProfilePicture"] = imageFile
             //                user.email = "email@example.com"
@@ -94,7 +94,7 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UITextFieldDe
             user.signUpInBackgroundWithBlock {
                 (succeeded: Bool, error: NSError?) -> Void in
                 if let error = error {
-                    let errorString = error.userInfo?["error"] as? NSString
+                    let errorString = error.userInfo["error"] as? NSString
                     // Show the errorString somewhere and let the user try again.
                     SCLAlertView().showWarning("SignUp Error", subTitle: errorString! as String)
                     self.view.hideLoading()
@@ -102,7 +102,7 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UITextFieldDe
                     self.dialogView.animate()
                 } else {
                     self.view.hideLoading()
-                    println("Signed Up!!")
+                    print("Signed Up!!")
                     self.performSegueWithIdentifier("signedUp2", sender: self)
                     SCLAlertView().showInfo("Signed Up", subTitle: "Let's Get Going!", closeButtonTitle: "Ok", duration: 2)
                 }
@@ -118,16 +118,16 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UITextFieldDe
     }
     
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
     }
     
     func didSelectMenuOptionAtIndex(row : NSInteger) {
-        println(row)
+        print(row)
         if(row == 0) {
             //fb
             if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook){
-                var facebookSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+                let facebookSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
                 facebookSheet.setInitialText("#GetMotivated")
                 self.presentViewController(facebookSheet, animated: true, completion: nil)
             } else {
@@ -139,7 +139,7 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UITextFieldDe
         } else if(row == 1) {
             //twitter
             if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter){
-                var twitterSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+                let twitterSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
                 twitterSheet.setInitialText("#GetMotivated")
                 self.presentViewController(twitterSheet, animated: true, completion: nil)
             } else {
@@ -157,7 +157,7 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UITextFieldDe
     
     func displayAlert(title: String, message: String) {
         
-        var alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction((UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
             
             self.dismissViewControllerAnimated(true, completion: nil)
@@ -178,7 +178,7 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UITextFieldDe
     
     @IBAction func chooseImage(sender: AnyObject) {
         
-        var image = UIImagePickerController()
+        let image = UIImagePickerController()
         image.delegate = self
         image.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         image.allowsEditing = false
@@ -189,7 +189,7 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UITextFieldDe
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         dismissViewControllerAnimated(true, completion:nil)
-        println(image)
+        print(image)
         imageToPost.image = image
         
     }

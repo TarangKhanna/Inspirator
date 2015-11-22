@@ -61,7 +61,7 @@ class SBGestureTableView: UITableView, UIGestureRecognizerDelegate {
         initialize()
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initialize()
     }
@@ -135,7 +135,7 @@ class SBGestureTableView: UITableView, UIGestureRecognizerDelegate {
     }
     
     func replaceCell(cell: SBGestureTableViewCell, var duration: NSTimeInterval, var bounce: (CGFloat), completion:(() -> Void)?) {
-        println("hfiuejb")
+        print("hfiuejb")
         if duration == 0 {
             duration = 0.25
         }
@@ -157,7 +157,6 @@ class SBGestureTableView: UITableView, UIGestureRecognizerDelegate {
     }
     
     func fullSwipeCell(cell: SBGestureTableViewCell, duration: NSTimeInterval, completion:(() -> Void)?) {
-        println("fwjkhfb")
         UIView.animateWithDuration(duration * cell.percentageOffsetFromCenter(), animations: { () -> Void in
             cell.center = CGPointMake(cell.frame.size.width/2 + (cell.frame.origin.x > 0 ? cell.frame.size.width : -cell.frame.size.width), cell.center.y)
             cell.leftSideView.iconImageView.alpha = 0
@@ -173,7 +172,7 @@ class SBGestureTableView: UITableView, UIGestureRecognizerDelegate {
         CATransaction.begin()
         CATransaction.setCompletionBlock(completion)
         UIView.animateWithDuration(duration, animations: { () -> Void in
-            self.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: animation)
+            self.deleteRowsAtIndexPaths(indexPaths as! [NSIndexPath], withRowAnimation: animation)
         })
         CATransaction.commit()
     }
@@ -201,7 +200,7 @@ class SBGestureTableView: UITableView, UIGestureRecognizerDelegate {
         return true
     }
 
-    override func insertRowsAtIndexPaths(indexPaths: [AnyObject], withRowAnimation animation: UITableViewRowAnimation) {
+    override func insertRowsAtIndexPaths(indexPaths: [NSIndexPath], withRowAnimation animation: UITableViewRowAnimation) {
         super.insertRowsAtIndexPaths(indexPaths, withRowAnimation: animation)
         showOrHideBackgroundViewAnimatedly(true)
     }
@@ -211,7 +210,7 @@ class SBGestureTableView: UITableView, UIGestureRecognizerDelegate {
         showOrHideBackgroundViewAnimatedly(true)
     }
 
-    override func deleteRowsAtIndexPaths(indexPaths: [AnyObject], withRowAnimation animation: UITableViewRowAnimation) {
+    override func deleteRowsAtIndexPaths(indexPaths: [NSIndexPath], withRowAnimation animation: UITableViewRowAnimation) {
         super.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: animation)
         showOrHideBackgroundViewAnimatedly(true)
     }

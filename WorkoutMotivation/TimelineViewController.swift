@@ -79,7 +79,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     override func viewWillAppear(animated: Bool) {
         self.navigationController!.navigationBar.hidden = false
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        if let currentUser = PFUser.currentUser()!.username {
+        if let _ = PFUser.currentUser()!.username {
             currentUserId = PFUser.currentUser()?.objectId
         } else {
             performSegueWithIdentifier("signIn", sender: self)
@@ -91,11 +91,11 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         //let buttonRow = sender.tag
         if let buttonRow = sender.tag { // or from removeBlock
             var votedBy = voteObject[buttonRow]["votedBy"] as! [String]
-            if !contains(votedBy, currentUserId!) {
+            if !(votedBy.contains(currentUserId!))  {
                 var scoreParse = voteObject[buttonRow]["score"]! as? Int
                 scoreParse = scoreParse! + 1
                 voteObject[buttonRow].setObject(NSNumber(integer: scoreParse!), forKey: "score")
-                println(currentUserId)
+                print(currentUserId)
                 votedBy.append(currentUserId!)
                 voteObject[buttonRow]["upVote"] = true
                 voteObject[buttonRow]["votedBy"] = votedBy
@@ -107,7 +107,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                         //self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Fade)
                         self.retrieve()
                     } else {
-                        println("Couldn't Vote!")
+                        print("Couldn't Vote!")
                         SCLAlertView().showWarning("Error Voting", subTitle: "Check Your Internet Connection.")
                     }
                 }
@@ -115,7 +115,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             } else { // already voted -- add to retrieve also
                 //               var indexPath = NSIndexPath(forRow: buttonRow, inSection: 0)
                 
-                var upVoted : Bool = (voteObject[buttonRow]["upVote"]! as? Bool)!
+                let upVoted : Bool = (voteObject[buttonRow]["upVote"]! as? Bool)!
                 if !upVoted { // if prev was downvote
                     // then upvote by +2
                     var scoreParse = voteObject[buttonRow]["score"]! as? Int
@@ -129,22 +129,22 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                         if (success) {
                             self.retrieve()
                         } else {
-                            println("Couldn't Vote!")
+                            print("Couldn't Vote!")
                             SCLAlertView().showWarning("Error Voting", subTitle: "Check Your Internet Connection.")
                         }
                     }
                 }
                 
-                println("Already Voted")
+                print("Already Voted")
                 //             self.tableView.reloadRowsAtIndexPaths([indexPathStore], withRowAnimation: UITableViewRowAnimation.Top)
             }
         } else {
             var votedBy = voteObject[newIndexPathRow!]["votedBy"] as! [String]
-            if !contains(votedBy, currentUserId!) {
+            if !(votedBy.contains(currentUserId!)) {
                 var scoreParse = voteObject[newIndexPathRow!]["score"]! as? Int
                 scoreParse = scoreParse! + 1
                 voteObject[newIndexPathRow!].setObject(NSNumber(integer: scoreParse!), forKey: "score")
-                println(currentUserId)
+                print(currentUserId)
                 votedBy.append(currentUserId!)
                 voteObject[newIndexPathRow!]["upVote"] = true
                 voteObject[newIndexPathRow!]["votedBy"] = votedBy
@@ -156,7 +156,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                         //self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Fade)
                         self.retrieve()
                     } else {
-                        println("Couldn't Vote!")
+                        print("Couldn't Vote!")
                         SCLAlertView().showWarning("Error Voting", subTitle: "Check Your Internet Connection.")
                     }
                 }
@@ -164,7 +164,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             } else { // already voted -- add to retrieve also
                 //               var indexPath = NSIndexPath(forRow: buttonRow, inSection: 0)
                 
-                var upVoted : Bool = (voteObject[newIndexPathRow!]["upVote"]! as? Bool)!
+                let upVoted : Bool = (voteObject[newIndexPathRow!]["upVote"]! as? Bool)!
                 if !upVoted { // if prev was downvote
                     // then upvote by +2
                     var scoreParse = voteObject[newIndexPathRow!]["score"]! as? Int
@@ -178,12 +178,12 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                         if (success) {
                             self.retrieve()
                         } else {
-                            println("Couldn't Vote!")
+                            print("Couldn't Vote!")
                             SCLAlertView().showWarning("Error Voting", subTitle: "Check Your Internet Connection.")
                         }
                     }
                 }
-                println("Already Voted")
+                print("Already Voted")
                 //             self.tableView.reloadRowsAtIndexPaths([indexPathStore], withRowAnimation: UITableViewRowAnimation.Top)
             }
             
@@ -196,7 +196,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             
             
             var votedBy = voteObject[buttonRow]["votedBy"] as! [String]
-            if !contains(votedBy, currentUserId!) {
+            if !(votedBy.contains(currentUserId!))  {
                 var scoreParse = voteObject[buttonRow]["score"]! as? Int
                 scoreParse = scoreParse! - 1
                 voteObject[buttonRow].setObject(NSNumber(integer: scoreParse!), forKey: "score")
@@ -208,12 +208,12 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                     if (success) {
                         self.retrieve()
                     } else {
-                        println("Couldn't Vote!")
+                        print("Couldn't Vote!")
                         SCLAlertView().showWarning("Error Voting", subTitle: "Check Your Internet Connection.")
                     }
                 }
             } else { // already voted -- add to retrieve also
-                var upVoted : Bool = (voteObject[buttonRow]["upVote"]! as? Bool)!
+                let upVoted : Bool = (voteObject[buttonRow]["upVote"]! as? Bool)!
                 if upVoted {
                     // then downvote by -2
                     var scoreParse = voteObject[buttonRow]["score"]! as? Int
@@ -227,16 +227,16 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                         if (success) {
                             self.retrieve()
                         } else {
-                            println("Couldn't Vote!")
+                            print("Couldn't Vote!")
                             SCLAlertView().showWarning("Error Voting", subTitle: "Check Your Internet Connection.")
                         }
                     }
                 }
-                println("Already Voted")
+                print("Already Voted")
             }
         } else {
             var votedBy = voteObject[newIndexPathRow!]["votedBy"] as! [String]
-            if !contains(votedBy, currentUserId!) {
+            if !(votedBy.contains(currentUserId!))  {
                 var scoreParse = voteObject[newIndexPathRow!]["score"]! as? Int
                 scoreParse = scoreParse! - 1
                 voteObject[newIndexPathRow!].setObject(NSNumber(integer: scoreParse!), forKey: "score")
@@ -248,12 +248,12 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                     if (success) {
                         self.retrieve()
                     } else {
-                        println("Couldn't Vote!")
+                        print("Couldn't Vote!")
                         SCLAlertView().showWarning("Error Voting", subTitle: "Check Your Internet Connection.")
                     }
                 }
             } else { // already voted -- add to retrieve also
-                var upVoted : Bool = (voteObject[newIndexPathRow!]["upVote"]! as? Bool)!
+                let upVoted : Bool = (voteObject[newIndexPathRow!]["upVote"]! as? Bool)!
                 if upVoted {
                     // then downvote by -2
                     var scoreParse = voteObject[newIndexPathRow!]["score"]! as? Int
@@ -267,12 +267,12 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                         if (success) {
                             self.retrieve()
                         } else {
-                            println("Couldn't Vote!")
+                            print("Couldn't Vote!")
                             SCLAlertView().showWarning("Error Voting", subTitle: "Check Your Internet Connection.")
                         }
                     }
                 }
-                println("Already Voted")
+                print("Already Voted")
             }
         }
         
@@ -305,9 +305,9 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         tableView.estimatedRowHeight = 100.0;
         tableView.rowHeight = UITableViewAutomaticDimension;
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
-        var currentUser = PFUser.currentUser()?.username
+        _ = PFUser.currentUser()?.username
         // set this image at time of signup / signin
-        var userPhoto = UIImage()
+        _ = UIImage()
         //        var queryUser = PFUser.query() as PFQuery?
         //        queryUser!.findObjectsInBackgroundWithBlock {
         //            (users: [AnyObject]?, error: NSError?) -> Void in
@@ -350,14 +350,14 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         }
         removeCellBlock = {(tableView: SBGestureTableView, cell: SBGestureTableViewCell) -> Void in
             let indexPath = tableView.indexPathForCell(cell)
-            println(Int(cell.center.x))
+            print(Int(cell.center.x))
             if Int(cell.center.x) > 0 { // upvote
-                println(indexPath?.row)
+                print(indexPath?.row)
                 self.newIndexPathRow = indexPath?.row
                 self.upVote(self)
             } else if Int(cell.center.x) < 0 {
-                println(indexPath?.row)
-                println("fjb    ejkbf")
+                print(indexPath?.row)
+                print("fjb    ejkbf")
                 self.newIndexPathRow = indexPath?.row
                 self.downVote(self)
             }
@@ -374,7 +374,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                             //completion?()
                     })
             })
-            println(cell.leftSideView)
+            print(cell.leftSideView)
             
             
         }
@@ -390,7 +390,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     
     func retrieve() {
         var currentProfileUser = ""
-        if var query = PFQuery(className: "Person") as PFQuery? { //querying parse for user data
+        if let query = PFQuery(className: "Person") as PFQuery? { //querying parse for user data
             query.orderByDescending("createdAt")
             query.limit = 25
             query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
@@ -435,7 +435,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                 
                 //dispatch_async(dispatch_get_main_queue()) {
                 self.delay(0.3) {
-                    var queryUser2 = PFUser.query() as PFQuery?
+                    let queryUser2 = PFUser.query() as PFQuery?
                     queryUser2!.findObjectsInBackgroundWithBlock {
                         (users: [AnyObject]?, error: NSError?) -> Void in
                         if error == nil {
@@ -443,7 +443,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                                 // Do something with the found users
                                 if let users = users as? [PFObject] {
                                     for user in users {
-                                        var user2:PFUser = user as! PFUser
+                                        let user2:PFUser = user as! PFUser
                                         //println(user42)
                                         if user2.username == user42 {
                                             self.profileImageFiles.append(user2["ProfilePicture"] as! PFFile)
@@ -453,15 +453,15 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                                 }
                             }
                         } else {
-                            println("Error: \(error!) \(error!.userInfo!)")
+                            print("Error: \(error!) \(error!.userInfo)")
                         }
                     }
                     //}
                 }
                 self.delay(6) {
-                    println(self.profileImageFiles.count)
-                    println("3io4h3jnk4jkn")
-                    println(self.userArray.count)
+                    print(self.profileImageFiles.count)
+                    print("3io4h3jnk4jkn")
+                    print(self.userArray.count)
                     // dispatch_async(dispatch_get_main_queue()) {
                     if self.profileImageFiles.count == self.userArray.count{
                         SwiftSpinner.hide()
@@ -524,7 +524,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if containsImage[indexPath.row] {
             
-            println("PIC")
+            print("PIC")
             
             indexPathStore = indexPath
             var cell = tableView.dequeueReusableCellWithIdentifier("TimelineCellPhoto") as? SBGestureTableViewCell
@@ -545,7 +545,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             // got profile pic
             // Profile Tap
             cell!.profileImageView.tag = indexPath.row
-            var tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("profileImageTapped:"))
+            let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("profileImageTapped:"))
             cell!.profileImageView.userInteractionEnabled = true
             cell!.profileImageView.addGestureRecognizer(tapGestureRecognizer)
             cell!.firstLeftAction = SBGestureTableViewCellAction(icon: checkIcon.imageWithSize(size), color: greenColor, fraction: 0.3, didTriggerBlock: removeCellBlock)
@@ -569,8 +569,8 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             cell!.typeImageView.image = UIImage(named: "timeline-photo")
             let index = indexPath.row % circleColors.count
             cell!.rippleLayerColor = circleColors[index]
-            var seconds = self.createdAt[indexPath.row]*60
-            var temp = seconds
+            let seconds = self.createdAt[indexPath.row]*60
+            let temp = seconds
             var timeAgo = (seconds/60) // + " m ago"
             var ending = " min"
             var setAlready = false
@@ -606,7 +606,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             return cell!
         } else {
             
-            println("TEXT")
+            print("TEXT")
             
             indexPathStore = indexPath
             var cell = tableView.dequeueReusableCellWithIdentifier("TimelineCell") as? SBGestureTableViewCell
@@ -614,7 +614,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                 cell = SBGestureTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "TimelineCell")
             }
             let size = CGSizeMake(30, 30)
-            println(profileImageFiles.count)
+            print(profileImageFiles.count)
             let profileImage42 = self.profileImageFiles[indexPath.row]
             profileImage42.getDataInBackgroundWithBlock { (data, error) -> Void in
                 if (error == nil) {
@@ -624,11 +624,11 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                 }
             }
             
-            var longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: Selector("longPressOptions:"))
+            let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: Selector("longPressOptions:"))
             cell?.userInteractionEnabled = true
             cell?.addGestureRecognizer(longPressGestureRecognizer)
             cell!.profileImageView.tag = indexPath.row
-            var tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("profileImageTapped:"))
+            let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("profileImageTapped:"))
             cell!.profileImageView.userInteractionEnabled = true
             cell!.profileImageView.addGestureRecognizer(tapGestureRecognizer)
             cell!.firstLeftAction = SBGestureTableViewCellAction(icon: checkIcon.imageWithSize(size), color: greenColor, fraction: 0.3, didTriggerBlock: removeCellBlock)
@@ -655,8 +655,8 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
             cell!.nameLabel.textColor = UIColor.whiteColor()
             cell!.postLabel?.text = self.messages[indexPath.row]
             cell!.postLabel?.textColor = UIColor.whiteColor()
-            var seconds = Double(self.createdAt[indexPath.row]*60)
-            var temp = seconds
+            let seconds = Double(self.createdAt[indexPath.row]*60)
+            let temp = seconds
             var timeAgo = (seconds/60) // + " m ago"
             var ending = " min"
             var setAlready = false
@@ -688,7 +688,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     func longPressOptions(recognizer: UILongPressGestureRecognizer) {
         
         if (recognizer.state == UIGestureRecognizerState.Ended) {
-            var cellIndex = recognizer.view!.tag
+            let cellIndex = recognizer.view!.tag
             selectedToReportObject = voteObject[cellIndex]
             selectedToReportMessage = messages[cellIndex]
             
@@ -724,7 +724,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         
         mailComposerVC.setToRecipients(["tarangalbert@gmail.com"])
         mailComposerVC.setSubject("Reporting for Inspirator")
-        var body = String(stringInterpolationSegment: selectedToReportObject) + "\r\n" + "Problem:"
+        let body = String(stringInterpolationSegment: selectedToReportObject) + "\r\n" + "Problem:"
         mailComposerVC.setMessageBody(body, isHTML: false)
         return mailComposerVC
     }
@@ -734,14 +734,14 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
         sendMailErrorAlert.show()
     }
     
-    func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
         controller.dismissViewControllerAnimated(true, completion: nil)
     }
     
     // FINISH MAIL
     
     func profileImageTapped(recognizer: UITapGestureRecognizer) {
-        var imageIndex = recognizer.view!.tag
+        let imageIndex = recognizer.view!.tag
         selectedName = userArray[imageIndex]
         selectedScore = String(score[imageIndex])
         selectedParseObject = voteObject[imageIndex]
@@ -765,23 +765,23 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         var recipients2 = [String]()
         if (segue.identifier == "profileView") { //pass data to VC
-            var svc = segue.destinationViewController.topViewController as! profileVC
-            println(selectedName)
+            var svc = (segue.destinationViewController as! UINavigationController).topViewController as! profileVC
+            print(selectedName)
             svc.name = selectedName
             svc.canChange = false
             svc.score = selectedScore
             svc.show = true
             //svc.profileObject =
         } else if (segue.identifier == "posting") {
-            var svc = segue.destinationViewController.topViewController as! postingViewController
+            var svc = (segue.destinationViewController as! UINavigationController).topViewController as! postingViewController
             svc.passedGroup = groupToQuery!
         } else if (segue.identifier == "showComments") { // get notified if you see comment section
             var currentUserId = PFUser.currentUser()?.objectId
             
             
             if var recipients = selectedParseObject!["recipients"] as? [String] {  //added to receiver array, real notification on comment adding in commentsVC
-                if !contains(recipients, currentUserId!) {
-                    println(PFUser.currentUser()?.objectId)
+                if !(recipients.contains(currentUserId!)) {
+                    print(PFUser.currentUser()?.objectId)
                     recipients.append(currentUserId!)
                     selectedParseObject!["recipients"] = recipients
                     recipients2 = recipients
@@ -792,7 +792,7 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                             
                             // update cell locally atleast and maybe not call self.retrieve
                         } else {
-                            println("Couldn't subscribe!")
+                            print("Couldn't subscribe!")
                             SCLAlertView().showWarning("Error Commenting", subTitle: "Check Your Internet Connection.")
                         }
                     }
@@ -808,27 +808,27 @@ class TimelineViewController : UIViewController, UITableViewDelegate, UITableVie
                     if (success) {
                         
                     } else {
-                        println("Couldn't Vote!")
+                        print("Couldn't Vote!")
                         SCLAlertView().showWarning("Error Commenting", subTitle: "Check Your Internet Connection.")
                     }
                 }
             }
             
-            var svc = segue.destinationViewController.topViewController as! CommentsVC // nav controller in between
+            let svc = (segue.destinationViewController as! UINavigationController).topViewController as! CommentsVC // nav controller in between
             
             if let parseID = selectedParseObjectId as String?{
                 svc.name = selectedName
                 svc.firstPost = selectedFirstPost
                 svc.objectIDPost = parseID
                 svc.recipients = recipients2
-                println(recipients2)
+                print(recipients2)
             }
         }
     }
     
     func textView(textView: UITextView!, shouldInteractWithURL URL: NSURL!, inRange characterRange: NSRange) -> Bool {
         
-        println("Link Selected!")
+        print("Link Selected!")
         return true
         
     }

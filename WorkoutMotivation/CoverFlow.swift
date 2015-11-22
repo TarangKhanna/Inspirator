@@ -24,7 +24,6 @@ class CoverFlow: UICollectionViewController, UICollectionViewDelegateFlowLayout,
     
     override func viewWillAppear(animated: Bool) {
         retrieve()
-        println("fwffwefew")
         
         //        var queryUser = PFUser.query() as PFQuery?
         //        queryUser!.findObjectsInBackgroundWithBlock {
@@ -133,7 +132,7 @@ class CoverFlow: UICollectionViewController, UICollectionViewDelegateFlowLayout,
     
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        println(self.view.frame.size)
+        //println(self.view.frame.size)
         return CGSizeMake(self.view.frame.size.width, (self.view.frame.size.height - 10))
     }
     

@@ -37,14 +37,14 @@ class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     var currentUserId : String? = nil
     
     override func viewWillAppear(animated: Bool) {
-        let date = NSDate()
-        let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components(.CalendarUnitHour | .CalendarUnitMinute, fromDate: date)
-        let hour = components.hour
-        let minutes = components.minute
+        //let date = NSDate()
+        //let calendar = NSCalendar.currentCalendar()
+        //let components = calendar.components(.CalendarUnitHour | .CalendarUnitMinute, fromDate: date)
+        //let hour = components.hour
+        //let minutes = components.minute
         //timeView.text = String(minutes)
         
-        if let currentUser = PFUser.currentUser()?.username {
+        if let _ = PFUser.currentUser()?.username {
             currentUserId = PFUser.currentUser()?.objectId
         } else {
             let userDefaults = NSUserDefaults.standardUserDefaults()
@@ -83,10 +83,10 @@ class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         // Get view controllers and build the walkthrough
         let stb = UIStoryboard(name: "Walkthrough", bundle: nil)
         let walkthrough = stb.instantiateViewControllerWithIdentifier("walk") as! BWWalkthroughViewController
-        let page_zero = stb.instantiateViewControllerWithIdentifier("walk0") as! UIViewController
-        let page_one = stb.instantiateViewControllerWithIdentifier("walk1") as! UIViewController
-        let page_two = stb.instantiateViewControllerWithIdentifier("walk2")as! UIViewController
-        let page_three = stb.instantiateViewControllerWithIdentifier("walk3") as! UIViewController
+        let page_zero = stb.instantiateViewControllerWithIdentifier("walk0") 
+        let page_one = stb.instantiateViewControllerWithIdentifier("walk1") 
+        let page_two = stb.instantiateViewControllerWithIdentifier("walk2")
+        let page_three = stb.instantiateViewControllerWithIdentifier("walk3") 
         
         // Attach the pages to the master
         walkthrough.delegate = self
@@ -102,7 +102,7 @@ class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     // MARK: - Walkthrough delegate -
     
     func walkthroughPageDidChange(pageNumber: Int) {
-        println("Current Page \(pageNumber)")
+        print("Current Page \(pageNumber)")
     }
     
     func walkthroughCloseButtonPressed() {
@@ -133,7 +133,7 @@ class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         //self.tableView!.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        var footer =  UIView(frame: CGRectZero)
+        let footer =  UIView(frame: CGRectZero)
         tableView.tableFooterView = footer
         tableView.tableFooterView!.hidden = true
         tableView.backgroundColor = UIColor.clearColor()
@@ -153,11 +153,11 @@ class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     }
     
     func didSelectMenuOptionAtIndex(row : NSInteger) {
-        println(row)
+        print(row)
         if(row == 0) {
             //fb
             if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook){
-                var facebookSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+                let facebookSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
                 //facebookSheet.setInitialText("#GetMotivated")
                 self.presentViewController(facebookSheet, animated: true, completion: nil)
             } else {
@@ -169,7 +169,7 @@ class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         } else if(row == 1) {
             //twitter
             if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter){
-                var twitterSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+                let twitterSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
                 twitterSheet.setInitialText("#GetMotivated")
                 self.presentViewController(twitterSheet, animated: true, completion: nil)
             } else {
@@ -206,7 +206,7 @@ class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        println("You selected cell #\(indexPath.row)!")
+        print("You selected cell #\(indexPath.row)!")
         //var selectedCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
         //selectedCell.contentView.backgroundColor = UIColor.greenColor()
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -215,12 +215,12 @@ class MotivateVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             //performSegueWithIdentifier("Cardio", sender: self)
             SCLAlertView().showInfo("In Test", subTitle: "This feature is uncertain, provide feedback by testing the Weight section!")
         } else if(indexPath.row == 1) {
-            println(userDefaults.valueForKey("shown")!)
-            var shown2: Bool = userDefaults.valueForKey("shown")!.boolValue
+            print(userDefaults.valueForKey("shown")!)
+            let shown2: Bool = userDefaults.valueForKey("shown")!.boolValue
             if shown2 {
-                println("TRUE!")
+                print("TRUE!")
             } else {
-                println("FALSE!!")
+                print("FALSE!!")
                 // do something here when a highscore exists
                 //SCLAlertView().showInfo(kInfoTitle, subTitle: kSubtitle)
                 //shown = true

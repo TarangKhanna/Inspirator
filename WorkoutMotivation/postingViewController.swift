@@ -42,9 +42,9 @@ class postingViewController: UIViewController, UITextViewDelegate {
     
     @IBAction func post(sender: AnyObject) {
         // send text to timeline controller
-        println(self.childViewControllers)
+        print(self.childViewControllers)
         if commentTxtView.text != " " && commentTxtView.text != nil && !commentTxtView.text.isEmpty {
-            var person = PFObject(className:"Person")
+            let person = PFObject(className:"Person")
             //self.containsImage.append(false)
             //self.parseObject = person
             person["score"] = 0
@@ -72,7 +72,7 @@ class postingViewController: UIViewController, UITextViewDelegate {
                     //
                     //                    }
                 } else {
-                    println("Couldn't post!")
+                    print("Couldn't post!")
                     SCLAlertView().showWarning("Error Posting", subTitle: "Check Your Internet Connection.")
                 }
             }
@@ -81,15 +81,15 @@ class postingViewController: UIViewController, UITextViewDelegate {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        var recipients2 = [String]()
+        _ = [String]()
         if (segue.identifier == "backToTimeline") { //pass data to VC
-            var svc = segue.destinationViewController as! TimelineViewController
+            let svc = segue.destinationViewController as! TimelineViewController
             svc.groupToQuery = passedGroup
         } else if (segue.identifier == "backToTimeline2") { //pass data to VC
-            var svc = segue.destinationViewController as! TimelineViewController
+            let svc = segue.destinationViewController as! TimelineViewController
             svc.groupToQuery = passedGroup
         } else if (segue.identifier == "picUpload") { //pass data to VC
-            var svc = segue.destinationViewController.topViewController as! PicUpload
+            let svc = (segue.destinationViewController as! UINavigationController).topViewController as! PicUpload
             svc.passedGroupPic = passedGroup
         }
     }

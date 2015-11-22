@@ -54,9 +54,9 @@ class CommentsVC: UIViewController, UITextFieldDelegate {
     }
     
     func keyboardWillShow(notification: NSNotification) {
-        var collection = self.childViewControllers[0] as! Comments
-        var item = collection.collectionView(collection.collectionView!, numberOfItemsInSection: 0) - 1
-        var lastItemIndex = NSIndexPath(forItem: item, inSection: 0)
+        let collection = self.childViewControllers[0] as! Comments
+        let item = collection.collectionView(collection.collectionView!, numberOfItemsInSection: 0) - 1
+        let lastItemIndex = NSIndexPath(forItem: item, inSection: 0)
         if lastItemIndex.row != -1 {
         collection.collectionView?.scrollToItemAtIndexPath(lastItemIndex, atScrollPosition: UICollectionViewScrollPosition.Top, animated: false)
         }
@@ -73,11 +73,11 @@ class CommentsVC: UIViewController, UITextFieldDelegate {
     
     func createComment() {
         
-        if !commentField.text.isEmpty {
+        if !commentField.text!.isEmpty {
             
-            var myComment = PFObject(className:"Comment")
+            let myComment = PFObject(className:"Comment")
             myComment["content"] = commentField.text
-            var nameTemp =  PFUser.currentUser()?.username
+            let nameTemp =  PFUser.currentUser()?.username
             myComment["username"] = nameTemp
             myComment["parent"] = PFObject(withoutDataWithClassName:"Person", objectId: objectIDPost)
             myComment["fromObjectId"] = objectIDPost
@@ -104,10 +104,10 @@ class CommentsVC: UIViewController, UITextFieldDelegate {
 //                        iOSPush.setQuery(query)
 //                        iOSPush.sendPushInBackground()
 //                    }
-                    var viewCollection = self.childViewControllers[0] as? Comments
+                    let viewCollection = self.childViewControllers[0] as? Comments
                     viewCollection!.retrieve()
                 } else {
-                    println("Couldn't Vote!")
+                    print("Couldn't Vote!")
                     SCLAlertView().showWarning("Error Commenting", subTitle: "Check Your Internet Connection.")
                 }
                 
@@ -142,7 +142,7 @@ class CommentsVC: UIViewController, UITextFieldDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "CommentsFlow") { //pass data to VC
-            var svc = segue.destinationViewController as! Comments
+            let svc = segue.destinationViewController as! Comments
             svc.parsePassedID = objectIDPost
             svc.firstPostComment = firstPost
             svc.name2 = name
@@ -150,8 +150,8 @@ class CommentsVC: UIViewController, UITextFieldDelegate {
     }
     
     func animateViewMoving (up:Bool, moveValue :CGFloat){
-        var movementDuration:NSTimeInterval = 0.3
-        var movement:CGFloat = ( up ? -moveValue : moveValue)
+        let movementDuration:NSTimeInterval = 0.3
+        let movement:CGFloat = ( up ? -moveValue : moveValue)
         UIView.beginAnimations( "animateView", context: nil)
         UIView.setAnimationBeginsFromCurrentState(true)
         UIView.setAnimationDuration(movementDuration )

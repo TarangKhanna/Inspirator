@@ -13,7 +13,7 @@ class PostImageViewController: UIViewController, UINavigationControllerDelegate,
     
     func displayAlert(title: String, message: String) {
         
-        var alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction((UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
             
             self.dismissViewControllerAnimated(true, completion: nil)
@@ -33,7 +33,7 @@ class PostImageViewController: UIViewController, UINavigationControllerDelegate,
     
     @IBAction func chooseImage(sender: AnyObject) {
         
-        var image = UIImagePickerController()
+        let image = UIImagePickerController()
         image.delegate = self
         image.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         image.allowsEditing = false
@@ -67,7 +67,7 @@ class PostImageViewController: UIViewController, UINavigationControllerDelegate,
         
         UIApplication.sharedApplication().beginIgnoringInteractionEvents()
         
-        var post = PFObject(className: "Post")
+        let post = PFObject(className: "Post")
         
         //post["message"] = message.text
         
@@ -75,9 +75,9 @@ class PostImageViewController: UIViewController, UINavigationControllerDelegate,
         
         post["username"] = PFUser.currentUser()?.username
         
-        let imageData = UIImagePNGRepresentation(imageToPost.image)
+        let imageData = UIImagePNGRepresentation(imageToPost.image!)
         
-        let imageFile = PFFile(name: "image.png", data: imageData)
+        let imageFile = PFFile(name: "image.png", data: imageData!)
         
         post["imageFile"] = imageFile
         

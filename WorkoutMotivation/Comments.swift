@@ -76,14 +76,14 @@ class Comments: UICollectionViewController, UICollectionViewDelegateFlowLayout, 
     
     func retrieve() {
         
-        if var query = PFQuery(className: "Comment") as PFQuery? { //querying parse for user data
+        if let query = PFQuery(className: "Comment") as PFQuery? { //querying parse for user data
             query.orderByAscending("createdAt")
             query.whereKey("fromObjectId", equalTo: parsePassedID)
             query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
                 SwiftSpinner.hide()
                 //UIApplication.sharedApplication().endIgnoringInteractionEvents()
                 if error != nil {
-                    println("No Internet")
+                    print("No Internet")
                     //self.statusLabel.text = "No Internet. Try refreshing."
                 }
                 //self.containsImage.removeAll(keepCapacity: false)
