@@ -1,4 +1,4 @@
-# WorkoutMotivation
+# Inspirator
 Motivational app with social networking features.
 ------
 
